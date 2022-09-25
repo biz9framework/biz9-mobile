@@ -1802,7 +1802,16 @@ function set_admin_page_service_list(data){
 			"</div>"+
 			"<div>"+
 			"<a href='admin_edit_service.html?title_url="+data.service_list[a].title_url+"' data_type='"+ data.service_list[a].data_type+"'tbl_id='"+ data.service_list[a].tbl_id+"'><p class='ps-3 line-height-s color-theme mb-1'><strong>"+data.service_list[a].title+"</strong></p></a>"+
-			"<p class='ps-3 line-height-s color-theme mb-1'>"+data.service_list[a].category+"</p>"+
+          "<p class='ps-3 mb-2 font-11 line-height-xs'>"+data.service_list[a].sub_note+"</p>"+
+			"<p class='ps-3 line-height-s color-theme mb-1'>"+data.service_list[a].category+"</p></a>"+
+ "<span class='color-green-dark font-10 mt-n2 d-block ps-3'><del>"+get_money(data.service_list[a].old_price)+"</del> - " + data.service_list[a].in_stock+ "</span>"+
+ "<h5 class=' ps-3 font-700 pt-1 no-click'>"+get_money(data.service_list[a].price)+"</h5>"+
+
+
+
+
+
+
 			"<p class='mb-0 ps-3 font-10 pt-1'>"+
 
 			"<a href='service_detail.html?title_url="+data.service_list[a].title_url+"' data_type='"+ data.service_list[a].data_type+"'tbl_id='"+ data.service_list[a].tbl_id+"'><i class='admin_edit_img rounded-xl font-24 fa fa-eye round-huge'></i></a>"+
