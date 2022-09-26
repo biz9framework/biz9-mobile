@@ -108,32 +108,6 @@ if [ "$REPO_URL" != "" ]; then
 fi
 echo "#################"
 echo "------------------------------------------------------------------------------------------"
-echo "#################"
-if [ "$BIZ9_MOBILE_VERSION" != "" ]; then
-    echo "BIZ9 MOBILE VERSION : ${BIZ9_MOBILE_VERSION}"
-fi
-if [ "$APP_VERSION" != "" ]; then
-    echo "APP VERSION : ${APP_VERSION}"
-fi
-if [ "$APP_ID" != "" ]; then
-    echo "APP ID : ${APP_ID}"
-fi
-if [ "$APP_TITLE" != "" ]; then
-    echo "APP TITLE : ${APP_TITLE}"
-fi
-if [ "$APP_VENDOR" != "" ]; then
-    echo "APP VENDOR : ${APP_VENDOR}"
-fi
-if [ "$APP_TITLE_ID" != "" ]; then
-    echo "APP TITLE ID: ${APP_TITLE_ID}"
-fi
-if [ "$CONFIG_ID" != "" ]; then
-    echo "CONFIG ID : ${CONFIG_ID}"
-fi
-if [ "$REPO_URL" != "" ]; then
-    echo "REPO URL : ${REPO_URL}"
-fi
-echo "------------------------------------------------------------------------------------------"
 echo "${DOWNLOAD_URL}/${APP_TITLE_ID}_${APP_VERSION_NEW}.aab"
 echo "------------------------------------------------------------------------------------------"
 echo "${DOWNLOAD_URL}/${APP_TITLE_ID}_${APP_VERSION_NEW}.apk"

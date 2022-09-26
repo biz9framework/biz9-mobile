@@ -51,6 +51,8 @@ if [ "${app_type}" = "service" ]; then
     git init
     git pull ${BIZ9_GIT_SERVICE_URL} ${branch} --allow-unrelated-histories
     git checkout -b ${branch}
+    source .biz9_config.sh
+    sed -i "s/BIZ9_SERVICE_VERSION=.*/BIZ9_SERVICE_VERSION='${BIZ9_SERVICE_VERSION}';/" ${G_BIZ_APP_NEW_DIR}/app.js
 fi
 if [ "${app_type}" = "website" ]; then
     G_HAS_APP=true;
@@ -58,6 +60,8 @@ if [ "${app_type}" = "website" ]; then
     git init
     git pull ${BIZ9_GIT_WEB_URL} ${branch} --allow-unrelated-histories
     git checkout -b ${branch}
+    source .biz9_config.sh
+    sed -i "s/BIZ9_WEBSITE_VERSION=.*/BIZ9_WEBSITE_VERSION='${BIZ9_WEBSITE_VERSION}';/" ${G_BIZ_APP_NEW_DIR}/app.js
 fi
 if [ "${app_type}" = "cms" ]; then
     G_HAS_APP=true;
@@ -65,6 +69,8 @@ if [ "${app_type}" = "cms" ]; then
     git init
     git pull ${BIZ9_GIT_CMS_URL} ${branch} --allow-unrelated-histories
     git checkout -b ${branch}
+    source .biz9_config.sh
+    sed -i "s/BIZ9_CMS_VERSION=.*/BIZ9_CMS_VERSION='${BIZ9_CMS_VERSION}';/" ${G_BIZ_APP_NEW_DIR}/app.js
 fi
 if [ "${app_type}" = "mobile" ]; then
     G_HAS_APP=false;
@@ -80,11 +86,12 @@ if [ "${app_type}" = "mobile" ]; then
     sed -i "s/APP_VENDOR=.*/APP_VENDOR='${app_vendor}';/" ${G_BIZ_APP_NEW_DIR}/.biz9_config.sh
     # # update config.js
     sed -i "s/APP_VERSION=.*/APP_VERSION='1.0.0'/" ${G_BIZ_APP_NEW_DIR}/www/scripts/biz_scriptz/config.js
-    sed -i "s/BIZ9_APP_VERSION=.*/BIZ9_APP_VERSION='${BIZ9_APP_VERSION}'/" ${G_BIZ_APP_NEW_DIR}/www/scripts/biz_scriptz/config.js
     sed -i "s/APP_ID=.*/APP_ID='${app_id}'/" ${G_BIZ_APP_NEW_DIR}/www/scripts/biz_scriptz/config.js
     sed -i "s/APP_TITLE=.*/APP_TITLE='${app_title}'/" ${G_BIZ_APP_NEW_DIR}/www/scripts/biz_scriptz/config.js
     sed -i "s/APP_TITLE_ID=.*/APP_TITLE_ID='${app_title_id}'/" ${G_BIZ_APP_NEW_DIR}/www/scripts/biz_scriptz/config.js
     sed -i "s/APP_VENDOR=.*/APP_VENDOR='${app_vendor}'/" ${G_BIZ_APP_NEW_DIR}/www/scripts/biz_scriptz/config.js
+    source .biz9_config.sh
+    sed -i "s/BIZ9_MOBILE_VERSION=.*/BIZ9_MOBILE_VERSION='${BIZ9_MOBILE_VERSION}';/" ${G_BIZ_APP_NEW_DIR}/app.js
 fi
 
 #sed
