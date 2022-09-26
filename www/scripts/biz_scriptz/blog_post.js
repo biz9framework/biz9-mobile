@@ -84,10 +84,12 @@ function set_page_blog_detail(data){
     var str='';
     str=str+"<div class='row text-center row-cols-3 mb-n5'>";
     for(a=0;a<data.item.photos.length;a++){
-        data.item.photos[a].sub_note=data.item.photos[a].sub_note?(data.item.photos[a].sub_note):'';
-        str=str+"<a class='col mb-4' data-gallery='gallery-2' href='"+data.item.photos[a].mid_photo_url+"' title="+data.item.photos[a].sub_note+">"+
+        if(!data.item.photos[a].note){
+            data.item.photos[a].note='';
+        }
+        str=str+"<a class='col mb-4' data-gallery='gallery-2' href='"+data.item.photos[a].mid_photo_url+"' title="+data.item.photos[a].note+">"+
         "<img src='"+data.item.photos[a].thumb_photo_url+"' data-src='"+data.item.photos[a].album_photo_url+"' class='preload-img img-fluid rounded-s' alt='img'>"+
-        "<h5 class='font-14 pt-2'>"+data.item.photos[a].sub_note+"</h5>"+
+        "<h5 class='font-14 pt-2'>"+data.item.photos[a].note+"</h5>"+
         "</a>";
     }
     str=str+"</div>";
