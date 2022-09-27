@@ -1,10 +1,10 @@
 BIZ9_MOBILE_VERSION='3.3.8'
-APP_VERSION='1.9.4'
+APP_VERSION='1.9.5'
 APP_VENDOR='BiZ9 Framework'
 APP_VENDOR_WEBSITE='bossappz.com'
 APP_TITLE='BiZ9-Mobile'
 APP_TITLE_ID='mobile19'
-REPO_URL="git@github.com:bossappz/biz9-mobile-unstable.git"
+REPO_URL="git@github.com:bossappz/biz9-mobile-stable.git"
 
 CONFIG_ID="io.bossappz.mobile";
 DOWNLOAD_URL="https://94.bossappz.com/uploads"
