@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+		<link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+		<link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+		<title id='div_page_title'></title>
+		<!--core --!>
+			<link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+			<link rel="stylesheet" type="text/css" href="styles/style.css">
+			<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;400;500;600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+			<link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+			<!--core --!>
+				<!--music --!>
+					<link rel="stylesheet" href="styles/music_style/not.the.skin.css">
+					<link rel="stylesheet" href="styles/circle.skin/circle.player.css">
+					<!--music --!>
+						<!--editor --!>
+							<link href="styles/froala/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+							<!--editor --!>
+								</head>
+								<body class="theme-light" data-gradient="gradient-2">
+								<div id="preloader"><div class="spinner-border color-red-dark" role="status"></div></div>
+								<div id="page">
+								<input id='biz_page_title' type='text'value='home'/>
+								<div class="header header-fixed header-logo-app">
+								<a href="/" class="header-title" id='biz_primary_app_title'></a>
+								<a href="#" data-menu="menu-main" class="header-icon header-icon-1"><i class="fas fa-bars"></i></a>
+								<a href="contact.html" class="header-icon header-icon-2"><i class="fas fa-envelope"></i></a>
+								</div>
+								<div id="footer-bar" class="footer-bar-4"></div>
+								<!-- Global Menus-->
+								<div id="menu-main"  data-menu-load="menu-main.html"  data-menu-active="nav-welcome"   class="menu menu-box-left menu-gradient"   data-menu-width="260" data-menu-effect="menu-parallax"></div>
+								<div id="menu-color" data-menu-load="menu-color.html" class="menu menu-box-modal menu-gradient"  data-menu-width="cover" data-menu-height="cover"></div>
+								<div id="menu-share" data-menu-load="menu-share.html" data-menu-effect="menu-parallax" class="menu menu-box-bottom menu-box-detached" data-menu-height="390"></div>
+								<div id="menu-bell"  data-menu-load="menu-bell.html"  data-menu-effect="menu-over" class="menu menu-box-detached menu-box-top" data-menu-height="380"></div>
+								<div id="menu-mail"  data-menu-load="menu-mail.html"  data-menu-effect="menu-over" class="menu menu-box-modal" data-menu-height="470" data-menu-width="330"></div>
+								<div class="page-content header-clear-medium">
+									<div class="splide single-slider slider-no-arrows slider-no-dots" id="single-slider-1">
+										<div class="splide__track">
+											<div  id='biz_slide_show_list' class="splide__list">
+											</div>
+										</div>
+									</div>
+									<a href="#" class="btn btn-center-m btn-m rounded-xl bg-red-dark font-700 text-uppercase under-slider-btn mb-4" id='biz_btn_home_top_text'></a>
+									<div class="card card-style mt-4 biz_card"  id='biz_div_card_gallery'>
+										<div class="content">
+											<h1 class="font-21" ><span id='biz_gallery_title'></span><i class="fa fa-image color-green-dark float-end mt-1 pt-1 font-15"></i></h1>
+											<p id='biz_gallery_sub_note'>
+											</p>
+										</div>
+										<div class="content mt-n3">
+											<div id='biz_gallery_list' class="gallery gallery-filter" style="padding: 0px; position: relative; width: 100%; display: flex; flex-wrap: wrap; height: 133px;">
+											</div>
+										</div>
+									</div>
+									<div class="card card-style biz_card" id='biz_div_card_editor'>
+										<div class="content" id='div_biz_welcome_content'>
+											<h1 class="font-21" id='biz_welcome_section_header' style='text-align:center'><i class="fa fa-star color-yellow-dark float-end mt-1 pt-1 font-15"></i></h1>
+											<p id='biz_welcome_section_note'>
+											</p>
+										</div>
+										<div class="divider mb-0"></div>
+									</div>
+									<div class="card card-style biz_card" id='biz_div_card_youtube'>
+										<div class="content" >
+											<div id='biz_div_youtube'>
+											</div>
+											<div class="responsive-iframe">
+												<iframe  width="100%"   height="300px" id='biz_iframe_youtube' src="" allowfullscreen="" class="rounded-sm" frameborder="0"></iframe>
+											</div>
+											<h3 class="mt-3" id='biz_title_youtube'></h3>
+											<p id='biz_note_youtube'></p>
+										</div>
+									</div>
+									<div class="card card-style  biz_card" data-card-height="250" id='biz_div_card_image'>
+										<div class="card-bottom boxed-text-xl">
+											<h1 class="color-white" id='biz_image_title'></h1>
+											<p class="mt-n2 pb-2 color-white"  id='biz_image_sub_note'></p>
+										</div>
+										<div class="card-overlay bg-gradient"></div>
+									</div>
+									<div class="splide double-slider slider-no-arrows slider-no-dots visible-slider" id="double-slider-1">
+										<div class="splide__track">
+											<div id='biz_feature_list' class="splide__list">
+											</div>
+										</div>
+									</div>
+									<div class="card card-style biz_card" id='biz_card_comment_list'>
+										<div class="content mb-3">
+											<h1 class="font-21"  id='biz_testimonial_header'  style='text-align:center'><i class="fa fa-quote color-green-dark float-end mt-1 pt-1 font-15"></i></h1>
+											<p  id='biz_testimonial_sub_note' style='text-align:center'>
+											</p>
+											<h2 class="text-center pb-2">
+												<i class="fa fa-star font-14 color-yellow-dark"></i>
+												<i class="fa fa-star font-16 px-1 color-yellow-dark"></i>
+												<i class="fa fa-star font-22 px-1 color-yellow-dark"></i>
+												<i class="fa fa-star font-16 px-1 color-yellow-dark"></i>
+												<i class="fa fa-star font-14 color-yellow-dark"></i>
+											</h2>
+											<div id='biz_div_comment_list'></div>
+											<a href="comment_add.html" id='biz_btn_comment_add' class="btn btn-m btn-full mb-3 rounded-xs text-uppercase font-900 shadow-s bg-red-light">Add</a>
+										</div>
+									</div>
+									<!-- Loading Global Footer-->
+								</div>
+								<div class="page-bg"><div></div></div>
+								<!-- Page Content Ends Here-->
+								<!-- Be sure this is on your main visiting page, for example, the index.html page-->
+								</div>
+								<script type="text/javascript">
+									var deviceReady = function(){
+																			if(window.MobileAccessibility){
+																													window.MobileAccessibility.usePreferredTextZoom(false);
+																												}
+																		}
+																		document.addEventListener('deviceready', deviceReady, false);
+								</script>
+							 <!-- core --!>
+									<script type="text/javascript" src="cordova.js"></script>
+									<script type="text/javascript" src="scripts/jquery.js"></script>
+									<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettydate/0.0.1/prettydate.min.js"></script>
+									<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+									<script type="text/javascript" src="scripts/jurlp.min.js"></script>
+									<script type="text/javascript" src="scripts/lockr.js"></script>
+									<script type="text/javascript" src="scripts/pulltorefresh.js"></script>
+                                    <script type="text/javascript" src="scripts/froala/froala_editor.pkgd.min.js"></script>
+									<script type="text/javascript" src="scripts/biz_scriptz/utility.js"></script>
+									<script type="text/javascript" src="scripts/biz_scriptz/base.js"></script>
+									<script type="text/javascript" src="scripts/biz_scriptz/item_note.js"></script>
+									<script type="text/javascript" src="scripts/custom.js"></script>
+									<!-- core --!>
+						<!-- audio --!>
+											<script type="text/javascript" src="scripts/music_js/jquery.transform2d.js"></script>
+											<script type="text/javascript" src="scripts/music_js/jquery.grab.js"></script>
+											<script type="text/javascript" src="scripts/music_js/jquery.jplayer.js"></script>
+											<script type="text/javascript" src="scripts/music_js/mod.csstransforms.min.js"></script>
+											<script type="text/javascript" src="scripts/music_js/circle.player.js"></script>
+											<!-- audio --!>
+												<!-- biz --!>
+													<script type="text/javascript" src="scripts/biz_scriptz/config.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/biz.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/about.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/system.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/admin.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/blog_post.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/comment.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/contact.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/gallery.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/home.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/page.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/photo_upload.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/product.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/service.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/team.js"></script>
+													<!-- biz --!>
+														</body>

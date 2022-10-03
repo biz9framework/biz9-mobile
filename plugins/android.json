@@ -1,0 +1,38 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-camera": {
+      "ANDROIDX_CORE_VERSION": "1.6.+",
+      "PACKAGE_NAME": "io.bossappz.mobile"
+    },
+    "cordova-plugin-crop": {
+      "PACKAGE_NAME": "io.bossappz.mobile"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "io.bossappz.mobile"
+    },
+    "cordova-plugin-file": {
+      "ANDROIDX_WEBKIT_VERSION": "1.4.0",
+      "PACKAGE_NAME": "io.bossappz.mobile"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "io.bossappz.mobile"
+    },
+    "cordova-plugin-filechooser": {
+      "PACKAGE_NAME": "io.bossappz.mobile"
+    },
+    "cordova-plugin-filepicker": {
+      "PACKAGE_NAME": "io.bossappz.mobile"
+    },
+    "cordova-plugin-stripe": {
+      "PACKAGE_NAME": "io.bossappz.mobile"
+    }
+  },
+  "dependent_plugins": {}
+}

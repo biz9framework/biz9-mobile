@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+		<link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+		<link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+		<title id='div_page_title'></title>
+		<!--core --!>
+			<link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+			<link rel="stylesheet" type="text/css" href="styles/style.css">
+			<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;400;500;600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+			<link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+			<!--core --!>
+				<!--music --!>
+					<link rel="stylesheet" href="styles/music_style/not.the.skin.css">
+					<link rel="stylesheet" href="styles/circle.skin/circle.player.css">
+					<!--music --!>
+						<!--editor --!>
+							<link href="styles/froala/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+							<!--editor --!>
+								</head>
+
+
+
+   <body class="theme-light" data-gradient="gradient-1">
+        <div id="preloader"><div class="spinner-border color-red-dark" role="status"></div></div>
+        <div id="page">
+            <input id='biz_page_title' type='hidden'value='service_category_list'/>
+            <div class="header header-fixed header-logo-app">
+                <a href="#" data-back-button class="header-title"  id='biz_primary_app_title'></a>
+                <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+                <a href="#" id='biz_btn_service_shopping_cart' data-menu="menu-cart"  class="header-icon header-icon-4"><i class="fas fa-shopping-bag color-brown-dark"></i></a>
+            </div>
+            <div id="footer-bar" class="footer-bar-4">
+            </div>
+            <!-- Global Menus-->
+            <div id="menu-color" data-menu-load="menu-color.html" class="menu menu-box-modal menu-gradient"  data-menu-width="cover" data-menu-height="cover"></div>
+            <div id="menu-share" data-menu-load="menu-share.html" data-menu-effect="menu-parallax" class="menu menu-box-bottom menu-box-detached" data-menu-height="390"></div>
+            <div class="page-content header-clear-large">
+                <div id='biz_service_category_list'></div>
+            </div>
+            <!-- Page content ends here-->
+            <div class="page-bg"><div></div></div>
+            <div id="menu-cart" class="menu menu-box-top menu-box-detached" data-menu-height="380">
+                <div class="content mt-3">
+                    <div id='biz_service_cart_list'></div>
+                    <div class="divider mb-3 mt-n2"></div>
+                    <div class="row mb-3">
+                        <div class="col-6"><h6 class="font-600 font-16"  id='biz_service_cart_total_lbl'></h6></div>
+                        <div class="col-6"><h6 class="font-600 font-16 text-end" id='biz_service_cart_total'></h6></div>
+                    </div>
+                    <a href="/service_checkout.html" class="btn btn-m rounded-sm btn-full bg-green-dark font-800 text-uppercase">Proceed to Checkout</a>
+                </div>
+            </div>
+        </div>
+    		<!-- core --!>
+									<script type="text/javascript" src="cordova.js"></script>
+									<script type="text/javascript" src="scripts/jquery.js"></script>
+									<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+									<script type="text/javascript" src="scripts/jurlp.min.js"></script>
+									<script type="text/javascript" src="scripts/lockr.js"></script>
+									<script type="text/javascript" src="scripts/biz_scriptz/utility.js"></script>
+									<script type="text/javascript" src="scripts/biz_scriptz/base.js"></script>
+									<script type="text/javascript" src="scripts/custom.js"></script>
+									<!-- core --!>
+										<!-- audio --!>
+											<script type="text/javascript" src="scripts/music_js/jquery.transform2d.js"></script>
+											<script type="text/javascript" src="scripts/music_js/jquery.grab.js"></script>
+											<script type="text/javascript" src="scripts/music_js/jquery.jplayer.js"></script>
+											<script type="text/javascript" src="scripts/music_js/mod.csstransforms.min.js"></script>
+											<script type="text/javascript" src="scripts/music_js/circle.player.js"></script>
+											<!-- audio --!>
+												<!-- biz --!>
+													<script type="text/javascript" src="scripts/biz_scriptz/config.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/about.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/admin.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/blog_post.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/comment.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/contact.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/gallery.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/home.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/page.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/photo_upload.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/product.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/service.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/team.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/biz.js"></script>
+													<!-- biz --!>
+	  </body>
