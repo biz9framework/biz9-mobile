@@ -1,4 +1,4 @@
-async = require('../../node_modules/async');
+async = require('async');
 sharp = require('sharp');
 path = require('path');
 fs = require('fs');

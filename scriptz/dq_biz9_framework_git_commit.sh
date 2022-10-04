@@ -119,6 +119,7 @@ if [ "${app_type}" = "service" ]; then
     source .biz9_config.sh
     BIZ9_VERSION_NEW=$(INCREMENT_VERSION $BIZ9_SERVICE_VERSION);
     sed -i "s/BIZ9_SERVICE_VERSION=.*/BIZ9_SERVICE_VERSION='${BIZ9_VERSION_NEW}'/" .biz9_config.sh
+    sed -i "s/BIZ9_SERVICE_VERSION=.*/BIZ9_SERVICE_VERSION='${BIZ9_VERSION_NEW}'/" app.js
     git add -A .
     git commit -m  "${commit_notes}"
     echo "Tool: BiZ9-Service";
@@ -149,6 +150,7 @@ if [ "${app_type}" = "website" ]; then
     source .biz9_config.sh
     BIZ9_VERSION_NEW=$(INCREMENT_VERSION $BIZ9_WEBSITE_VERSION);
     sed -i "s/BIZ9_WEBSITE_VERSION=.*/BIZ9_WEBSITE_VERSION='${BIZ9_VERSION_NEW}'/" .biz9_config.sh
+    sed -i "s/BIZ9_WEBSITE_VERSION=.*/BIZ9_WEBSITE_VERSION='${BIZ9_VERSION_NEW}'/" app.js
     git add -A .
     git commit -m  "${commit_notes}"
     echo "Tool: BiZ9-Website";
