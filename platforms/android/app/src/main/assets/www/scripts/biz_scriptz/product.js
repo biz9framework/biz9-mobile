@@ -534,7 +534,7 @@ function set_page_product_checkout(data){
         }
     });
     function send_product_checkout(product_order){
-        url='shop/send_product_checkout';
+        url='product/send_product_checkout';
         post_cloud_data(url,{
             email:product_order.email,
             payment_type:product_order.payment_type,
