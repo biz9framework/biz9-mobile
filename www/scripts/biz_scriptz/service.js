@@ -591,7 +591,7 @@ function set_page_service_checkout(data){
         }
     });
     function send_service_checkout(service_order){
-        url='shop/send_service_checkout';
+        url='service/send_service_checkout';
         post_cloud_data(url,{
             email:service_order.email,
             payment_type:service_order.payment_type,

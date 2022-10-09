@@ -329,7 +329,7 @@ function set_page_service_detail(data){
             }
             set_service_cart_item(service_cart_item,1);
             $('#biz_btn_service_purchase').addClass("bg-click");
-            $('#biz_btn_service_purchase').html("Added to Cart!");
+            $('#biz_btn_service_purchase').html("22Added to Cart!");
         });
     });
     load_plugins();
