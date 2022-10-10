@@ -28,7 +28,7 @@ sed -i "s/APP_TITLE/${APP_TITLE}/g" config.xml
 #config.js
 sed -i "s/APP_ID=.*/APP_ID='${APP_ID}'/" www/scripts/biz_scriptz/config.js
 #.biz9_config.sh
-sed -i "s/APP_ID=.*/APP_ID='${APP_ID}'/" .biz9_config.sh
+sed -i "s/APP_VERSION=.*/APP_VERSION='${APP_VERSION_NEW}'/" .biz9_config.sh
 #sed -i "s/CLOUD_URL=.*/CLOUD_URL='${CLOUD_URL}'/" www/scripts/biz_scriptz/config.js
 sed -i "s/APP_VERSION=.*/APP_VERSION='${APP_VERSION_NEW}'/" www/scripts/biz_scriptz/config.js
 sed -i "s/APP_TITLE_ID=.*/APP_TITLE_ID='${APP_TITLE_ID}'/" www/scripts/biz_scriptz/config.js
