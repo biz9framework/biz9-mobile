@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+		<link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+		<link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+		<title id='div_page_title'></title>
+		<!--core --!>
+			<link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+			<link rel="stylesheet" type="text/css" href="styles/style.css">
+			<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;400;500;600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+			<link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+			<!--core --!>
+				<!--music --!>
+					<link rel="stylesheet" href="styles/music_style/not.the.skin.css">
+					<link rel="stylesheet" href="styles/circle.skin/circle.player.css">
+					<!--music --!>
+						<!--editor --!>
+							<link href="styles/froala/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+							<!--editor --!>
+								</head>
+           <body class="theme-light" data-gradient="gradient-1">
+            <div id="preloader"><div class="spinner-border color-red-dark" role="status"></div></div>
+            <div id="page">
+            <input id='biz_page_title' type='hidden'value='comment_add'/>
+               <div class="header header-fixed header-logo-app">
+                <a href="#" data-back-button class="header-title" id='biz_primary_app_title'></a>
+                <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+            </div>
+ <div id="footer-bar" class="footer-bar-4">
+            </div>
+            <!-- Global Menus-->
+            <div id="menu-main"  data-menu-load="menu-main.html"  data-menu-active="nav-contact"   class="menu menu-box-left menu-gradient"   data-menu-width="260" data-menu-effect="menu-parallax"></div>
+            <div id="menu-color" data-menu-load="menu-color.html" class="menu menu-box-modal menu-gradient"  data-menu-width="cover" data-menu-height="cover"></div>
+            <div id="menu-share" data-menu-load="menu-share.html" data-menu-effect="menu-parallax" class="menu menu-box-bottom menu-box-detached" data-menu-height="390"></div>
+            <div id="menu-bell"  data-menu-load="menu-bell.html"  data-menu-effect="menu-over" class="menu menu-box-detached menu-box-top" data-menu-height="380"></div>
+            <div class="page-content header-clear-medium">
+                <div class="card card-style">
+                    <div class="content">
+                        <h1 id='biz_lbl_header'>Leave a Comment or Review</h1>
+                        <p id='biz_lbl_sub_text'>
+                        </p>
+                        <div class="form-sent disabled">
+                            <div>
+                                <div class="shadow-l rounded-m gradient-green me-n1 ms-n1 mb-n1 ">
+                                    <h1 class="color-white text-center pt-4"><i class="fa fa-check-circle fa-3x shadow-s scale-box rounded-circle"></i></h1>
+                                    <h2 class="color-white bold text-center pt-3">Message Sent</h2>
+                                    <p class="color-white pb-4 text-center mt-n2 mb-0">We'll get back to you shortly.</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="content text-center">
+                                    <h2>Meanwhile, let's get social!</h2>
+                                    <p class="boxed-text-xl">
+                                    Here are our social media platforms! Follow us for the latest updates or just say hello!
+                                    </p>
+                                    <a href="#" class="icon icon-xl shadow-xl rounded-xl bg-facebook"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#" class="icon icon-xl shadow-xl rounded-xl bg-instagram ms-3 me-3"><i class="fab fa-instagram"></i></a>
+                                    <a href="#" class="icon icon-xl shadow-xl rounded-xl bg-twitter"><i class="fab fa-twitter"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="validator-name" class="disabled bg-red-dark content rounded-sm shadow-xl text-center line-height-xs py-3 text-uppercase font-700">Name is required!</div>
+                        <div id="validator-mail1" class="disabled bg-red-dark content rounded-sm shadow-xl text-center line-height-xs py-3 text-uppercase font-700">Email Address is required!</div>
+                        <div id="validator-mail2" class="disabled bg-red-dark content rounded-sm shadow-xl text-center line-height-xs py-3 text-uppercase font-700">Invalid email Address!</div>
+                        <div id="validator-text" class="disabled bg-red-dark content rounded-sm shadow-xl text-center line-height-xs py-3 text-uppercase font-700">Please enter your message!</div>
+
+                        <div class="contact-form">
+                            <div>
+                                <form action="#" method="post" class="contactForm" id="contactForm">
+                                    <fieldset>
+                                        <div class="form-field form-name">
+                                            <label class="contactNameField color-theme" for="contactNameField">Name:<span>(required)</span></label>
+                                            <input type="text" name="contactNameField" value="" class="round-small" id="biz_tb_name" />
+                                        </div>
+                                        <div class="form-field form-email">
+                                            <label class="contactEmailField color-theme" for="contactEmailField">Location:<span></span></label>
+                                            <input type="text" name="contactEmailField" value="" class="round-small" id="biz_tb_location" />
+                                        </div>
+                                        <div class="form-field form-text">
+                                            <label class="contactMessageTextarea color-theme" for="contactMessageTextarea">Comment:<span>(required)</span></label>
+                                            <textarea name="contactMessageTextarea" class="round-small" id="biz_tb_comment"></textarea>
+                                        </div>
+                                        <div class="form-button">
+                                            <input id='biz_btn_comment_add' type="button" class="btn bg-green-dark text-uppercase font-900 btn-m btn-full border-0 rounded-sm  shadow-xl contactSubmitButton" value="Add Comment" data-formId="contactForm" />
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Page Content Ends Here-->
+            <div class="page-bg"><div></div></div>
+            </div>
+   		<!-- core --!>
+									<script type="text/javascript" src="cordova.js"></script>
+									<script type="text/javascript" src="scripts/jquery.js"></script>
+									<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+									<script type="text/javascript" src="scripts/jurlp.min.js"></script>
+									<script type="text/javascript" src="scripts/lockr.js"></script>
+									<script type="text/javascript" src="scripts/biz_scriptz/utility.js"></script>
+									<script type="text/javascript" src="scripts/biz_scriptz/base.js"></script>
+									<script type="text/javascript" src="scripts/custom.js"></script>
+									<!-- core --!>
+										<!-- audio --!>
+											<script type="text/javascript" src="scripts/music_js/jquery.transform2d.js"></script>
+											<script type="text/javascript" src="scripts/music_js/jquery.grab.js"></script>
+											<script type="text/javascript" src="scripts/music_js/jquery.jplayer.js"></script>
+											<script type="text/javascript" src="scripts/music_js/mod.csstransforms.min.js"></script>
+											<script type="text/javascript" src="scripts/music_js/circle.player.js"></script>
+											<!-- audio --!>
+												<!-- biz --!>
+													<script type="text/javascript" src="scripts/biz_scriptz/config.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/about.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/admin.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/blog_post.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/comment.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/contact.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/gallery.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/home.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/page.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/photo_upload.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/product.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/service.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/team.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/biz.js"></script>
+													<!-- biz --!>
+	   </body>

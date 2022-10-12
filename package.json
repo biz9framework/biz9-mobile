@@ -22,6 +22,7 @@
     "sharp": "^0.31.1"
   },
   "devDependencies": {
+    "cordova-android": "^11.0.0",
     "cordova-plugin-camera": "github:apache/cordova-plugin-camera",
     "cordova-plugin-device": "^2.1.0",
     "cordova-plugin-file": "^7.0.0",
@@ -31,7 +32,9 @@
     "cordova-plugin-stripe": "^1.5.3"
   },
   "cordova": {
-    "platforms": [],
+    "platforms": [
+      "android"
+    ],
     "plugins": {
       "cordova-plugin-camera": {
         "ANDROIDX_CORE_VERSION": "1.6.+"

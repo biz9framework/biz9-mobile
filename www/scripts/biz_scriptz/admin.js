@@ -199,6 +199,7 @@ function set_admin_page_service(data){
 	$('#biz_tb_service_title').val(data.service.title);
 	$('#biz_tb_service_description').val(data.service.sub_note);
 	$('#biz_tb_service_price').val(data.service.price);
+	$('#biz_tb_service_old_price').val(data.service.old_price);
 	$('#biz_sel_in_stock').val(data.service.in_stock);
 	load_validate_fields();
 	set_service_category_list(data.service_category_list);
@@ -220,6 +221,7 @@ function set_admin_page_service(data){
 		title_url=get_title_url(title);
 		description=$('#biz_tb_service_description').val();
 		price=$('#biz_tb_service_price').val();
+		old_price=$('#biz_tb_service_old_price').val();
 		in_stock=$('#biz_sel_in_stock').val();
 		category=$('#biz_sel_category_title_list').val();
 		note = get_item_note();
@@ -231,6 +233,7 @@ function set_admin_page_service(data){
 			category:category,
 			sub_note:description,
 			price:price,
+			old_price:old_price,
 			note:note,
 		}, function(data){
 			$('#biz_page_tbl_id').val(data.tbl_id);
@@ -1297,6 +1300,7 @@ function set_admin_page_gallery_category_list(data){
 	$(".biz_btn_gallery_category_delete").click(function() {
 		data_type = $(this).attr('data_type');
 		tbl_id = $(this).attr('tbl_id');
+        alert('a');
 		if (confirm("Are you sure?") == true) {
 			post_crud_delete_item(data_type,tbl_id,function(data){
 				$('#biz_row_'+tbl_id).remove();
@@ -1804,7 +1808,7 @@ function set_admin_page_service_list(data){
 			"<a href='admin_edit_service.html?title_url="+data.service_list[a].title_url+"' data_type='"+ data.service_list[a].data_type+"'tbl_id='"+ data.service_list[a].tbl_id+"'><p class='ps-3 line-height-s color-theme mb-1'><strong>"+data.service_list[a].title+"</strong></p></a>"+
           "<p class='ps-3 mb-2 font-11 line-height-xs'>"+data.service_list[a].sub_note+"</p>"+
 			"<p class='ps-3 line-height-s color-theme mb-1'>"+data.service_list[a].category+"</p></a>"+
- "<span class='color-green-dark font-10 mt-n2 d-block ps-3'><del>"+get_money(data.service_list[a].old_price)+"</del> - " + data.service_list[a].in_stock+ "</span>"+
+ "<span class='color-green-dark font-10 mt-n2 d-block ps-3'><del>"+get_money(data.service_list[a].old_price)+"</del></span>"+
  "<h5 class=' ps-3 font-700 pt-1 no-click'>"+get_money(data.service_list[a].price)+"</h5>"+
 
 
