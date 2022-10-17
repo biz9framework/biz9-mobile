@@ -1,24 +1,24 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.bossappz.mobile" version="2.1.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.bossappz.mobile" version="2.6.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <feature name="Camera">
         <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
-    </feature>
-    <feature name="CropPlugin">
-        <param name="android-package" value="com.jeduan.crop.CropPlugin" />
-    </feature>
-    <feature name="Device">
-        <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
     <feature name="File">
         <param name="android-package" value="org.apache.cordova.file.FileUtils" />
         <param name="onload" value="true" />
     </feature>
     <allow-navigation href="cdvfile:*" />
-    <feature name="FileTransfer">
-        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
     <feature name="CordovaStripe">
         <param name="android-package" value="com.zyramedia.cordova.stripe.CordovaStripe" />
+    </feature>
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
+    <feature name="CropPlugin">
+        <param name="android-package" value="com.jeduan.crop.CropPlugin" />
     </feature>
     <feature name="FileChooser">
         <param name="android-package" value="com.megster.cordova.FileChooser" />
@@ -49,5 +49,7 @@
     <preference name="loglevel" value="DEBUG" />
     <preference name="hostname" value="localhost" />
     <preference name="InterceptRemoteRequests" value="all" />
-    <preference name="SplashScreen" value="none" />
+    <preference name="AndroidWindowSplashScreenAnimationDuration" value="3000" />
+    <preference name="AndroidWindowSplashScreenAnimatedIcon" value="other/cordova/android/icons/xxxhdpi.png" />
+    <preference name="AutoHideSplashScreen" value="true" />
 </widget>

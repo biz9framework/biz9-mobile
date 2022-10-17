@@ -333,7 +333,7 @@ function get_biz_page_url(biz_page_title){
             /*GALLERY END */
             /*BLOG START */
         case 'blog_post_list':
-            url='blog_post/get_blog_post_list';
+            url='blog_post/get_blog_post_list/'+ getUrlParameter('category');
             break;
         case 'blog_post_detail':
             url='blog_post/get_blog_post/'+ getUrlParameter('title_url');

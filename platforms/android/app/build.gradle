@@ -296,9 +296,9 @@ dependencies {
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
     implementation "androidx.core:core:1.6.+"
-    implementation "com.soundcloud.android:android-crop:1.0.0@aar"
     implementation "androidx.webkit:webkit:1.4.0"
     implementation "com.stripe:stripe-android:4.1.2"
+    implementation "com.soundcloud.android:android-crop:1.0.0@aar"
     // SUB-PROJECT DEPENDENCIES END
 }
 

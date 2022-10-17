@@ -16,7 +16,6 @@
     <allow-intent href="geo:*" />
     <preference name="hostname" value="localhost" />
     <preference name="InterceptRemoteRequests" value="all" />
-    <preference name="SplashScreen" value="none"/>
     <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
         <string>need to photo library access to get pictures from there</string>
     </edit-config>
@@ -27,6 +26,9 @@
         <icon src="other/cordova/android/icons/xhdpi.png" density="xhdpi" />
         <icon src="other/cordova/android/icons/xxhdpi.png" density="xxhdpi" />
         <icon src="other/cordova/android/icons/xxxhdpi.png" density="xxxhdpi" />
+        <preference name="AndroidWindowSplashScreenAnimationDuration" value="3000"/>
+        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="other/cordova/android/icons/xxxhdpi.png" />
+        <preference name="AutoHideSplashScreen" value="true" />
     </platform>
     <platform name="ios">
         <icon src="other/cordova/ios/icons/icon-60@3x.png" width="180" height="180" />
@@ -48,4 +50,6 @@
         <icon src="other/cordova/ios/icons/icon-50@2x.png" width="100" height="100" />
         <icon src="other/cordova/ios/icons/icon-1024.png" width="1024" height="1024" />
     </platform>
+
+
 </widget>

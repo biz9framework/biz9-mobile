@@ -29,6 +29,7 @@
     "cordova-plugin-file-transfer": "github:apache/cordova-plugin-file-transfer",
     "cordova-plugin-filechooser": "github:ihadeed/cordova-filechooser",
     "cordova-plugin-filepicker": "^1.1.6",
+    "cordova-plugin-splashscreen": "github:apache/cordova-plugin-splashscreen",
     "cordova-plugin-stripe": "^1.5.3"
   },
   "cordova": {
@@ -47,7 +48,8 @@
       "cordova-plugin-filepicker": {},
       "cordova-plugin-filechooser": {},
       "cordova-plugin-file-transfer": {},
-      "cordova-plugin-crop": {}
+      "cordova-plugin-crop": {},
+      "cordova-plugin-splashscreen": {}
     }
   }
 }
