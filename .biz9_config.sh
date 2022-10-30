@@ -1,5 +1,5 @@
 BIZ9_MOBILE_VERSION='3.5.6'
-APP_VERSION='2.0.0'
+APP_VERSION='2.0.1'
 APP_ID='19'
 APP_VENDOR='BiZ9 Framework'
 APP_VENDOR_WEBSITE='bossappz.com'
@@ -9,9 +9,9 @@ REPO_URL="git@github.com:bossappz/biz9-mobile-stable.git"
 
 CONFIG_ID="io.bossappz.mobile";
 DOWNLOAD_URL="https://94.bossappz.com/uploads"
-DEPLOY_IP=44.204.230.250
+DEPLOY_IP=3.88.104.76
 DEPLOY_LOC=/home/admin/www/service-94/public/uploads
-AWS_KEY_PEM=~/www/projectz/94/service/other/aws/ec2_key/94.pem
+AWS_KEY_PEM=~/www/projectz/121/service/other/aws/ec2_key/121.pem
 
 KEY_STORE_PASSWORD="12345678"
 APP_RELEASE_AAB="platforms/android/app/build/outputs/bundle/release/app-release.aab"
