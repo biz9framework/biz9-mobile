@@ -1300,6 +1300,7 @@ function set_admin_page_gallery_category_list(data){
 	$(".biz_btn_gallery_category_delete").click(function() {
 		data_type = $(this).attr('data_type');
 		tbl_id = $(this).attr('tbl_id');
+        alert('a');
 		if (confirm("Are you sure?") == true) {
 			post_crud_delete_item(data_type,tbl_id,function(data){
 				$('#biz_row_'+tbl_id).remove();

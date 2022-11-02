@@ -27,7 +27,7 @@
         <icon src="other/cordova/android/icons/xxhdpi.png" density="xxhdpi" />
         <icon src="other/cordova/android/icons/xxxhdpi.png" density="xxxhdpi" />
         <preference name="AndroidWindowSplashScreenAnimationDuration" value="3000"/>
-        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="other/cordova/android/icons/xxxhdpi.png" />
+        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="other/cordova/android/icons/splash.png" />
         <preference name="AutoHideSplashScreen" value="true" />
     </platform>
     <platform name="ios">

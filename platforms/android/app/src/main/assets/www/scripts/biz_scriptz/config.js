@@ -1,9 +1,9 @@
-BIZ9_MOBILE_VERSION='3.5.7'
+BIZ9_MOBILE_VERSION='3.5.1'
 APP_ID='19'
-APP_VERSION='2.0.3'
+APP_VERSION='2.6.6'
 APP_VENDOR='BiZ9 Framework'
 APP_VENDOR_WEBSITE='bossappz.com'
 APP_TITLE='BiZ9-Mobile'
-APP_TITLE_ID='mobile-19'
-CLOUD_URL='https://121.bossappz.com/';
+APP_TITLE_ID='mobile-oct3d'
+CLOUD_URL='https://94.bossappz.com/';
 dLOUD_URL='http://localhost:1901/';
