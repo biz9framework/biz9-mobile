@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="io.bossappz.mobile" version="2.6.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="io.bossappz.mobile" version="2.0.7" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>BiZ9-Mobile</name>
     <description>-</description>
     <author email="support@bossappz.com" href="https://cordova.apache.org">
@@ -27,7 +27,7 @@
         <icon src="other/cordova/android/icons/xxhdpi.png" density="xxhdpi" />
         <icon src="other/cordova/android/icons/xxxhdpi.png" density="xxxhdpi" />
         <preference name="AndroidWindowSplashScreenAnimationDuration" value="3000"/>
-        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="other/cordova/android/icons/xxxhdpi.png" />
+        <preference name="AndroidWindowSplashScreenAnimatedIcon" value="other/cordova/android/icons/splash.png" />
         <preference name="AutoHideSplashScreen" value="true" />
     </platform>
     <platform name="ios">
