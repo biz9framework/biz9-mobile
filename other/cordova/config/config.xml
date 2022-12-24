@@ -20,7 +20,9 @@
         <string>need to photo library access to get pictures from there</string>
     </edit-config>
     <platform name="android">
-        <icon src="other/cordova/android/icons/ldpi.png" density="ldpi" />
+        <preference name="android-minSdkVersion" value="12" />
+        <preference name="android-targetSdkVersion" value="32" />
+          <icon src="other/cordova/android/icons/ldpi.png" density="ldpi" />
         <icon src="other/cordova/android/icons/mdpi.png" density="mdpi" />
         <icon src="other/cordova/android/icons/hdpi.png" density="hdpi" />
         <icon src="other/cordova/android/icons/xhdpi.png" density="xhdpi" />

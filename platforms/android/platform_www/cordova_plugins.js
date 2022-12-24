@@ -33,6 +33,22 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
+      "id": "cordova-plugin-crop.CropPlugin",
+      "file": "plugins/cordova-plugin-crop/www/crop.js",
+      "pluginId": "cordova-plugin-crop",
+      "clobbers": [
+        "plugins.crop"
+      ]
+    },
+    {
+      "id": "cordova-plugin-device.device",
+      "file": "plugins/cordova-plugin-device/www/device.js",
+      "pluginId": "cordova-plugin-device",
+      "clobbers": [
+        "device"
+      ]
+    },
+    {
       "id": "cordova-plugin-file.DirectoryEntry",
       "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
       "pluginId": "cordova-plugin-file",
@@ -214,38 +230,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "runs": true
     },
     {
-      "id": "cordova-plugin-device.device",
-      "file": "plugins/cordova-plugin-device/www/device.js",
-      "pluginId": "cordova-plugin-device",
-      "clobbers": [
-        "device"
-      ]
-    },
-    {
-      "id": "cordova-plugin-stripe.stripe",
-      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
-      "pluginId": "cordova-plugin-stripe",
-      "clobbers": [
-        "cordova.plugins.stripe"
-      ]
-    },
-    {
-      "id": "cordova-plugin-filepicker.FilePicker",
-      "file": "plugins/cordova-plugin-filepicker/www/FilePicker.js",
-      "pluginId": "cordova-plugin-filepicker",
-      "clobbers": [
-        "FilePicker"
-      ]
-    },
-    {
-      "id": "cordova-plugin-filechooser.FileChooser",
-      "file": "plugins/cordova-plugin-filechooser/www/fileChooser.js",
-      "pluginId": "cordova-plugin-filechooser",
-      "clobbers": [
-        "fileChooser"
-      ]
-    },
-    {
       "id": "cordova-plugin-file-transfer.FileTransferError",
       "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
       "pluginId": "cordova-plugin-file-transfer",
@@ -262,23 +246,39 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-crop.CropPlugin",
-      "file": "plugins/cordova-plugin-crop/www/crop.js",
-      "pluginId": "cordova-plugin-crop",
+      "id": "cordova-plugin-filechooser.FileChooser",
+      "file": "plugins/cordova-plugin-filechooser/www/fileChooser.js",
+      "pluginId": "cordova-plugin-filechooser",
       "clobbers": [
-        "plugins.crop"
+        "fileChooser"
+      ]
+    },
+    {
+      "id": "cordova-plugin-filepicker.FilePicker",
+      "file": "plugins/cordova-plugin-filepicker/www/FilePicker.js",
+      "pluginId": "cordova-plugin-filepicker",
+      "clobbers": [
+        "FilePicker"
+      ]
+    },
+    {
+      "id": "cordova-plugin-stripe.stripe",
+      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
+      "pluginId": "cordova-plugin-stripe",
+      "clobbers": [
+        "cordova.plugins.stripe"
       ]
     }
   ];
   module.exports.metadata = {
     "cordova-plugin-camera": "6.0.1-dev",
-    "cordova-plugin-file": "7.0.0",
-    "cordova-plugin-device": "2.1.0",
-    "cordova-plugin-stripe": "1.5.3",
-    "cordova-plugin-filepicker": "1.1.6",
-    "cordova-plugin-filechooser": "1.2.0",
-    "cordova-plugin-file-transfer": "2.0.0-dev",
     "cordova-plugin-crop": "0.3.1",
-    "cordova-plugin-splashscreen": "7.0.0-dev"
+    "cordova-plugin-device": "2.1.0",
+    "cordova-plugin-file": "7.0.0",
+    "cordova-plugin-file-transfer": "2.0.0-dev",
+    "cordova-plugin-filechooser": "1.2.0",
+    "cordova-plugin-filepicker": "1.1.6",
+    "cordova-plugin-splashscreen": "7.0.0-dev",
+    "cordova-plugin-stripe": "1.5.3"
   };
 });
