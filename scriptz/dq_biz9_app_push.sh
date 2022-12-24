@@ -2,7 +2,6 @@ echo "#################"
 echo "BiZ9 Framework App Push"
 echo "#################"
 G_PROJECT_FOLDER="$HOME/www/projectz/"
-
 # prod start #
 echo "Enter APP ID"
 read app_id
@@ -17,16 +16,17 @@ read folder_id
 echo "Enter Branch"
 read branch
 # prod end #
-# test start #
 : '
+# test start #
 app_id=19;
 app_title='Cool 339'
-app_type='mobile'
+app_type='service'
 app_title_id='cool339'
-folder_id='mobile'
-branch='unstable'
-'
+folder_id='service'
+branch='stable'
 # test end #
+'
+#
 G_BIZ_APP_NEW_DIR=${G_PROJECT_FOLDER}${app_id}/${folder_id}
 if [ -d "${G_BIZ_APP_NEW_DIR}" ];  then
     echo "File exsist. overwrite?"
@@ -48,7 +48,7 @@ if [ "${app_type}" = "service" ]; then
     G_HAS_APP=true;
     cd ${G_BIZ_APP_NEW_DIR}/
     git init
-    git pull ${BIZ9_GIT_URL}${BIZ9_SERVICE_TITLE,,}-${branch}.git ${GIT_BRANCH} --allow-unrelated-histories
+    git pull ${BIZ9_GIT_URL}/${BIZ9_SERVICE_TITLE,,}-${branch}.git ${GIT_BRANCH} --allow-unrelated-histories
     git checkout -b ${GIT_BRANCH}
     source .biz9_config.sh
     sed -i "s/BIZ9_SERVICE_VERSION=.*/BIZ9_SERVICE_VERSION='${BIZ9_SERVICE_VERSION}';/" ${G_BIZ_APP_NEW_DIR}/app.js
@@ -57,8 +57,7 @@ if [ "${app_type}" = "website" ]; then
     G_HAS_APP=true;
     cd ${G_BIZ_APP_NEW_DIR}/
     git init
-    git pull ${BIZ9_GIT_URL}${BIZ9_WEBSITE_TITLE,,}-${branch}.git ${GIT_BRANCH} --allow-unrelated-histories
-    git checkout -b ${GIT_BRANCH}
+    git pull ${BIZ9_GIT_URL}/${BIZ9_WEBSITE_TITLE,,}-${branch}.git ${GIT_BRANCH} --allow-unrelated-histories
     source .biz9_config.sh
     sed -i "s/BIZ9_WEBSITE_VERSION=.*/BIZ9_WEBSITE_VERSION='${BIZ9_WEBSITE_VERSION}';/" ${G_BIZ_APP_NEW_DIR}/app.js
 fi
@@ -66,8 +65,7 @@ if [ "${app_type}" = "vendor" ]; then
     G_HAS_APP=true;
     cd ${G_BIZ_APP_NEW_DIR}/
     git init
-    git pull ${BIZ9_GIT_URL}${BIZ9_VENDOR_TITLE,,}-${branch}.git ${GIT_BRANCH} --allow-unrelated-histories
-    git checkout -b ${GIT_BRANCH}
+    git pull ${BIZ9_GIT_URL}/${BIZ9_VENDOR_TITLE,,}-${branch}.git ${GIT_BRANCH} --allow-unrelated-histories
     source .biz9_config.sh
     sed -i "s/BIZ9_VENDOR_VERSION=.*/BIZ9_VENDOR_VERSION='${BIZ9_VENDOR_VERSION}';/" ${G_BIZ_APP_NEW_DIR}/app.js
 fi
@@ -75,8 +73,7 @@ if [ "${app_type}" = "vendor-payment" ]; then
     G_HAS_APP=true;
     cd ${G_BIZ_APP_NEW_DIR}/
     git init
-    git pull ${BIZ9_GIT_URL}${BIZ9_VENDOR_PAYMENT_TITLE,,}-${branch}.git ${GIT_BRANCH} --allow-unrelated-histories
-    git checkout -b ${GIT_BRANCH}
+    git pull ${BIZ9_GIT_URL}/${BIZ9_VENDOR_PAYMENT_TITLE,,}-${branch}.git ${GIT_BRANCH} --allow-unrelated-histories
     source .biz9_config.sh
     sed -i "s/BIZ9_VENDOR_PAYMENT_VERSION=.*/BIZ9_VENDOR_PAYMENT_VERSION='${BIZ9_VENDOR_PAYMENT_VERSION}';/" ${G_BIZ_APP_NEW_DIR}/app.js
 fi
@@ -84,8 +81,7 @@ if [ "${app_type}" = "cms" ]; then
     G_HAS_APP=true;
     cd ${G_BIZ_APP_NEW_DIR}/
     git init
-    git pull ${BIZ9_GIT_URL}${BIZ9_CMS_TITLE,,}-${branch}.git ${GIT_BRANCH} --allow-unrelated-histories
-    git checkout -b ${GIT_BRANCH}
+    git pull ${BIZ9_GIT_URL}/${BIZ9_CMS_TITLE,,}-${branch}.git ${GIT_BRANCH} --allow-unrelated-histories
     source .biz9_config.sh
     sed -i "s/BIZ9_CMS_VERSION=.*/BIZ9_CMS_VERSION='${BIZ9_CMS_VERSION}';/" ${G_BIZ_APP_NEW_DIR}/app.js
 fi
@@ -95,8 +91,7 @@ if [ "${app_type}" = "mobile" ]; then
     read app_vendor
     cd ${G_BIZ_APP_NEW_DIR}/
     git init
-    git pull ${BIZ9_GIT_URL}${BIZ9_MOBILE_TITLE,,}-${branch}.git ${GIT_BRANCH} --allow-unrelated-histories
-    git checkout -b ${GIT_BRANCH}
+    git pull ${BIZ9_GIT_URL}/${BIZ9_MOBILE_TITLE,,}-${branch}.git ${GIT_BRANCH} --allow-unrelated-histories
     #sed
     #.biz9_config
     sed -i "s/CONFIG_ID=.*/CONFIG_ID='io.bossappz.mobile${app_id}'/" ${G_BIZ_APP_NEW_DIR}/.biz9_config.sh
