@@ -1,7 +1,6 @@
 BIZ9_MOBILE_VERSION='3.5.8';
-APP_VENDOR='BiZ9 Framework'
-APP_VERSION='3.4.6'
-APP_VENDOR='BiZ9 Framework'
+APP_VERSION='3.4.7'
+APP_VENDOR='BoSS AppZ'
 APP_VENDOR_WEBSITE='bossappz.com'
 APP_TITLE='BiZ9-Mobile'
 APP_TITLE_ID='mobile-oct3d'
