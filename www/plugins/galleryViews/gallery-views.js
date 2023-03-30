@@ -2,7 +2,7 @@
  * Gallery Views.js
  * Version: 2.0 - Vanilla JS build
  *
- * Copyright Enabled
+ * Copyright Enabled 
  * Released under the ThemeForest License. Usage prohibited otherwise.
  */
 
@@ -18,7 +18,7 @@ window.addEventListener('load', (event) => {
         galleryViewControls[0].classList.add(galleryColorClass);
         for (var i = 0; i < galleryViewControls.length; i++){galleryViewControls[i].classList.remove(galleryColorClass)}
         for (var i = 0; i < galleryViews.length; i++){galleryViews[i].removeAttribute("class"); galleryViews[i].setAttribute('class','gallery-views');}
-    }
+    }   
     galleryViewControls.forEach(el => el.addEventListener('click', e => {
         removeSelected(el);
         var galleryActiveString = el.getAttribute('class');
@@ -27,4 +27,3 @@ window.addEventListener('load', (event) => {
         el.classList.add(galleryColorClass);
     }));
 });
-

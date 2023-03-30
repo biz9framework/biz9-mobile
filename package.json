@@ -1,8 +1,8 @@
 {
   "name": "biz9-mobile",
-  "displayName": "HelloCordova",
-  "version": "3.5.0",
-  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "displayName": "BiZ9 Mobile",
+  "version": "4.7.4",
+  "description": "BiZ9 Framework Mobile",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,7 @@
   "keywords": [
     "ecosystem:cordova"
   ],
-  "author": "Apache Cordova Team",
+  "author": "#Certified CoderZ",
   "license": "Apache-2.0",
   "dependencies": {
     "async": "^3.2.4",

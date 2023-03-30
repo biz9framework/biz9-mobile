@@ -41,9 +41,16 @@
                         <div class="pb-3"></div>
                         <div class="input-style input-style-1 has-icon input-required">
                             <i class="fa fa-user input-icon"></i>
-                            <span class="color-highlight">Name</span>
+                            <span class="color-highlight">First Name</span>
                             <em>(required)</em>
-                            <input id='biz_tb_register_name' class="form-control rounded-0" type="text" placeholder="Name">
+                            <input id='biz_tb_register_first_name' class="form-control rounded-0" type="text" placeholder="First Name">
+                        </div>
+                        <div class="pb-3"></div>
+                        <div class="input-style input-style-1 has-icon input-required">
+                            <i class="fa fa-user input-icon"></i>
+                            <span class="color-highlight">Last Name</span>
+                            <em>(required)</em>
+                            <input id='biz_tb_register_last_name' class="form-control rounded-0" type="text" placeholder="Last Name">
                         </div>
                         <div class="pb-3"></div>
                         <div class="input-style input-style-1 has-icon input-required">
@@ -72,12 +79,13 @@
                 <div id="toast-save" class="toast toast-tiny toast-bottom bg-green-dark" data-delay="3000" data-autohide="true"><i class="fa fa-check me-3"></i>Update</div>
                 <div id="toast-error" class="toast toast-tiny toast-bottom bg-red-dark" data-delay="3000" data-autohide="true"><i class="fa fa-times me-3"></i>Error</div>
             </div>
-   							 <!-- core --!>
+   								 <!-- core --!>
 									<script type="text/javascript" src="cordova.js"></script>
 									<script type="text/javascript" src="scripts/jquery.js"></script>
 									<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
 									<script type="text/javascript" src="scripts/jurlp.min.js"></script>
 									<script type="text/javascript" src="scripts/lockr.js"></script>
+									<script type="text/javascript" src="scripts/pulltorefresh.js"></script>
                                     <script type="text/javascript" src="scripts/froala/froala_editor.pkgd.min.js"></script>
 									<script type="text/javascript" src="scripts/biz_scriptz/utility.js"></script>
 									<script type="text/javascript" src="scripts/biz_scriptz/base.js"></script>
@@ -93,7 +101,7 @@
 												<!-- biz --!>
 													<script type="text/javascript" src="scripts/biz_scriptz/config.js"></script>
 													<script type="text/javascript" src="scripts/biz_scriptz/about.js"></script>
-													<script type="text/javascript" src="scripts/biz_scriptz/admin.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/user.js"></script>
 													<script type="text/javascript" src="scripts/biz_scriptz/blog_post.js"></script>
 													<script type="text/javascript" src="scripts/biz_scriptz/comment.js"></script>
 													<script type="text/javascript" src="scripts/biz_scriptz/contact.js"></script>
@@ -103,7 +111,7 @@
 													<script type="text/javascript" src="scripts/biz_scriptz/photo_upload.js"></script>
 													<script type="text/javascript" src="scripts/biz_scriptz/product.js"></script>
 													<script type="text/javascript" src="scripts/biz_scriptz/service.js"></script>
-													<script type="text/javascript" src="scripts/biz_scriptz/team.js"></script>
+													<script type="text/javascript" src="scripts/biz_scriptz/member.js"></script>
 													<script type="text/javascript" src="scripts/biz_scriptz/biz.js"></script>
 													<!-- biz --!>
-	    </body>
+		            </body>

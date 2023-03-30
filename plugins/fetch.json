@@ -46,7 +46,7 @@
   "cordova-plugin-filechooser": {
     "source": {
       "type": "registry",
-      "id": "github:ihadeed/cordova-filechooser"
+      "id": "http://github.com/ihadeed/cordova-filechooser.git"
     },
     "is_top_level": true,
     "variables": {}

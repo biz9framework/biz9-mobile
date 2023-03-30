@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+        <title id='biz_head_title'></title>
+        <!--core --!>
+            <link rel="stylesheet" type="text/css" href="/styles/bootstrap.css">
+            <link rel="stylesheet" type="text/css" href="/styles/style.css">
+            <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+            <link rel="stylesheet" type="text/css" href="/fonts/css/fontawesome-all.min.css">
+            <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+            <link rel="apple-touch-icon" sizes="180x180" href="/app/icons/icon-192x192.png">
+            <!--core --!>
+                <!--music --!>
+                    <link rel="stylesheet" href="styles/music_style/not.the.skin.css">
+                    <link rel="stylesheet" href="styles/circle.skin/circle.player.css">
+                    <!--music --!>
+                        <!--editor --!>
+                            <link href="styles/froala/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+                            <!--editor --!>
+                                </head>
+                                <body class="theme-light" data-gradient="gradient-4">
+                                <div id="preloader"><div class="spinner-border color-red-dark" role="status"></div></div>
+                                <div id="page">
+                                <!-- BIZ HEAD BACK START -->
+                                <input id='biz_page_title' type='hidden'value='dashboard_product_media'/>
+                                <input id='biz_page_tbl_id' type='hidden'/>
+                                <input id='biz_page_data_type' type='hidden'/>
+                                <div class="header header-fixed header-logo-app">
+                                    <a href="#" data-back-button class="header-title" id='biz_lbl_page_title'></a>
+                                    <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+                                </div>
+                                <!-- BIZ HEAD BACK END -->
+                                <div class="page-content header-clear-medium">
+                                    <div class="card card-style bg-theme pb-0">
+                                        <div class="content mb-0"  id="tab-group-2">
+                                            <h3 id='biz_lbl_page_sub_title'></h3>
+                                            <p id='biz_lbl_page_note'>
+                                            </p>
+                                            <div class="tab-controls tabs-small tabs-rounded" data-highlight="bg-black">
+                                                <a href="#" data-active="" data-bs-toggle="collapse" data-bs-target="#tab-primary" class="bg-black no-click" aria-expanded="true">Audio</a>
+                                                <a href="#" data-bs-toggle="collapse" data-bs-target="#tab-note" class="collapsed" aria-expanded="false">Youtube</a>
+                                            </div>
+                                            <div class="clearfix mb-3"></div>
+                                            <div data-bs-parent="#tab-group-2" class="collapse show" id="tab-primary" style="">
+                                                <div class="content mb-0">
+                                                    <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
+                                                        <input type="name" class="form-control validate-name" id="biz_tb_mp3_title" placeholder="Track Title">
+                                                        <label for="form1ab" class="color-theme opacity-50 text-uppercase font-700 font-10">Title</label>
+                                                        <i class="fa fa-times disabled invalid color-red-dark"></i>
+                                                        <i class="fa fa-check disabled valid color-green-dark"></i>
+                                                        <em>(required)</em>
+                                                    </div>
+                                                    <div class="pb-3"></div>
+                                                    <div class="input-style has-borders no-icon mb-4">
+                                                        <textarea id="biz_tb_mp3_note" placeholder="Enter your message"></textarea>
+                                                        <label for="form7" class="color-highlight">Enter your Message</label>
+                                                        <em class="mt-n3">(required)</em>
+                                                    </div>
+                                                    <div class="pb-3"></div>
+                                                    <div class="input-style input-style-always-active has-borders no-icon validate-field mb-4">
+                                                        <input type="text" class="form-control validate-name" id="biz_mp3duration" placeholder="" disabled>
+                                                        <label for="biz_tb_mp3_note" class="color-theme opacity-50 text-uppercase font-700 font-10">Duration</label>
+                                                        <i class="fa fa-times invalid color-red-dark disabled"></i>
+                                                        <i class="fa fa-check valid color-green-dark disabled"></i>
+                                                    </div>
+                                                    <div class=" has-borders no-icon  mb-4">
+                                                        <div id='biz_div_track'><i id='biz_btn_add_audio' class='admin_edit_img rounded-xl font-36 fa fa-file-audio round-huge'></i></div>
+                                                        <div id='biz_div_mp3'>
+                                                            <div id="jquery_jplayer_0" class="cp-jplayer"></div>
+                                                            <div class="prototype-wrapper">
+                                                                <div id="cp_container_0" class="cp-container" style='box-sizing:revert'>
+                                                                    <div class="cp-buffer-holder">
+                                                                        <div class="cp-buffer-1"></div>
+                                                                        <div class="cp-buffer-2"></div>
+                                                                    </div>
+                                                                    <div class="cp-progress-holder">
+                                                                        <div class="cp-progress-1"></div>
+                                                                        <div class="cp-progress-2"></div>
+                                                                    </div>
+                                                                    <div class="cp-circle-control"></div>
+                                                                    <ul class="cp-controls">
+                                                                        <li><a class="cp-play" tabindex="1">play</a></li>
+                                                                        <li><a class="cp-pause" style="display:none;" tabindex="1">pause</a></li>
+                                                                    </ul>
+                                                                    <div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <p id='biz_track'>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pb-3"></div>
+                                                </div>
+                                            </div>
+                                            <div data-bs-parent="#tab-group-2" class="collapse" id="tab-note" style="">
+                                                <div class="content mb-0">
+                                                    <div class="pb-3"></div>
+                                                    <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
+                                                        <input type="url" class="form-control validate-name" id="biz_tb_youtube_link" placeholder="Youtube Link">
+                                                        <label for="form1ab" class="color-theme opacity-50 text-uppercase font-700 font-10">Youtube URL</label>
+                                                        <i class="fa fa-times disabled invalid color-red-dark"></i>
+                                                        <i class="fa fa-check disabled valid color-green-dark"></i>
+                                                        <em>(required)</em>
+                                                    </div>
+                                                    <div class="pb-3"></div>
+                                                    <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
+                                                        <input type="name" class="form-control validate-name" id="biz_tb_youtube_title" placeholder="Youtube Title">
+                                                        <label for="form1ab" class="color-theme opacity-50 text-uppercase font-700 font-10">Youtube Title</label>
+                                                        <i class="fa fa-times disabled invalid color-red-dark"></i>
+                                                        <i class="fa fa-check disabled valid color-green-dark"></i>
+                                                        <em>(required)</em>
+                                                    </div>
+                                                    <div class="pb-3"></div>
+                                                    <div class="input-style has-borders no-icon mb-4">
+                                                        <textarea id="biz_tb_youtube_note" placeholder="Enter your message"></textarea>
+                                                        <label for="form7" class="color-highlight">Enter your Message</label>
+                                                        <em class="mt-n3">(required)</em>
+                                                    </div>
+                                                    <div class="pb-3"></div>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-4 ps-1 pe-1">
+                                                <a href="#"   id='biz_btn_update' class="btn btn-3d btn-m btn-full mb-3 rounded-xs text-uppercase font-900 shadow-s  bg-black"><font style="vertical-align: inherit;">Update</font></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="toast-save" class="toast toast-tiny toast-center bg-green-dark" data-delay="3000" data-autohide="true"><i class='fa fa-check me-3'></i></div>
+                                    <div id="toast-error" class="toast toast-tiny toast-center bg-red-dark" data-delay="3000" data-autohide="true"><i class='fa fa-times me-3'></i></div>
+                                </div>
+                                <!-- Page content ends here-->
+                                <div class="page-bg"><div></div></div>
+                                <!-- core --!>
+                                    <!--biz9-mobile-core-start --!>
+                                        <script type="text/javascript" src="cordova.js"></script>
+                                        <script type="text/javascript" src="/scripts/biz9-mobile/libz/jquery-3.6.3.min.js.js"></script>
+                                        <script type="text/javascript" src="/scripts/biz9-mobile/libz/pulltorefresh.js"></script>
+                                        <script type="text/javascript" src="/scripts/biz9-mobile/libz/lockr.js"></script>
+                                        <script type="text/javascript" src="/scripts/biz9-mobile/libz/froala/froala_editor.pkgd.min.js"></script>
+                                        <script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
+                                        <script type="text/javascript" src="/scripts/jurlp.min.js"></script>
+                                        <script type="text/javascript" src="/scripts/custom.js"></script>
+                                        <!--biz9-mobile-core-end --!>
+
+                                            <!-- core --!>
+                                                <!--biz9-mobile-core-start --!>
+                                                    <script type="text/javascript" src="cordova.js"></script>
+                                                    <script type="text/javascript" src="/scripts/biz9-mobile/libz/jquery-3.6.3.min.js.js"></script>
+                                                    <script type="text/javascript" src="/scripts/biz9-mobile/libz/pulltorefresh.js"></script>
+                                                    <script type="text/javascript" src="/scripts/biz9-mobile/libz/lockr.js"></script>
+                                                    <script type="text/javascript" src="/scripts/biz9-mobile/libz/froala/froala_editor.pkgd.min.js"></script>
+                                                    <script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
+                                                    <script type="text/javascript" src="/scripts/jurlp.min.js"></script>
+                                                    <script type="text/javascript" src="/scripts/custom.js"></script>
+                                                    <!--biz9-mobile-core-end --!>
+                                                        <!-- core --!>
+                                                            <!-- biz9-mobile-audio-start --!>
+                                                                <script type="text/javascript" src="/scripts/biz9-mobile/libz/music_js/jquery.transform2d.js"></script>
+                                                                <script type="text/javascript" src="/scripts/biz9-mobile/libz/music_js/jquery.grab.js"></script>
+                                                                <script type="text/javascript" src="/scripts/biz9-mobile/libz/music_js/jquery.jplayer.js"></script>
+                                                                <script type="text/javascript" src="/scripts/biz9-mobile/libz/music_js/mod.csstransforms.min.js"></script>
+                                                                <script type="text/javascript" src="/scripts/biz9-mobile/libz/music_js/circle.player.js"></script>
+                                                                <!-- biz9-mobile-audio-end --!>
+                                                                    <!-- biz9-mobile-biz-start --!>
+                                                                        <!-- biz9-mobile-biz-core-start --!>
+                                                                            <script type="text/javascript" src="/scripts/biz9-mobile/core/utility.js"></script>
+                                                                            <script type="text/javascript" src="/scripts/biz9-mobile/core/base.js"></script>
+                                                                            <script type="text/javascript" src="/scripts/biz9-mobile/core/photo_upload.js"></script>
+                                                                            <!-- biz9-mobile-biz-core-end --!>
+                                                                                <!-- biz9-mobile-biz-scriptz-start --!>
+                                                                                    <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/config.js"></script>
+                                                                                    <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/about.js"></script>
+                                                                                    <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/contact.js"></script>
+                                                                                    <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/user.js"></script>
+                                                                                    <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/category.js"></script>
+                                                                                    <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/dashboard.js"></script>
+                                                                                    <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/blog_post.js"></script>
+                                                                                    <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/event.js"></script>
+                                                                                    <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/comment.js"></script>
+                                                                                    <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/contact.js"></script>
+                                                                                    <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/gallery.js"></script>
+                                                                                    <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/home.js"></script>
+                                                                                    <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/page.js"></script>
+                                                                                    <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/product.js"></script>
+                                                                                    <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/service.js"></script>
+                                                                                    <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/member.js"></script>
+                                                                                    <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/biz.js"></script>
+                                                                                    <!-- biz9-mobile-biz-scriptz-end --!>
+                                                                                        <!-- biz9-mobile-biz-end --!>
+
+                                                                                            </body>

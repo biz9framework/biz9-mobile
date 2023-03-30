@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+        <title id='biz_head_title'></title>
+        <!--core --!>
+            <link rel="stylesheet" type="text/css" href="/styles/bootstrap.css">
+            <link rel="stylesheet" type="text/css" href="/styles/style.css">
+            <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+            <link rel="stylesheet" type="text/css" href="/fonts/css/fontawesome-all.min.css">
+            <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+            <link rel="apple-touch-icon" sizes="180x180" href="/app/icons/icon-192x192.png">
+            <!--core --!>
+                <!--music --!>
+                    <link rel="stylesheet" href="/styles/music_style/not.the.skin.css">
+                    <link rel="stylesheet" href="/styles/circle.skin/circle.player.css">
+                    <!--music --!>
+                        <!--editor --!>
+                            <link href="/styles/froala/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+                            <!--editor --!>
+                                </head>
+                                <body class="theme-light" data-gradient="gradient-4">
+                                <div id="preloader"><div class="spinner-border color-red-dark" role="status"></div></div>
+                                <div id="page">
+                                <!-- BIZ HEAD BACK START -->
+                                <input id='biz_page_title' type='hidden'value='order_checkout_success'/>
+                                <input id='biz_page_footer' type='hidden'value='none'/>
+                                <input id='biz_page_tbl_id' type='hidden'/>
+                                <input id='biz_page_data_type' type='hidden'/>
+                                <input id='biz_page_parent_tbl_id' type='hidden'/>
+                                <input id='biz_page_parent_data_type' type='hidden'/>
+                                <div class="header header-fixed header-logo-app">
+                                    <a href="#" data-back-button class="header-title" id='biz_lbl_page_title'></a>
+                                    <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+                                </div>
+                                <!-- BIZ HEAD BACK END -->
+                                <!-- BIZ FOOTER MENU START -->
+                                <div id="footer-bar" class="footer-bar-4">
+                                </div>
+                                <!-- BIZ FOOTER MENU END -->
+                                <!-- Global Menus-->
+                                <div id="menu-color" data-menu-load="menu-color.html" class="menu menu-box-modal menu-gradient"  data-menu-width="cover" data-menu-height="cover"></div>
+                                <div id="menu-share" data-menu-load="menu-share.html" data-menu-effect="menu-parallax" class="menu menu-box-bottom menu-box-detached" data-menu-height="390"></div>
+                                <div class="page-content header-clear-medium">
+                                    <div class="card card-style biz_lbl_card">
+                                        <div class="content mb-0">
+                                            <h3 class="font-700" style='text-align:center'>Order Checkout Success</h3>
+                                            <p>
+                                            Congratulation. Your order has been proccess succeffully. Your order is being proccessed. Please check your email for your recipt. Additional information is listed below.
+                                            Dear customer, <br/>
+                                            Thank you for shopping with us today!</br>
+                                            Here is your order number: <span style='font-size:16px; color:black' id='biz_lbl_order_id'></span><br/>
+                                            Additional information has been sent to: <span  style='font-size:16px; color:black' id='biz_lbl_order_email'></span><br/>
+                                            If you have any questions or concerns about this order, feel free to reach out to our Customer Service anytime. Be sure to have the order number handy so we can help you even faster!</br>
+                                            We hope we see you again soon!</br>
+                                            Kind regards,</br>
+                                            <span id='biz_lbl_business_name'></span> Customer Service<br/>
+                                            </p>
+                                            <div class="row">
+                                                <h3 class="font-700 ">Order Info</h3>
+                                                <div class="col-6"><h6 class="font-14">Quantity</h6></div>
+                                                <div class="col-6"><h6 class="font-14 opacity-60" id='biz_lbl_quantity'>$0.00</h6></div>
+                                                <div class="col-6"><h6 class="font-14 opacity-60">Subtotal</h6></div>
+                                                <div class="col-6"><h6 class="font-14 opacity-60" id='biz_lbl_sub_total'>$0.00</h6></div>
+                                                <div class="col-6"><h6 class="font-14 opacity-60">Shipping</h6></div>
+                                                <div class="col-6"><h6 class="font-14 opacity-60" id='biz_lbl_shipping'>$0.00</h6></div>
+                                                <div class="col-6"><h6 class="font-14 opacity-60">Discount</h6></div>
+                                                <div class="col-6"><h6 class="font-14 color-blue-dark" id='biz_lbl_discount'>$0.00</h6></div>
+                                                <div class="col-6"><h6 class="font-14 opacity-60">Grand Total</h6></div>
+                                                <div class="col-6"><h6 class="font-14 opacity-60" id='biz_lbl_grand_total'>$0.00</h6></div>
+                                            </div>
+                                            <div class="row">
+                                                <h3 class="font-700 ">Payment Info</h3>
+                                                <div class="col-6"><h6 class="font-14 ">Primary Email</h6></div>
+                                                <div class="col-6"><h6 class="font-14  opacity-60" id='biz_lbl_email'></h6></div>
+                                                <div class="col-6"><h6 class="font-14">Payment Type</h6></div>
+                                                <div class="col-6"><h6 class="font-14   opacity-60" id='biz_lbl_payment_type'></h6></div>
+                                            </div>
+                                            <div class="row">
+                                                <h3 class="font-700 ">Shipping Info</h3>
+                                                <div class="col-6"><h6 class="font-14">First Name</h6></div>
+                                                <div class="col-6"><h6 class="font-14 opacity-60" id='biz_lbl_first_name'></h6></div>
+                                                <div class="col-6"><h6 class="font-14">Last Name</h6></div>
+                                                <div class="col-6"><h6 class="font-14 opacity-60" id='biz_lbl_last_name'></h6></div>
+                                                <div class="col-6"><h6 class="font-14">Company Name</h6></div>
+                                                <div class="col-6"><h6 class="font-14 opacity-60" id='biz_lbl_company'></h6></div>
+                                                <div class="col-6"><h6 class="font-14">Street Address</h6></div>
+                                                <div class="col-6"><h6 class="font-14 opacity-60" id='biz_lbl_address'></h6></div>
+                                                <div class="col-6"><h6 class="font-14">Country</h6></div>
+                                                <div class="col-6"><h6 class="font-14 opacity-60" id='biz_lbl_country'></h6></div>
+                                                <div class="col-6"><h6 class="font-14">City</h6></div>
+                                                <div class="col-6"><h6 class="font-14 opacity-60" id='biz_lbl_city'></h6></div>
+                                                <div class="col-6"><h6 class="font-14">State</h6></div>
+                                                <div class="col-6"><h6 class="font-14 opacity-60" id='biz_lbl_state'></h6></div>
+                                                <div class="col-6"><h6 class="font-14">Zip Code</h6></div>
+                                                <div class="col-6"><h6 class="font-14 opacity-60" id='biz_lbl_zip'></h6></div>
+                                            </div>
+                                            <div class="row">
+                                                <h3 class="font-700 mb-2">Products Info</h3>
+                                                <div id='biz_lbl_order_list'></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Page content ends here-->
+                                <div class="page-bg"><div></div></div>
+                                <!-- core --!>
+                                    <!--biz9-mobile-core-start --!>
+                                        <script type="text/javascript" src="cordova.js"></script>
+                                        <script type="text/javascript" src="/scripts/biz9-mobile/libz/jquery-3.6.3.min.js.js"></script>
+                                        <script type="text/javascript" src="/scripts/biz9-mobile/libz/pulltorefresh.js"></script>
+                                        <script type="text/javascript" src="/scripts/biz9-mobile/libz/lockr.js"></script>
+                                        <script type="text/javascript" src="/scripts/biz9-mobile/libz/froala/froala_editor.pkgd.min.js"></script>
+                                        <script type="text/javascript" src="/scripts/bootstrap.min.js"></script>
+                                        <script type="text/javascript" src="/scripts/jurlp.min.js"></script>
+                                        <script type="text/javascript" src="/scripts/custom.js"></script>
+                                        <!--biz9-mobile-core-end --!>
+                                            <!-- core --!>
+                                                <!-- biz9-mobile-audio-start --!>
+                                                    <script type="text/javascript" src="/scripts/biz9-mobile/libz/music_js/jquery.transform2d.js"></script>
+                                                    <script type="text/javascript" src="/scripts/biz9-mobile/libz/music_js/jquery.grab.js"></script>
+                                                    <script type="text/javascript" src="/scripts/biz9-mobile/libz/music_js/jquery.jplayer.js"></script>
+                                                    <script type="text/javascript" src="/scripts/biz9-mobile/libz/music_js/mod.csstransforms.min.js"></script>
+                                                    <script type="text/javascript" src="/scripts/biz9-mobile/libz/music_js/circle.player.js"></script>
+                                                    <!-- biz9-mobile-audio-end --!>
+                                                        <!-- biz9-mobile-biz-start --!>
+                                                            <!-- biz9-mobile-biz-core-start --!>
+                                                                <script type="text/javascript" src="/scripts/biz9-mobile/core/utility.js"></script>
+                                                                <script type="text/javascript" src="/scripts/biz9-mobile/core/base.js"></script>
+                                                                <script type="text/javascript" src="/scripts/biz9-mobile/core/photo_upload.js"></script>
+                                                                <!-- biz9-mobile-biz-core-end --!>
+                                                                    <!-- biz9-mobile-biz-scriptz-start --!>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/config.js"></script>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/about.js"></script>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/contact.js"></script>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/user.js"></script>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/category.js"></script>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/dashboard.js"></script>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/blog_post.js"></script>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/event.js"></script>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/review.js"></script>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/contact.js"></script>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/gallery.js"></script>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/home.js"></script>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/page.js"></script>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/order.js"></script>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/product.js"></script>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/service.js"></script>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/member.js"></script>
+                                                                        <script type="text/javascript" src="/scripts/biz9-mobile/scriptz/biz.js"></script>
+                                                                        <!-- biz9-mobile-biz-scriptz-end --!>
+                                                                            <!-- biz9-mobile-biz-end --!>
+                                                                                </body>

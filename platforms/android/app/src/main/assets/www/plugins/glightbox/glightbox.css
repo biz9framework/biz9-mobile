@@ -502,6 +502,7 @@ iframe.wait-autoplay {
   width: 35px;
   height: 35px;
   top: 15px;
+  top: calc(15px + (env(safe-area-inset-top)))!important;
   right: 10px;
   position: absolute;
   opacity: .7;

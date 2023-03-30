@@ -1,7 +1,4 @@
-
 var pwaName = "Kolor"; //Local Storage Names for PWA
-//origin URL);
-//Removing Preloader
 function set_app_color(app_color,app_theme){
     if(!app_color){
         app_color='gradient-1';
@@ -9,9 +6,8 @@ function set_app_color(app_color,app_theme){
     if(!app_theme){
         app_theme='light-mode';
     }
-    localStorage.setItem(pwaName+'-Gradient-Theme', app_color);
+   // localStorage.setItem(pwaName+'-Gradient-Theme', app_color);
     document.body.setAttribute('data-gradient', app_color);
-    const toggleDark = document.querySelectorAll('[data-toggle-theme]');
     if(app_theme=='dark-mode'){
         activateDarkMode();
     }else{
@@ -20,38 +16,29 @@ function set_app_color(app_color,app_theme){
     function activateDarkMode(){
         document.body.classList.add('theme-dark');
         document.body.classList.remove('theme-light', 'detect-theme');
-        for(let i = 0; i < toggleDark.length; i++){toggleDark[i].checked="checked"};
-        localStorage.setItem(pwaName+'-Theme', 'dark-mode');
     }
     function activateLightMode(){
-        document.body.classList.add('theme-light');
+   document.body.classList.add('theme-light');
         document.body.classList.remove('theme-dark','detect-theme');
-        for(let i = 0; i < toggleDark.length; i++){toggleDark[i].checked=false};
-        localStorage.setItem(pwaName+'-Theme', 'light-mode');
-    }
+         }
 }
-setTimeout(function(){
-    var preloader = document.getElementById('preloader')
-    if(preloader){preloader.classList.add('preloader-hide');}
-},150);
 document.addEventListener('DOMContentLoaded', () => {
     'use strict'
     //Global Variables
     let isPWA = true;  // Enables or disables the service worker and PWA
-    let isAJAX = true; // AJAX transitions. Requires local server or server
+    let isAJAX = false; // AJAX transitions. Requires local server or server
     var pwaRemind = 1; //Days to re-remind to add to home
     var pwaNoCache = false; //Requires server and HTTPS/SSL. Will clear cache with each visit
     //Setting Service Worker Locations scope = folder | location = service worker js location
     var pwaScope = "/";
     var pwaLocation = "/_service-worker.js";
     //Place all your custom Javascript functions and plugin calls below this line
-    function init_template(){
-        //$('#footer-bar').html(set_bottom_footer(document.getElementById('biz_page_title').value));
+   function init_template(){
         //Caching Global Variables
         var i, e, el; //https://www.w3schools.com/js/js_performance.asp
         //Attaching Menu Hider
         var menuHider = document.getElementsByClassName('menu-hider');
-        if(!menuHider.length){document.body.innerHTML += '<div class="menu-hider"></div>';}
+        if(!menuHider.length){var hider = document.createElement('div'); hider.setAttribute("class", "menu-hider");document.body.insertAdjacentElement('beforebegin', hider);}
         if(menuHider[0].classList.contains('menu-active')){menuHider[0].classList.remove('menu-active');}
         //Activating Page Content Settings for Footer Bar
         var footerBar = document.querySelectorAll('#footer-bar');
@@ -69,513 +56,230 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             return false;
         }));
-        //Setting Sidebar Widths
-        var menus = document.querySelectorAll('.menu');
-        function menuFunction(){
-            if(menus.length){
-                var menuSidebar = document.querySelectorAll('.menu-box-left, .menu-box-right');
-                menuSidebar.forEach(function(e){
-                    if(e.getAttribute('data-menu-width') === "cover"){
-                        e.style.width = '100%'
-                    } else {
-                        e.style.width = (e.getAttribute('data-menu-width')) +'px'
-                    }
-                })
-                var menuSheets = document.querySelectorAll('.menu-box-bottom, .menu-box-top, .menu-box-modal');
-                menuSheets.forEach(function(e){
-                    if(e.getAttribute('data-menu-width') === "cover"){
-                        e.style.width = '100%'
-                        e.style.height = '100%'
-                    } else {
-                        e.style.width = (e.getAttribute('data-menu-width')) +'px'
-                        e.style.height = (e.getAttribute('data-menu-height')) +'px'
-                    }
-                })
-
-                //Opening Menus
-                var menuOpen = document.querySelectorAll('[data-menu]');
-                var wrappers = document.querySelectorAll('.header, #footer-bar, .page-content');
-                menuOpen.forEach(el => el.addEventListener('click',e =>{
-                    //Close Existing Opened Menus
-                    const activeMenu = document.querySelectorAll('.menu-active');
-                    for(let i=0; i < activeMenu.length; i++){activeMenu[i].classList.remove('menu-active');}
-                    //Open Clicked Menu
-                    var menuData = el.getAttribute('data-menu');
-
-                    document.getElementById(menuData).classList.add('menu-active');
-                    document.getElementsByClassName('menu-hider')[0].classList.add('menu-active');
-                    //Check and Apply Effects
-                    var menu = document.getElementById(menuData);
-                    var menuEffect = menu.getAttribute('data-menu-effect');
-                    var menuLeft = menu.classList.contains('menu-box-left');
-                    var menuRight = menu.classList.contains('menu-box-right');
-                    var menuTop = menu.classList.contains('menu-box-top');
-                    var menuBottom = menu.classList.contains('menu-box-bottom');
-                    var menuWidth = menu.offsetWidth;
-                    var menuHeight = menu.offsetHeight;
-                    if(menuEffect === "menu-push"){
-                        var menuWidth = document.getElementById(menuData).getAttribute('data-menu-width');
-                        if(menuLeft){for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateX("+menuWidth+"px)"}}
-                        if(menuRight){for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateX(-"+menuWidth+"px)"}}
-                        if(menuBottom){for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateY(-"+menuHeight+"px)"}}
-                        if(menuTop){for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateY("+menuHeight+"px)"}}
-                    }
-                    if(menuEffect === "menu-parallax"){
-                        var menuWidth = document.getElementById(menuData).getAttribute('data-menu-width');
-                        if(menuLeft){for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateX("+menuWidth/10+"px)"}}
-                        if(menuRight){for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateX(-"+menuWidth/10+"px)"}}
-                        if(menuBottom){for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateY(-"+menuHeight/5+"px)"}}
-                        if(menuTop){for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateY("+menuHeight/5+"px)"}}
-                    }
-                }));
-                //Closing Menus
-                const menuClose = document.querySelectorAll('.close-menu, .menu-hider');
-                menuClose.forEach(el => el.addEventListener('click',e =>{
-                    const activeMenu = document.querySelectorAll('.menu-active');
-                    for(let i=0; i < activeMenu.length; i++){activeMenu[i].classList.remove('menu-active');}
-                    for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateX(-"+0+"px)"}
-                }));
+//Setting Sidebar Widths
+var menus = document.querySelectorAll('.menu');
+function menuFunction(){
+    if(menus.length){
+        var menuSidebar = document.querySelectorAll('.menu-box-left, .menu-box-right');
+        menuSidebar.forEach(function(e){
+            if(e.getAttribute('data-menu-width') === "cover"){
+                e.style.width = '100%'
+            } else {
+                e.style.width = (e.getAttribute('data-menu-width')) +'px'
             }
-        }
-        menuFunction();
-        function activateMenus(){
-            const menuActive = document.querySelectorAll('[data-menu-active]')[0];
-            if(menuActive){
-                var selectedMenu = menuActive.getAttribute('data-menu-active');
-                document.querySelectorAll('#'+selectedMenu)[0].classList.add('active-nav');
-                if(document.querySelectorAll('#'+selectedMenu)[0].parentNode.getAttribute('class') === "submenu"){
-                    var subId = '#' + document.querySelectorAll('#'+selectedMenu)[0].parentNode.getAttribute('id')
-                    var subData = document.querySelectorAll('#'+selectedMenu)[0].parentNode.getAttribute('id')
-                    var subSize = document.querySelectorAll(subId)[0].children.length;
-                    var subHeight = document.querySelectorAll(subId)[0].offsetHeight;
-                    document.querySelectorAll(subId)[0].style.transition = "all 250ms";
-                    document.querySelectorAll(subId)[0].style.height = (subSize*50)+26+'px';
-                    document.querySelectorAll('[data-submenu="'+subData+'"]')[0].classList.add('active-nav')
-                }
+        })
+        var menuSheets = document.querySelectorAll('.menu-box-bottom, .menu-box-top, .menu-box-modal');
+        menuSheets.forEach(function(e){
+            if(e.getAttribute('data-menu-width') === "cover"){
+                e.style.width = '100%'
+                e.style.height = '100%'
+            } else {
+                e.style.width = (e.getAttribute('data-menu-width')) +'px'
+                e.style.height = (e.getAttribute('data-menu-height')) +'px'
             }
-
-            document.querySelectorAll('[data-submenu]').forEach(function(e){
-                var subID = e.getAttribute('data-submenu');
-                var subChildren = document.getElementById(subID).children.length;
-                var subtest = e.querySelectorAll('strong')[0];
-                subtest.insertAdjacentHTML('beforeend', subChildren)
-            });
-            var submenuLink = document.querySelectorAll('[data-submenu]');
-            submenuLink.forEach(el => el.addEventListener('click',e =>{
-                el.classList.toggle('nav-item-active');
-                var subData = el.getAttribute('data-submenu');
-                var subId = '#'+subData
-                var subSize = document.querySelectorAll(subId)[0].children.length;
-                var subHeight = document.querySelectorAll(subId)[0].offsetHeight;
-                if(subHeight === 0){
-                    document.querySelectorAll(subId)[0].style.transition = "all 250ms";
-                    document.querySelectorAll(subId)[0].style.height = (subSize*50)+26+'px';
-                } else {
-                    document.querySelectorAll(subId)[0].style.transition = "all 250ms";
-                    document.querySelectorAll(subId)[0].style.height = "0px";
-                }
-            }));
-        }
-        //Back Button
-        const backButton = document.querySelectorAll('[data-back-button]');
-        if(backButton.length){
-            backButton.forEach(el => el.addEventListener('click',e =>{
-                e.stopPropagation;
-                e.preventDefault;
-                window.history.go(-1);
-            }));
-        }
-        //Back to Top
-        function backUp(){
-            const backToTop = document.querySelectorAll('.back-to-top-icon, .back-to-top-badge, .back-to-top, [data-back-to-top]');
-            if(backToTop){
-                backToTop.forEach(el => el.addEventListener('click',e =>{
-                    window.scrollTo({ top: 0, behavior: `smooth` })
-                }));
+        })
+        //Opening Menus
+        var menuOpen = document.querySelectorAll('[data-menu]');
+        var wrappers = document.querySelectorAll('.header, #footer-bar, .page-content');
+        menuOpen.forEach(el => el.addEventListener('click',e =>{
+            //Close Existing Opened Menus
+            const activeMenu = document.querySelectorAll('.menu-active');
+            for(let i=0; i < activeMenu.length; i++){activeMenu[i].classList.remove('menu-active');}
+            //Open Clicked Menu
+            var menuData = el.getAttribute('data-menu');
+            document.getElementById(menuData).classList.add('menu-active');
+            document.getElementsByClassName('menu-hider')[0].classList.add('menu-active');
+            //Check and Apply Effects
+            var menu = document.getElementById(menuData);
+            var menuEffect = menu.getAttribute('data-menu-effect');
+            var menuLeft = menu.classList.contains('menu-box-left');
+            var menuRight = menu.classList.contains('menu-box-right');
+            var menuTop = menu.classList.contains('menu-box-top');
+            var menuBottom = menu.classList.contains('menu-box-bottom');
+            var menuWidth = menu.offsetWidth;
+            var menuHeight = menu.offsetHeight;
+            if(menuEffect === "menu-push"){
+                var menuWidth = document.getElementById(menuData).getAttribute('data-menu-width');
+                if(menuLeft){for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateX("+menuWidth+"px)"}}
+                if(menuRight){for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateX(-"+menuWidth+"px)"}}
+                if(menuBottom){for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateY(-"+menuHeight+"px)"}}
+                if(menuTop){for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateY("+menuHeight+"px)"}}
             }
-        }
-        //Check iOS Version and add min-ios15 class if higher or equal to iOS15
-        function iOSversion() {
-            let d, v;
-            if (/iP(hone|od|ad)/.test(navigator.platform)) {
-                v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
-                d = {status: true, version: parseInt(v[1], 10), info: parseInt(v[1], 10)+'.'+parseInt(v[2], 10)+'.'+parseInt(v[3] || 0, 10)};
-            }else{d = {status:false, version: false, info:''}}
-            return d;
-        }
-        let iosVer = iOSversion();
-        if (iosVer.version > 14) {document.querySelectorAll('#page')[0].classList.add('min-ios15');}
-        //Card Extender
-        const cards = document.getElementsByClassName('card');
-        function card_extender(){
-            var headerHeight, footerHeight, headerOnPage;
-            var headerOnPage = document.querySelectorAll('.header:not(.header-transparent)')[0];
-            var footerOnPage = document.querySelectorAll('#footer-bar')[0];
-
-            headerOnPage ? headerHeight = document.querySelectorAll('.header')[0].offsetHeight : headerHeight = 0
-            footerOnPage ? footerHeight = document.querySelectorAll('#footer-bar')[0].offsetHeight : footerHeight = 0
-
-            for (let i = 0; i < cards.length; i++) {
-                if(cards[i].getAttribute('data-card-height') === "cover"){
-                    if (window.matchMedia('(display-mode: fullscreen)').matches) {var windowHeight = window.outerHeight;}
-                    if (!window.matchMedia('(display-mode: fullscreen)').matches) {var windowHeight = window.innerHeight;}
-                    //Fix for iOS 15 pages with data-height="cover"
-                    var coverHeight = windowHeight + 'px';
-                    // - Remove this for iOS 14 issues - var coverHeight = windowHeight - headerHeight - footerHeight + 'px';
-                }
-                if(cards[i].getAttribute('data-card-height') === "cover-boxed"){
-                    if (window.matchMedia('(display-mode: fullscreen)').matches) {var windowHeight = window.outerHeight;}
-                    if (!window.matchMedia('(display-mode: fullscreen)').matches) {var windowHeight = window.innerHeight;}
-                    var coverHeightBoxed = windowHeight - headerHeight - footerHeight - 40 + 'px';
-                }
-
-                if(cards[i].hasAttribute('data-card-height')){
-                    var getHeight = cards[i].getAttribute('data-card-height');
-                    cards[i].style.height= getHeight +'px';
-                    if(getHeight === "cover"){
-                        var totalHeight = getHeight
-                        cards[i].style.height =  coverHeight
-                    }
-                    if(getHeight === "cover-full"){
-                        var totalHeight = getHeight
-                        cards[i].style.height =  "100%"
-                    }
-                    if(getHeight === "cover-boxed"){
-                        var totalHeight = getHeight
-                        cards[i].style.height =  coverHeightBoxed
-                    }
-                }
+            if(menuEffect === "menu-parallax"){
+                var menuWidth = document.getElementById(menuData).getAttribute('data-menu-width');
+                if(menuLeft){for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateX("+menuWidth/10+"px)"}}
+                if(menuRight){for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateX(-"+menuWidth/10+"px)"}}
+                if(menuBottom){for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateY(-"+menuHeight/5+"px)"}}
+                if(menuTop){for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateY("+menuHeight/5+"px)"}}
             }
+        }));
+        //Closing Menus
+        const menuClose = document.querySelectorAll('.close-menu, .menu-hider');
+        menuClose.forEach(el => el.addEventListener('click',e =>{
+            const activeMenu = document.querySelectorAll('.menu-active');
+            for(let i=0; i < activeMenu.length; i++){activeMenu[i].classList.remove('menu-active');}
+            for(let i=0; i < wrappers.length; i++){wrappers[i].style.transform = "translateX(-"+0+"px)"}
+        }));
+    }
+}
+menuFunction();
+function activateMenus(){
+    const menuActive = document.querySelectorAll('[data-menu-active]')[0];
+    if(menuActive){
+        var selectedMenu = menuActive.getAttribute('data-menu-active');
+        document.querySelectorAll('#'+selectedMenu)[0].classList.add('active-nav');
+        if(document.querySelectorAll('#'+selectedMenu)[0].parentNode.getAttribute('class') === "submenu"){
+            var subId = '#' + document.querySelectorAll('#'+selectedMenu)[0].parentNode.getAttribute('id')
+            var subData = document.querySelectorAll('#'+selectedMenu)[0].parentNode.getAttribute('id')
+            var subSize = document.querySelectorAll(subId)[0].children.length;
+            var subHeight = document.querySelectorAll(subId)[0].offsetHeight;
+            document.querySelectorAll(subId)[0].style.transition = "all 250ms";
+            document.querySelectorAll(subId)[0].style.height = (subSize*50)+26+'px';
+            document.querySelectorAll('[data-submenu="'+subData+'"]')[0].classList.add('active-nav')
         }
-        if(cards.length){
-            card_extender();
-            window.addEventListener("resize", card_extender);
+    }
+    document.querySelectorAll('[data-submenu]').forEach(function(e){
+        var subID = e.getAttribute('data-submenu');
+        var subChildren = document.getElementById(subID).children.length;
+        var subtest = e.querySelectorAll('strong')[0];
+        subtest.insertAdjacentHTML('beforeend', subChildren)
+    });
+    var submenuLink = document.querySelectorAll('[data-submenu]');
+    submenuLink.forEach(el => el.addEventListener('click',e =>{
+        el.classList.toggle('nav-item-active');
+        var subData = el.getAttribute('data-submenu');
+        var subId = '#'+subData
+        var subSize = document.querySelectorAll(subId)[0].children.length;
+        var subHeight = document.querySelectorAll(subId)[0].offsetHeight;
+        if(subHeight === 0){
+            document.querySelectorAll(subId)[0].style.transition = "all 250ms";
+            document.querySelectorAll(subId)[0].style.height = (subSize*50)+26+'px';
+        } else {
+            document.querySelectorAll(subId)[0].style.transition = "all 250ms";
+            document.querySelectorAll(subId)[0].style.height = "0px";
         }
-        //Dark Mode
-        function checkDarkMode(){
-            const toggleDark = document.querySelectorAll('[data-toggle-theme]');
-            function activateDarkMode(){
-                document.body.classList.add('theme-dark');
-                document.body.classList.remove('theme-light', 'detect-theme');
-                for(let i = 0; i < toggleDark.length; i++){toggleDark[i].checked="checked"};
-                localStorage.setItem(pwaName+'-Theme', 'dark-mode');
-            }
-            function activateLightMode(){
-                document.body.classList.add('theme-light');
-                document.body.classList.remove('theme-dark','detect-theme');
-                for(let i = 0; i < toggleDark.length; i++){toggleDark[i].checked=false};
-                localStorage.setItem(pwaName+'-Theme', 'light-mode');
-            }
-            function removeTransitions(){var falseTransitions = document.querySelectorAll('.btn, .header, #footer-bar, .menu-box, .menu-active'); for(let i = 0; i < falseTransitions.length; i++) {falseTransitions[i].style.transition = "all 0s ease";}}
-            function addTransitions(){var trueTransitions = document.querySelectorAll('.btn, .header, #footer-bar, .menu-box, .menu-active'); for(let i = 0; i < trueTransitions.length; i++) {trueTransitions[i].style.transition = "";}}
-            function setColorScheme() {
-                const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
-                const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
-                const isNoPreference = window.matchMedia("(prefers-color-scheme: no-preference)").matches
-                window.matchMedia("(prefers-color-scheme: dark)").addListener(e => e.matches && activateDarkMode())
-                window.matchMedia("(prefers-color-scheme: light)").addListener(e => e.matches && activateLightMode())
-                if(isDarkMode) activateDarkMode();
-                if(isLightMode) activateLightMode();
-            }
-            //Activating Dark Mode
-            var darkModeSwitch = document.querySelectorAll('[data-toggle-theme]')
-            darkModeSwitch.forEach(el => el.addEventListener('click',e =>{
-                if(document.body.className == "theme-light"){ removeTransitions(); activateDarkMode();}
-                else if(document.body.className == "theme-dark"){ removeTransitions(); activateLightMode();}
-                setTimeout(function(){addTransitions();},350);
-            }));
-            //Set Color Based on Remembered Preference.
-            if(localStorage.getItem(pwaName+'-Theme') == "dark-mode"){for(let i = 0; i < toggleDark.length; i++){toggleDark[i].checked="checked"};document.body.className = 'theme-dark';}
-            if(localStorage.getItem(pwaName+'-Theme') == "light-mode"){document.body.className = 'theme-light';} if(document.body.className == "detect-theme"){setColorScheme();}
-            //Detect Dark/Light Mode
-            const darkModeDetect = document.querySelectorAll('.detect-dark-mode');
-            darkModeDetect.forEach(el => el.addEventListener('click',e =>{
-                document.body.classList.remove('theme-light', 'theme-dark');
-                document.body.classList.add('detect-theme')
-                setTimeout(function(){setColorScheme();},50)
-            }))
-        }
-        if(localStorage.getItem(pwaName+'-Theme') == "dark-mode"){document.body.className = 'theme-dark';}
-        if(localStorage.getItem(pwaName+'-Theme') == "light-mode"){document.body.className = 'theme-light';}
-        //Detect Dark/Light Mode
-        const darkModeDetect = document.querySelectorAll('.detect-dark-mode');
-        darkModeDetect.forEach(el => el.addEventListener('click',e =>{
-            document.body.classList.remove('theme-light', 'theme-dark');
-            document.body.classList.add('detect-theme')
-            setTimeout(function(){setColorScheme();},50)
-        }))
-        //Gradient Remember
-        if(localStorage.getItem(pwaName+'-Gradient-Theme')){
-            var getColor = localStorage.getItem(pwaName+'-Gradient-Theme');
-            document.body.setAttribute('data-gradient', getColor);
-        }
-        //Loading Gradient Changer After Menu
-        function gradientChanger(){
-            var gradientChanger = document.querySelectorAll('[data-gradient-change]');
-            if(gradientChanger){
-                gradientChanger.forEach(el => el.addEventListener('click', event =>{
-                    var getColor = el.getAttribute('data-gradient-change');
-                    localStorage.setItem(pwaName+'-Gradient-Theme', getColor);
-                    document.body.setAttribute('data-gradient', getColor);
-                }));
-            }
-        }
-        //Accordion Rotate
-        const accordionBtn = document.querySelectorAll('.accordion-btn');
-        if(accordionBtn.length){
-            accordionBtn.forEach(el => el.addEventListener('click', event => {
-                el.querySelector('i:last-child').classList.toggle('fa-rotate-180');
-            }));
-        }
-        //Card Effects
-        const cardScale = document.querySelectorAll('.card-scale');
-        if(cardScale.length){
-            cardScale.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('img')[0].classList.add('card-scale-image');}));
-            cardScale.forEach(el => el.addEventListener('mouseleave', event => {el.querySelectorAll('img')[0].classList.remove('card-scale-image');}));
-        }
-        const cardHide = document.querySelectorAll('.card-hide');
-        if(cardHide.length){
-            cardHide.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('.card-center, .card-bottom, .card-top, .card-overlay')[0].classList.add('card-hide-image');}));
-            cardHide.forEach(el => el.addEventListener('mouseleave', event => {el.querySelectorAll('.card-center, .card-bottom, .card-top, .card-overlay')[0].classList.remove('card-hide-image');}));
-        }
-        const cardRotate = document.querySelectorAll('.card-rotate');
-        if(cardRotate.length){
-            cardRotate.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('img')[0].classList.add('card-rotate-image');}));
-            cardRotate.forEach(el => el.addEventListener('mouseleave', event => {el.querySelectorAll('img')[0].classList.remove('card-rotate-image');}));
-        }
-        const cardGray = document.querySelectorAll('.card-grayscale');
-        if (cardGray.length){
-            cardGray.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('img')[0].classList.add('card-grayscale-image');}));
-            cardGray.forEach(el => el.addEventListener('mouseleave', event => {el.querySelectorAll('img')[0].classList.remove('card-grayscale-image');}));
-        }
-        const cardBlur = document.querySelectorAll('.card-blur');
-        if(cardBlur.length){
-            cardBlur.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('img')[0].classList.add('card-blur-image');}));
-            cardBlur.forEach(el => el.addEventListener('mouseleave', event => {el.querySelectorAll('img')[0].classList.remove('card-blur-image');}));
-        }
-        //Adding Local Storage for Visited Links
-        var checkVisited = document.querySelectorAll('.check-visited');
-        if(checkVisited.length){
-            function check_visited_links(){
-                var visited_links = JSON.parse(localStorage.getItem(pwaName+'_Visited_Links')) || [];
-                var links = document.querySelectorAll('.check-visited a');
-                for (let i = 0; i < links.length; i++) {
-                    var that = links[i];
-                    that.addEventListener('click',function(e){
-                        var clicked_url = this.href;
-                        if (visited_links.indexOf(clicked_url)==-1) {
-                            visited_links.push(clicked_url);
-                            localStorage.setItem(pwaName+'_Visited_Links', JSON.stringify(visited_links));
-                        }
-                    })
-                    if (visited_links.indexOf(that.href)!== -1) {
-                        that.className += ' visited-link';
-                    }
-                }
-            }
-            check_visited_links();
-        }
-        /*
-            //Stepper
-        var stepperAdd = document.querySelectorAll('.stepper-add');
-        var stepperSub = document.querySelectorAll('.stepper-sub');
-        if(stepperAdd.length){
-            stepperAdd.forEach(el => el.addEventListener('click', event => {
-                var currentValue = el.parentElement.querySelector('input').value
-                el.parentElement.querySelector('input').value = +currentValue + 1
-            }))
-
-            stepperSub.forEach(el => el.addEventListener('click', event => {
-                var currentValue = el.parentElement.querySelector('input').value
-                el.parentElement.querySelector('input').value = +currentValue - 1
-            }))
-        }
-
-//Link List Toggle
-        var linkListToggle = document.querySelectorAll('[data-trigger-switch]:not([data-toggle-theme])');
-        if(linkListToggle.length){
-            linkListToggle.forEach(el => el.addEventListener('click', event => {
-                var switchData = el.getAttribute('data-trigger-switch');
-                var getCheck = document.getElementById(switchData);
-                getCheck.checked ? getCheck.checked = false : getCheck.checked = true;
-            }))
-        }
-
-//Classic Toggle
-        var classicToggle = document.querySelectorAll('.classic-toggle');
-        if(classicToggle.length){
-            classicToggle.forEach(el => el.addEventListener('click', event=>{
-                el.querySelector('i:last-child').classList.toggle('fa-rotate-180');
-                el.querySelector('i:last-child').style.transition = "all 250ms ease"
-            }))
-        }
-//Toasts
-        var toastTrigger = document.querySelectorAll('[data-toast]');
-        if(toastTrigger.length){
-            toastTrigger.forEach(el => el.addEventListener('click', event => {
-                var toastData = el.getAttribute('data-toast')
-                var notificationToast = document.getElementById(toastData);
-                var notificationToast = new bootstrap.Toast(notificationToast);
-                notificationToast.show();
-            }));
-        }
-//Dropdown
-        var dropdownElementList = [].slice.call(document.querySelectorAll('[data-bs-toggle="dropdown"]'))
-        if(dropdownElementList.length){
-            var dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
-                return new bootstrap.Dropdown(dropdownToggleEl);
-            })
-        }
-//Text Resizer
-        var textSizeChanger = document.querySelectorAll('.text-size-changer');
-        if(textSizeChanger.length){
-            var textSizeIncrease = document.querySelectorAll('.text-size-increase');
-            var textSizeDecrease = document.querySelectorAll('.text-size-decrease');
-            var textSizeDefault = document.querySelectorAll('.text-size-default');
-            textSizeIncrease[0].addEventListener('click',function(){
-                textSizeChanger[0].querySelectorAll('*').forEach(function(element) {
-                    const getFontSize = window.getComputedStyle(element).fontSize.split("px",2)[0]
-                    element.style.fontSize = (+getFontSize +1) +'px';
-                });
-            })
-            textSizeDecrease[0].addEventListener('click',function(){
-                textSizeChanger[0].querySelectorAll('*').forEach(function(element) {
-                    const getFontSize = window.getComputedStyle(element).fontSize.split("px",2)[0]
-                    element.style.fontSize = (+getFontSize -1) +'px';
-                });
-            })
-            textSizeDefault[0].addEventListener('click',function(){
-                textSizeChanger[0].querySelectorAll('*').forEach(function(element) {
-                    const getFontSize = window.getComputedStyle(element).fontSize.split("px",2)[0]
-                    element.style.fontSize = "";
-                });
-            })
-        }
-//Sharing
-        function shareLinks(){
-            var shareCheck = document.querySelectorAll('.shareToFacebook, .shareToTwitter, .shareToLinkedIn');
-            if(shareCheck.length){
-                var share_link = window.location.href;
-                var share_title = document.title;
-                document.querySelectorAll('.shareToFacebook').forEach( x=> x.setAttribute("href", "https://www.facebook.com/sharer/sharer.php?u="+share_link));
-                document.querySelectorAll('.shareToTwitter').forEach( x=> x.setAttribute("href", "https://twitter.com/share?text="+share_link));
-                document.querySelectorAll('.shareToPinterest').forEach( x=> x.setAttribute("href", "https://pinterest.com/pin/create/button/?url=" + share_link));
-                document.querySelectorAll('.shareToWhatsApp').forEach( x=> x.setAttribute("href", "whatsapp://send?text=" + share_link));
-                document.querySelectorAll('.shareToMail').forEach( x=> x.setAttribute("href", "mailto:?body=" + share_link));
-                document.querySelectorAll('.shareToLinkedIn').forEach( x=> x.setAttribute("href", "https://www.linkedin.com/shareArticle?mini=true&url="+share_link+"&title="+share_title+"&summary=&source="));
-            }
-        }
-        */
-
-//Contact Form
-/*
-        var contactForm = document.querySelectorAll('.contact-form');
-        function contactFunction(){
-            if(contactForm){
-                var form = document.getElementById('contactForm');
-                if(form){
-                    form.onsubmit = function (e) {
-    // Stop the regular form submission
-                        e.preventDefault();
-
-    //Validate Fields
-                        var nameField = document.getElementById('contactNameField');
-                        var mailField = document.getElementById('contactEmailField');
-                        var textField = document.getElementById('contactMessageTextarea');
-                        var validateMail = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-                        if(nameField.value === ''){
-                            form.setAttribute('data-form','invalid');
-                            nameField.classList.add('border-red-dark');
-                            document.getElementById('validator-name').classList.remove('disabled');
-                        } else {
-                            form.setAttribute('data-form','valid');
-                            document.getElementById('validator-name').classList.add('disabled');
-                            nameField.classList.remove('border-red-dark');
-                        }
-                        if(mailField.value === ''){
-                            form.setAttribute('data-form','invalid');
-                            mailField.classList.add('border-red-dark');
-                            document.getElementById('validator-mail1').classList.remove('disabled');
-                        } else {
-                            document.getElementById('validator-mail1').classList.add('disabled');
-                            if(!validateMail.test(mailField.value)){
-                                form.setAttribute('data-form','invalid');
-                                mailField.classList.add('border-red-dark');
-                                document.getElementById('validator-mail2').classList.remove('disabled');
-                            } else{
-                                form.setAttribute('data-form','valid');
-                                document.getElementById('validator-mail2').classList.add('disabled');
-                                mailField.classList.remove('border-red-dark');
-                            }
-                        }
-                        if(textField.value === ''){
-                            form.setAttribute('data-form','invalid');
-                            textField.classList.add('border-red-dark');
-                            document.getElementById('validator-text').classList.remove('disabled');
-                        } else{
-                            form.setAttribute('data-form','valid');
-                            document.getElementById('validator-text').classList.add('disabled');
-                            textField.classList.remove('border-red-dark')
-                        }
-
-                        if(form.getAttribute('data-form') === 'valid'){
-                            document.querySelectorAll('.form-sent')[0].classList.remove('disabled');
-                            document.querySelectorAll('.contact-form')[0].classList.add('disabled');
-// Collect the form data while iterating over the inputs
-                            var data = {};
-                            for (let i = 0, ii = form.length; i < ii; ++i) {
-                                let input = form[i];
-                                if (input.name) {
-                                    data[input.name] = input.value;
-                                }
-                            }
-// Construct an HTTP request
-                            var xhr = new XMLHttpRequest();
-                            xhr.open(form.method, form.action, true);
-                            xhr.setRequestHeader('Accept', 'application/json; charset=utf-8');
-                            xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-// Send the collected data as JSON
-                            xhr.send(JSON.stringify(data));
-// Callback function
-                            xhr.onloadend = function (response) {if (response.target.status === 200) {console.log('Form Submitted')}};
-                        }
-                    };
-                }
-            }
-        }
-    */
-
-//Collapse Flip Icon
-var collapseBtn = document.querySelectorAll('[data-bs-toggle="collapse"]:not(.no-effect)');
-if(collapseBtn.length){
-    collapseBtn.forEach(el => el.addEventListener('click',e =>{
-        if(el.querySelectorAll('i').length){
-            el.querySelector('i').classList.toggle('fa-rotate-180')
-        };
     }));
 }
-
-//Extending Menu Functions
-function menu(menuName, menuFunction, menuTimeout){
-    setTimeout(function(){
-        if(menuFunction === "show"){
-            return document.getElementById(menuName).classList.add('menu-active'),
-                document.querySelectorAll('.menu-hider')[0].classList.add('menu-active')
-        } else {
-            return document.getElementById(menuName).classList.remove('menu-active'),
-                document.querySelectorAll('.menu-hider')[0].classList.remove('menu-active')
+//Back Button
+const backButton = document.querySelectorAll('[data-back-button]');
+if(backButton.length){
+    backButton.forEach(el => el.addEventListener('click',e =>{
+        e.stopPropagation;
+        e.preventDefault;
+        window.history.go(-1);
+    }));
+}
+//Back to Top
+function backUp(){
+    const backToTop = document.querySelectorAll('.back-to-top-icon, .back-to-top-badge, .back-to-top, [data-back-to-top]');
+    if(backToTop){
+        backToTop.forEach(el => el.addEventListener('click',e =>{
+            window.scrollTo({ top: 0, behavior: `smooth` })
+        }));
+    }
+}
+//Check iOS Version and add min-ios15 class if higher or equal to iOS15
+function iOSversion() {
+    let d, v;
+    if (/iP(hone|od|ad)/.test(navigator.platform)) {
+        v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+        d = {status: true, version: parseInt(v[1], 10), info: parseInt(v[1], 10)+'.'+parseInt(v[2], 10)+'.'+parseInt(v[3] || 0, 10)};
+    }else{d = {status:false, version: false, info:''}}
+    return d;
+}
+let iosVer = iOSversion();
+if (iosVer.version > 14) {document.querySelectorAll('#page')[0].classList.add('min-ios15');}
+//Card Extender
+const cards = document.getElementsByClassName('card');
+function card_extender(){
+    var headerHeight, footerHeight, headerOnPage;
+    var headerOnPage = document.querySelectorAll('.header:not(.header-transparent)')[0];
+    var footerOnPage = document.querySelectorAll('#footer-bar')[0];
+    headerOnPage ? headerHeight = document.querySelectorAll('.header')[0].offsetHeight : headerHeight = 0
+    footerOnPage ? footerHeight = document.querySelectorAll('#footer-bar')[0].offsetHeight : footerHeight = 0
+    for (let i = 0; i < cards.length; i++) {
+        if(cards[i].getAttribute('data-card-height') === "cover"){
+            if (window.matchMedia('(display-mode: fullscreen)').matches) {var windowHeight = window.outerHeight;}
+            if (!window.matchMedia('(display-mode: fullscreen)').matches) {var windowHeight = window.innerHeight;}
+            //Fix for iOS 15 pages with data-height="cover"
+            var coverHeight = windowHeight + 'px';
+            // - Remove this for iOS 14 issues - var coverHeight = windowHeight - headerHeight - footerHeight + 'px';
         }
-    },menuTimeout)
+        if(cards[i].getAttribute('data-card-height') === "cover-boxed"){
+            if (window.matchMedia('(display-mode: fullscreen)').matches) {var windowHeight = window.outerHeight;}
+            if (!window.matchMedia('(display-mode: fullscreen)').matches) {var windowHeight = window.innerHeight;}
+            var coverHeightBoxed = windowHeight - headerHeight - footerHeight - 40 + 'px';
+        }
+        if(cards[i].hasAttribute('data-card-height')){
+            var getHeight = cards[i].getAttribute('data-card-height');
+            cards[i].style.height= getHeight +'px';
+            if(getHeight === "cover"){
+                var totalHeight = getHeight
+                cards[i].style.height =  coverHeight
+            }
+            if(getHeight === "cover-full"){
+                var totalHeight = getHeight
+                cards[i].style.height =  "100%"
+            }
+            if(getHeight === "cover-boxed"){
+                var totalHeight = getHeight
+                cards[i].style.height =  coverHeightBoxed
+            }
+        }
+    }
 }
-
-var autoActivate = document.querySelectorAll('[data-auto-activate]');
-if(autoActivate.length){
-    setTimeout(function(){
-        autoActivate[0].classList.add('menu-active');
-        menuHider[0].classList.add('menu-active');
-    },0);
+if(cards.length){
+    card_extender();
+    window.addEventListener("resize", card_extender);
 }
-
+    //Card Effects
+    const cardScale = document.querySelectorAll('.card-scale');
+    if(cardScale.length){
+        cardScale.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('img')[0].classList.add('card-scale-image');}));
+        cardScale.forEach(el => el.addEventListener('mouseleave', event => {el.querySelectorAll('img')[0].classList.remove('card-scale-image');}));
+    }
+const cardHide = document.querySelectorAll('.card-hide');
+if(cardHide.length){
+    cardHide.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('.card-center, .card-bottom, .card-top, .card-overlay')[0].classList.add('card-hide-image');}));
+    cardHide.forEach(el => el.addEventListener('mouseleave', event => {el.querySelectorAll('.card-center, .card-bottom, .card-top, .card-overlay')[0].classList.remove('card-hide-image');}));
+}
+const cardRotate = document.querySelectorAll('.card-rotate');
+if(cardRotate.length){
+    cardRotate.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('img')[0].classList.add('card-rotate-image');}));
+    cardRotate.forEach(el => el.addEventListener('mouseleave', event => {el.querySelectorAll('img')[0].classList.remove('card-rotate-image');}));
+}
+const cardGray = document.querySelectorAll('.card-grayscale');
+if (cardGray.length){
+    cardGray.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('img')[0].classList.add('card-grayscale-image');}));
+    cardGray.forEach(el => el.addEventListener('mouseleave', event => {el.querySelectorAll('img')[0].classList.remove('card-grayscale-image');}));
+}
+const cardBlur = document.querySelectorAll('.card-blur');
+if(cardBlur.length){
+    cardBlur.forEach(el => el.addEventListener('mouseenter', event => {el.querySelectorAll('img')[0].classList.add('card-blur-image');}));
+    cardBlur.forEach(el => el.addEventListener('mouseleave', event => {el.querySelectorAll('img')[0].classList.remove('card-blur-image');}));
+}
+//Adding Local Storage for Visited Links
+var checkVisited = document.querySelectorAll('.check-visited');
+if(checkVisited.length){
+    function check_visited_links(){
+        var visited_links = JSON.parse(localStorage.getItem(pwaName+'_Visited_Links')) || [];
+        var links = document.querySelectorAll('.check-visited a');
+        for (let i = 0; i < links.length; i++) {
+            var that = links[i];
+            that.addEventListener('click',function(e){
+                var clicked_url = this.href;
+                if (visited_links.indexOf(clicked_url)==-1) {
+                    visited_links.push(clicked_url);
+                    localStorage.setItem(pwaName+'_Visited_Links', JSON.stringify(visited_links));
+                }
+            })
+            if (visited_links.indexOf(that.href)!== -1) {
+                that.className += ' visited-link';
+            }
+        }
+    }
+    check_visited_links();
+}
 //Creating Offline Alert Messages
 var addOfflineClasses = document.querySelectorAll('.offline-message');
 if(!addOfflineClasses.length){
@@ -588,7 +292,6 @@ if(!addOfflineClasses.length){
     document.getElementsByTagName('body')[0].appendChild(offlineAlert);
     document.getElementsByTagName('body')[0].appendChild(onlineAlert);
 }
-
 //Online / Offline Settings
 //Activating and Deactivating Links Based on Online / Offline State
 function offlinePage(){
@@ -610,113 +313,55 @@ function onlinePage(){
         if (hrefs.match(/.html/)) {e.setAttribute('href', hrefs); e.removeAttribute('data-link', '');}
     });
 }
-
 //Defining Offline/Online Variables
 var offlineMessage = document.getElementsByClassName('offline-message')[0];
 var onlineMessage = document.getElementsByClassName('online-message')[0];
-
 //Online / Offine Status
 function isOnline(){
     onlinePage(); onlineMessage.classList.add('online-message-active');
     setTimeout(function(){onlineMessage.classList.remove('online-message-active'); },2000)
     console.info( 'Connection: Online');
 }
-
 function isOffline(){
     offlinePage(); offlineMessage.classList.add('offline-message-active');
     setTimeout(function(){offlineMessage.classList.remove('offline-message-active'); },2000)
     console.info( 'Connection: Offline');
 }
-
 var simulateOffline = document.querySelectorAll('.simulate-offline');
 var simulateOnline = document.querySelectorAll('.simulate-online');
 if(simulateOffline.length){
     simulateOffline[0].addEventListener('click',function(){isOffline()});
     simulateOnline[0].addEventListener('click',function(){isOnline()});
 }
-
 //Check if Online / Offline
 function updateOnlineStatus(event) {var condition = navigator.onLine ? "online" : "offline"; isOnline(); }
 function updateOfflineStatus(event) {isOffline();}
 window.addEventListener('online',  updateOnlineStatus);
 window.addEventListener('offline', updateOfflineStatus);
-
 //iOS Badge
 const iOSBadge = document.querySelectorAll('.simulate-iphone-badge');
 iOSBadge.forEach(el => el.addEventListener('click',e =>{
     document.getElementsByClassName('add-to-home')[0].classList.add('add-to-home-visible', 'add-to-home-ios');
     document.getElementsByClassName('add-to-home')[0].classList.remove('add-to-home-android');
 }));
-
 //Android Badge
 const AndroidBadge = document.querySelectorAll('.simulate-android-badge');
 AndroidBadge.forEach(el => el.addEventListener('click',e =>{
     document.getElementsByClassName('add-to-home')[0].classList.add('add-to-home-visible', 'add-to-home-android');
     document.getElementsByClassName('add-to-home')[0].classList.remove('add-to-home-ios');
 }));
-
 //Remove Add to Home Badge
 const addToHomeBadgeClose = document.querySelectorAll('.add-to-home');
 addToHomeBadgeClose.forEach(el => el.addEventListener('click',e =>{
     document.getElementsByClassName('add-to-home')[0].classList.remove('add-to-home-visible');
 }));
-
-function load_menu_default(){
+//Calling Functions Required After Menus are Loaded
+setTimeout(function(){
     menuFunction();
-    checkDarkMode();
-    gradientChanger();
     activateMenus();
     card_extender();
     backUp();
-    //shareLinks();
-    //contactFunction();
-}
-//load_biz data
-var url=get_biz_page_url(document.getElementById('biz_page_title').value);
-$.get(get_cloud_url(url), function(biz_data){
-    //test-start
-    //w(biz_data,'cloud_data');
-    //if(biz_data.helper.primary.tbl_id==0){
-        //alert('Error: Please register system.');
-    //}
-    //test-end
-    set_biz_page_data(document.getElementById('biz_page_title').value,biz_data);
-    set_app_color(biz_data.helper.primary.app_color,biz_data.helper.primary.app_theme);
-    //Calling Functions Required After External Menus are Loaded
-    var dataMenuLoad = document.querySelectorAll('[data-menu-load]')
-    dataMenuLoad.forEach(function(e){
-        var menuLoad = e.getAttribute('data-menu-load')
-        fetch(menuLoad)
-            .then(data => data.text())
-        //.then(html => set_bottom_footer(menuLoad,current_page,html))
-            .then(html => e.innerHTML = html)
-            .then(data => {
-                setTimeout(function(){
-                    if(dataMenuLoad[dataMenuLoad.length-1] === e){
-                        load_menu_default();
-                        set_left_navigation(biz_data.helper);
-                        $('#footer-bar').html(set_bottom_footer(document.getElementById('biz_page_title').value));
-                        if(biz_data.helper.primary.feature_show_shop=='false'){
-                            $('#a_link_shop').hide();
-                        }
-                        if(biz_data.helper.primary.feature_show_service=='false'){
-                            $('#a_link_service').hide();
-                        }
-                        if(biz_data.helper.primary.feature_show_login=='false'){
-                            $('#nav-login').hide();
-                            $('#nav-logout').hide();
-                        }
-                        }
-                },500);
-            })
-    })
-
-}).fail(function() {
-     alert('Network connection fail. Cannot connect to server!')
-    alert(CLOUD_URL);
-});
-
-
+},500);
 //Detecting Mobile OS
 let isMobile = {
     Android: function() {return navigator.userAgent.match(/Android/i);},
@@ -726,7 +371,6 @@ let isMobile = {
 const androidDev = document.getElementsByClassName('show-android');
 const iOSDev = document.getElementsByClassName('show-ios');
 const noDev = document.getElementsByClassName('show-no-device');
-
 if(!isMobile.any()){
     for (let i = 0; i < iOSDev.length; i++) {iOSDev[i].classList.add('disabled');}
     for (let i = 0; i < androidDev.length; i++) {androidDev[i].classList.add('disabled');}
@@ -741,18 +385,15 @@ if(isMobile.Android()){
     for (let i = 0; i < iOSDev.length; i++) {iOSDev[i].classList.add('disabled');}
     for (let i = 0; i < noDev.length; i++) {noDev[i].classList.add('disabled');}
 }
-
-
 //PWA Settings
 if(isPWA === true){
     var checkPWA = document.getElementsByTagName('html')[0];
     if(!checkPWA.classList.contains('isPWA')){
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
-                navigator.serviceWorker.register(pwaLocation, {scope: pwaScope});
+                navigator.serviceWorker.register(pwaLocation, {scope: pwaScope}).then(function(registration){registration.update();})
             });
         }
-
         //Setting Timeout Before Prompt Shows Again if Dismissed
         var hours = pwaRemind * 24; // Reset when storage is more than 24hours
         var now = Date.now();
@@ -763,8 +404,6 @@ if(isPWA === true){
             localStorage.removeItem(pwaName+'-PWA-Prompt')
             localStorage.setItem(pwaName+'-PWA-Timeout-Value', now);
         }
-
-
         const pwaClose = document.querySelectorAll('.pwa-dismiss');
         pwaClose.forEach(el => el.addEventListener('click',e =>{
             const pwaWindows = document.querySelectorAll('#menu-install-pwa-android, #menu-install-pwa-ios');
@@ -773,7 +412,6 @@ if(isPWA === true){
             localStorage.setItem(pwaName+'-PWA-Prompt', 'install-rejected');
             console.log('PWA Install Rejected. Will Show Again in '+ (pwaRemind)+' Days')
         }));
-
         //Trigger Install Prompt for Android
         const pwaWindows = document.querySelectorAll('#menu-install-pwa-android, #menu-install-pwa-ios');
         if(pwaWindows.length){
@@ -836,7 +474,6 @@ if(isPWA === true){
     }
     checkPWA.setAttribute('class','isPWA');
 }
-
 //End of isPWA
 if(pwaNoCache === true){
     caches.delete('workbox-runtime').then(function() {});
@@ -847,15 +484,118 @@ if(pwaNoCache === true){
         });
     });
 }
-
 //Lazy Loading
 var lazyLoad = new LazyLoad();
-
-
+// Check Documentation folder for detailed explanations on
+// Externally loading Javascript files for better performance.
+var plugIdent, plugClass, plugMain, plugCall;
+var plugLoc = "plugins/"
+let plugins = [
+    {
+        id: 'uniqueID', // to detect if loaded and unload if needed
+        plug: 'pluginName/plugin.js', // the main plugin javascript file
+        call: 'pluginName/pluginName-call.js', // the plugin call functions
+        style: 'pluginName/pluginName-style.css', // the plugin stylesheet
+        trigger: '.pluginTriggerClass' // the trigger that will activate the loading and initializing of the plugin
+    },
+    /*
+          {
+            id: 'chart',
+            plug: 'charts/charts.js',
+            call: 'charts/charts-call-charts.js',
+            trigger: '.chart'
+          },
+          {
+            id: 'chart',
+            plug: 'charts/charts.js',
+            call: 'charts/charts-call-wallet.js',
+            trigger: '.wallet-chart'
+          },
+          {
+            id: 'graph',
+            plug: 'charts/charts.js',
+            call: 'charts/charts-call-graphs.js',
+            trigger: '.graph'
+          },
+          {
+            id: 'count',
+            plug: 'countdown/countdown.js',
+            trigger: '.countdown'
+          },
+          */
+    {
+        id: 'gallery',
+        plug: 'glightbox/glightbox.js',
+        call: 'glightbox/glightbox-call.js',
+        style: 'glightbox/glightbox.css',
+        trigger: '[data-gallery]'
+    },
+    {
+        id: 'gallery-views',
+        plug: 'galleryViews/gallery-views.js',
+        trigger: '.gallery-view-controls'
+    },
+    {
+        id: 'filter',
+        plug: 'filterizr/filterizr.js',
+        call: 'filterizr/filterizr-call.js',
+        style: 'filterizr/filterizr.css',
+        trigger: '.gallery-filter'
+    }
+];
+for (let i = 0; i < plugins.length; i++) {
+    //Remove Previous Calls
+    if(document.querySelectorAll('.'+plugins[i].id+'-c').length){document.querySelectorAll('.'+plugins[i].id+'-c')[0].remove();                }
+    //Load Plugins
+    var plugTrigger = document.querySelectorAll(plugins[i].trigger)
+    if(plugTrigger.length){
+        var loadScript = document.getElementsByTagName('script')[1],
+            loadScriptJS = document.createElement('script');
+        loadScriptJS.type = 'text/javascript'
+        loadScriptJS.className = plugins[i].id+'-p'
+        loadScriptJS.src = plugLoc + plugins[i].plug
+        loadScriptJS.addEventListener('load',function(){
+            //Once plugin is loaded, load the call.
+            if(plugins[i].call !== undefined){
+                var callFn = document.getElementsByTagName('script')[2],
+                    callJS = document.createElement('script');
+                callJS.type = 'text/javascript'
+                callJS.className = plugins[i].id+'-c'
+                callJS.src =  plugLoc + plugins[i].call
+                callFn.parentNode.insertBefore(callJS, callFn);
+            }
+        });
+        //If plugin doesn't exist, load it
+        if(!document.querySelectorAll('.'+plugins[i].id+'-p').length){
+            loadScript.parentNode.insertBefore(loadScriptJS, loadScript);
+        } else {
+            //If plugin doesn't exist, only load the call function
+            setTimeout(function(){
+                var loadScript = document.getElementsByTagName('script')[1],
+                    loadScriptJS = document.createElement('script');
+                loadScriptJS.type = 'text/javascript'
+                loadScriptJS.className = plugins[i].id+'-c'
+                loadScriptJS.src = plugLoc + plugins[i].call;
+                loadScript.parentNode.insertBefore(loadScriptJS, loadScript);
+            },50);
+        }
+        //If Style doesn't exist in array, don't do anything
+        if(plugins[i].style !== undefined){
+            //if style already exists, don't re-add to page.
+            if(!document.querySelectorAll('.'+plugins[i].id+'-s').length){
+                var loadCSS = document.createElement("link");
+                loadCSS.className = plugins[i].id+'-s';
+                loadCSS.rel = "stylesheet";
+                loadCSS.type = "text/css";
+                loadCSS.href = plugLoc + plugins[i].style;
+                document.getElementsByTagName("head")[0].appendChild(loadCSS);
+            }
+        }
+    }
+}
 }
 //Fix Scroll for AJAX pages.
 if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
-
 //End of Init Template
 if(isAJAX === true){
     if(window.location.protocol !== "file:"){
@@ -873,211 +613,5 @@ if(isAJAX === true){
     }
 }
 init_template();
-load_plugins();
 });
 
-function load_plugins(){
-    // Check Documentation folder for detailed explanations on
-    // Externally loading Javascript files for better performance.
-
-    var plugIdent, plugClass, plugMain, plugCall;
-    var plugLoc = "plugins/"
-
-    let plugins = [
-        {
-            id: 'uniqueID', // to detect if loaded and unload if needed
-            plug: 'pluginName/plugin.js', // the main plugin javascript file
-            call: 'pluginName/pluginName-call.js', // the plugin call functions
-            style: 'pluginName/pluginName-style.css', // the plugin stylesheet
-            trigger: '.pluginTriggerClass' // the trigger that will activate the loading and initializing of the plugin
-        },
-        {
-            id: 'chart',
-            plug: 'charts/charts.js',
-            call: 'charts/charts-call-charts.js',
-            trigger: '.chart'
-        },
-        {
-            id: 'chart',
-            plug: 'charts/charts.js',
-            call: 'charts/charts-call-wallet.js',
-            trigger: '.wallet-chart'
-        },
-        {
-            id: 'graph',
-            plug: 'charts/charts.js',
-            call: 'charts/charts-call-graphs.js',
-            trigger: '.graph'
-        },
-        {
-            id: 'count',
-            plug: 'countdown/countdown.js',
-            trigger: '.countdown'
-        },
-        {
-            id: 'gallery',
-            plug: 'glightbox/glightbox.js',
-            call: 'glightbox/glightbox-call.js',
-            style: 'glightbox/glightbox.css',
-            trigger: '[data-gallery]'
-        },
-        {
-            id: 'gallery-views',
-            plug: 'galleryViews/gallery-views.js',
-            trigger: '.gallery-view-controls'
-        },
-        {
-            id: 'filter',
-            plug: 'filterizr/filterizr.js',
-            call: 'filterizr/filterizr-call.js',
-            style: 'filterizr/filterizr.css',
-            trigger: '.gallery-filter'
-        }
-    ];
-
-
-    for (let i = 0; i < plugins.length; i++) {
-        //Remove Previous Calls
-        if(document.querySelectorAll('.'+plugins[i].id+'-c').length){document.querySelectorAll('.'+plugins[i].id+'-c')[0].remove();                }
-
-        //Load Plugins
-        var plugTrigger = document.querySelectorAll(plugins[i].trigger)
-        if(plugTrigger.length){
-            var loadScript = document.getElementsByTagName('script')[1],
-                loadScriptJS = document.createElement('script');
-            loadScriptJS.type = 'text/javascript'
-            loadScriptJS.className = plugins[i].id+'-p'
-            loadScriptJS.src = plugLoc + plugins[i].plug
-            loadScriptJS.addEventListener('load',function(){
-                //Once plugin is loaded, load the call.
-                if(plugins[i].call !== undefined){
-                    var callFn = document.getElementsByTagName('script')[2],
-                        callJS = document.createElement('script');
-                    callJS.type = 'text/javascript'
-                    callJS.className = plugins[i].id+'-c'
-                    callJS.src =  plugLoc + plugins[i].call
-                    callFn.parentNode.insertBefore(callJS, callFn);
-                }
-            });
-            //If plugin doesn't exist, load it
-            if(!document.querySelectorAll('.'+plugins[i].id+'-p').length){
-                loadScript.parentNode.insertBefore(loadScriptJS, loadScript);
-            } else {
-                //If plugin doesn't exist, only load the call function
-                setTimeout(function(){
-                    var loadScript = document.getElementsByTagName('script')[1],
-                        loadScriptJS = document.createElement('script');
-                    loadScriptJS.type = 'text/javascript'
-                    loadScriptJS.className = plugins[i].id+'-c'
-                    loadScriptJS.src = plugLoc + plugins[i].call;
-                    loadScript.parentNode.insertBefore(loadScriptJS, loadScript);
-                },50);
-            }
-            //If Style doesn't exist in array, don't do anything
-            if(plugins[i].style !== undefined){
-                //if style already exists, don't re-add to page.
-                if(!document.querySelectorAll('.'+plugins[i].id+'-s').length){
-                    var loadCSS = document.createElement("link");
-                    loadCSS.className = plugins[i].id+'-s';
-                    loadCSS.rel = "stylesheet";
-                    loadCSS.type = "text/css";
-                    loadCSS.href = plugLoc + plugins[i].style;
-                    document.getElementsByTagName("head")[0].appendChild(loadCSS);
-                }
-            }
-        }
-    }
-}
-
-function load_validate_fields(){
-    //Validator
-    var inputField = document.querySelectorAll('input');
-    if(inputField.length){
-        var mailValidator = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
-        var phoneValidator = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
-        var nameValidator = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u;
-        var passwordValidator = /[A-Za-z]{2}[A-Za-z]*[ ]?[A-Za-z]*/;
-        var numberValidator = /^(0|[1-9]\d*)$/;
-        var linkValidator = /^(http|https)?:\/\/[a-zA-Z0-9-\.]+\.[a-z]{2,4}/;
-        var textValidator = /[A-Za-z]{2}[A-Za-z]*[ ]?[A-Za-z]*/;
-
-        function valid(el){
-            el.parentElement.querySelectorAll('.valid')[0].classList.remove('disabled');
-            el.parentElement.querySelectorAll('.invalid')[0].classList.add('disabled');
-        }
-        function invalid(el){
-            el.parentElement.querySelectorAll('.valid')[0].classList.add('disabled');
-            el.parentElement.querySelectorAll('.invalid')[0].classList.remove('disabled');
-        }
-        function unfilled(el){
-            el.parentElement.querySelectorAll('em')[0].classList.remove('disabled');
-            el.parentElement.querySelectorAll('.valid')[0].classList.add('disabled');
-            el.parentElement.querySelectorAll('.invalid')[0].classList.add('disabled');
-        }
-
-        var regularField = document.querySelectorAll('.input-style input:not([type="date"])')
-        regularField.forEach(el => el.addEventListener('keyup', e => {
-            if(!el.value == ""){
-                el.parentElement.classList.add('input-style-active');
-                el.parentElement.querySelector('em').classList.add('disabled');
-            } else {
-                el.parentElement.querySelectorAll('.valid')[0].classList.add('disabled');
-                el.parentElement.querySelectorAll('.invalid')[0].classList.add('disabled');
-                el.parentElement.classList.remove('input-style-active');
-                el.parentElement.querySelector('em').classList.remove('disabled');
-            }
-        }));
-
-        var regularTextarea = document.querySelectorAll('.input-style textarea')
-        regularTextarea.forEach(el => el.addEventListener('keyup', e => {
-            if(!el.value == ""){
-                el.parentElement.classList.add('input-style-active');
-                el.parentElement.querySelector('em').classList.add('disabled');
-            } else {
-                el.parentElement.classList.remove('input-style-active');
-                el.parentElement.querySelector('em').classList.remove('disabled');
-            }
-        }));
-
-        var selectField = document.querySelectorAll('.input-style select')
-        selectField.forEach(el => el.addEventListener('change', e => {
-            if(el.value !== "default"){
-                el.parentElement.classList.add('input-style-active');
-                el.parentElement.querySelectorAll('.valid')[0].classList.remove('disabled');
-                el.parentElement.querySelectorAll('.invalid, em, span')[0].classList.add('disabled');
-            }
-            if(el.value == "default"){
-                el.parentElement.querySelectorAll('span, .valid, em')[0].classList.add('disabled');
-                el.parentElement.querySelectorAll('.invalid')[0].classList.remove('disabled');
-                el.parentElement.classList.add('input-style-active');
-            }
-        }));
-
-        var dateField = document.querySelectorAll('.input-style input[type="date"]')
-        dateField.forEach(el => el.addEventListener('change', e => {
-            el.parentElement.classList.add('input-style-active');
-            el.parentElement.querySelectorAll('.valid')[0].classList.remove('disabled');
-            el.parentElement.querySelectorAll('.invalid')[0].classList.add('disabled');
-        }));
-
-        var validateField = document.querySelectorAll('.validate-field input, .validator-field textarea');
-        if(validateField.length){
-            validateField.forEach(el => el.addEventListener('keyup', e => {
-                var getAttribute = el.getAttribute('type');
-                switch(getAttribute){
-                    case 'name': nameValidator.test(el.value) ? valid(el) : invalid(el); break;
-                    case 'number': numberValidator.test(el.value) ? valid(el) : invalid(el); break;
-                    case 'email': mailValidator.test(el.value) ? valid(el) : invalid(el); break;
-                    case 'text': textValidator.test(el.value) ? valid(el) : invalid(el); break;
-                    case 'url': linkValidator.test(el.value) ? valid(el) : invalid(el); break;
-                    case 'tel': phoneValidator.test(el.value) ? valid(el) : invalid(el); break;
-                    case 'password': passwordValidator.test(el.value) ? valid(el) : invalid(el); break;
-                }
-                if(el.value === ""){unfilled(el);}
-            }));
-        }
-
-    }
-
-
-}
