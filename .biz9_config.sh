@@ -1,5 +1,5 @@
-BIZ9_MOBILE_VERSION='4.6.0'
-APP_VERSION='4.5.9'
+BIZ9_MOBILE_VERSION='4.6.2'
+APP_VERSION='4.6.2'
 APP_TITLE='BiZ9-Mobile'
 APP_TITLE_ID='mobile-march'
 CONFIG_ID="io.bossappz.mobile";
