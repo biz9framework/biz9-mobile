@@ -1,7 +1,7 @@
-source ./.biz9_config.sh
-echo "#################"
-echo "BiZ9 Framework Cordova Google Play Deploy"
-echo "#################"
+source .biz9_config.sh
+#echo "#################"
+#echo "BiZ9 Framework Cordova Google Play Deploy"
+#echo "#################"
 bash ./scriptz/dq_header.sh
 INCREMENT_VERSION ()
 {

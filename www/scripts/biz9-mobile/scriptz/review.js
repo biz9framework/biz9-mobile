@@ -150,10 +150,11 @@ function bind_review_add_event(){
         }else{
             url = "item/review_update/"+obj.parent_data_type+"/"+obj.parent_tbl_id;
             cloud_post_url(url,obj,function(data){
+                $('#biz_lbl_card_list_review').show();
                 $('#biz_lbl_list_review').prepend(set_review_list_str(data.review));
-                bind_review_delete_event(data.review.tbl_id);
                 $('#biz_page_review_count').val(data.item.review_obj.review_list.length);
                 $('#biz_page_rating_avg').val(data.item.review_obj.rating_avg);
+                bind_review_delete_event(data.review.tbl_id);
                 bind_detail_review_count_star_str();
             });
         }

@@ -1,7 +1,7 @@
 {
   "name": "biz9-mobile",
   "displayName": "BiZ9 Mobile",
-  "version": "4.7.4",
+  "version": "4.6.0",
   "description": "BiZ9 Framework Mobile",
   "main": "index.js",
   "scripts": {
