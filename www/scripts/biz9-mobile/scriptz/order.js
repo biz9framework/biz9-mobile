@@ -516,12 +516,13 @@ function set_dashboard_order_list(data){
 "<div class='col-6'><h6 class='font-700 font-19'>"+grand_total+"</h6></div>"+
 "</div>"+
 "<div class='divider'></div>"+
-                "<a href='#' tbl_id='"+item.tbl_id+"' data_type='"+item.data_type+"' data-menu='menu-option-1' class='biz_btn_order_open btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-yellow-dark'>Open</a>"+
+                "<a href='#' parent_tbl_id='"+item_order.parent_tbl_id+"' parent_data_type='"+item_order.parent_data_type+"' data-menu='menu-option-1' class='biz_btn_order_open btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-yellow-dark'>Open</a>"+
                 "<a href='#' tbl_id='"+item.tbl_id+"' data_type='"+item.data_type+"' data-menu='menu-option-1' class='biz_btn_order_shipped btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-green-dark'>Shipped</a>"+
                 "<a href='#' tbl_id='"+item.tbl_id+"' data_type='"+item.data_type+"' data-menu='menu-option-1' class='biz_btn_order_delete btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-red-dark'>Delete</a>"+
 "</div>"+
 "</div>"+
 "</div>";
+            console.log(item);
         }
         $('#biz_lbl_list').html('');
         $('#biz_lbl_list').html(str);
@@ -551,18 +552,23 @@ function set_dashboard_order_list(data){
             }
         });
         $(".biz_btn_order_open").click(function() {
-            data_type = $(this).attr('data_type');
-            tbl_id = $(this).attr('tbl_id');
-            if(confirm("Open?") == true) {
-                var obj={};
-                data_type = $(this).attr('data_type');
-                tbl_id = $(this).attr('tbl_id');
-                obj.status_id='0';
-                cloud_update(data_type,tbl_id,obj, function(data){
-                    $('#biz_lbl_order_status_'+tbl_id).html(get_status(obj.status_id));
+            data_type = $(this).attr('parent_data_type');
+            tbl_id = $(this).attr('parent_tbl_id');
+                cloud_get(data_type,tbl_id,function(data){
+                    switch(data.data_type) {
+                            case DT_PRODUCT:
+			                url='product_detail.html';
+			                break;
+                        case DT_SERVICE:
+                            url='service_detail.html';
+			                break;
+                        case DT_EVENT:
+                            url='event_detail.html';
+			                break;
+                    }
+                    window.location=url + "?title_url="+data.title_url;
                     return false;
                 });
-            }
         });
         $(".biz_btn_order_shipped").click(function() {
             data_type = $(this).attr('data_type');
