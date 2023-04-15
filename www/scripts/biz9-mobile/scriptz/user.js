@@ -38,7 +38,7 @@ function set_page_login(data){
     set_page_title('Login');
     hide_cart();
     hide_footer();
-    bind_test_data();
+    //bind_test_data();
     bind_event();
     init_form();
     hide_spinner();
