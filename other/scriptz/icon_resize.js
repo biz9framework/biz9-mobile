@@ -3,6 +3,8 @@ sharp = require('sharp');
 path = require('path');
 
 G_ORG_FILE_ICON= path.join(__dirname, "../cordova/icon/512.png");
+console.log('Screen Directory Location');
+console.log(G_ORG_FILE_ICON);
 go_mac();
 go_android();
 /*

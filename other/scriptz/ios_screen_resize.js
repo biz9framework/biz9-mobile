@@ -3,7 +3,10 @@ sharp = require('sharp');
 path = require('path');
 fs = require('fs');
 
-G_ORG_SCREEN_DIR= path.join(__dirname, "../graphicz/google_play/galaxy_note_20/");
+G_ORG_SCREEN_DIR= path.join(__dirname, "../graphicz/screenz_deploy/");
+console.log('IOS-SCREEN-RESIZE-START');
+console.log('SCREEN-DIRECTORY')
+console.log(G_ORG_SCREEN_DIR);
 
 go_resize();
 /*
@@ -32,7 +35,9 @@ function go_resize(){
                             .resize({width:value.width,height:value.height})
                             .toFile(ios_screen_dir+value.file,(err, info)=>{
                                 if(err){
-                                    console.log('iphone '+ value.file+' file  error occored');
+                                    console.log('iphone file '+ value.file+' file  error occored');
+                                    console.log('SCREEN-DIRECTORY')
+                                    console.log(G_ORG_SCREEN_DIR);
                                     console.log(err);
                                 }
                                 go();

@@ -73,7 +73,7 @@ function set_review_list_str(review){
     str='';
     review_date = review.date_obj.month_create + " " + review.date_obj.date_create + ", " + review.date_obj.year_create;
     review_time = review.date_obj.time_create;
-    review.review=review.review?review.review:'';
+    review.comment=review.comment?review.comment:'';
     str = str+"<div class='mb-4' id='biz_row_"+review.tbl_id+"'>"+
         "<div class='d-flex'>"+
         "<div class='flex-grow-1'>"+
@@ -92,7 +92,7 @@ function set_review_list_str(review){
         "</div>"+
         "</div>"+
         "<p class='mt-3'>"
-        +review.review+
+        +review.comment+
         "</p>";
     if(get_user().customer_id==review.customer_id){
         str = str + "<p class='mt-3'>"+
@@ -139,7 +139,7 @@ function bind_review_add_event(){
         obj.name=$('#biz_tb_review_name').val();
         obj.location=$('#biz_tb_review_location').val();
         obj.rating=$('#biz_sel_review_rating').val();
-        obj.review=$('#biz_tb_review_comment').val();
+        obj.comment=$('#biz_tb_review_comment').val();
         obj.customer_id=get_user().customer_id;
         if(!obj.name){
             show_toast_error('Please enter a name');

@@ -46,7 +46,6 @@ function set_page_login(data){
         $('#biz_tb_email').val('ceo@bossappz.com');
         $('#biz_tb_password').val('1234567');
     }
-
     function bind_event(){
         $("#biz_btn").click(function() {
             var obj={};
@@ -69,7 +68,6 @@ function set_page_login(data){
             }
         });
     }
-
 }
 //9_logout
 function set_page_logout(data){
