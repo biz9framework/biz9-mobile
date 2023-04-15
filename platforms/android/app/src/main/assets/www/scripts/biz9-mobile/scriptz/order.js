@@ -96,7 +96,7 @@ function set_page_order_checkout_success(data){
         $('#biz_lbl_discount').html(data.order.discount_total);
         $('#biz_lbl_grand_total').html(data.order.grand_total);
         $('#biz_lbl_email').html(data.order.customer_email);
-        $('#biz_lbl_payment_type').html(data.order.billing_sub_note+ " " + data.order.billing_note);
+        $('#biz_lbl_payment_type').html(data.order.billing_note);
         $('#biz_lbl_first_name').html(data.order.shipping_first_name);
         $('#biz_lbl_last_name').html(data.order.shipping_last_name);
         $('#biz_lbl_company').html(data.order.shipping_company);
@@ -153,7 +153,7 @@ function set_page_order_checkout_submit(data){
         $('#biz_lbl_shipping').html(data.cart.price.shipping_total);
         $('#biz_lbl_discount').html(data.cart.price.discount_total);
         $('#biz_lbl_grand_total').html(data.cart.price.grand_total);
-        $("#biz_lbl_cashapp_handler").html(data.info.billing_cashapp);
+        $("#biz_lbl_cashapp_handler").html(data.info.business_cashapp);
         var str="<option value='blank'>Make A Selection</option>"+
             "<option value='"+PAYMENT_TYPE_CASHAPP+"'>Cash App</option>"+
             "<option value='"+PAYMENT_TYPE_PAY_NOW+"'>Pay Now</option>"+
@@ -192,6 +192,7 @@ function set_page_order_checkout_submit(data){
     }
     function bind_checkout_event(){
         $("#biz_btn_submit_order").click(function() {
+            hide_toast();
             var obj={};
             obj.customer_id=get_user().customer_id;
             obj.email=$("#biz_tb_checkout_email").val()
@@ -207,8 +208,7 @@ function set_page_order_checkout_submit(data){
             obj.payment_type=$("#biz_sel_order_payment_type option:selected").val();
             if(obj.payment_type==PAYMENT_TYPE_CASHAPP){
                 url = "order/checkout/cashapp/"+get_user().customer_id;
-                obj.sub_note ='CashApp: '+ $("#biz_lbl_cashapp_handler").html();
-                obj.note='Please include your email in CashApp Note. Once payment has been confirmed. Your order will be shipped.'
+                obj.note= 'CashApp: '+ $("#biz_lbl_cashapp_handler").html()+  ' Please include your email in CashApp Note. Once payment has been confirmed. Your order will be shipped.'
             }
             else if(obj.payment_type==PAYMENT_TYPE_PAY_NOW){
                 url = "order/checkout/stripecard/"+get_user().customer_id;
@@ -216,14 +216,11 @@ function set_page_order_checkout_submit(data){
                 obj.card_month = $("#biz_sel_billing_card_month").val()
                 obj.card_year = $("#biz_sel_billing_card_year").val()
                 obj.card_cvc = $("#biz_tb_billing_card_cvc").val()
-                obj.card_country = $("#biz_sel_billing_card_country").val()
-                obj.card_zip = $("#biz_tb_billing_card_zip").val()
                 obj.note='Proccessed by stripe.com';
             }
             else if(obj.payment_type==PAYMENT_TYPE_ON_DELIVERY){
                 url = "order/checkout/payondelivery/"+get_user().customer_id;
-                obj.sub_note='Your package will be shipped shortly.';
-                obj.note='Please submit payment once your package is received.';
+                obj.note= 'Your package will be shipped shortly. Please submit payment once your package is received.';
             }
             var order = get_order_checkout(obj);
             if(!validate_email(obj.email)){
@@ -398,9 +395,7 @@ function get_order_checkout(checkout_form){
         billing_card_month:checkout_form.card_month?(checkout_form.card_month):'n/a',
         billing_card_cvc:checkout_form.card_cvc?(checkout_form.card_cvc):'n/a',
         billing_card_year:checkout_form.card_year?(checkout_form.card_year):'n/a',
-        billing_card_country:checkout_form.card_country?(checkout_form.card_country):'n/a',
         billing_payment_type:checkout_form.payment_type?(checkout_form.payment_type):'n/a',
-        billing_sub_note:checkout_form.sub_note?(checkout_form.sub_note):'n/a',
         billing_note:checkout_form.note?(checkout_form.note):'n/a ',
         billing_link:checkout_form.link?(checkout_form.link):'n/a',
     }
@@ -433,7 +428,7 @@ function set_dashboard_order_list(data){
                 +  item.shipping_country;
             customer_email = item.customer_email ? (item.customer_email) : "N/A";
             customer_phone = item.shipping_phone ? (item.shipping_phone) : "N/A";
-            bill_payment_type = item.billing_sub_note;
+            bill_payment_type = item.billing_note;
             quantity = item.quantity;
             sub_total = item.sub_total;
             shipping = item.shipping_total;
@@ -516,12 +511,13 @@ function set_dashboard_order_list(data){
 "<div class='col-6'><h6 class='font-700 font-19'>"+grand_total+"</h6></div>"+
 "</div>"+
 "<div class='divider'></div>"+
-                "<a href='#' tbl_id='"+item.tbl_id+"' data_type='"+item.data_type+"' data-menu='menu-option-1' class='biz_btn_order_open btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-yellow-dark'>Open</a>"+
+                "<a href='#' parent_tbl_id='"+item_order.parent_tbl_id+"' parent_data_type='"+item_order.parent_data_type+"' data-menu='menu-option-1' class='biz_btn_order_open btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-yellow-dark'>Open</a>"+
                 "<a href='#' tbl_id='"+item.tbl_id+"' data_type='"+item.data_type+"' data-menu='menu-option-1' class='biz_btn_order_shipped btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-green-dark'>Shipped</a>"+
                 "<a href='#' tbl_id='"+item.tbl_id+"' data_type='"+item.data_type+"' data-menu='menu-option-1' class='biz_btn_order_delete btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-red-dark'>Delete</a>"+
 "</div>"+
 "</div>"+
 "</div>";
+            console.log(item);
         }
         $('#biz_lbl_list').html('');
         $('#biz_lbl_list').html(str);
@@ -551,18 +547,23 @@ function set_dashboard_order_list(data){
             }
         });
         $(".biz_btn_order_open").click(function() {
-            data_type = $(this).attr('data_type');
-            tbl_id = $(this).attr('tbl_id');
-            if(confirm("Open?") == true) {
-                var obj={};
-                data_type = $(this).attr('data_type');
-                tbl_id = $(this).attr('tbl_id');
-                obj.status_id='0';
-                cloud_update(data_type,tbl_id,obj, function(data){
-                    $('#biz_lbl_order_status_'+tbl_id).html(get_status(obj.status_id));
+            data_type = $(this).attr('parent_data_type');
+            tbl_id = $(this).attr('parent_tbl_id');
+                cloud_get(data_type,tbl_id,function(data){
+                    switch(data.data_type) {
+                            case DT_PRODUCT:
+			                url='product_detail.html';
+			                break;
+                        case DT_SERVICE:
+                            url='service_detail.html';
+			                break;
+                        case DT_EVENT:
+                            url='event_detail.html';
+			                break;
+                    }
+                    window.location=url + "?title_url="+data.title_url;
                     return false;
                 });
-            }
         });
         $(".biz_btn_order_shipped").click(function() {
             data_type = $(this).attr('data_type');

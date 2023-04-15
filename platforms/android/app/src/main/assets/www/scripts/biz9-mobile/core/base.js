@@ -114,7 +114,7 @@ function upload_photo(imageURI,call) {
 // USER PROCCESSING START --
 function get_user(){
     user=cookie_get(COOKIE_USER);
-    if(!user){
+    if(!user || !user.customer_id && user.tbl_id==0){
         user={tbl_id:0,data_type:COOKIE_USER,is_guest:true,customer_id:get_id(99999)};
         set_user(user);
     }

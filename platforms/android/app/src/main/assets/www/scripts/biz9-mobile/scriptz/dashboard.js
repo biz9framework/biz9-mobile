@@ -443,8 +443,8 @@ function set_dashboard_setting(data){
 		});
 	}
 	function bind_billing(data){
-		$('#biz_tb_billing_cashapp').val(data.billing_cashapp);
-		$('#biz_tb_billing_stripe_key').val(data.billing_stripe_key);
+		$('#biz_tb_business_cashapp').val(data.business_cashapp);
+		$('#biz_tb_business_stripe_key').val(data.business_stripe_key);
 	}
 	function bind_navigation(data){
 		$('#biz_page_left_nav_data_type').val(data.data_type);
@@ -471,11 +471,12 @@ function set_dashboard_setting(data){
         });
 	}
 	function bind_email(data){
-		$('#biz_tb_send_in_blue_name').val(data.send_in_blue_name);
 		$('#biz_tb_send_in_blue_email').val(data.send_in_blue_email);
 		$('#biz_tb_send_in_blue_key').val(data.send_in_blue_key);
-		$('#biz_tb_send_in_blue_sender_order_con_sub').val(data.send_in_blue_sender_order_con_sub);
-		$('#biz_tb_send_in_blue_sender_order_con_template_id').val(data.send_in_blue_sender_order_con_template_id);
+		$('#biz_tb_send_in_blue_order_send_subject').val(data.send_in_blue_order_send_subject);
+		$('#biz_tb_send_in_blue_order_send_template_id').val(data.send_in_blue_order_send_template_id);
+		$('#biz_tb_send_in_blue_form_send_subject').val(data.send_in_blue_form_send_subject);
+		$('#biz_tb_send_in_blue_form_send_template_id').val(data.send_in_blue_form_send_template_id);
 	}
 	function bind_event(){
 		$("#biz_btn_update").click(function() {
@@ -530,8 +531,8 @@ function set_dashboard_setting(data){
 			obj.primary_button_color=$('#biz_sel_button_color').val();
 			//info
 			//billing
-			obj.billing_cashapp=$('#biz_tb_billing_cashapp').val();
-			obj.billing_stripe_key=$('#biz_tb_billing_stripe_key').val();
+			obj.business_cashapp=$('#biz_tb_business_cashapp').val();
+			obj.business_stripe_key=$('#biz_tb_business_stripe_key').val();
 			//left_nav
 			//navigation
 			obj.left_nav_header=$('#biz_tb_left_nav_header').val();
@@ -542,19 +543,18 @@ function set_dashboard_setting(data){
 			obj.left_nav_photofilename=$('#biz_page_left_nav_photofilename').val();;
 			//info
 			//email
-			obj.send_in_blue_name=$('#biz_tb_send_in_blue_name').val();
 			obj.send_in_blue_email=$('#biz_tb_send_in_blue_email').val();
 			obj.send_in_blue_key=$('#biz_tb_send_in_blue_key').val();
-			obj.send_in_blue_sender_order_con_sub=$('#biz_tb_send_in_blue_sender_order_con_sub').val();
-			obj.send_in_blue_sender_order_con_template_id=$('#biz_tb_send_in_blue_sender_order_con_template_id').val();
+			obj.send_in_blue_order_send_subject=$('#biz_tb_send_in_blue_order_send_subject').val();
+			obj.send_in_blue_order_send_template_id=$('#biz_tb_send_in_blue_order_send_template_id').val();
+			obj.send_in_blue_form_send_subject=$('#biz_tb_send_in_blue_form_send_subject').val();
+			obj.send_in_blue_form_send_template_id=$('#biz_tb_send_in_blue_form_send_template_id').val();
 			url='setting_update';
 			cloud_post_url(url,obj,function(data){
 				show_toast_update();
 				return false;
 			});
 		});
-
-
 	}
 }
 // 9_edit_list 9_list//9_dash
