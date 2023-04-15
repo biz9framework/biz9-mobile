@@ -124,7 +124,8 @@ function set_left_navigation(data){
 		"</a>"+
 		"</div>"+
 		"<div class='divider bg-white opacity-10 mt-4'></div>"+
-		"<p class='font-11  color-white opacity-30 text-center'>"+data.mobile.left_nav.left_nav_copyright+"</p>";
+		"<p class='font-14  color-white opacity-30 text-center'>"+data.mobile.left_nav.left_nav_copyright+"</p>"+
+		"<p class='font-10  color-white opacity-30 text-center'>"+BIZ9_MOBILE_VERSION+"</p>";
 	$("#biz_lbl_left_menu").html(str);
 	user=get_user();
 	//check user login
