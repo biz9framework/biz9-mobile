@@ -10,7 +10,6 @@
 //biz_lbl_review_star_count
 //form
 //biz_tb_review_name
-//biz_tb_review_location
 //biz_tb_review_comment
 //biz_btn_review_add
 
@@ -36,7 +35,6 @@ function bind_review(item){
         function bind_test(){
         //review and review-end
         $("#biz_tb_review_name").val(get_id(999)+'_Full Name');
-        $("#biz_tb_review_location").val(get_id(999)+'_location');
         $("#biz_tb_review_comment").val(get_id(999)+"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
         }
         //test end --
@@ -140,7 +138,6 @@ function bind_review_add_event(){
         obj.parent_data_type=$('#biz_page_data_type').val();
         obj.parent_tbl_id=$('#biz_page_tbl_id').val();
         obj.name=$('#biz_tb_review_name').val();
-        obj.location=$('#biz_tb_review_location').val();
         obj.rating=$('#biz_sel_review_rating').val();
         obj.comment=$('#biz_tb_review_comment').val();
         obj.customer_id=get_user().customer_id;
@@ -148,8 +145,6 @@ function bind_review_add_event(){
             show_toast_error('Please enter a name');
         }else if(!obj.rating){
             show_toast_error('Please select a rating');
-        }else if(!obj.location){
-            show_toast_error('Please enter a location');
         }else{
             url = "item/review_update/"+obj.parent_data_type+"/"+obj.parent_tbl_id;
             cloud_post_url(url,obj,function(data){
@@ -159,6 +154,8 @@ function bind_review_add_event(){
                 $('#biz_page_rating_avg').val(data.item.review_obj.rating_avg);
                 bind_review_delete_event(data.review.tbl_id);
                 bind_detail_review_count_star_str();
+                $('#biz_tb_review_name').val('');
+                $('#biz_tb_review_comment').val('');
             });
         }
         return false;
@@ -208,7 +205,6 @@ function set_dashboard_review_list(data){
 "</a>"+
 "<div class='collapse' id='invoice-"+item.tbl_id+"'>"+
 "<div class='row mb-3 m-1'>"+
-"<h5 class='col-4 text-start font-15'>"+item.location+"</h5>"+
 "<p> "+item.comment+"</p>"+
 "</div>"+
 "<div class='divider'></div>"+
