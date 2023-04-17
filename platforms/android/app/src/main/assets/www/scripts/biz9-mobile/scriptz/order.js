@@ -173,16 +173,19 @@ function set_page_order_checkout_submit(data){
         $("#biz_sel_order_payment_type").change(function() {
             payment_type=$("#biz_sel_order_payment_type option:selected").val();
             if(payment_type==PAYMENT_TYPE_PAY_NOW){
+                $("#biz_btn_submit_order").show();
                 $("#biz_div_card_cashapp").hide();
                 $("#biz_div_card_creditcard").show();
                 $("#biz_div_card_shipping").show();
                 $("#biz_btn_submit_order").show();
             }else if(payment_type==PAYMENT_TYPE_CASHAPP){
+                $("#biz_btn_submit_order").show();
                 $("#biz_div_card_cashapp").show();
                 $("#biz_div_card_creditcard").hide();
                 $("#biz_div_card_shipping").show();
                 $("#biz_btn_submit_order").show();
             }else if(payment_type==PAYMENT_TYPE_ON_DELIVERY){
+                $("#biz_btn_submit_order").show();
                 $("#biz_div_card_cashapp").hide();
                 $("#biz_div_card_creditcard").hide();
                 $("#biz_div_card_shipping").show();
@@ -192,6 +195,7 @@ function set_page_order_checkout_submit(data){
     }
     function bind_checkout_event(){
         $("#biz_btn_submit_order").click(function() {
+            $("#biz_btn_submit_order").hide();
             hide_toast();
             var obj={};
             obj.customer_id=get_user().customer_id;

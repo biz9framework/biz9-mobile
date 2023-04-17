@@ -129,16 +129,17 @@ function set_left_navigation(data){
 	$("#biz_lbl_left_menu").html(str);
 	user=get_user();
 	//check user login
-	if(get_user().tbl_id!=0){
+	if(!get_user().tbl_id){
 		//- login
-		$("#biz_link_nav_logout").show();
-		$("#biz_link_nav_login").hide();
-		$("#biz_link_nav_dashboard").show();
+		$("#biz_link_nav_logout").hide();
+		$("#biz_link_nav_login").show();
+		$("#biz_link_nav_dashboard").hide();
 	}
 	else{
 		//- log out
-		$("#biz_link_nav_logout").hide();
-		$("#biz_link_nav_dashboard").hide();
+		$("#biz_link_nav_login").hide();
+		$("#biz_link_nav_logout").show();
+		$("#biz_link_nav_dashboard").show();
 	}
 	$("#nav-logout").click(function() {
 		if (confirm("Are you sure?") == true) {
@@ -504,10 +505,10 @@ function get_biz_page_url(biz_page_title){
 			url='home';
 			break;
 		case 'about':
-			url='blank';
+			url='about';
 			break;
 		case 'contact':
-			url='blank';
+			url='contact';
 			break;
 		case 'register':
 			url='blank';
@@ -619,10 +620,10 @@ function get_biz_page_url(biz_page_title){
 			url='blank';
 			break;
 		case 'dashboard_about':
-			url='blank';
+			url='about';
 			break;
 		case 'dashboard_contact':
-			url='blank';
+			url='contact';
 			break;
 		case 'dashboard_home':
 			url='home_edit';

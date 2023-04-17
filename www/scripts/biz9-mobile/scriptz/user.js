@@ -61,6 +61,7 @@ function set_page_login(data){
                     if(data.validation_message){
                         show_toast_error(data.validation_message);
                     }else{
+                        data.user.customer_id=get_id(99999);
                         set_user(data.user);
                         window.location='/';
                     }

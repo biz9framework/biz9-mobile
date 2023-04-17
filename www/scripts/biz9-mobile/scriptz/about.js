@@ -1,7 +1,7 @@
 //9_about
 function set_page_about(data){
     set_page_title(data.mobile.primary.app_title);
-    bind_about_detail(data.mobile.about);
+    bind_about_detail(data.about);
     hide_spinner();
     function bind_about_detail(data){
         $('#biz_lbl_header').html(data.header);
@@ -19,8 +19,8 @@ function set_dashboard_about(data){
     set_page_title('Dashboard');
     hide_cart();
     hide_footer();
-    bind_page_id(data.mobile.about);
-    bind_detail(data.mobile.about);
+    bind_page_id(data.about);
+    bind_detail(data.about);
     bind_event();
     init_tab();
     init_form();

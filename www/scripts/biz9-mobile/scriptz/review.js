@@ -209,7 +209,7 @@ function set_dashboard_review_list(data){
 "<div class='collapse' id='invoice-"+item.tbl_id+"'>"+
 "<div class='row mb-3 m-1'>"+
 "<h5 class='col-4 text-start font-15'>"+item.location+"</h5>"+
-"<p> "+item.review+"</p>"+
+"<p> "+item.comment+"</p>"+
 "</div>"+
 "<div class='divider'></div>"+
                 "<a href='#' tbl_id='"+item.tbl_id+"' data_type='"+item.data_type+"' data-menu='menu-option-1' class='biz_btn_review_delete btn m-2  ml-3 btn-half btn-l rounded-s font-800 text-uppercase bg-red-dark'>Delete</a>"+

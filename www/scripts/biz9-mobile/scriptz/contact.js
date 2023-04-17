@@ -2,7 +2,8 @@
 function set_page_contact(data){
     set_page_title(data.mobile.primary.app_title);
     hide_cart();
-    bind_detail(data.mobile.contact, data.info);
+    bind_detail(data.contact, data.info);
+    bind_event();
     init_form();
     hide_spinner();
     function bind_detail(contact,info){
@@ -86,25 +87,36 @@ function set_page_contact(data){
             $('#biz_lbl_link_website').remove();
         }
     }
-    $("#biz_btn_submit").click(function() {
-        full_name= $('#biz_tb_name').val();
-        email= $('#biz_tb_email').val();
-        message= $('#biz_tb_message').val();
-        if(!full_name){
-            show_toast_error('Please enter a valid name');
-        }else if(!validate_email(email)){
-            show_toast_error('Please enter a valid e-mail');
-        }else{
-            show_toast_error("We've received your message and we're working on it.");
-        }
-    });
+    function bind_event(){
+        $("#biz_btn_submit").click(function() {
+            hide_toast();
+            obj={};
+            if(!validate_email($('#biz_tb_email').val())){
+                show_toast_error('Please enter a valid email');
+            }else{
+            $("#biz_btn_submit").hide();
+            obj.field_count=3;
+            obj.field_title_1='Name';
+            obj.field_value_1=$('#biz_tb_name').val();
+            obj.field_title_2='Email';
+            obj.field_value_2=$('#biz_tb_email').val();
+            obj.field_title_3='Message';
+            obj.field_value_3=$('#biz_tb_message').val();
+            url='send_mail_message';
+            cloud_post_url(url,obj,function(data){
+            str="We appreciate you contacting us. One of our colleagues will get back in touch with you soon! Have a great day!";
+                show_toast_update(str);
+            });
+            }
+        });
+    }
 }
 //9_contact_detail 9_contact_edit 9_dash
 function set_dashboard_contact(data){
     hide_cart();
     hide_footer();
-    bind_page_id(data.mobile.contact);
-    bind_detail(data.mobile.contact);
+    bind_page_id(data.contact);
+    bind_detail(data.contact);
     bind_event();
     init_tab();
     init_form();

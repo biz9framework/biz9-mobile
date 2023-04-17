@@ -88,7 +88,7 @@ if [ "${app_type}" = "mobile" ]; then
     source .biz9_config.sh
     BIZ9_VERSION_NEW=$(INCREMENT_VERSION $BIZ9_MOBILE_VERSION);
     sed -i "s/BIZ9_MOBILE_VERSION=.*/BIZ9_MOBILE_VERSION='${BIZ9_VERSION_NEW}'/" .biz9_config.sh
-    sed -i "s/BIZ9_MOBILE_VERSION=.*/BIZ9_MOBILE_VERSION='${BIZ9_VERSION_NEW}'/" www/scripts/biz_scriptz/config.js
+    sed -i "s/BIZ9_MOBILE_VERSION=.*/BIZ9_MOBILE_VERSION='${BIZ9_VERSION_NEW}'/" www/scripts/biz9-mobile/scriptz/config.js
     git add -A .
     git commit -m  "${commit_notes}"
     echo "Tool: BiZ9-DocZ";
@@ -106,7 +106,7 @@ if [ "${app_type}" = "scriptz" ]; then
     sed -i "s/BIZ9_SCRIPTZ_VERSION=.*/BIZ9_SCRIPTZ_VERSION='${BIZ9_VERSION_NEW}'/" .biz9_config.sh
     git add -A .
     git commit -m  "${commit_notes}"
-    echo "Tool: BiZ9-DocZ";
+    echo "Tool: BiZ9-ScriptZ";
     echo "Version: ${BIZ9_SCRIPTZ_VERSION}";
     echo "Repo URL:${REPO_URL}"
     echo "BIZ9-ScriptZ NEW VERSION : ${BIZ9_VERSION_NEW}"

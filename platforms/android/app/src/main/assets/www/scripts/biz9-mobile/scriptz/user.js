@@ -38,7 +38,7 @@ function set_page_login(data){
     set_page_title('Login');
     hide_cart();
     hide_footer();
-    bind_test_data();
+    //bind_test_data();
     bind_event();
     init_form();
     hide_spinner();
@@ -61,6 +61,7 @@ function set_page_login(data){
                     if(data.validation_message){
                         show_toast_error(data.validation_message);
                     }else{
+                        data.user.customer_id=get_id(99999);
                         set_user(data.user);
                         window.location='/';
                     }

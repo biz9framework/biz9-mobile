@@ -33,9 +33,7 @@ if [ "${app_type}" = "docz" ]; then
     source ${destination_dir}/.biz9_config.sh
     echo 'Tool: BiZ9-DocZ';
     echo Destination ${destination_dir}: Version: ${BIZ9_DOCZ_VERSION};
-    #backup
-    cp -rf ${G_PROJECT_DIR} .biz9_backup/${source_dir}_$(date +%F@%H:%M)
-    cp -rf ${G_PROJECT_DIR} .biz9_backup/${destination_dir}_$(date +%F@%H:%M)
+    #rm
     rm -rf ${destination_dir}/*
     #copy
     cp -rf ${source_dir}/* ${destination_dir}/
@@ -50,9 +48,7 @@ if [ "${app_type}" = "website" ]; then
     source ${destination_dir}/.biz9_config.sh
     echo 'Tool: BiZ9-Website';
     echo Destination ${destination_dir}: Version: ${BIZ9_WEBSITE_VERSION};
-    #backup
-    cp -rf ${G_PROJECT_DIR} .biz9_backup/${source_dir}_$(date +%F@%H:%M)
-    cp -rf ${G_PROJECT_DIR} .biz9_backup/${destination_dir}_$(date +%F@%H:%M)
+    #rm
     rm -rf ${destination_dir}/*
     #copy
     cp -rf ${source_dir}/* ${destination_dir}/
@@ -68,9 +64,7 @@ if [ "${app_type}" = "service" ]; then
     source ${destination_dir}/.biz9_config.sh
     echo 'Tool: BiZ9-Service';
     echo Destination ${destination_dir}: Version: ${BIZ9_SERVICE_VERSION};
-    #backup
-    cp -rf ${G_PROJECT_DIR} .biz9_backup/${source_dir}_$(date +%F@%H:%M)
-    cp -rf ${G_PROJECT_DIR} .biz9_backup/${destination_dir}_$(date +%F@%H:%M)
+    #rm
     rm -rf ${destination_dir}/*
     #copy
     cp -rf ${source_dir}/* ${destination_dir}/
@@ -86,9 +80,7 @@ if [ "${app_type}" = "cms" ]; then
     source ${destination_dir}/.biz9_config.sh
     echo 'Tool: BiZ9-CMS';
     echo Destination ${destination_dir}: Version: ${BIZ9_CMS_VERSION};
-    #backup
-    cp -rf ${G_PROJECT_DIR} .biz9_backup/${source_dir}_$(date +%F@%H:%M)
-    cp -rf ${G_PROJECT_DIR} .biz9_backup/${destination_dir}_$(date +%F@%H:%M)
+    #rm
     rm -rf ${destination_dir}/*
     #copy
     cp -rf ${source_dir}/* ${destination_dir}/
@@ -104,9 +96,7 @@ if [ "${app_type}" = "mobile" ]; then
     source ${destination_dir}/.biz9_config.sh
     echo 'Tool: BiZ9-Mobile';
     echo Destination ${destination_dir}: Version: ${BIZ9_MOBILE_VERSION};
-    #backup
-    cp -rf ${G_PROJECT_DIR} .biz9_backup/${source_dir}_$(date +%F@%H:%M)
-    cp -rf ${G_PROJECT_DIR} .biz9_backup/${destination_dir}_$(date +%F@%H:%M)
+    #rm
     rm -rf ${destination_dir}/*
     #copy
     cp -rf ${source_dir}/* ${destination_dir}/
@@ -122,9 +112,7 @@ if [ "${app_type}" = "scriptz" ]; then
     source ${destination_dir}/.biz9_config.sh
     echo 'Tool: BiZ9-Scriptz';
     echo Destination ${destination_dir}: Version: ${BIZ9_SCRIPTZ_VERSION};
-    #backup
-    cp -rf ${G_PROJECT_DIR} .biz9_backup/${source_dir}_$(date +%F@%H:%M)
-    cp -rf ${G_PROJECT_DIR} .biz9_backup/${destination_dir}_$(date +%F@%H:%M)
+    #rm
     rm -rf ${destination_dir}/*
     #copy
     cp -rf ${source_dir}/* ${destination_dir}/
@@ -138,9 +126,7 @@ if [ "${app_type}" = "core" ]; then
     source ${destination_dir}/.biz9_config.sh
     echo 'Tool: BiZ9-Core';
     echo Destination ${destination_dir}: Version: ${BIZ9_CORE_VERSION};
-    #backup
-    cp -rf ${G_PROJECT_DIR} .biz9_backup/${source_dir}_$(date +%F@%H:%M)
-    cp -rf ${G_PROJECT_DIR} .biz9_backup/${destination_dir}_$(date +%F@%H:%M)
+    #rm
     rm -rf ${destination_dir}/*
     #copy
     cp -rf ${source_dir}/* ${destination_dir}/
@@ -155,9 +141,7 @@ if [ "${app_type}" = "test" ]; then
     source ${destination_dir}/.biz9_config.sh
     echo 'Tool: BiZ9-Test';
     echo Destination ${destination_dir}: Version: ${BIZ9_TEST_VERSION};
-    #backup
-    cp -rf ${G_PROJECT_DIR} .biz9_backup/${source_dir}_$(date +%F@%H:%M)
-    cp -rf ${G_PROJECT_DIR} .biz9_backup/${destination_dir}_$(date +%F@%H:%M)
+    #rm
     rm -rf ${destination_dir}/*
     #copy
     cp -rf ${source_dir}/* ${destination_dir}/

@@ -124,20 +124,25 @@ function set_left_navigation(data){
 		"</a>"+
 		"</div>"+
 		"<div class='divider bg-white opacity-10 mt-4'></div>"+
-		"<p class='font-11  color-white opacity-30 text-center'>"+data.mobile.left_nav.left_nav_copyright+"</p>";
+		"<p class='font-14  color-white opacity-30 text-center'>"+data.mobile.left_nav.left_nav_copyright+"</p>"+
+		"<p class='font-10  color-white opacity-30 text-center'>"+BIZ9_MOBILE_VERSION+"</p>";
 	$("#biz_lbl_left_menu").html(str);
 	user=get_user();
+	console.log('aaa');
+	console.log(user);
+	console.log('bbbb');
 	//check user login
-	if(get_user().tbl_id!=0){
+	if(!get_user().tbl_id){
 		//- login
-		$("#biz_link_nav_logout").show();
-		$("#biz_link_nav_login").hide();
-		$("#biz_link_nav_dashboard").show();
+		$("#biz_link_nav_logout").hide();
+		$("#biz_link_nav_login").show();
+		$("#biz_link_nav_dashboard").hide();
 	}
 	else{
 		//- log out
-		$("#biz_link_nav_logout").hide();
-		$("#biz_link_nav_dashboard").hide();
+		$("#biz_link_nav_login").hide();
+		$("#biz_link_nav_logout").show();
+		$("#biz_link_nav_dashboard").show();
 	}
 	$("#nav-logout").click(function() {
 		if (confirm("Are you sure?") == true) {

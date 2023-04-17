@@ -10,9 +10,12 @@ function get_new_item(data_type){
     var item={data_type:data_type,tbl_id:0};
     return item;
 }
-function show_toast_update(){
+function show_toast_update(message){
+    if(!message){
+        message='Update';
+    }
     var toastID = document.getElementById('toast-save');
-    toastID.innerHTML="<i class='fa fa-check me-3'></i>Update";
+    toastID.innerHTML="<i class='fa fa-check me-3'></i>"+message;
     toastID = new bootstrap.Toast(toastID);
     toastID.show();
 }
@@ -113,9 +116,10 @@ function upload_photo(imageURI,call) {
 // PHOTO PROCCESSING END --
 // USER PROCCESSING START --
 function get_user(){
+    new_user=false;
     user=cookie_get(COOKIE_USER);
-    if(!user || !user.customer_id && user.tbl_id==0){
-        user={tbl_id:0,data_type:COOKIE_USER,is_guest:true,customer_id:get_id(99999)};
+    if(!user||!user.customer_id){
+        user={customer_id:get_id(99999)};
         set_user(user);
     }
     return user;

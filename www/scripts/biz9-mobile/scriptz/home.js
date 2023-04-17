@@ -15,46 +15,46 @@ function set_page_home(data){
     init_cart();
     hide_spinner();
     function bind_cards(){
-        if(data.mobile.home.card_banner_visible=='true'){
+        if(data.home.card_banner_visible=='true'){
             bind_banner_card(data);
         }
-        if(data.mobile.home.card_popular_visible=='true'){
+        if(data.home.card_popular_visible=='true'){
             bind_popular_card(data);
         }
-        if(data.mobile.home.card_category_visible=='true'){
+        if(data.home.card_category_visible=='true'){
             bind_category_card(data);
         }
-        if(data.mobile.home.card_buy_visible=='true'){
+        if(data.home.card_buy_visible=='true'){
             bind_buy_card(data);
         }
-        if(data.mobile.home.card_double_visible=='true'){
+        if(data.home.card_double_visible=='true'){
             bind_double_card(data);
         }
-        if(data.mobile.home.home_card_2_visible=='true'){
-            if(data.mobile.home.home_card_2_type==DT_PRODUCT){
+        if(data.home.home_card_2_visible=='true'){
+            if(data.home.home_card_2_type==DT_PRODUCT){
                 set_home_cart_top_type(DT_PRODUCT);
                 set_product_card_2(data);
-            }else if(data.mobile.home.home_card_2_type==DT_SERVICE){
+            }else if(data.home.home_card_2_type==DT_SERVICE){
                 set_home_cart_top_type(DT_SERVICE);
                 set_service_card_2(data);
-            }else if(data.mobile.home.home_card_2_type==DT_BLOG_POST){
+            }else if(data.home.home_card_2_type==DT_BLOG_POST){
                 set_home_card_blog_post_recent_list(data);
             }
         }
-        if(data.mobile.home.home_card_3_visible=='true'){
-            if(data.mobile.home.home_card_3_type==DT_PRODUCT){
+        if(data.home.home_card_3_visible=='true'){
+            if(data.home.home_card_3_type==DT_PRODUCT){
                 set_home_cart_top_type(DT_PRODUCT);
                 set_product_card_3(data);
-            }else if(data.mobile.home.home_card_3_type==DT_SERVICE){
+            }else if(data.home.home_card_3_type==DT_SERVICE){
                 set_home_cart_top_type(DT_SERVICE);
                 set_service_card_3(data);
             }
         }
-        if(data.mobile.home.home_card_4_visible=='true'){
-            if(data.mobile.home.home_card_4_type==DT_PRODUCT){
+        if(data.home.home_card_4_visible=='true'){
+            if(data.home.home_card_4_type==DT_PRODUCT){
                 set_home_cart_top_type(DT_PRODUCT);
                 set_category_list(data);
-            }else if(data.mobile.home.home_card_4_type==DT_SERVICE){
+            }else if(data.home.home_card_4_type==DT_SERVICE){
                 set_home_cart_top_type(DT_SERVICE);
                 set_category_list(data);
             }
@@ -229,11 +229,11 @@ function set_page_home(data){
         }
     }
     function bind_buy_card(data){
-        if(data.mobile.home.card_buy_data_type==DT_PRODUCT){
+        if(data.home.card_buy_data_type==DT_PRODUCT){
             bind_buy_product_slide_show(data);
-        }else if(data.mobile.home.card_buy_data_type==DT_SERVICE){
+        }else if(data.home.card_buy_data_type==DT_SERVICE){
             bind_buy_service_slide_show(data);
-        }else if(data.mobile.home.card_buy_data_type==DT_EVENT){
+        }else if(data.home.card_buy_data_type==DT_EVENT){
             bind_buy_event_slide_show(data);
         }
         function bind_buy_event_slide_show(data){
@@ -395,7 +395,7 @@ function set_page_home(data){
         }
     }
     function bind_double_card(data){
-        $('#biz_lbl_double_category').html(data.mobile.home.card_double_category);
+        $('#biz_lbl_double_category').html(data.home.card_double_category);
         if(data.card_double_list.length>0){
             bind_double_slide_show(data);
             $("#biz_lbl_double_card").show();
@@ -406,19 +406,19 @@ function set_page_home(data){
             $('#biz_lbl_double_slide_show_list').html('');
             for(var a=0;a<data.card_double_list.length;a++){
                 var item = data.card_double_list[a];
-                if(data.mobile.home.card_double_data_type==DT_PRODUCT){
+                if(data.home.card_double_data_type==DT_PRODUCT){
                     if(String(item.visible_obj.service_visible_id) =='0'){
                         visible_str="<p class='color-red-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.product_status_short+"</p>";
                     }else{
                         visible_str = "<p class='color-green-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.product_status_short+"</p>";
                     }
-                }else if(data.mobile.home.card_double_data_type==DT_SERVICE){
+                }else if(data.home.card_double_data_type==DT_SERVICE){
                     if(String(item.visible_obj.service_visible_id) =='0'){
                         visible_str="<p class='color-red-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.service_status_short+"</p>";
                     }else{
                         visible_str = "<p class='color-green-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.service_status_short+"</p>";
                     }
-                }else if(data.mobile.home.card_double_data_type==DT_EVENT){
+                }else if(data.home.card_double_data_type==DT_EVENT){
                     if(String(item.visible_obj.event_visible_id) =='0'){
                         visible_str="<p class='color-red-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
                     }else{
