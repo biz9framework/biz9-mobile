@@ -106,6 +106,7 @@ function go_mac(){
             ];
             sharp(G_ORG_FILE_ICON)
                 .removeAlpha()
+                .flatten({ background: '#ffffff' })
                 .resize(icon_file_list[0].size)
                 .toFile(file_icon_src+icon_file_list[0].icon,(err, info)=>{
                     if(err){

@@ -8,6 +8,7 @@ function set_page_page_list(data){
         url='';
         for(var a=0;a<item_list.length;a++){
             item= item_list[a];
+            if(String(item.visible)=='true'){
             switch(item_list[a].type) {
                 case DT_BLOG_POST:
                     url = 'blog_post_category_list.html?page_current=1';
@@ -41,6 +42,7 @@ function set_page_page_list(data){
             str=str+"</div>"+
                 "<div class='card-overlay bg-black opacity-85'></div>"+
                 "</a>";
+            }
         }
         $('#biz_lbl_list').html(str);
     }
