@@ -33,6 +33,8 @@ function go_resize(){
                 {width:1290,height:2796,file:'4.png'},
                 {width:1290,height:2796,file:'5.png'},
                 {width:1290,height:2796,file:'6.png'},
+                {width:1290,height:2796,file:'7.png'},
+                {width:1290,height:2796,file:'8.png'},
             ];
             async.forEachOf(screen_file_list, function (value, key, go)
                 {
@@ -73,7 +75,8 @@ function go_resize(){
                 {width:1242,height:2208,file:'3.png'},
                 {width:1242,height:2208,file:'4.png'},
                 {width:1242,height:2208,file:'5.png'},
-                {width:1242,height:2208,file:'6.png'},
+                {width:1242,height:2208,file:'7.png'},
+                {width:1242,height:2208,file:'8.png'},
             ];
            async.forEachOf(screen_file_list, function (value, key, go)
                 {
@@ -113,6 +116,8 @@ function go_resize(){
                 {width:2048,height:2732,file:'4.png'},
                 {width:2048,height:2732,file:'5.png'},
                 {width:2048,height:2732,file:'6.png'},
+                {width:2048,height:2732,file:'7.png'},
+                {width:2048,height:2732,file:'8.png'},
             ];
            async.forEachOf(screen_file_list, function (value, key, go)
                 {
@@ -152,6 +157,8 @@ function go_resize(){
                 {width:1242,height:2688,file:'4.png'},
                 {width:1242,height:2688,file:'5.png'},
                 {width:1242,height:2688,file:'6.png'},
+                {width:1242,height:2688,file:'7.png'},
+                {width:1242,height:2688,file:'8.png'},
             ];
            async.forEachOf(screen_file_list, function (value, key, go)
                 {
