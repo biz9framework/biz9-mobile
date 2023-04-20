@@ -489,7 +489,7 @@ function set_page_home(data){
                 color_str=data.mobile.primary.button_color;
             }
             str=str+"<div class='col-6'>"+
-                "<a href='"+url+"_list.html?category="+item.title+"&page_current=1'><div class='card card-style m-0 mb-2 rounded-m' style='background-image: url("+item.photo_obj.mid_url+")' data-card-height='150'>"+
+                "<a href='"+url+"_list.html?category="+item.title+"&page_current=1'><div class='card card-style m-0 mb-2 rounded-m' style='background-image: url("+item.photo_obj.mid_url+")' data-card-height='300'>"+
                 "<div class='card-bottom'><span class='badge "+color_str+"  p-2 ps-2 rounded-s'>"+item.title+" ("+item.item_count+" items)</span></div>"+
                 "</div></a>";
             if(item.last_item_create.title){
