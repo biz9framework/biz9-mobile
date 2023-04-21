@@ -30,6 +30,7 @@ function set_page_home(data){
         if(data.home.card_double_visible=='true'){
             bind_double_card(data);
         }
+        /*
         if(data.home.home_card_2_visible=='true'){
             if(data.home.home_card_2_type==DT_PRODUCT){
                 set_home_cart_top_type(DT_PRODUCT);
@@ -59,6 +60,8 @@ function set_page_home(data){
                 set_category_list(data);
             }
         }
+        */
+
     }
     function bind_events(){
         $(".biz_btn_cartadd").click(function() {
@@ -116,10 +119,7 @@ function set_page_home(data){
                     "<span class='badge "+color_str+" px-2 py-1 ms-2 mt-2 text-uppercase'>"+ item.category+"</span>"+
                     "</div>"+
                     "<div class='card-bottom'>"+
-                    "<a href='"+url+"'><h4 class='color-white px-3 mb-0'>"+ item.title+"</h4></a>"+
-                    "<p class='px-3 color-white font-15 opacity-60'>"+
-                    item.sub_note+
-                    "</p>"+
+                    "<a href='"+url+"'><h4 class='color-white px-3 mb-3'>"+ item.title+"</h4></a>"+
                     "</div>"+
                     "<div class='card-overlay bg-gradient'></div>"+
                     "</div>"+
@@ -336,7 +336,6 @@ function set_page_home(data){
                 });
             }
         }
-
         function bind_buy_service_slide_show(data){
             $('#biz_lbl_card_datetime').show();
             $('#biz_lbl_buy_slide_show_list').html('');
@@ -434,7 +433,6 @@ function set_page_home(data){
                 }else if(item.data_type==DT_SERVICE){
                     url='service_detail.html?title_url='+item.title_url;
                 }
-
                 str=str+"<div class='splide__slide'>"+
                     "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='100' class='mx-auto'></a>"+
                     "<div class='biz_div_stat_outer'>"+

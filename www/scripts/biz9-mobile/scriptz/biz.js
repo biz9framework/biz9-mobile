@@ -186,7 +186,7 @@ function set_footer_navigation(data){
 					str = str + "<a id='biz_lbl_ft_link_product' href='product_category_list.html?page_current=1'><i class='fa fa-cart-shopping'></i><span>"+item.title+"</span></a>";
 					break;
 				case DT_SERVICE:
-					str = str + "<a id='biz_lbl_ft_link_service' href='service_category_list.html?page_current=1'><i class='fa fa-wrench'></i><span>"+item.title+"</span></a>";
+					str = str + "<a id='biz_lbl_ft_link_service' href='service_category_list.html?page_current=1'><i class='fa fa-rocket'></i><span>"+item.title+"</span></a>";
 					break;
 				case DT_EVENT:
 					str = str + "<a id='biz_lbl_ft_link_event' href='event_category_list.html?page_current=1'><i class='fa fa-ticket'></i><span>"+item.title+"</span></a>";
