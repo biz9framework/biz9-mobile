@@ -1,5 +1,4 @@
 var pwaName = "Kolor"; //Local Storage Names for PWA
-
 function set_app_color(app_color,app_theme){
 	if(!app_color){
 		app_color='gradient-1';

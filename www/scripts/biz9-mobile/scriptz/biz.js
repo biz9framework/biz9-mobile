@@ -14,11 +14,15 @@ PAYMENT_TYPE_PAY_NOW='pay_now';
 PAYMENT_TYPE_CASHAPP='cashapp';
 PAYMENT_TYPE_ON_DELIVERY='pay_on_delivery';
 //biz
+
 load_biz_app();
 function load_biz_app(){
 	const page_title=$('#biz_page_title').val();
 	var url=get_biz_page_url(page_title);
 	cloud_get_url(url,{customer_id:get_user().customer_id},function(biz_data){
+
+//$(".page-content").hide();
+//$("#page").hide();
 		set_app_color(biz_data.mobile.primary.app_color,biz_data.mobile.primary.app_theme);
 		w('biz_mobile_user',get_user());
 		w('biz_cloud_get_url',get_cloud_url(url));
@@ -29,9 +33,9 @@ function load_biz_app(){
 		set_page_button_color(biz_data.mobile.primary.button_color);
 		set_pull_down();
 		set_init();
+		//$("#page").show();
 	});
 }
-
 function get_new_item(data_type){
 	if(!data_type){
 		data_type=DT_BLANK;
