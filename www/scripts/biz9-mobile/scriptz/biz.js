@@ -176,7 +176,7 @@ function set_footer_navigation(data){
 	//page
 	str = str+"<a id='biz_lbl_ft_link_page' href='page_list.html'><i class='fa fa-heart'></i><span>Pages</span></a>";
 	set_home=false;
-	home_str = "<a id='biz_lbl_ft_link_home' href='/'><i class='fa fa-home'></i><span>Home</span></a>";
+	home_str = "<a id='biz_lbl_ft_link_home' href='index.html'><i class='fa fa-home'></i><span>Home</span></a>";
 	for(a=0;a<data.mobile.page_list.items.length;a++){
 		item = data.mobile.page_list.items[a];
 		if(a==2){
@@ -747,12 +747,6 @@ function get_biz_page_url(biz_page_title){
 			show_toast_error('get biz page url not found');
 	}
 	return url;
-}
-function set_bottom_lock_footer(current){
-	str=
-		"<a class='a_bottom_link' id='biz_lbl_ft_link_home' href='/ class='active-nav'><i class='fa fa-home'></i><span>Home</span></a>"+
-		"<a class='a_bottom_link' id='biz_lbl_ft_link_contact' href='contact.html'><i class='fa fa-envelope'></i><span>Contact</span></a>";
-	return str;
 }
 //-- INIT-START
 function set_init(){
