@@ -143,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
 				}
 				function removeTransitions(){var falseTransitions = document.querySelectorAll('.btn, .header, #footer-bar, .menu-box, .menu-active'); for(let i = 0; i < falseTransitions.length; i++) {falseTransitions[i].style.transition = "all 0s ease";}}
 				function addTransitions(){var trueTransitions = document.querySelectorAll('.btn, .header, #footer-bar, .menu-box, .menu-active'); for(let i = 0; i < trueTransitions.length; i++) {trueTransitions[i].style.transition = "";}}
-
 				function setColorScheme() {
 					const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches
 					const isLightMode = window.matchMedia("(prefers-color-scheme: light)").matches
@@ -153,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
 					if(isDarkMode) activateDarkMode();
 					if(isLightMode) activateLightMode();
 				}
-
 				//Activating Dark Mode
 				var darkModeSwitch = document.querySelectorAll('[data-toggle-theme]')
 				darkModeSwitch.forEach(el => el.addEventListener('click',e =>{
@@ -161,11 +159,9 @@ document.addEventListener('DOMContentLoaded', () => {
 					else if(document.body.className == "theme-dark"){ removeTransitions(); activateLightMode();}
 					setTimeout(function(){addTransitions();},350);
 				}));
-
 				//Set Color Based on Remembered Preference.
 				if(localStorage.getItem(pwaName+'-Theme') == "dark-mode"){for(let i = 0; i < toggleDark.length; i++){toggleDark[i].checked="checked"};document.body.className = 'theme-dark';}
 				if(localStorage.getItem(pwaName+'-Theme') == "light-mode"){document.body.className = 'theme-light';} if(document.body.className == "detect-theme"){setColorScheme();}
-
 				//Detect Dark/Light Mode
 				const darkModeDetect = document.querySelectorAll('.detect-dark-mode');
 				darkModeDetect.forEach(el => el.addEventListener('click',e =>{
@@ -176,8 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 		if(localStorage.getItem(pwaName+'-Theme') == "dark-mode"){document.body.className = 'theme-dark';}
 		if(localStorage.getItem(pwaName+'-Theme') == "light-mode"){document.body.className = 'theme-light';}
-
-
 		//Detect Dark/Light Mode
 		const darkModeDetect = document.querySelectorAll('.detect-dark-mode');
 		darkModeDetect.forEach(el => el.addEventListener('click',e =>{
@@ -185,15 +179,12 @@ document.addEventListener('DOMContentLoaded', () => {
 			document.body.classList.add('detect-theme')
 			setTimeout(function(){setColorScheme();},50)
 		}))
-
 		//Gradient Remember
 		if(localStorage.getItem(pwaName+'-Gradient-Theme')){
 			var getColor = localStorage.getItem(pwaName+'-Gradient-Theme');
 			document.body.setAttribute('data-gradient', getColor);
 		}
 		////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 			function activateMenus(){
 				const menuActive = document.querySelectorAll('[data-menu-active]')[0];
 				if(menuActive){

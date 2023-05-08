@@ -10,6 +10,7 @@
             <!--CSS-TEMPLATE-START --!>
             <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
             <link rel="stylesheet" type="text/css" href="styles/style.css">
+            <link rel="stylesheet" type="text/css" href="styles/mp3_style.css">
             <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
             <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
             <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
@@ -34,10 +35,11 @@
                                     <input id='biz_page_rating_avg' type='hidden'/>
                                     <input id='biz_page_parent_data_type' type='hidden'/>
                                     <input id='biz_page_category' type='hidden'/>
+                                    <input id='biz_page_mp3_url' type='hidden'/>
                                     <div class="header header-fixed header-logo-app">
                                         <a href="#" data-back-button class="header-title" id='biz_lbl_page_title'></a>
                                         <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
-                                        <a href="#" id='biz_btn_order_cart_top' data-menu="menu-cart" class="header-icon header-icon-4"><i class="fas fa-shopping-bag color-brown-dark"></i></a>
+                                        <a style='display:none' href="#" id='biz_btn_order_cart_top' data-menu="menu-cart" class="header-icon header-icon-4"><i class="fas fa-shopping-bag color-brown-dark"></i></a>
                                     </div>
                                     <!-- BIZ HEAD TOP END -->
                                     <!-- BIZ FOOTER MENU START -->
@@ -62,7 +64,7 @@
                                             <div class="divider divider-margins mt-4"></div>
                                             <div class="content">
                                                 <div class="d-flex">
-                                                    <div id='div_biz_left_info'>
+                                                    <div id='biz_div_left_info' style='display:none'>
                                                         <h1 class="font-16 mb-0 line-height-m font-500" id='biz_lbl_title'></h1>
                                                         <div>
                                                             <label class="color-yellow-dark font-12 pt-1 mt-n1" id='biz_lbl_review_star_count'>
@@ -79,10 +81,12 @@
                                                     <div class="ms-auto ps-3 text-end" id='div_biz_right_info'>
                                                         <p class="mb-n1 font-10 opacity-30"><del id='biz_lbl_old_price'></del></p>
                                                         <h1 id='biz_lbl_price'></h1>
+                                                        <div id='biz_div_discount' style='display:none'>
                                                         <span class="badge bg-highlight float-end mt-1 font-9 font-500 text-uppercase p-1 mt-n1 d-block" id='biz_lbl_discount'></span>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="row mb-0 mt-4">
+                                                <div class="row mb-0 mt-4" style='display:none' id='biz_lbl_option_list'>
                                                     <div class="col-6">
                                                         <div class="input-style has-borders no-icon mb-4" id='biz_lbl_optiondiv0'>
                                                             <label for="form5" class="color-highlight" id='biz_lbl_optiontitle0'></label>
@@ -130,10 +134,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="#" class="btn btn-l btn-full under-slider-btn mx-5 font-800 text-uppercase rounded-sm mb-4 biz_btn" id='biz_btn_cart_add'>Book Now</a>
+                                        <a href="#" class="btn btn-l btn-full under-slider-btn mx-5 font-800 text-uppercase rounded-sm mb-4 biz_btn" id='biz_btn_cart_add'   style='display:none'>Book Now</a>
                                         <div id="toast-save" class="toast toast-tiny toast-center bg-green-dark" data-delay="3000" data-autohide="true"><i class='fa fa-check me-3'></i></div>
                                         <div id="toast-error" class="toast toast-tiny toast-center bg-red-dark" data-delay="3000" data-autohide="true"><i class='fa fa-times me-3'></i></div>
-                                        <div class="card card-style m-3 biz_lbl_card"  id='biz_lbl_card_datetime'>
+                                        <div class="card card-style m-3 biz_lbl_card"  style='display:none'  id='biz_lbl_cart_datetime'>
                                             <div class="content m-3">
                                                 <h3 id='biz_lbl_page_sub_title'>Booking Time</h3>
                                                 <div class="row mb-0 mt-4">
@@ -152,28 +156,64 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card card-style m-3"  id='biz_lbl_card_description'>
+                                        <div class="card card-style m-3 biz_lbl_card"  id='biz_lbl_card_mp3' style='display:none'>
                                             <div class="content m-3">
+                                                <h3 id='biz_lbl_page_sub_title'>Track</h3>
+                                                <p id='biz_lbl_mp3_duration'> duration</p>
+                                                <div class="main">
+                                                    <div class="control biz_btn"></div>
+                                                </div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                                    <defs>
+                                                    <filter id="goo">
+                                                    <fegaussianblur in="SourceGraphic" stddeviation="10" result="blur"></fegaussianblur>
+                                                    <fecolormatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -5" result="goo"></fecolormatrix>
+                                                    <feblend in="SourceGraphic" in2="goo"></feblend>
+                                                    </filter>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                         <div class="card card-style m-3"  id='biz_lbl_card_description' style='display:none'>
+                                           <div class="content m-3">
                                                 <h3 id='biz_lbl_page_sub_title'>Description</h3>
                                                 <p id='biz_lbl_sub_note'>
                                                 </p>
                                             </div>
                                         </div>
-                                        <div class="card card-style m-3"  id='biz_lbl_card_note'>
-                                            <div class="content m-3">
+                                         <div class="card card-style m-3"  id='biz_lbl_card_note' style='display:none'>
+                                           <div class="content m-3">
                                                 <h3 id='biz_lbl_page_addt_page'>Additional Information</h3>
                                                 <p id='biz_lbl_note'>
                                                 </p>
                                             </div>
                                         </div>
-                                        <div class="card card-style m-3" id='biz_lbl_card_youtube'>
+                                        <div class="card card-style m-3" id='biz_lbl_card_youtube' style='display:none'>
                                             <div class="content">
                                                 <div class="responsive-iframe">
                                                     <iframe id='biz_lbl_youtube_link' title='YouTube video player' frameborder='0' allow=jaccelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-sharep allowfullscreen></iframe>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card card-style m-3 biz_lbl_card"  id='biz_lbl_card_visible'>
+                                        <div class="card card-style m-3 biz_lbl_card"  id='biz_lbl_card_mp3' style='display:none'>
+                                            <div class="content m-3">
+                                                <h3 id='biz_lbl_page_sub_title'>Track</h3>
+                                                <p id='biz_lbl_mp3_duration'> duration</p>
+                                                <div class="main">
+                                                    <div class="control biz_btn"></div>
+                                                </div>
+                                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                                                    <defs>
+                                                    <filter id="goo">
+                                                    <fegaussianblur in="SourceGraphic" stddeviation="10" result="blur"></fegaussianblur>
+                                                    <fecolormatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -5" result="goo"></fecolormatrix>
+                                                    <feblend in="SourceGraphic" in2="goo"></feblend>
+                                                    </filter>
+                                                    </defs>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                         <div class="card card-style m-3 biz_lbl_card"   style='display:none' id='biz_lbl_card_visible'>
                                             <div class="content m-3">
                                                 <h3 id='biz_lbl_page_sub_title'>Availbility</h3>
                                                 <p id='biz_lbl_visible'>
@@ -181,14 +221,14 @@
                                             </div>
                                         </div>
                                         <!--REVIEW_CARD_START--!>
-                                            <div class="card card-style m-3 biz_lbl_card" id='biz_lbl_card_list_review'>
-                                            <div class="content m-3">
+                                             <div class="card card-style m-3  biz_lbl_card" id='biz_lbl_card_list_review' style='display:none'>
+                                        <div class="content m-3">
                                             <h3 id='biz_lbl_review_title'>Reviews</h3>
                                             <div class="mb-4" id='biz_lbl_list_review'></div>
                                             </div>
                                             </div>
-                                            <div class="card card-style mt-4 biz_lbl_card" id='biz_lbl_card_add_review'>
-                                            <div class="content m-3">
+                                            <div class="card card-style mt-4 biz_lbl_card" id='biz_lbl_card_add_review'  style='display:none'>
+                                         <div class="content m-3">
                                             <h3>Write a Review</h3>
                                             <div class="pb-3"></div>
                                             <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
@@ -222,9 +262,20 @@
                                             </div>
                                             <div class="pb-3"></div>
                                             </div>
-                                            <a href="#" class="btn btn-l btn-full under-slider-btn mx-5 font-800 text-uppercase rounded-sm mb-4 biz_btn" id='biz_btn_review_add'>dd Review</a>
+                                            <a href="#" class="btn btn-l btn-full under-slider-btn mx-5 font-800 text-uppercase rounded-sm mb-4 biz_btn" id='biz_btn_review_add'>Add Review</a>
                                             </div>
                                             <!--REVIEW_CARD_END--!>
+                                                <!--DOUBLE CARD START --!>
+                                                                        <div class="card card-style pt-4 biz_lbl_card" id='biz_lbl_double_card' style='display:none'>
+                                                                        <h1 class="text-center pb-3" id='biz_lbl_double_category'></h1>
+                                                                        <div class="splide double-slider slider-no-arrows slider-no-dots" id="slider_double">
+                                                                        <div class="splide__track">
+                                                                        <div class="splide__list" id='biz_lbl_double_slide_show_list'>
+                                                                        </div>
+                                                                        </div>
+                                                                        </div>
+                                                                        </div>
+                                                                        <!--DOUBLE CARD END --!>
                                                 <div id='biz_lbl_toast'>
                                                 <div id="toast-save" class="toast toast-tiny toast-center bg-green-dark" data-delay="3000" data-autohide="true"><i class='fa fa-check me-3'></i></div>
                                                 <div id="toast-error" class="toast toast-tiny toast-center bg-red-dark" data-delay="3000" data-autohide="true"><i class='fa fa-times me-3'></i></div>
@@ -233,7 +284,7 @@
                                                 <!-- BIZ CONTENT END -->
                                                 <div class="page-bg"><div></div></div>
                                                 <!-- TOP MENU CART CHECKOUT START--!>
-                                                    <div id="menu-cart" class="menu menu-box-top menu-box-detached" data-menu-height="380">
+                                                    <div id="menu-cart" class="menu menu-box-top menu-box-detached" data-menu-height="380" style='display:none'>
                                                     <div class="content mt-3" >
                                                     <h5 id='biz_lbl_cart_empty_title'></h5>
                                                     <div id='biz_lbl_cart_top_list'></div>
@@ -251,6 +302,7 @@
                                             <!--BIZ9-MOBILE-CORE-START --!>
                                                 <script type="text/javascript" src="cordova.js"></script>
                                                 <script type="text/javascript" src="scripts/biz9-mobile/libz/jquery-3.6.3.min.js.js"></script>
+                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/mp3_script.js"></script>
                                                 <script type="text/javascript" src="scripts/biz9-mobile/libz/pulltorefresh.js"></script>
                                                 <script type="text/javascript" src="scripts/biz9-mobile/libz/lockr.js"></script>
                                                 <script type="text/javascript" src="scripts/biz9-mobile/libz/froala/froala_editor.pkgd.min.js"></script>

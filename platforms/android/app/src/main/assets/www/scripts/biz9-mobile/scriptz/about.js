@@ -1,7 +1,7 @@
 //9_about
 function set_page_about(data){
     set_page_title(data.mobile.primary.app_title);
-    bind_about_detail(data.mobile.about);
+    bind_about_detail(data.about);
     hide_spinner();
     function bind_about_detail(data){
         $('#biz_lbl_header').html(data.header);
@@ -19,14 +19,15 @@ function set_dashboard_about(data){
     set_page_title('Dashboard');
     hide_cart();
     hide_footer();
-    bind_page_id(data.mobile.about);
-    bind_detail(data.mobile.about);
+    bind_page_id(data.about);
+    bind_detail(data.about);
     bind_event();
     init_tab();
     init_form();
     hide_spinner();
     function bind_detail(data){
         set_page_sub_title('About');
+        bind_page_id(data);
         init_item_note(data.note);
         $('#biz_tb_header').val(data.header);
         $('#biz_tb_sub_note').val(data.sub_note);
@@ -37,6 +38,7 @@ function set_dashboard_about(data){
             var obj={};
             obj.data_type=$('#biz_page_data_type').val();
             obj.tbl_id=$('#biz_page_tbl_id').val();
+            obj.photofilename=$('#biz_page_photofilename').val();
             obj.header=$('#biz_tb_header').val();
             obj.note=$('#biz_tb_sub_note').val();
             obj.sub_note=$('#biz_tb_sub_note').val();
@@ -52,6 +54,7 @@ function set_dashboard_about(data){
             camera_photo_select(function(data){
                 cloud_update(data_type,tbl_id,{photofilename:data.photofilename},function(data){
                     $('#biz_img').attr('src',data.photo_obj.square_mid_url);
+                    $('#biz_page_photofilename').val(data.photofilename);
                 });
             });
         });

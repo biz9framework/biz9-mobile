@@ -1,0 +1,61 @@
+@charset "UTF-8";
+svg {
+  position: absolute;
+  z-index: -100;
+  pointer-events: none;
+}
+.main {
+  filter: url("#goo");
+  opacity: 0.85;
+  transition: 0.5s opacity;
+  transition-delay: 1s;
+  text-align:center;
+  float:center;
+  margin: auto;
+  /*width:25%;*/
+}
+.main .control {
+  background: #c00d1e;
+  border: none;
+  /*border-radius: 50%;*/
+  cursor: pointer;
+  text-align: center;
+  color: #f6f6f6;
+  font-size: 100px;
+  line-height: 150px;
+  font-family: FontAwesome;
+  /*background-color:red;*/
+  /*width:120px;*/
+  /*height:132px;*/
+}
+.main .control::after {
+  content: "";
+  position: relative;
+}
+.main .control.playing::after {
+  content: "";
+  left: 0;
+}
+.main .control.loading::after {
+  display: block;
+  content: "";
+  left: 0;
+  -webkit-animation: spin linear 1s infinite;
+          animation: spin linear 1s infinite;
+}
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

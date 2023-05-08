@@ -2,7 +2,7 @@
 function set_page_contact(data){
     set_page_title(data.mobile.primary.app_title);
     hide_cart();
-    bind_detail(data.mobile.contact, data.info);
+    bind_detail(data.contact, data.info);
     bind_event();
     init_form();
     hide_spinner();
@@ -115,8 +115,8 @@ function set_page_contact(data){
 function set_dashboard_contact(data){
     hide_cart();
     hide_footer();
-    bind_page_id(data.mobile.contact);
-    bind_detail(data.mobile.contact);
+    bind_page_id(data.contact);
+    bind_detail(data.contact);
     bind_event();
     init_tab();
     init_form();
@@ -124,6 +124,7 @@ function set_dashboard_contact(data){
     function bind_detail(data){
         set_page_title('Dashboard');
         set_page_sub_title('Contact');
+        bind_page_id(data);
         $('#biz_tb_form_header').val(data.form_header);
         $('#biz_tb_form_sub_note').val(data.form_sub_note);
 		$('#biz_tb_social_header').val(data.social_header);
@@ -134,6 +135,7 @@ function set_dashboard_contact(data){
             var obj={};
             tbl_id= $('#biz_page_tbl_id').val();
             data_type= $('#biz_page_data_type').val();
+            obj.photofilename=$('#biz_page_photofilename').val();
             obj.form_header=$('#biz_tb_form_header').val();
             obj.form_sub_note=$('#biz_tb_form_sub_note').val();
             obj.social_header=$('#biz_tb_social_header').val();
@@ -150,6 +152,7 @@ function set_dashboard_contact(data){
             camera_photo_select(function(data){
                 cloud_update(data_type,tbl_id,{photofilename:data.photofilename},function(data){
                     $('#biz_img').attr('src',data.photo_obj.square_mid_url);
+                    $('#biz_page_photofilename').val(data.photofilename);
                     return false;
                 });
             });

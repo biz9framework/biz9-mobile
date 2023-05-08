@@ -45,7 +45,7 @@ function set_page_event_category_list(data){
             }
             //color_button_get_end
             str=str+"<div class='col-6'>"+
-                "<a href='event_list.html?category="+item.title+"&page_current=1'><div class='card card-style m-0 mb-2 rounded-m' style='background-image: url("+item.photo_obj.mid_url+")' data-card-height='150'>"+
+                "<a href='event_list.html?category="+item.title+"&page_current=1'><div class='card card-style m-0 mb-2 rounded-m' style='background-image: url("+item.photo_obj.mid_url+")' data-card-height='300'>"+
                 "<div class='card-bottom'><span class='badge "+color_str+"  p-2 ps-2 rounded-s'>"+item.title+" ("+item.item_count + " items)</span></div>"+
                 "</div></a>";
             if(item.last_item_create.title){
@@ -80,6 +80,7 @@ function set_page_event_category_list(data){
                 "</div>"+
                 "<div class='divider mb-3'></div>";
         }
+        $("#biz_lbl_popular_category_full_card").show();
         $("#biz_lbl_popular_list").show();
         $('#biz_lbl_popular_list').html('');
         $('#biz_lbl_popular_list').html(str);
@@ -155,7 +156,6 @@ function set_page_event_list(data){
 }
 //9_detail //9_event_detail
 function set_page_event_detail(data){
-    hide_detail();
     bind_page_id(data.event);
     bind_detail(data);
     bind_photo(data);
@@ -165,16 +165,7 @@ function set_page_event_detail(data){
     init_cart();
     init_plugin();
     hide_spinner();
-    function hide_detail(){
-        $('#biz_lbl_optiondiv0').hide();
-        $('#biz_lbl_optiondiv1').hide();
-        $('#biz_lbl_optiondiv2').hide();
-        $('#biz_lbl_optiondiv3').hide();
-        $('#biz_lbl_card_youtube').hide();
-        $('#biz_lbl_card_description').hide();
-        $('#biz_lbl_card_note').hide();
-    }
-  function  bind_photo(data){
+    function  bind_photo(data){
         //photos-start
         var str='';
         if(data.event.photofilename){
@@ -197,20 +188,27 @@ function set_page_event_detail(data){
             $('#single-slider-1').hide();
         }
     }
-   function bind_detail(data){
+    function bind_detail(data){
         set_page_title(data.mobile.primary.app_title);
         set_page_view_count(data.event.view_count);
         $('#biz_lbl_title').html(data.event.title);
         set_page_view_count(data.event.view_count);
         $('#biz_lbl_visible').html(data.event.visible_obj.event_status);
+        $('#biz_lbl_card_visible').show();
         $('#biz_lbl_price').html(data.event.money_obj.price);
         $('#biz_lbl_old_price').html(data.event.money_obj.old_price);
-        $('#biz_lbl_discount').html(data.event.money_obj.discount + ' Discount');
         $('#biz_lbl_date').html(data.event.event_obj.start_date);
         $('#biz_lbl_time').html(data.event.event_obj.start_time);
         $('#biz_lbl_location').html(data.event.event_obj.location);
         $('#biz_lbl_link_calendar').attr('href',data.event.event_obj.start_google_calendar_url);
-        if(data.event.sub_note.length>0){
+        $('#biz_lbl_card_date').show();
+        $('#biz_div_left_info').show();
+        $('#biz_btn_cart_add').show();
+        if(data.event.money_obj.discount && String(data.event.money_obj.discount)!='0%'){
+            $('#biz_div_discount').show();
+            $('#biz_lbl_discount').html(data.event.money_obj.discount + ' Discount');
+        }
+        if(data.event.sub_note.length>1){
             $('#biz_lbl_card_description').show();
             $('#biz_lbl_sub_note').html(data.event.sub_note);
         }
@@ -220,35 +218,87 @@ function set_page_event_detail(data){
                 $('#biz_lbl_note').html(data.event.note);
             }
         }
-        for(a=0;a<data.event.items.length;a++){
-            str='';
-            $('#biz_lbl_optiondiv'+a).show();
-            $('#biz_lbl_optiontitle'+a).html(data.event.items[a].title);
-            str=str+ "<option value='"+data.event.items[a].tbl_id+"' disabled>"+data.event.items[a].title+"</option>";
-            for(b=0;b<data.event.items[a].items.length;b++){
-                str=str+ "<option value='"+data.event.items[a].items[b].tbl_id+"'>"+data.event.items[a].items[b].title + " " + get_money(data.event.items[a].items[b].price) +"</option>";
+        if(data.event.items.length>0){
+            //$('#biz_lbl_option_list').show();
+            for(a=0;a<data.event.items.length;a++){
+                str='';
+                $('#biz_lbl_optiondiv'+a).show();
+                $('#biz_lbl_optiontitle'+a).html(data.event.items[a].title);
+                str=str+ "<option value='"+data.event.items[a].tbl_id+"' disabled>"+data.event.items[a].title+"</option>";
+                for(b=0;b<data.event.items[a].items.length;b++){
+                    str=str+ "<option value='"+data.event.items[a].items[b].tbl_id+"'>"+data.event.items[a].items[b].title + " " + get_money(data.event.items[a].items[b].price) +"</option>";
+                }
+                $('#biz_sel_option'+a).html(str);
             }
-            $('#biz_sel_option'+a).html(str);
         }
         //slide-show-youtube-start
         if(data.event.youtube_url){
             $("#biz_lbl_card_youtube").show();
             $("#biz_lbl_youtube_link").attr('src',get_youtube_link(data.event.youtube_url));
         }
+        if(data.event.mp3filename){
+            $("#biz_lbl_card_mp3").show();
+            $("#biz_lbl_mp3_duration").html(data.event.mp3duration);
+            $("#biz_page_mp3_url").val(data.event.mp3_url);
+        }
+        if(data.card_double_list.length>1){
+            bind_double_slide_show(data);
+            $("#biz_lbl_double_card").show();
+            init_double_slide_show('#slider_double');
+        }
+    }
+    function bind_double_slide_show(data){
+        var str='';
+        $('#biz_lbl_double_category').html(data.event.category);
+        $('#biz_lbl_double_slide_show_list').html('');
+        for(var a=0;a<data.card_double_list.length;a++){
+            var item = data.card_double_list[a];
+            visible_str="<p class='color-red-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
+            url='event_detail.html?title_url='+item.title_url;
+            str=str+"<div class='splide__slide'>"+
+                "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='100' class='mx-auto'></a>"+
+                "<div class='biz_div_stat_outer'>"+
+                "<span class='font-10 pt-0 m-3'><i class='fa fa-eye color-blue-dark'></i> "+item.view_count +"</span>"+
+                "<span class='font-10 pt-0 m-3'><i class='fa fa-comment color-brown-dark'></i> "+item.review_count +"</span>"+
+                "</div>"+
+                "<h5 class='text-center pt-2 mb-0'>"+item.money_obj.price+"</h5>"+
+                visible_str +
+                "<a href='"+url+"'><h4 class='text-center font-13'>"+item.title+"</h4></a>"+
+                "<p class='text-center font-11 mb-2'>"+
+                item.sub_note+
+                "</p>"+
+                "<p class='mb-4 mt-3 text-center'>"+
+                "<a id='biz_btn_cart3_add_"+item.tbl_id+"' tbl_id='"+item.tbl_id+"'  data_type='"+item.data_type+"' href='#' class='icon me-2 icon-s bg-white border border-gray-light rounded-s biz_btn_double_cart_slide_add'><i class='fa fa-shopping-cart color-black font-12'></i></a>"+
+                "<a href='#' class='icon icon-s bg-white border border-gray-light rounded-s'><i class='fa fa-heart color-red-dark font-12'></i></a>"+
+                "</p>"+
+                "</div>";
+            $('#biz_lbl_double_slide_show_list').prepend(str);
+            $(".biz_btn_double_cart_slide_add").click(function() {
+                var obj={};
+                obj.tbl_id=$(this).attr('tbl_id');
+                obj.data_type=$(this).attr('data_type');
+                obj.customer_id=get_user().customer_id;
+                $(this).addClass("bg-click");
+                $(this).html("<i class='fa fa-shopping-cart color-red font-12'></i>");
+                cloud_order_cart_add(obj.tbl_id,obj,1,function(data){
+                });
+                return false;
+            });
+        }
     }
     function bind_photo_list(item_list){
         if(item_list.length>0){
-        var str='';
-        for(var a=0;a<item_list.length;a++){
-            item = item_list[a];
-            item.text = item.text ? item.text:'';
-            str=str+"<a data-gallery='gallery-1' href='"+item.photo_obj.album_url+"' title='"+item.text+"'>"+
-                "<img src='"+item.photo_obj.album_url+"' data-src='"+item.photo_obj.album_url+"' class='rounded-m preload-img shadow-l img-fluid' alt=''>"+
-                "<p class=' pt-2' style='text-align:center'>"+ truncate_str(item.text, 50) +"</p>"+
-                "</a>";
-        }
-        $('#biz_lbl_photo_list').html('');
-        $('#biz_lbl_photo_list').html(str);
+            var str='';
+            for(var a=0;a<item_list.length;a++){
+                item = item_list[a];
+                item.text = item.text ? item.text:'';
+                str=str+"<a data-gallery='gallery-1' href='"+item.photo_obj.album_url+"' title='"+item.text+"'>"+
+                    "<img src='"+item.photo_obj.album_url+"' data-src='"+item.photo_obj.album_url+"' class='rounded-m preload-img shadow-l img-fluid' alt=''>"+
+                    "<p class=' pt-2' style='text-align:center'>"+ truncate_str(item.text, 50) +"</p>"+
+                    "</a>";
+            }
+            $('#biz_lbl_photo_list').html('');
+            $('#biz_lbl_photo_list').html(str);
         }else{
             $('#biz_lbl_card_photo_list').hide();
         }
@@ -280,6 +330,49 @@ function set_page_event_detail(data){
             });
         });
     }
+
+    function bind_double_slide_show(data){
+        var str='';
+        $('#biz_lbl_double_category').html(data.event.category);
+        $('#biz_lbl_double_slide_show_list').html('');
+        for(var a=0;a<data.card_double_list.length;a++){
+            var item = data.card_double_list[a];
+            visible_str="<p class='color-red-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
+
+            url='event_detail.html?title_url='+item.title_url;
+            str=str+"<div class='splide__slide'>"+
+                "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='100' class='mx-auto'></a>"+
+                "<div class='biz_div_stat_outer'>"+
+                "<span class='font-10 pt-0 m-3'><i class='fa fa-eye color-blue-dark'></i> "+item.view_count +"</span>"+
+                "<span class='font-10 pt-0 m-3'><i class='fa fa-comment color-brown-dark'></i> "+item.review_count +"</span>"+
+                "</div>"+
+                "<h5 class='text-center pt-2 mb-0'>"+item.money_obj.price+"</h5>"+
+                visible_str +
+                "<a href='"+url+"'><h4 class='text-center font-13'>"+item.title+"</h4></a>"+
+                "<p class='text-center font-11 mb-2'>"+
+                item.sub_note+
+                "</p>"+
+                "<p class='mb-4 mt-3 text-center'>"+
+                "<a id='biz_btn_cart3_add_"+item.tbl_id+"' tbl_id='"+item.tbl_id+"'  data_type='"+item.data_type+"' href='#' class='icon me-2 icon-s bg-white border border-gray-light rounded-s biz_btn_double_cart_slide_add'><i class='fa fa-shopping-cart color-black font-12'></i></a>"+
+                "<a href='#' class='icon icon-s bg-white border border-gray-light rounded-s'><i class='fa fa-heart color-red-dark font-12'></i></a>"+
+                "</p>"+
+                "</div>";
+            $('#biz_lbl_double_slide_show_list').prepend(str);
+            $(".biz_btn_double_cart_slide_add").click(function() {
+                var obj={};
+                obj.tbl_id=$(this).attr('tbl_id');
+                obj.data_type=$(this).attr('data_type');
+                obj.customer_id=get_user().customer_id;
+                $(this).addClass("bg-click");
+                $(this).html("<i class='fa fa-shopping-cart color-red font-12'></i>");
+                cloud_order_cart_add(obj.tbl_id,obj,1,function(data){
+                });
+                return false;
+            });
+        }
+    }
+
+
 }
 //9_event_list 9_edit_list 9_list 9_dashboard_event_list //9_dashboard
 function set_dashboard_event_list(data){
@@ -303,9 +396,9 @@ function set_dashboard_event_list(data){
             }else{
                 visible_str="<span class='color-green-dark'><i class='fa-sharp fa-solid fa-circle-check'></i></span>";
             }
-            edit_str= "<span class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
+            edit_str= "<a class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
                 "<i class='fa fa-gear font-14 accordion-icon'></i>"+
-                "</span>";
+                "</a>";
             sub_item_edit_url="dashboard_sub_item_list.html?data_type="+item.data_type+"&tbl_id="+item.tbl_id+"&parent_data_type="+item.data_type+"&parent_tbl_id="+item.tbl_id;
             photo_edit_url="dashboard_photo_list.html?parent_data_type="+item.data_type+"&parent_tbl_id="+item.tbl_id;
             str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item.tbl_id+"'>"+
@@ -323,7 +416,7 @@ function set_dashboard_event_list(data){
                 "<div class='mb-0 ps-3  ' style='float:left;'>"+
                 "<div class='biz_diz_list_edit'><a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='event_detail.html?title_url="+item.title_url+"'><i class='admin_edit_img fa fa-eye pe-2'></i></a>"+
                 "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='"+photo_edit_url+"'><i class='admin_edit_img fa fa-camera pe-2'></i></a>"+
-                "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='"+sub_item_edit_url+"'><i class='admin_edit_img fa fa-info pe-2'></i></a>"+
+                "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='"+sub_item_edit_url+"'><i class='admin_edit_img fa fa-tags pe-2'></i></a>"+
                 "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='biz_btn_copy' href='#'><i class='admin_edit_img fa fa-copy pe-2'></i></a>"+
                 "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='biz_btn_delete' href='#'><i class='admin_edit_img fa fa-trash pe-2'></i></a>"+
                 "</div>"+
@@ -366,10 +459,9 @@ function set_dashboard_event_list(data){
             if (confirm("Are you sure?") == true) {
                 cloud_delete(data_type,tbl_id,function(data){
                     $('#biz_row_'+tbl_id).remove();
-                    item_count=String(parseInt($('#biz_page_item_list_count').val())-1);
-                    bind_page_list_count(item_count);
-                    set_page_note("(" + item_count + " items)");
-                });
+            		set_page_note(set_page_note_remove(parseInt($('#biz_page_item_list_count').val())));
+					bind_page_list_count(parseInt($('#biz_page_item_list_count').val()));
+               });
             }
         });
         $(".biz_btn_copy").click(function() {
@@ -400,6 +492,8 @@ function set_dashboard_event(data){
         init_item_note(data.event.note);
         if(data.event.tbl_id==0){
             set_page_sub_title('Add Event');
+            $('#biz_img').hide();
+            $('#biz_div_mp3').hide();
         }else{
             set_page_sub_title('Edit Event');
             $('#biz_img').attr('src',data.event.photo_obj.square_mid_url);
@@ -412,6 +506,7 @@ function set_dashboard_event(data){
         $('#biz_tb_start_time').val(data.event.start_time);
         $('#biz_tb_location').val(data.event.location);
         $('#biz_tb_youtube_url').val(data.event.youtube_url);
+        $('#biz_tb_mp3_filename').val(data.event.mp3filename);
         //price-start
         if(data.event.price){
             data.event.price=data.event.price.replace('$','');
@@ -449,8 +544,10 @@ function set_dashboard_event(data){
             tbl_id= $('#biz_page_tbl_id').val();
             data_type= $('#biz_page_data_type').val();
             obj.title=$('#biz_tb_title').val();
+            obj.photofilename=$('#biz_page_photofilename').val();
             obj.sub_note=$('#biz_tb_sub_note').val();
             obj.price=$('#biz_tb_price').val();
+            obj.old_price=$('#biz_tb_old_price').val();
             obj.website=$('#biz_tb_website').val();
             obj.meeting_link=$('#biz_tb_meeting_link').val();
             obj.start_date=$('#biz_tb_start_date').val();
@@ -459,16 +556,21 @@ function set_dashboard_event(data){
             obj.category=$('#biz_sel_category_list').val();
             obj.visible=$('#biz_sel_visible').val();
             obj.youtube_url=$('#biz_tb_youtube_url').val();
+            obj.mp3filename=$('#biz_tb_mp3_filename').val();
             obj.title_url=get_title_url(obj.title);
             obj.note=get_item_note();
-            if(obj.title){
+           if(!obj.title){
+                show_toast_error('Please enter a valid title');
+            }else if(!obj.category){
+                show_toast_error('Please select a valid category');
+            }else{
                 cloud_update(data_type,tbl_id,obj, function(data){
                     $('#biz_page_tbl_id').val(data.tbl_id);
+                    $('#biz_img').show();
+                    $('#biz_div_mp3').show();
                     show_toast_update();
                     return false;
                 });
-            }else{
-                show_toast_error('Please enter a valid title');
             }
         });
         $("#biz_btn_add").click(function() {
@@ -480,6 +582,17 @@ function set_dashboard_event(data){
             camera_photo_select(function(data){
                 cloud_update(data_type,tbl_id,{photofilename:data.photofilename},function(data){
                     $('#biz_img').attr('src',data.photo_obj.square_mid_url);
+                    $('#biz_page_photofilename').val(data.photofilename);
+                    return false;
+                });
+            });
+        });
+        $("#biz_tb_mp3_filename").click(function() {
+            tbl_id= $('#biz_page_tbl_id').val();
+            data_type= $('#biz_page_data_type').val();
+            file_mp3_select(function(data){
+                cloud_update(data_type,tbl_id,{mp3filename:data.mp3filename,mp3duration:data.mp3duration},function(data){
+                    $("#biz_tb_mp3_filename").val(data.mp3filename);
                     return false;
                 });
             });

@@ -7,7 +7,7 @@ G_PROJECT_SRC_FOLDER="$HOME/www/doqbox/biz9/"
 # prod start #
 echo "Enter APP ID"
 read app_id
-echo "Enter APP Type [website, service, cms, mobile]"
+echo "Enter APP Type [cms, mobile, service, website, vendor, vendor-payment]"
 read app_type
 echo "Enter Web Folder ID"
 read folder_id
@@ -15,14 +15,14 @@ echo "Enter Branch: [unstable, testing, stable]"
 read branch_dir
 # prod end #
 
-: '
 # test start #
+: '
 app_id=19
-app_type='service'
-folder_id='service'
+app_type='vendor-payment'
+folder_id='vendor-payment'
 branch_dir='stable'
-# test end #
 '
+# test end #
 
 G_BIZ_APP_DIR=${G_PROJECT_FOLDER}${app_id}/${folder_id}
 #go dir
@@ -30,7 +30,6 @@ cd ${G_BIZ_APP_DIR}/
 # mk backup
 rm -rf .biz9_update_bk
 mkdir .biz9_update_bk
-
 if [ "${app_type}" = "mobile" ]; then
 FRAMEWORK_SRC_PROJECT=${G_PROJECT_SRC_FOLDER}${BIZ9_MOBILE_TITLE,,}/src/${branch_dir}/
 #source
@@ -54,8 +53,9 @@ source ${FRAMEWORK_SRC_PROJECT}.biz9_config.sh
     #update versionz
     sed -i "s/BIZ9_MOBILE_VERSION=.*/BIZ9_MOBILE_VERSION='${BIZ9_MOBILE_VERSION}';/" ${G_BIZ_APP_DIR}/www/scripts/biz9-mobile/scriptz/config.js
     sed -i "s/BIZ9_MOBILE_VERSION=.*/BIZ9_MOBILE_VERSION='${BIZ9_MOBILE_VERSION}';/" ${G_BIZ_APP_DIR}/.biz9_config.sh
-fi
-
+    echo "Project Update Complete"
+    print_result="BiZ9 Framework Mobile Version ${BIZ9_MOBILE_VERSION}"
+    fi
 if [ "${app_type}" = "service" ]; then
     FRAMEWORK_SRC_PROJECT=${G_PROJECT_SRC_FOLDER}${BIZ9_SERVICE_TITLE,,}/src/${branch_dir}/
     #source
@@ -76,8 +76,8 @@ if [ "${app_type}" = "service" ]; then
     #update versionz
     sed -i "s/BIZ9_SERVICE_VERSION=.*/BIZ9_SERVICE_VERSION='${BIZ9_SERVICE_VERSION}';/" ${G_BIZ_APP_DIR}/.biz9_config.sh
     sed -i "s/BIZ9_SERVICE_VERSION=.*/BIZ9_SERVICE_VERSION='${BIZ9_SERVICE_VERSION}';/" ${G_BIZ_APP_DIR}/app.js
+    print_result="${BIZ9_SERVICE_TITLE} Version: ${BIZ9_SERVICE_VERSION}"
 fi
-
 if [ "${app_type}" = "cms" ]; then
     FRAMEWORK_SRC_PROJECT=${G_PROJECT_SRC_FOLDER}${BIZ9_CMS_TITLE,,}/src/${branch_dir}/
     #source
@@ -99,7 +99,6 @@ if [ "${app_type}" = "cms" ]; then
     sed -i "s/BIZ9_CMS_VERSION=.*/BIZ9_CMS_VERSION='${BIZ9_CMS_VERSION}';/" ${G_BIZ_APP_DIR}/.biz9_config.sh
     sed -i "s/BIZ9_CMS_VERSION=.*/BIZ9_CMS_VERSION='${BIZ9_CMS_VERSION}';/" ${G_BIZ_APP_DIR}/app.js
 fi
-
 if [ "${app_type}" = "vendor" ]; then
     FRAMEWORK_SRC_PROJECT=${G_PROJECT_SRC_FOLDER}${BIZ9_VENDOR_TITLE,,}/src/${branch_dir}/
     #source
@@ -120,8 +119,8 @@ if [ "${app_type}" = "vendor" ]; then
     #update versionz
     sed -i "s/BIZ9_VENDOR_VERSION=.*/BIZ9_VENDOR_VERSION='${BIZ9_VENDOR_VERSION}';/" ${G_BIZ_APP_DIR}/.biz9_config.sh
     sed -i "s/BIZ9_VENDOR_VERSION=.*/BIZ9_VENDOR_VERSION='${BIZ9_VENDOR_VERSION}';/" ${G_BIZ_APP_DIR}/app.js
+    print_result="${BIZ9_VENDOR_TITLE} Version: ${BIZ9_VENDOR_VERSION}"
 fi
-
 if [ "${app_type}" = "vendor-payment" ]; then
     FRAMEWORK_SRC_PROJECT=${G_PROJECT_SRC_FOLDER}${BIZ9_VENDOR_PAYMENT_TITLE,,}/src/${branch_dir}/
     #source
@@ -142,16 +141,16 @@ if [ "${app_type}" = "vendor-payment" ]; then
     #update versionz
     sed -i "s/BIZ9_VENDOR_PAYMENT_VERSION=.*/BIZ9_VENDOR_PAYMENT_VERSION='${BIZ9_VENDOR_PAYMENT_VERSION}';/" ${G_BIZ_APP_DIR}/.biz9_config.sh
     sed -i "s/BIZ9_VENDOR_PAYMENT_VERSION=.*/BIZ9_VENDOR_PAYMENT_VERSION='${BIZ9_VENDOR_PAYMENT_VERSION}';/" ${G_BIZ_APP_DIR}/app.js
+    print_result="${BIZ9_VENDOR_PAYMENT_TITLE} Version: ${BIZ9_VENDOR_PAYMENT_VERSION}"
 fi
-
-
-
-
-
-
-
-
-
-echo "BiZ9 Framework Push Success: @ $(date +%F@%H:%M)"
+echo "----------------------------------"
+echo "Project Update ResultZ"
+echo ${print_result}
+echo "Project APP ID: ${app_id}"
+echo "Project APP Type: ${app_type}"
+echo "Project Folder ID: ${folder_id}"
+echo "Project Branch: ${branch}"
+echo "BiZ9 Framework Update Success: @ $(date +%F@%H:%M)"
+echo "----------------------------------"
 exit 1
 

@@ -100,9 +100,9 @@ function set_dashboard_member_list(data){
             }else{
                 visible_str="<span class='color-red-dark'> <i class='fa-sharp fa-solid fa-circle-xmark'></i> </span>";
             }
-            edit_str= "<span class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
+            edit_str= "<a class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
                 "<i class='fa fa-gear font-14 accordion-icon'></i>"+
-                "</span>";
+                "</a>";
 
             str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item.tbl_id+"'>"+
                 "<div>"+
@@ -157,9 +157,8 @@ function set_dashboard_member_list(data){
             if (confirm("Delete?") == true) {
                 cloud_delete(data_type,tbl_id,function(data){
                     $('#biz_row_'+tbl_id).remove();
-                    item_count=String(parseInt($('#biz_page_item_list_count').val())-1);
-                    bind_page_list_count(item_count);
-                    set_page_note("(" + item_count + " items)");
+                	set_page_note(set_page_note_remove(parseInt($('#biz_page_item_list_count').val())));
+					bind_page_list_count(parseInt($('#biz_page_item_list_count').val()));
                 });
             }
         });
@@ -191,6 +190,7 @@ function set_dashboard_member(data){
         set_page_title('Dashboard');
         if(data.member.tbl_id==0){
             set_page_sub_title('Add Member');
+            $('#biz_img').hide();
         }else{
             set_page_sub_title('Edit Member');
             $('#biz_img').attr('src',data.member.photo_obj.square_mid_url);
@@ -223,6 +223,7 @@ function set_dashboard_member(data){
             if(obj.first_name){
                 cloud_update(data_type,tbl_id,obj,function(data){
                     $('#biz_page_tbl_id').val(data.tbl_id);
+                    $('#biz_img').show();
                     show_toast_update();
                     return false;
                 });
@@ -236,6 +237,7 @@ function set_dashboard_member(data){
             camera_photo_select(function(data){
                 cloud_update(data_type,tbl_id,{photofilename:data.photofilename},function(data){
                     $('#biz_img').attr('src',data.photo_obj.square_mid_url);
+                    $('#biz_page_photofilename').val(data.photofilename);
                     return false;
                 });
             });

@@ -36,8 +36,8 @@
                                     <input id='biz_page_parent_data_type' type='hidden'/>
                                     <input id='biz_page_category' type='hidden'/>
                                     <div class="header header-fixed header-logo-app">
-                                        <a href="#" data-back-button class="header-title" id='biz_lbl_page_title'></a>
-                                        <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+                                        <a href="dashboard_event_list.html?category=all&page_current=1" class="header-title" id='biz_lbl_page_title'></a>
+                                        <a href="dashboard_event_list.html?category=all&page_current=1" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
                                         <a href="#" id='biz_btn_order_cart_top' data-menu="menu-cart" class="header-icon header-icon-4"><i class="fas fa-shopping-bag color-brown-dark"></i></a>
                                     </div>
                                     <!-- BIZ HEAD TOP END -->
@@ -96,15 +96,7 @@
                                                             <label for="form1ab" class="color-blue-dark font-11 font-700 text-uppercase">Description</label>
                                                             <em class="mt-n3"></em>
                                                         </div>
-                                                        <div class="pb-3"></div>
-                                                        <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
-                                                            <input type="url" class="form-control" validate-field id="biz_tb_youtube_url" placeholder="">
-                                                            <label for="form1ab" class="color-blue-dark font-11 font-700 text-uppercase">Youtube</label>
-                                                            <i class="fa fa-times disabled invalid color-red-dark"></i>
-                                                            <i class="fa fa-check disabled valid color-green-dark"></i>
-                                                            <em></em>
-                                                        </div>
-                                                        <div class="pb-3"></div>
+                                                         <div class="pb-3"></div>
                                                        <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
                                                             <input type="number" class="form-control validate-name" id="biz_tb_price" placeholder="">
                                                             <label for="form1ab" class="color-blue-dark font-11 font-700 text-uppercase">Price</label>
@@ -153,18 +145,34 @@
                                                         </div>
                                                         <div class="pb-3"></div>
                                                         <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
-                                                            <input type="text" class="form-control validate-name" id="biz_tb_location" placeholder="Location">
+                                                            <input type="text" class="form-control validate-name" id="biz_tb_location" placeholder="">
                                                             <label for="form1ab" class="color-blue-dark font-11 font-700 text-uppercase">Location</label>
                                                             <i class="fa fa-times disabled invalid color-red-dark"></i>
                                                             <i class="fa fa-check disabled valid color-green-dark"></i>
                                                             <em></em>
                                                         </div>
                                                         <div class="pb-3"></div>
+                                                        <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
+                                                            <input type="url" class="form-control" validate-field id="biz_tb_youtube_url" placeholder="">
+                                                            <label for="form1ab" class="color-blue-dark font-11 font-700 text-uppercase">Youtube</label>
+                                                            <i class="fa fa-times disabled invalid color-red-dark"></i>
+                                                            <i class="fa fa-check disabled valid color-green-dark"></i>
+                                                            <em></em>
+                                                        </div>
+                                                        <div class="pb-3"></div>
+                                                        <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4" id='biz_div_mp3'>
+                                                            <input type="text" class="form-control" id="biz_tb_mp3_filename">
+                                                            <label for="form1ab" class="color-blue-dark font-11 font-700 text-uppercase">MP3 Track</label>
+                                                            <em></em>
+                                                        </div>
+                                                        <div class="pb-3"></div>
                                                         <div class="input-style has-borders input-style-always-active no-icon validate-field mb-4">
                                                             <select id="biz_sel_visible">
                                                                 <option value="default" disabled selected>Select a Value</option>
-                                                                <option value="true">True</option>
-                                                                <option value="false">False</option>
+                                                                            <option value="0">Sold Out</option>
+                                                                            <option value="1">Less than 25 tickets remaining</option>
+                                                                            <option value="2">Less than 10 tickets remaining</option>
+                                                                            <option value="3">Tickets are availble</option>
                                                             </select>
                                                             <label for="form23a" class="color-blue-dark font-11 font-700 text-uppercase">Visible</label>
                                                             <span><i class="fa fa-chevron-down"></i></span>

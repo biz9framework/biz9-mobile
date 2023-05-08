@@ -31,7 +31,7 @@
                                     <div class="header header-fixed header-logo-app">
                                         <a href="/" data-back-button class="header-title"  id='biz_lbl_page_title'></a>
                                         <a href="#" data-menu="menu-main"  class="header-icon header-icon-1"><i class="fas fa-bars"></i></a>
-                                        <a href="#"  id='biz_btn_order_cart_top' data-menu="menu-cart"  class="header-icon header-icon-4 biz_btn_cart_top"><i class="fas fa-shopping-bag color-brown-dark"></i></a>
+                                        <a style='display:none' href="#"  id='biz_btn_order_cart_top' data-menu="menu-cart"  class="header-icon header-icon-4 biz_btn_cart_top"><i class="fas fa-shopping-bag color-brown-dark"></i></a>
                                     </div>
                                     <!-- BIZ HEAD TOP END -->
                                     <!-- BIZ FOOTER MENU START -->
@@ -61,10 +61,10 @@
                                         <!--BUY CARD END --!>
 
                                             <!--BUY DATE_TIME CARD START --!>
-                                                <div class="card card-style biz_lbl_card"  id='biz_lbl_card_datetime'>
+                                                <div class="card card-style biz_lbl_card"  id='biz_lbl_card_datetime' style='display:none'>
                                                     <div class="content m-3">
-                                                        <h1 class="text-center mb-n1">Booking Time</h1>
-                                                    <div class="row mb-0 mt-4">
+                                                        <h1 class="text-center mb-n1" id='biz_lbl_title_booking'>Booking Time</h1>
+                                                    <div class="row mb-0 mt-4" >
                                                         <div class="col-6">
                                                             <input type="date" style="width:100%!important; display:block!important;" value="2023-2-10" class="form-control validate-text" id="biz_tb_date" placeholder="Phone">
                                                         </div>
@@ -75,9 +75,7 @@
                                                 </div>
                                                 </div>
                                                <!--BUY DATE_TIME CARD END --!>
-
-
-                                        <!--BANNER CARD START --!>
+                                                    <!--BANNER CARD START --!>
                                                         <div class="splide single-slider slider-no-arrows slider-no-dots visible-slider biz_lbl_card biz_lbl_banner_card" id="slider_banner">
                                                                 <div class="splide__track">
                                                                 <div class="splide__list" id='biz_lbl_banner_slide_show_list'></div>
@@ -87,12 +85,12 @@
                                                                                    <!--POPULAR_CATEGORY CARD START --!>
                                                                 <div class="card card-style biz_lbl_card" id='biz_lbl_popular_category_full_card'>
                                                                 <div id='biz_lbl_popular_card'>
-                                                                <h1 class="text-center mb-n1 mt-2">Popular</h1>
+                                                                <h1 class="text-center mb-n1 mt-2" id='biz_lbl_title_popular' style='display:none'>Popular</h1>
                                                                 <div class="content m-3" id='biz_lbl_popular_list'>
                                                                 </div>
                                                                 </div>
                                                                 <div class="content" id='biz_lbl_category_card'>
-                                                                <h1 class="text-center mb-3">Categories</h1>
+                                                                <h1 class="text-center mb-3" id='biz_lbl_title_category' style='display:none'>Categories</h1>
                                                                 <div class="row mb-0" id='biz_lbl_category_list'>
                                                                 </div>
                                                                 </div>

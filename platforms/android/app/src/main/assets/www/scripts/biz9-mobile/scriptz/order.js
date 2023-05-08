@@ -545,8 +545,8 @@ function set_dashboard_order_list(data){
                 cloud_delete(data_type,tbl_id,function(data){
                     $('#biz_row_'+tbl_id).remove();
                     item_count=String(parseInt($('#biz_page_item_list_count').val())-1);
-                    bind_page_list_count(item_count);
-                    set_page_note("(" + item_count + " items)");
+              		set_page_note(set_page_note_remove(parseInt($('#biz_page_item_list_count').val())));
+					bind_page_list_count(parseInt($('#biz_page_item_list_count').val()));
                 });
             }
         });

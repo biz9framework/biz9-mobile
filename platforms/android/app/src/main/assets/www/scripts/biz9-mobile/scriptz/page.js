@@ -8,6 +8,7 @@ function set_page_page_list(data){
         url='';
         for(var a=0;a<item_list.length;a++){
             item= item_list[a];
+            if(String(item.visible)=='true'){
             switch(item_list[a].type) {
                 case DT_BLOG_POST:
                     url = 'blog_post_category_list.html?page_current=1';
@@ -41,6 +42,7 @@ function set_page_page_list(data){
             str=str+"</div>"+
                 "<div class='card-overlay bg-black opacity-85'></div>"+
                 "</a>";
+            }
         }
         $('#biz_lbl_list').html(str);
     }
@@ -80,9 +82,9 @@ function set_dashboard_page_list(data){
             }else if(item.type==DT_MEMBER){
                 category_url='member_category_list.html?page_current=1';
             }
-            edit_str= "<span class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
+            edit_str= "<a class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
                 "<i class='fa fa-gear font-14 accordion-icon'></i>"+
-                "</span>";
+                "</a>";
             str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item.tbl_id+"'>"+
                 "<div>"+
                 "<a href='dashboard_page.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+

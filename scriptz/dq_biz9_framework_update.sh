@@ -4,7 +4,7 @@ echo "BiZ9 Framework Update"
 echo "#################"
 bash ./scriptz/dq_header.sh
 #prod-start
-echo "Enter Framework Tool: [cms, core, docz, mobile, scriptz, service, test, website]"
+echo "Enter Framework Tool: [cms, core, docz, mobile, scriptz, service, test, vendor, vendor-payment, website]"
 read app_type
 echo "Enter Source Branch: [unstable, testing, stable]"
 read source_dir
@@ -117,6 +117,7 @@ if [ "${app_type}" = "scriptz" ]; then
     #copy
     cp -rf ${source_dir}/* ${destination_dir}/
     #sed
+    source ${source_dir}/.biz9_config.sh
     sed -i "s/BIZ9_SCRIPTZ_VERSION=.*/BIZ9_SCRIPTZ_VERSION='${BIZ9_SCRIPTZ_VERSION}';/" ${destination_dir}/.biz9_config.sh
     echo Source ${source_dir}: Version: ${BIZ9_SCRIPTZ_VERSION};
 fi
@@ -150,5 +151,40 @@ if [ "${app_type}" = "test" ]; then
     sed -i "s/BIZ9_TEST_VERSION=.*/BIZ9_TEST_VERSION='${BIZ9_TEST_VERSION}';/" ${destination_dir}/.biz9_config.sh
     echo Source ${source_dir}: Version: ${BIZ9_TEST_VERSION};
 fi
+if [ "${app_type}" = "vendor" ]; then
+    G_PROJECT_DIR=${BIZ9_HOME}/${BIZ9_VENDOR_TITLE,,}/src/${source_dir}
+    cd ${BIZ9_HOME}/${BIZ9_VENDOR_TITLE,,}/src/
+    source ${destination_dir}/.biz9_config.sh
+    echo 'Tool: BiZ9-Vendor';
+    echo Destination ${destination_dir}: Version: ${BIZ9_VENDOR_VERSION};
+    #rm
+    rm -rf ${destination_dir}/*
+    #copy
+    cp -rf ${source_dir}/* ${destination_dir}/
+    #sed
+    source ${source_dir}/.biz9_config.sh
+    sed -i "s/BIZ9_VENDOR_VERSION=.*/BIZ9_VENDOR_VERSION='${BIZ9_VENDOR_VERSION}';/" ${destination_dir}/.biz9_config.sh
+    sed -i "s/BIZ9_VENDOR_VERSION=.*/BIZ9_VENDOR_VERSION='${BIZ9_VENDOR_VERSION}';/" ${destination_dir}/app.js
+    echo Source ${source_dir}: Version: ${BIZ9_VENDOR_VERSION};
+fi
+if [ "${app_type}" = "vendor-payment" ]; then
+    G_PROJECT_DIR=${BIZ9_HOME}/${BIZ9_VENDOR_PAYMENT_TITLE,,}/src/${source_dir}
+    cd ${BIZ9_HOME}/${BIZ9_VENDOR_PAYMENT_TITLE,,}/src/
+    source ${destination_dir}/.biz9_config.sh
+    echo 'Tool: BiZ9-Vendor-Payment';
+    echo Destination ${destination_dir}: Version: ${BIZ9_VENDOR_PAYMENT_VERSION};
+    #rm
+    rm -rf ${destination_dir}/*
+    #copy
+    cp -rf ${source_dir}/* ${destination_dir}/
+    #sed
+    source ${source_dir}/.biz9_config.sh
+    sed -i "s/BIZ9_VENDOR_PAYMENT_VERSION=.*/BIZ9_VENDOR_PAYMENT_VERSION='${BIZ9_VENDOR_PAYMENT_VERSION}';/" ${destination_dir}/.biz9_config.sh
+    sed -i "s/BIZ9_VENDOR_PAYMENT_VERSION=.*/BIZ9_VENDOR_PAYMENT_VERSION='${BIZ9_VENDOR_PAYMENT_VERSION}';/" ${destination_dir}/app.js
+    echo Source ${source_dir}: Version: ${BIZ9_VENDOR_PAYMENT_VERSION};
+fi
+
+
+
 bash ./scriptz/dq_footer.sh
 exit

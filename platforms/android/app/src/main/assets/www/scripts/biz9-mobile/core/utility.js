@@ -99,7 +99,8 @@ function capatilze_first_letter(str){
     return arr.join(" ");
 }
 function get_youtube_link(link) {
-    return link.replace("https://youtu.be/", "https://www.youtube.com/embed/");
+    r_link = link.replace("https://youtu.be/", "https://www.youtube.com/embed/");
+    return r_link.split( '&' )[0];
 }
 function cookie_set(title,item){
     Lockr.set(title,item);

@@ -175,8 +175,10 @@ function set_page_home(data){
                     "</div>"+
                     "<div class='divider mb-3'></div>";
             }
+            $('#biz_lbl_title_popular').show();
             $('#biz_lbl_popular_list').html('');
             $('#biz_lbl_popular_list').html(str);
+
         }
     }
     function bind_category_card(data){
@@ -222,6 +224,7 @@ function set_page_home(data){
             }
         }
         if(str){
+            $('#biz_lbl_title_category').show();
             $("#biz_lbl_popular_category_full_card").show();
             $("#biz_lbl_category_card").show();
             $('#biz_lbl_category_list').html('');

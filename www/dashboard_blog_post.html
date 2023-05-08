@@ -37,8 +37,8 @@
                                     <input id='biz_page_mp3_duration' type='hidden'/>
                                     <input id='biz_page_mp3_url' type='hidden'/>
                                     <div class="header header-fixed header-logo-app">
-                                        <a href="#" data-back-button class="header-title" id='biz_lbl_page_title'></a>
-                                        <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+                                        <a href="dashboard_blog_post_list.html?category=all&page_current=1" class="header-title" id='biz_lbl_page_title'></a>
+                                        <a href="dashboard_blog_post_list.html?category=all&page_current=1" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
                                         <a href="#" id='biz_btn_order_cart_top' data-menu="menu-cart" class="header-icon header-icon-4"><i class="fas fa-shopping-bag color-brown-dark"></i></a>
                                     </div>
                                     <!-- BIZ HEAD TOP END -->
@@ -97,6 +97,13 @@
                                                             <label for="form1ab" class="color-blue-dark font-11 font-700 text-uppercase">Description</label>
                                                             <em class="mt-n3"></em>
                                                         </div>
+                                                       <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
+                                                            <input type="text" class="form-control" id="biz_tb_author" placeholder="">
+                                                            <label for="form1ab" class="color-blue-dark font-11 font-700 text-uppercase">Author</label>
+                                                            <i class="fa fa-times disabled invalid color-red-dark"></i>
+                                                            <i class="fa fa-check disabled valid color-green-dark"></i>
+                                                            <em></em>
+                                                        </div>
                                                         <div class="pb-3"></div>
                                                         <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
                                                             <input type="text" class="form-control" id="biz_tb_youtube_url" placeholder="">
@@ -105,29 +112,13 @@
                                                             <i class="fa fa-check disabled valid color-green-dark"></i>
                                                             <em></em>
                                                         </div>
-                                                        <!--
                                                         <div class="pb-3"></div>
-                                                        <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
-                                                            <input type="text" class="form-control" id="biz_tb_mp3_track" placeholder="">
+                                                        <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4" id='biz_div_mp3'>
+                                                            <input type="text" class="form-control" id="biz_tb_mp3_filename">
                                                             <label for="form1ab" class="color-blue-dark font-11 font-700 text-uppercase">MP3 Track</label>
-                                                            <i class="fa fa-times disabled invalid color-red-dark"></i>
-                                                            <i class="fa fa-check disabled valid color-green-dark"></i>
                                                             <em></em>
                                                         </div>
-                                                        <div class="pb-3"></div>
-                                                        <div id='biz_lbl_div_audio' class="input-style input-style-always-active has-borders has-icon">
-                                                                <div id='biz_div_audio_ctl'></div>
-                                                        </div>
-                                                        --!>
-                                                        <div class="pb-3"></div>
-                                                        <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
-                                                            <input type="text" class="form-control" id="biz_tb_author" placeholder="">
-                                                            <label for="form1ab" class="color-blue-dark font-11 font-700 text-uppercase">Author</label>
-                                                            <i class="fa fa-times disabled invalid color-red-dark"></i>
-                                                            <i class="fa fa-check disabled valid color-green-dark"></i>
-                                                            <em></em>
-                                                        </div>
-                                                        <div class="pb-3"></div>
+                                                       <div class="pb-3"></div>
                                                         <div class="input-style has-borders input-style-always-active no-icon validate-field mb-4">
                                                             <select id="biz_sel_visible">
                                                                 <option value="default" disabled selected>Select a Value</option>

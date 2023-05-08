@@ -19,6 +19,9 @@ function load_biz_app(){
 	const page_title=$('#biz_page_title').val();
 	var url=get_biz_page_url(page_title);
 	cloud_get_url(url,{customer_id:get_user().customer_id},function(biz_data){
+
+		//$(".page-content").hide();
+		//$("#page").hide();
 		set_app_color(biz_data.mobile.primary.app_color,biz_data.mobile.primary.app_theme);
 		w('biz_mobile_user',get_user());
 		w('biz_cloud_get_url',get_cloud_url(url));
@@ -29,9 +32,9 @@ function load_biz_app(){
 		set_page_button_color(biz_data.mobile.primary.button_color);
 		set_pull_down();
 		set_init();
+		//$("#page").show();
 	});
 }
-
 function get_new_item(data_type){
 	if(!data_type){
 		data_type=DT_BLANK;
@@ -128,9 +131,6 @@ function set_left_navigation(data){
 		"<p class='font-10  color-white opacity-30 text-center'>"+BIZ9_MOBILE_VERSION+"</p>";
 	$("#biz_lbl_left_menu").html(str);
 	user=get_user();
-	console.log('aaa');
-	console.log(user);
-	console.log('bbbb');
 	//check user login
 	if(!get_user().tbl_id){
 		//- login
@@ -152,22 +152,32 @@ function set_left_navigation(data){
 	});
 }
 function init_cart(){
-    $("#biz_btn_order_cart_top").click(function() {
-        show_cart_top();
-    });
+	$("#biz_btn_order_cart_top").show();
+	$("#biz_btn_order_cart_top").click(function() {
+		show_cart_top();
+	});
 }
 function show_cart_top(){
-    url = "order/cart_detail/"+get_user().customer_id;
-    cloud_get_url(url,{},function(data){
-        w('cart_top_detail',data.cart);
-        set_order_cart_top(data.cart);
-    });
+	$("#menu-cart").show();
+	url = "order/cart_detail/"+get_user().customer_id;
+	cloud_get_url(url,{},function(data){
+		w('cart_top_detail',data.cart);
+		set_order_cart_top(data.cart);
+	});
+}
+function set_page_note_remove(num){
+	if(num<=1){
+		num='0';
+	}else{
+		num = String(num-1);
+	}
+	return "("+num + " items"+")";
 }
 function bind_mp3_form(mp3_url){
-      return "<audio controls id='biz_lbl_audio_ctl'>"+
-                "<source id='biz_lbl_audio_player' src='"+mp3_url+"' type='audio/mpeg'>"+
-                    "Your browser does not support the audio element."+
-                "</audio>";
+	return "<audio controls id='biz_lbl_audio_ctl'>"+
+		"<source id='biz_lbl_audio_player' src='"+mp3_url+"' type='audio/mpeg'>"+
+		"Your browser does not support the audio element."+
+		"</audio>";
 }
 function set_footer_navigation(data){
 	page_footer=$('#biz_page_footer').val();
@@ -175,7 +185,7 @@ function set_footer_navigation(data){
 	//page
 	str = str+"<a id='biz_lbl_ft_link_page' href='page_list.html'><i class='fa fa-heart'></i><span>Pages</span></a>";
 	set_home=false;
-	home_str = "<a id='biz_lbl_ft_link_home' href='/'><i class='fa fa-home'></i><span>Home</span></a>";
+	home_str = "<a id='biz_lbl_ft_link_home' href='index.html'><i class='fa fa-home'></i><span>Home</span></a>";
 	for(a=0;a<data.mobile.page_list.items.length;a++){
 		item = data.mobile.page_list.items[a];
 		if(a==2){
@@ -189,7 +199,7 @@ function set_footer_navigation(data){
 					str = str + "<a id='biz_lbl_ft_link_product' href='product_category_list.html?page_current=1'><i class='fa fa-cart-shopping'></i><span>"+item.title+"</span></a>";
 					break;
 				case DT_SERVICE:
-					str = str + "<a id='biz_lbl_ft_link_service' href='service_category_list.html?page_current=1'><i class='fa fa-wrench'></i><span>"+item.title+"</span></a>";
+					str = str + "<a id='biz_lbl_ft_link_service' href='service_category_list.html?page_current=1'><i class='fa fa-rocket'></i><span>"+item.title+"</span></a>";
 					break;
 				case DT_EVENT:
 					str = str + "<a id='biz_lbl_ft_link_event' href='event_category_list.html?page_current=1'><i class='fa fa-ticket'></i><span>"+item.title+"</span></a>";
@@ -508,10 +518,10 @@ function get_biz_page_url(biz_page_title){
 			url='home';
 			break;
 		case 'about':
-			url='blank';
+			url='about';
 			break;
 		case 'contact':
-			url='blank';
+			url='contact';
 			break;
 		case 'register':
 			url='blank';
@@ -623,10 +633,10 @@ function get_biz_page_url(biz_page_title){
 			url='blank';
 			break;
 		case 'dashboard_about':
-			url='blank';
+			url='about';
 			break;
 		case 'dashboard_contact':
-			url='blank';
+			url='contact';
 			break;
 		case 'dashboard_home':
 			url='home_edit';
@@ -747,16 +757,10 @@ function get_biz_page_url(biz_page_title){
 	}
 	return url;
 }
-function set_bottom_lock_footer(current){
-	str=
-		"<a class='a_bottom_link' id='biz_lbl_ft_link_home' href='/ class='active-nav'><i class='fa fa-home'></i><span>Home</span></a>"+
-		"<a class='a_bottom_link' id='biz_lbl_ft_link_contact' href='contact.html'><i class='fa fa-envelope'></i><span>Contact</span></a>";
-	return str;
-}
 //-- INIT-START
 function set_init(){
 	init_cards();
-    $("[data-f-id=pbf").remove();//froala remove
+	$("[data-f-id=pbf").remove();//froala remove
 }
 function init_slide_show(slide_id){
 	var singleSlider = document.querySelectorAll(slide_id);
@@ -1313,6 +1317,9 @@ function set_pull_down(){
 //-- INIT-END
 //
 function bind_page_list_count(count){
+	if(count<=1){
+		count=0;
+	}
 	$('#biz_page_item_list_count').val(count);
 }
 function bind_page_id(item){

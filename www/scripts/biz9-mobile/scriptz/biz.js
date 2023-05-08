@@ -14,15 +14,14 @@ PAYMENT_TYPE_PAY_NOW='pay_now';
 PAYMENT_TYPE_CASHAPP='cashapp';
 PAYMENT_TYPE_ON_DELIVERY='pay_on_delivery';
 //biz
-
 load_biz_app();
 function load_biz_app(){
 	const page_title=$('#biz_page_title').val();
 	var url=get_biz_page_url(page_title);
 	cloud_get_url(url,{customer_id:get_user().customer_id},function(biz_data){
 
-//$(".page-content").hide();
-//$("#page").hide();
+		//$(".page-content").hide();
+		//$("#page").hide();
 		set_app_color(biz_data.mobile.primary.app_color,biz_data.mobile.primary.app_theme);
 		w('biz_mobile_user',get_user());
 		w('biz_cloud_get_url',get_cloud_url(url));
@@ -153,22 +152,32 @@ function set_left_navigation(data){
 	});
 }
 function init_cart(){
-    $("#biz_btn_order_cart_top").click(function() {
-        show_cart_top();
-    });
+	$("#biz_btn_order_cart_top").show();
+	$("#biz_btn_order_cart_top").click(function() {
+		show_cart_top();
+	});
 }
 function show_cart_top(){
-    url = "order/cart_detail/"+get_user().customer_id;
-    cloud_get_url(url,{},function(data){
-        w('cart_top_detail',data.cart);
-        set_order_cart_top(data.cart);
-    });
+	$("#menu-cart").show();
+	url = "order/cart_detail/"+get_user().customer_id;
+	cloud_get_url(url,{},function(data){
+		w('cart_top_detail',data.cart);
+		set_order_cart_top(data.cart);
+	});
+}
+function set_page_note_remove(num){
+	if(num<=1){
+		num='0';
+	}else{
+		num = String(num-1);
+	}
+	return "("+num + " items"+")";
 }
 function bind_mp3_form(mp3_url){
-      return "<audio controls id='biz_lbl_audio_ctl'>"+
-                "<source id='biz_lbl_audio_player' src='"+mp3_url+"' type='audio/mpeg'>"+
-                    "Your browser does not support the audio element."+
-                "</audio>";
+	return "<audio controls id='biz_lbl_audio_ctl'>"+
+		"<source id='biz_lbl_audio_player' src='"+mp3_url+"' type='audio/mpeg'>"+
+		"Your browser does not support the audio element."+
+		"</audio>";
 }
 function set_footer_navigation(data){
 	page_footer=$('#biz_page_footer').val();
@@ -751,7 +760,7 @@ function get_biz_page_url(biz_page_title){
 //-- INIT-START
 function set_init(){
 	init_cards();
-    $("[data-f-id=pbf").remove();//froala remove
+	$("[data-f-id=pbf").remove();//froala remove
 }
 function init_slide_show(slide_id){
 	var singleSlider = document.querySelectorAll(slide_id);
@@ -1308,6 +1317,9 @@ function set_pull_down(){
 //-- INIT-END
 //
 function bind_page_list_count(count){
+	if(count<=1){
+		count=0;
+	}
 	$('#biz_page_item_list_count').val(count);
 }
 function bind_page_id(item){

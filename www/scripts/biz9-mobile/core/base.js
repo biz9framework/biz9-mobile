@@ -11,6 +11,7 @@ function get_new_item(data_type){
     return item;
 }
 function show_toast_update(message){
+    hide_toast();
     if(!message){
         message='Update';
     }
@@ -20,15 +21,20 @@ function show_toast_update(message){
     toastID.show();
 }
 function show_toast_error(error){
+    hide_toast();
     var toastID = document.getElementById('toast-error');
     toastID.innerHTML="<i class='fa fa-times me-3'></i>Error<br/> "+error;
     toastID = new bootstrap.Toast(toastID);
     toastID.show();
 }
 function hide_toast(){
-    var toastID = document.getElementById('toast-error');
-    toastID = new bootstrap.Toast(toastID);
-    toastID.hide();
+    var toast_error_ID = document.getElementById('toast-error');
+    toast_error_ID = new bootstrap.Toast(toast_error_ID);
+    toast_error_ID.hide();
+
+    var toast_success_ID = document.getElementById('toast-save');
+    toast_success_ID = new bootstrap.Toast(toast_success_ID);
+    toast_success_ID.hide();
 }
 // BIZ PROCCESSING END --
 // AUDIO PROCCESSING START --
@@ -89,7 +95,6 @@ function camera_photo_select(call){
             });
         },
             function fail() {
-                alert('fail');
             }, imageData, {quality:100});
     }
     function onFail(message) {

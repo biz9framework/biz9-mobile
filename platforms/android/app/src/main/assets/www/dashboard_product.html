@@ -36,8 +36,8 @@
                                     <input id='biz_page_parent_data_type' type='hidden'/>
                                     <input id='biz_page_category' type='hidden'/>
                                     <div class="header header-fixed header-logo-app">
-                                        <a href="#" data-back-button class="header-title" id='biz_lbl_page_title'></a>
-                                        <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+                                        <a href="dashboard_product_list.html?category=all&page_current=1" class="header-title" id='biz_lbl_page_title'></a>
+                                        <a href="dashboard_product_list.html?category=all&page_current=1" class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
                                         <a href="#" id='biz_btn_order_cart_top' data-menu="menu-cart" class="header-icon header-icon-4"><i class="fas fa-shopping-bag color-brown-dark"></i></a>
                                     </div>
                                     <!-- BIZ HEAD TOP END -->
@@ -121,13 +121,19 @@
                                                             <i class="fa fa-check disabled valid color-green-dark"></i>
                                                             <em></em>
                                                         </div>
+                                                        <div class="pb-3"></div>
+                                                        <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4" id='biz_div_mp3'>
+                                                            <input type="text" class="form-control" id="biz_tb_mp3_filename">
+                                                            <label for="form1ab" class="color-blue-dark font-11 font-700 text-uppercase">MP3 Track</label>
+                                                            <em></em>
+                                                        </div>
                                                        <div class="pb-3"></div>
                                                        <div class="input-style has-borders input-style-always-active no-icon validate-field mb-4">
                                                             <select id="biz_sel_visible">
-                                                                <option value="Out of stock">Out of Stock</option>
-                                                                <option value="Only 1 left">1</option>
-                                                                <option value="Less than 3 left">3</option>
-                                                                <option value="In Stock. Ships immediately">5+</option>
+                                                                  <option value="0">Out of stock</option>
+                                                                            <option value="1">Only 1 left</option>
+                                                                            <option value="2">Less than 3 left</option>
+                                                                            <option value="3">In stock. Ships Immediately.</option>
                                                             </select>
                                                             <label for="form1ab" class="color-blue-dark font-11 font-700 text-uppercase">In Stock</label>
                                                             <span><i class="fa fa-chevron-down"></i></span>

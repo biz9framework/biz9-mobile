@@ -11,6 +11,36 @@ function set_dashboard_category_list(data){
     hide_spinner();
     function bind_list(item_list,page_current,page_count){
         str='';
+
+        for(a=0;a<item_list.length;a++){
+            item = item_list[a];
+            edit_str= "<a href='#' class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
+                "<i class='fa fa-gear font-14 accordion-icon'></i>"+
+                "</a>";
+            sub_item_edit_url="dashboard_sub_item_list.html?data_type="+item.data_type+"&tbl_id="+item.tbl_id+"&parent_data_type="+item.data_type+"&parent_tbl_id="+item.tbl_id;
+            photo_edit_url="dashboard_photo_list.html?parent_data_type="+item.data_type+"&parent_tbl_id="+item.tbl_id;
+            str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item.tbl_id+"'>"+
+                "<div>"+
+                "<a href='dashboard_category.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
+                "</div>"+
+                "<div class='biz_diz_list_title'><a href='dashboard_category.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-11'>"+item.title+"</b></p></a><div>"+
+                "</div>"+
+                "<p class='mb-0 ps-3 font-10  opacity-60'><b>"+item.type_title+"</b>  " + edit_str+ " </p>"+
+                "<div class='accordion ' id='accordion-"+a+"'>"+
+                "<div class=''>"+
+                "<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+
+                "<div class='mb-0 ps-3  ' style='float:left;'>"+
+                "<div class='biz_diz_list_edit'>"+
+                "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='biz_btn_delete' href='#'><i class='admin_edit_img fa fa-trash pe-2'></i></a>"+
+                "</div>"+
+                "</div>"+
+                "</div>"+
+                "</div>"+
+                "</div>"+
+                "</div></div>";
+        }
+
+        /*
         for(a=0;a<item_list.length;a++){
             item = item_list[a];
             edit_str= "<span class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
@@ -36,6 +66,7 @@ function set_dashboard_category_list(data){
                 "</div>"+
                 "</div></div>";
         }
+        */
         $('#biz_lbl_list').html('');
         $('#biz_lbl_list').html(str);
         $('#biz_lbl_pager').html(get_pager_ajax(page_current,page_count));
@@ -57,9 +88,8 @@ function set_dashboard_category_list(data){
             if (confirm("Delete?") == true) {
                 cloud_delete(data_type,tbl_id,function(data){
                     $('#biz_row_'+tbl_id).remove();
-                    item_count=String(parseInt($('#biz_page_item_list_count').val())-1);
-                    bind_page_list_count(item_count);
-                    set_page_note("(" + item_count + " items)");
+             		set_page_note(set_page_note_remove(parseInt($('#biz_page_item_list_count').val())));
+					bind_page_list_count(parseInt($('#biz_page_item_list_count').val()));
                 });
             }
         });
@@ -91,6 +121,7 @@ function set_dashboard_category(data){
         set_page_title('Dashboard');
         if(data.category.tbl_id==0){
             set_page_sub_title('Add Category');
+            $('#biz_img').hide();
         }else{
             set_page_sub_title('Edit Category');
             $('#biz_img').attr('src',data.category.photo_obj.square_mid_url);
@@ -117,6 +148,7 @@ function set_dashboard_category(data){
             if(obj.title){
                 cloud_update(data_type,tbl_id,obj,function(data){
                     $('#biz_page_tbl_id').val(data.tbl_id);
+                    $('#biz_img').show();
                     show_toast_update();
                     return false;
                 });
@@ -130,6 +162,7 @@ function set_dashboard_category(data){
             camera_photo_select(function(data){
                 cloud_update(data_type,tbl_id,{photofilename:data.photofilename},function(data){
                     $('#biz_img').attr('src',data.photo_obj.square_mid_url);
+                    $('#biz_page_photofilename').val(data.photofilename);
                     return false;
                 });
             });
