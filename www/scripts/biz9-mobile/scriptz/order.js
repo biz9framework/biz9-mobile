@@ -284,6 +284,7 @@ function set_page_order_checkout_submit(data){
     }
     function bind_checkout_test(){
         //test-start
+        /*
         //$('#biz_tb_checkout_email').val(get_id(999)+'_email@gmail.com');
         $('#biz_tb_checkout_email').val('bossappz6@gmail.com');
         $('#biz_tb_billing_card_number').val('4242424242424242');
@@ -298,6 +299,7 @@ function set_page_order_checkout_submit(data){
         $('#biz_tb_shipping_address').val(get_id(999)+'_Address 123 St' );
         $('#biz_tb_shipping_zip').val(get_id(99999));
         $('#biz_tb_shipping_phone').val('123-444-5544');
+        */
         //test-end
     }
 }
