@@ -212,13 +212,17 @@ function set_page_event_detail(data){
             $('#biz_lbl_card_description').show();
             $('#biz_lbl_sub_note').html(data.event.sub_note);
         }
-        if(data.event.note){
+         if(data.event.note){
             if(data.event.note.length>5){
                 $('#biz_lbl_card_note').show();
                 $('#biz_lbl_note').html(data.event.note);
+                clean_note();
+                if($('#biz_lbl_note').html().length<3){
+                    $('#biz_lbl_card_note').hide();
+                }
             }
         }
-        if(data.event.items.length>0){
+       if(data.event.items.length>0){
             //$('#biz_lbl_option_list').show();
             for(a=0;a<data.event.items.length;a++){
                 str='';

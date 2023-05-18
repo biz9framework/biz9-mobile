@@ -762,6 +762,9 @@ function set_init(){
 	init_cards();
 	$("[data-f-id=pbf").remove();//froala remove
 }
+function clean_note(){
+	$("[data-f-id=pbf").remove();//froala remove
+}
 function init_slide_show(slide_id){
 	var singleSlider = document.querySelectorAll(slide_id);
 	if(singleSlider.length){

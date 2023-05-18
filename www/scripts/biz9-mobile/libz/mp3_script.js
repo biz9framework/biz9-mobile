@@ -21,6 +21,7 @@ if (reverse) {
 $c.click(function(e) {
 		e.preventDefault();
 		if (!isLoaded) {
+			
 				if ($c.hasClass('loading')) {
 						return;
 				}

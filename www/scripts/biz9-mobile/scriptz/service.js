@@ -212,7 +212,6 @@ function set_page_service_detail(data){
         $('#biz_div_left_info').show();
         $('#biz_btn_cart_add').show();
         $('#biz_lbl_cart_datetime').show();
-
         if(data.service.money_obj.discount && String(data.service.money_obj.discount)!='0%'){
             $('#biz_div_discount').show();
             $('#biz_lbl_discount').html(data.service.money_obj.discount + ' Discount');
@@ -225,6 +224,10 @@ function set_page_service_detail(data){
             if(data.service.note.length>5){
                 $('#biz_lbl_card_note').show();
                 $('#biz_lbl_note').html(data.service.note);
+                clean_note();
+                if($('#biz_lbl_note').html().length<3){
+                    $('#biz_lbl_card_note').hide();
+                }
             }
         }
         if(data.service.items.length>0){
