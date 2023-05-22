@@ -147,7 +147,7 @@ function set_left_navigation(data){
 	$("#nav-logout").click(function() {
 		if (confirm("Are you sure?") == true) {
 			del_user();
-			window.location='/';
+			window.location='index.html';
 		}
 	});
 }

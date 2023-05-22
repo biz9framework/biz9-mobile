@@ -63,7 +63,7 @@ function set_page_login(data){
                     }else{
                         data.user.customer_id=get_id(99999);
                         set_user(data.user);
-                        window.location='/';
+                        window.location='index.html';
                     }
                 });
             }
@@ -73,13 +73,8 @@ function set_page_login(data){
 //9_logout
 function set_page_logout(data){
     del_user();
-    window.location='/';
+    window.location='index.html';
 }
-
-
-
-
-
 //9_forgotpassword
 function set_page_forgot_password(data){
     $('#footer-bar').hide();
