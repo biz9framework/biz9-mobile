@@ -47,7 +47,7 @@ function set_page_login(data){
         $('#biz_tb_password').val('1234567');
     }
     function bind_event(){
-        $("#biz_btn").click(function() {
+        $("#biz_login_btn").click(function() {
             var obj={};
             obj.email= $('#biz_tb_email').val();
             obj.password= $('#biz_tb_password').val();
