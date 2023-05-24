@@ -103,7 +103,7 @@ function set_page_service_list(data){
                 visible_str="<p class='font-12 text-center mb-0 font-10 mt-n2 color-green-dark'>"+item.visible_obj.service_status+"</p>";
             }
             str=str+"<div class='col-6'>"+
-                "<a href='service_detail.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.mid_url+"' width='150' class='mx-auto'/></a>"+
+                "<a href='service_detail.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' width='150' class='mx-auto'/></a>"+
                 "<div style='text-align:center'>"+
                 "<span class='font-10 pt-0 m-2'><i class='fa fa-eye color-blue-dark'></i> "+item.view_count +"</span>"+
                 "<span class='font-10 pt-0 m-2'><i class='fa fa-comment color-brown-dark'></i> "+item.review_count +"</span>"+
@@ -192,7 +192,7 @@ function set_page_service_detail(data){
                 item = item_list[a];
                 item.text = item.text ? item.text:'';
                 str=str+"<a data-gallery='gallery-1' href='"+item.photo_obj.album_url+"' title='"+item.text+"'>"+
-                    "<img src='"+item.photo_obj.album_url+"' data-src='"+item.photo_obj.album_url+"' class='rounded-m preload-img shadow-l img-fluid' alt=''>"+
+                    "<img src='"+item.photo_obj.mid_square_url+"' data-src='"+item.photo_obj.album_url+"' class='rounded-m preload-img shadow-l img-fluid' alt=''>"+
                     "<p class=' pt-2' style='text-align:center'>"+ truncate_str(item.text, 50) +"</p>"+
                     "</a>";
             }
@@ -224,7 +224,6 @@ function set_page_service_detail(data){
             if(data.service.note.length>5){
                 $('#biz_lbl_card_note').show();
                 $('#biz_lbl_note').html(data.service.note);
-                clean_note();
                 if($('#biz_lbl_note').html().length<3){
                     $('#biz_lbl_card_note').hide();
                 }

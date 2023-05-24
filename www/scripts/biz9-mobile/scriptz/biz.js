@@ -32,6 +32,7 @@ function load_biz_app(){
 		set_page_button_color(biz_data.mobile.primary.button_color);
 		set_pull_down();
 		set_init();
+		clean_note();
 		//$("#page").show();
 	});
 }

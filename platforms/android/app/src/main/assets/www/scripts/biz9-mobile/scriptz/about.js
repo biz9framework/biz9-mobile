@@ -48,7 +48,7 @@ function set_dashboard_about(data){
                 show_toast_update();
             });
         });
-       $("#biz_img").click(function() {
+        $("#biz_img").click(function() {
             tbl_id= $('#biz_page_tbl_id').val();
             data_type= $('#biz_page_data_type').val();
             camera_photo_select(function(data){

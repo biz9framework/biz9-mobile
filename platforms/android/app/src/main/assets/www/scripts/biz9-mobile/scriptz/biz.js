@@ -32,6 +32,7 @@ function load_biz_app(){
 		set_page_button_color(biz_data.mobile.primary.button_color);
 		set_pull_down();
 		set_init();
+		clean_note();
 		//$("#page").show();
 	});
 }
@@ -147,7 +148,7 @@ function set_left_navigation(data){
 	$("#nav-logout").click(function() {
 		if (confirm("Are you sure?") == true) {
 			del_user();
-			window.location='/';
+			window.location='index.html';
 		}
 	});
 }
@@ -760,6 +761,9 @@ function get_biz_page_url(biz_page_title){
 //-- INIT-START
 function set_init(){
 	init_cards();
+	$("[data-f-id=pbf").remove();//froala remove
+}
+function clean_note(){
 	$("[data-f-id=pbf").remove();//froala remove
 }
 function init_slide_show(slide_id){

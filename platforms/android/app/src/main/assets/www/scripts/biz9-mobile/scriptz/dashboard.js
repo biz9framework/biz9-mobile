@@ -577,9 +577,9 @@ function set_dashboard_sub_item_list(data){
             item = item_list[a];
 			item_edit_url ='dashboard_sub_item.html?tbl_id='+item.tbl_id+'&data_type='+item.data_type+'&parent_data_type='+item.parent_data_type+'&parent_tbl_id='+item.parent_tbl_id;
 			item_sub_list_edit_url ='dashboard_sub_item_list.html?tbl_id='+item.tbl_id+'&data_type='+item.data_type+'&parent_data_type='+item.data_type+'&parent_tbl_id='+item.tbl_id;
-            edit_str= "<span class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
+            edit_str= "<a class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
                 "<i class='fa fa-gear font-10 accordion-icon'></i>"+
-                "</span>";
+                "</a>";
             str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item.tbl_id+"'>"+
                 "<div class='biz_diz_list_title'><a href='"+item_edit_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b>"+item.title+"</b></p></a><div>"+
                 "</div>"+
@@ -757,9 +757,9 @@ function set_dashboard_photo_list(data){
         str='';
         for(a=0;a<item_list.length;a++){
             item = item_list[a];
-            edit_str= "<span class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
+            edit_str= "<a class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
                 "<i class='fa fa-gear font-14 accordion-icon'></i>"+
-                "</span>";
+                "</a>";
 			edit_url="dashboard_photo.html?tbl_id="+item.tbl_id+"&parent_tbl_id="+item.parent_tbl_id +"&parent_data_type="+item.parent_data_type;
             str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item.tbl_id+"'>"+
                 "<div>"+

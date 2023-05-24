@@ -143,6 +143,7 @@ function bind_review_add_event(){
         obj.rating=$('#biz_sel_review_rating').val();
         obj.comment=$('#biz_tb_review_comment').val();
         obj.customer_id=get_user().customer_id;
+        console.log(obj);
         if(!obj.name){
             show_toast_error('Please enter a name');
         }else if(!obj.rating){
