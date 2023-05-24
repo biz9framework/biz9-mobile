@@ -105,7 +105,7 @@ function set_page_event_list(data){
                 visible_str="<p class='font-12 text-center mb-0 font-10 mt-n2 color-green-dark'>"+item.visible_obj.event_status+"</p>";
             }
             str=str+"<div class='col-6'>"+
-                "<a href='event_detail.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.mid_url+"' width='150' class='mx-auto '/></a>"+
+                "<a href='event_detail.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' width='150' class='mx-auto '/></a>"+
                 "<div style='text-align:center'>"+
                 "<span class='font-10 pt-0 m-2'><i class='fa fa-eye color-blue-dark'></i> "+item.view_count +"</span>"+
                 "<span class='font-10 pt-0 m-2'><i class='fa fa-comment color-brown-dark'></i> "+item.review_count +"</span>"+
@@ -176,7 +176,7 @@ function set_page_event_detail(data){
             for(a=0;a<data.event.photos.length;a++){
                 str=str+"<div class='splide__slide'>"+
                     "<a data-gallery='gallery-2' title='"+data.event.photos[a].text+"' href='"+data.event.photos[a].photo_obj.album_url+"'>"+
-                    "<img src='"+data.event.photos[a].photo_obj.mid_url+"' class='mx-auto pb-4' style='width:200px!important;'>"+
+                    "<img src='"+data.event.photos[a].photo_obj.square_mid_url+"' class='mx-auto pb-4' style='width:200px!important;'>"+
                     "</a></div>";
             }
             //slide-show-start
@@ -296,7 +296,7 @@ function set_page_event_detail(data){
                 item = item_list[a];
                 item.text = item.text ? item.text:'';
                 str=str+"<a data-gallery='gallery-1' href='"+item.photo_obj.album_url+"' title='"+item.text+"'>"+
-                    "<img src='"+item.photo_obj.album_url+"' data-src='"+item.photo_obj.album_url+"' class='rounded-m preload-img shadow-l img-fluid' alt=''>"+
+                    "<img src='"+item.photo_obj.square_mid_url+"' data-src='"+item.photo_obj.album_url+"' class='rounded-m preload-img shadow-l img-fluid' alt=''>"+
                     "<p class=' pt-2' style='text-align:center'>"+ truncate_str(item.text, 50) +"</p>"+
                     "</a>";
             }
