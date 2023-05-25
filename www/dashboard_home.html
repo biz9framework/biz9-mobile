@@ -6,22 +6,20 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
         <title id='biz_head_title'></title>
-<!--CSS-START --!>
+        <!--CSS-START --!>
             <!--CSS-TEMPLATE-START --!>
-            <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
-            <link rel="stylesheet" type="text/css" href="styles/style.css">
-            <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
-            <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
-            <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
-            <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
-            <!--CSS-TEMPLATE-END --!>
-                        <!--EDITOR-START --!>
-                            <link href="styles/froala/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-                            <!--EDITOR-END--!>
-            <!--CSS-END--!>
-
-
-                               </head>
+                <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+                <link rel="stylesheet" type="text/css" href="styles/style.css">
+                <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+                <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+                <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+                <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+                <!--CSS-TEMPLATE-END --!>
+                    <!--EDITOR-START --!>
+                        <link href="styles/froala/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+                        <!--EDITOR-END--!>
+                            <!--CSS-END--!>
+                                </head>
                                 <body class="theme-light" data-gradient="gradient-4">
                                 <div id="preloader"><div class="spinner-border color-red-dark" role="status"></div></div>
                                 <!-- BIZ PAGE START -->
@@ -60,7 +58,8 @@
                                                 <p id='biz_lbl_page_note'>
                                                 </p>
                                                 <div class="tab-controls tabs-small tabs-rounded" data-highlight="bg-highlight">
-                                                    <a href="#" data-bs-toggle="collapse" data-bs-target="#tab-buy" class="bg-highlight no-click" aria-expanded="true">Buy</a>
+                                                    <a href="#" data-bs-toggle="collapse" data-bs-target="#tab-buy" class="bg-highlight collapsed" aria-expanded="true">Buy</a>
+                                                    <a href="#" data-bs-toggle="collapse" data-bs-target="#tab-image" class="collapsed" aria-expanded="false">Image</a>
                                                     <a href="#" data-bs-toggle="collapse" data-bs-target="#tab-banner" class="collapsed" aria-expanded="false">Banner</a>
                                                     <a href="#" data-bs-toggle="collapse" data-bs-target="#tab-popular" class="collapsed" aria-expanded="false">Popular</a>
                                                     <a href="#" data-bs-toggle="collapse" data-bs-target="#tab-category" class="collapsed" aria-expanded="false">Category</a>
@@ -118,6 +117,7 @@
                                                     <!--TAB BANNER  END--!>
                                                         <!--TAB POPULAR START--!>
                                                             <div data-bs-parent="#tab-group-2" class="collapse" id="tab-popular">
+                                                            <div class="content m-3">
                                                             <div class="pb-3"></div>
                                                             <div class="input-style has-borders no-icon mb-4" id='biz_div_popular_visible'>
                                                             <select id="biz_sel_popular_visible">
@@ -142,7 +142,10 @@
                                                             </div>
                                                             <div class="pb-3"></div>
                                                             </div>
+                                                            </div>
+
                                                             <div data-bs-parent="#tab-group-2" class="collapse" id="tab-category">
+                                                            <div class="content m-3">
                                                             <div class="pb-3"></div>
                                                             <div class="input-style has-borders no-icon mb-4" id='biz_div_category_visible'>
                                                             <select id="biz_sel_category_visible">
@@ -167,7 +170,45 @@
                                                             </div>
                                                             <div class="pb-3"></div>
                                                             </div>
+                                                            </div>
+
+                                                            <div data-bs-parent="#tab-group-2" class="collapse" id="tab-image">
+                                                                <div class="content m-3">
+                                                                    <div class="pb-3"></div>
+                                                                        <div class="input-style has-borders no-icon mb-4" id='biz_div_image_visible'>
+                                                                            <select id="biz_sel_image_visible">
+                                                                                <option value="true">True</option>
+                                                                                <option value="false">False</option>
+                                                                            </select>
+                                                                            <label for="form1ab" class="color-theme opacity-50 text-uppercase font-700 font-10">Visible</label>
+                                                                                <span><i class="fa fa-chevron-down"></i></span>
+                                                                                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                                                                                    <i class="fa fa-check disabled invalid color-red-dark"></i>
+                                                                                    <em></em>
+                                                                        </div>
+
+                                                                    <div class="pb-3"></div>
+                                                                    <div class="input-style has-borders no-icon mb-4" id='biz_div_card_image_image'>
+                                                                        <div style='text-align:center' >
+                                                                            <img id='biz_home_img' height='150px' width='150px' src='/images/no_image.png' />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="pb-3"></div>
+                                                                     <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4" id='biz_div_card_image_header'>
+                                                                        <input type="text" class="form-control" id="biz_tb_image_header">
+                                                                        <label for="form1ab" class="color-blue-dark font-11 font-700 text-uppercase">Header</label>
+                                                                        <em></em>
+                                                                    </div>
+                                                                    <div class="pb-3"></div>
+                                                                     <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4" id='biz_div_card_image_sub_note'>
+                                                                        <input type="text" class="form-control" id="biz_tb_image_sub_note">
+                                                                        <label for="form1ab" class="color-blue-dark font-11 font-700 text-uppercase">Sub NOte</label>
+                                                                        <em></em>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                             <div data-bs-parent="#tab-group-2" class="collapse show" id="tab-buy">
+                                                            <div class="content m-3">
                                                             <div class="pb-3"></div>
                                                             <div class="input-style has-borders no-icon mb-4" id='biz_div_buy_visible'>
                                                             <select id="biz_sel_buy_visible">
@@ -202,7 +243,9 @@
                                                             </div>
                                                             <div class="pb-3"></div>
                                                             </div>
-                                                            <div data-bs-parent="#tab-group-2" class="collapse" id="tab-mini">
+                                                            </div>
+                                                            <div data-bs-parent="#tab-group-2" class="collapse show" id="tab-mini">
+                                                            <div class="content m-3">
                                                             <div class="pb-3"></div>
                                                             <div class="input-style has-borders no-icon mb-4" id='biz_div_mini_visible'>
                                                             <select id="biz_sel_mini_visible">
@@ -237,7 +280,10 @@
                                                             </div>
                                                             <div class="pb-3"></div>
                                                             </div>
+                                                            </div>
+
                                                             <div data-bs-parent="#tab-group-2" class="collapse" id="tab-double">
+                                                            <div class="content m-3">
                                                             <div class="pb-3"></div>
                                                             <div class="input-style has-borders no-icon mb-4" id='biz_div_double_visible'>
                                                             <select id="biz_sel_double_visible">
@@ -272,15 +318,16 @@
                                                             </div>
                                                             <div class="pb-3"></div>
                                                             </div>
+                                                            </div>
                                                             <div class="col-4 ps-1 pe-1">
                                                             <a href="#"   id='biz_btn_update' class="btn btn-3d btn-m btn-full mb-3 rounded-xs text-uppercase font-900 shadow-s  bg-highlight"><font style="vertical-align: inherit;">Update</font></a>
                                                             </div>
                                                             </div>
                                                             </div>
                                                             <div id='div_lbl_toast'>
-                                            <div id="toast-save" class="toast toast-tiny toast-center bg-green-dark" data-delay="3000" data-autohide="true"><i class='fa fa-check me-3'></i></div>
-                                            <div id="toast-error" class="toast toast-tiny toast-center bg-red-dark" data-delay="3000" data-autohide="true"><i class='fa fa-times me-3'></i></div>
-                                        </div>
+                                                            <div id="toast-save" class="toast toast-tiny toast-center bg-green-dark" data-delay="3000" data-autohide="true"><i class='fa fa-check me-3'></i></div>
+                                                            <div id="toast-error" class="toast toast-tiny toast-center bg-red-dark" data-delay="3000" data-autohide="true"><i class='fa fa-times me-3'></i></div>
+                                                            </div>
                                                             </div>
                                                             <!-- BIZ CONTENT END -->
                                                             <div class="page-bg"><div></div></div>
@@ -300,40 +347,40 @@
                                                                     </div>
                                                                     <!-- BIZ PAGE END -->
                                                                     <!--SCRIPT-START --!>
-                                            <!--BIZ9-MOBILE-CORE-START --!>
-                                                <script type="text/javascript" src="cordova.js"></script>
-                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/jquery-3.6.3.min.js.js"></script>
-                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/pulltorefresh.js"></script>
-                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/lockr.js"></script>
-                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/froala/froala_editor.pkgd.min.js"></script>
-                                                <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-                                                <script type="text/javascript" src="scripts/jurlp.min.js"></script>
-                                                <script type="text/javascript" src="scripts/custom.js"></script>
-                                                <!--BIZ9-MOBILE-CORE-END --!>
-                                                            <!-- BIZ9-MOBILE-BIZ-CORE-START --!>
-                                                                <script type="text/javascript" src="scripts/biz9-mobile/core/utility.js"></script>
-                                                                <script type="text/javascript" src="scripts/biz9-mobile/core/base.js"></script>
-                                                                <script type="text/javascript" src="scripts/biz9-mobile/core/photo_upload.js"></script>
-                                                                <!-- BIZ9-MOBILE-BIZ-CORE-END --!>
-                                                                    <!-- BIZ9-MOBILE-BIZ-SCRIPTZ-START --!>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/config.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/about.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/contact.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/user.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/category.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/dashboard.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/blog_post.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/event.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/review.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/contact.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/gallery.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/home.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/page.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/order.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/product.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/service.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/member.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/scriptz/biz.js"></script>
-                                                                        <!-- BIZ9-MOBILE-BIZ-SCRIPTZ-END --!>
-                                                                            <!--SCRIPT-START --!>
-                                  </body>
+                                                                        <!--BIZ9-MOBILE-CORE-START --!>
+                                                                            <script type="text/javascript" src="cordova.js"></script>
+                                                                            <script type="text/javascript" src="scripts/biz9-mobile/libz/jquery-3.6.3.min.js.js"></script>
+                                                                            <script type="text/javascript" src="scripts/biz9-mobile/libz/pulltorefresh.js"></script>
+                                                                            <script type="text/javascript" src="scripts/biz9-mobile/libz/lockr.js"></script>
+                                                                            <script type="text/javascript" src="scripts/biz9-mobile/libz/froala/froala_editor.pkgd.min.js"></script>
+                                                                            <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+                                                                            <script type="text/javascript" src="scripts/jurlp.min.js"></script>
+                                                                            <script type="text/javascript" src="scripts/custom.js"></script>
+                                                                            <!--BIZ9-MOBILE-CORE-END --!>
+                                                                                <!-- BIZ9-MOBILE-BIZ-CORE-START --!>
+                                                                                    <script type="text/javascript" src="scripts/biz9-mobile/core/utility.js"></script>
+                                                                                    <script type="text/javascript" src="scripts/biz9-mobile/core/base.js"></script>
+                                                                                    <script type="text/javascript" src="scripts/biz9-mobile/core/photo_upload.js"></script>
+                                                                                    <!-- BIZ9-MOBILE-BIZ-CORE-END --!>
+                                                                                        <!-- BIZ9-MOBILE-BIZ-SCRIPTZ-START --!>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/config.js"></script>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/about.js"></script>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/contact.js"></script>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/user.js"></script>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/category.js"></script>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/dashboard.js"></script>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/blog_post.js"></script>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/event.js"></script>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/review.js"></script>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/contact.js"></script>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/gallery.js"></script>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/home.js"></script>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/page.js"></script>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/order.js"></script>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/product.js"></script>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/service.js"></script>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/member.js"></script>
+                                                                                            <script type="text/javascript" src="scripts/biz9-mobile/scriptz/biz.js"></script>
+                                                                                            <!-- BIZ9-MOBILE-BIZ-SCRIPTZ-END --!>
+                                                                                                <!--SCRIPT-START --!>
+                                                                                                    </body>
