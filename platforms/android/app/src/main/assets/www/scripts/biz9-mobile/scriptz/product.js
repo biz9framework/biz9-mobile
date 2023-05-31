@@ -208,7 +208,6 @@ function set_page_product_detail(data){
             if(data.product.note.length>5){
                 $('#biz_lbl_card_note').show();
                 $('#biz_lbl_note').html(data.product.note);
-                clean_note();
                 if($('#biz_lbl_note').html().length<3){
                     $('#biz_lbl_card_note').hide();
                 }

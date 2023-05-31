@@ -2,6 +2,7 @@
 function set_page_home(data){
     function hide_bind_cards(){
         $(".biz_lbl_banner_card").hide();
+        $("#biz_lbl_image_card").hide();
         $("#biz_lbl_popular_category_full_card").hide();
         $("#biz_lbl_popular_card").hide();
         $("#biz_lbl_double_card").hide();
@@ -18,6 +19,9 @@ function set_page_home(data){
         if(data.home.card_banner_visible=='true'){
             bind_banner_card(data);
         }
+        if(data.home.card_image_visible=='true'){
+            bind_image_card(data);
+        }
         if(data.home.card_popular_visible=='true'){
             bind_popular_card(data);
         }
@@ -30,39 +34,7 @@ function set_page_home(data){
         if(data.home.card_double_visible=='true'){
             bind_double_card(data);
         }
-        /*
-        if(data.home.home_card_2_visible=='true'){
-            if(data.home.home_card_2_type==DT_PRODUCT){
-                set_home_cart_top_type(DT_PRODUCT);
-                set_product_card_2(data);
-            }else if(data.home.home_card_2_type==DT_SERVICE){
-                set_home_cart_top_type(DT_SERVICE);
-                set_service_card_2(data);
-            }else if(data.home.home_card_2_type==DT_BLOG_POST){
-                set_home_card_blog_post_recent_list(data);
-            }
-        }
-        if(data.home.home_card_3_visible=='true'){
-            if(data.home.home_card_3_type==DT_PRODUCT){
-                set_home_cart_top_type(DT_PRODUCT);
-                set_product_card_3(data);
-            }else if(data.home.home_card_3_type==DT_SERVICE){
-                set_home_cart_top_type(DT_SERVICE);
-                set_service_card_3(data);
-            }
-        }
-        if(data.home.home_card_4_visible=='true'){
-            if(data.home.home_card_4_type==DT_PRODUCT){
-                set_home_cart_top_type(DT_PRODUCT);
-                set_category_list(data);
-            }else if(data.home.home_card_4_type==DT_SERVICE){
-                set_home_cart_top_type(DT_SERVICE);
-                set_category_list(data);
-            }
-        }
-        */
-
-    }
+           }
     function bind_events(){
         $(".biz_btn_cartadd").click(function() {
             tbl_id = $(this).attr('tbl_id');
@@ -79,6 +51,12 @@ function set_page_home(data){
                 show_service_cart_top();
             }
         });
+    }
+    function bind_image_card(data){
+        $("#biz_lbl_image_card").show();
+        $("#biz_lbl_image_card").css("background-image", "url(" + data.home.photo_obj.mid_url + ")");
+        $("#biz_lbl_image_header").html(data.home.card_image_header);
+        $("#biz_lbl_image_sub_note").html(data.home.card_image_sub_note);
     }
     function bind_banner_card(data){
         if(data.card_banner_list.length>0){
