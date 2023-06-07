@@ -31,7 +31,7 @@ function set_page_page_list(data){
 
             }
             item.sub_note=item.sub_note?(item.sub_note):'';
-            str=str+"<a href='"+url+"' class='card card-style mb-3' style='background-image:url("+item.photo_obj.square_mid_url+")' data-card-height='300'>"+
+            str=str+"<a href='"+url+"' class='card card-style mb-3' style='background-image:url("+item.photo_obj.square_mid_url+")' data-card-height='150'>"+
                 "<div class='card-center px-3'>"+
                 "<h1 class='color-white font-800 font-24'>"+item.title+"</h1>"+
                 "<p class='color-white mt-n2 mb-0 opacity-70'>"+

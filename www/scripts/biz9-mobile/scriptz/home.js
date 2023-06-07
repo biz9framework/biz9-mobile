@@ -92,7 +92,7 @@ function set_page_home(data){
                 }
                 //color_button_get_end
                 str=str+"<div class='splide__slide'>"+
-                    "<div class='card card-style' style='background-image: url("+item.photo_obj.mid_url+")' data-card-height='300'>"+
+                    "<div class='card card-style' style='background-image: url("+item.photo_obj.mid_url+")' data-card-height='150'>"+
                     "<div class='card-top'>"+
                     "<span class='badge "+color_str+" px-2 py-1 ms-2 mt-2 text-uppercase'>"+ item.category+"</span>"+
                     "</div>"+
@@ -189,7 +189,7 @@ function set_page_home(data){
                 url_category='gallery_list.html?category='+item.title+"&page_current=1";
             }
             str=str+"<div class='col-6'>"+
-                "<a href='"+url_category+"'><div class='card card-style m-0 mb-2 rounded-m' style='background-image: url("+item.photo_obj.square_mid_url+")' data-card-height='300'>"+
+                "<a href='"+url_category+"'><div class='card card-style m-0 mb-2 rounded-m' style='background-image: url("+item.photo_obj.square_mid_url+")' data-card-height='150'>"+
                 "<div class='card-bottom'><span class='badge "+color_str+"  p-2 ps-2 rounded-s'>"+item.title+"</span></div>"+
                 "</div></a>";
             if(item.last_item_create.title){
@@ -468,7 +468,7 @@ function set_page_home(data){
                 color_str=data.mobile.primary.button_color;
             }
             str=str+"<div class='col-6'>"+
-                "<a href='"+url+"_list.html?category="+item.title+"&page_current=1'><div class='card card-style m-0 mb-2 rounded-m' style='background-image: url("+item.photo_obj.mid_square_url+")' data-card-height='300'>"+
+                "<a href='"+url+"_list.html?category="+item.title+"&page_current=1'><div class='card card-style m-0 mb-2 rounded-m' style='background-image: url("+item.photo_obj.mid_square_url+")' data-card-height='150'>"+
                 "<div class='card-bottom'><span class='badge "+color_str+"  p-2 ps-2 rounded-s'>"+item.title+" ("+item.item_count+" items)</span></div>"+
                 "</div></a>";
             if(item.last_item_create.title){

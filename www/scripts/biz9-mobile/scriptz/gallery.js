@@ -9,7 +9,7 @@ function set_page_gallery_category_list(data){
         for(var a=0;a<data.category_list.length;a++){
             item = data.category_list[a];
             str=str+"<div class='card card-style'>"+
-                "<div class='card card-style rounded-0 mx-0'  style='background-image: url("+item.photo_obj.mid_url+")'  data-card-height='500'>"+
+                "<div class='card card-style rounded-0 mx-0'  style='background-image: url("+item.photo_obj.mid_url+")'  data-card-height='175'>"+
                 "<div class='card-bottom text-center'>"+
                 "<h1 class='color-white mb-n1'>"+item.title+"</h1>"+
                 "<p class='color-white opacity-60 pb-2'></p>"+
