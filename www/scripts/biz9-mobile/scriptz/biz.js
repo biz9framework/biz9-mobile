@@ -129,7 +129,7 @@ function set_left_navigation(data){
 		"</div>"+
 		"<div class='divider bg-white opacity-10 mt-4'></div>"+
 		"<p class='font-16  color-white opacity-20 text-center'>"+data.mobile.left_nav.left_nav_copyright+"</p>"+
-		"<p class='font-10  color-white opacity-30 text-center'>sys: "+BIZ9_MOBILE_VERSION+" app: "+APP_VERSION +"</p>";
+		"<p class='font-12  color-white opacity-30 text-center'>sys: "+BIZ9_MOBILE_VERSION+" app: "+APP_VERSION +"<br/><a target='_blank' href='https://"+APP_VENDOR+"' style='color:white'>"+APP_VENDOR+"</a></p>";
 	$("#biz_lbl_left_menu").html(str);
 	user=get_user();
 	//check user login
