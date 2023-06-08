@@ -1,4 +1,4 @@
-BIZ9_MOBILE_VERSION='5.5.9'
+BIZ9_MOBILE_VERSION='5.6.1'
 APP_VERSION='5.7.0';
 APP_VENDOR='fireappz.com';
 dPP_TITLE_ID='mobile-may';

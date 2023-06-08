@@ -92,7 +92,7 @@ function set_page_home(data){
                 }
                 //color_button_get_end
                 str=str+"<div class='splide__slide'>"+
-                    "<div class='card card-style' style='background-image: url("+item.photo_obj.mid_url+")' data-card-height='150'>"+
+                    "<div class='card card-style' style='background-image: url("+item.photo_obj.mid_url+")' data-card-height='275'>"+
                     "<div class='card-top'>"+
                     "<span class='badge "+color_str+" px-2 py-1 ms-2 mt-2 text-uppercase'>"+ item.category+"</span>"+
                     "</div>"+
