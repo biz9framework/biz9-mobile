@@ -32,7 +32,7 @@ function set_page_order_checkout_summary(data){
                 "<div class='stepper rounded-s mt-2 ms-3'>"+
                 "<a href='#' class='stepper-sub biz_btn_quantity_update' update_type='down' data_type='"+item.data_type+"' tbl_id='"+item.tbl_id+"'><i class='fa fa-minus color-theme opacity-40'></i></a>"+
                 "<input type='number' min='1' max='99' id='biz_tb_cart_quantity_"+item.tbl_id+"' value='"+item.quantity+"'>"+
-                "<a href='#' class='stepper-add biz_btn_quantity_update' update_type='up' data_type='"+item.data_type+"' tbl_id='"+item.tbl_id+"' tbl_id='"+item.tbl_id+"'></i></a>"+
+                "<a href='#' class='stepper-add biz_btn_quantity_update' update_type='up' data_type='"+item.data_type+"' tbl_id='"+item.tbl_id+"' tbl_id='"+item.tbl_id+"'><i class='fa fa-plus color-theme opacity-40'></i></a>"+
                 "</div>"+
                 "<h5 class='font-700 text-end float-end mt-n4 pt-1 no-click'>"+item.sub_total+"</h5>"+
                 "</div>"+
@@ -284,7 +284,6 @@ function set_page_order_checkout_submit(data){
     }
     function bind_checkout_test(){
         //test-start
-        /*
         //$('#biz_tb_checkout_email').val(get_id(999)+'_email@gmail.com');
         $('#biz_tb_checkout_email').val('bossappz6@gmail.com');
         $('#biz_tb_billing_card_number').val('4242424242424242');
@@ -299,7 +298,6 @@ function set_page_order_checkout_submit(data){
         $('#biz_tb_shipping_address').val(get_id(999)+'_Address 123 St' );
         $('#biz_tb_shipping_zip').val(get_id(99999));
         $('#biz_tb_shipping_phone').val('123-444-5544');
-        */
         //test-end
     }
 }
@@ -326,7 +324,7 @@ function init_order_cart(){
     });
 }
 function show_order_cart_top(){
-    url = "order/cart_detail/"+get_user().customer_id;
+    url = "order/cart_get/"+get_user().customer_id;
     cloud_get_url(url,{},function(data){
         w('cart_top_detail',data.cart);
         set_order_cart_top(data.cart);

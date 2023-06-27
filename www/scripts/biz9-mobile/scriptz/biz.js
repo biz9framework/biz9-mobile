@@ -160,7 +160,7 @@ function init_cart(){
 }
 function show_cart_top(){
 	$("#menu-cart").show();
-	url = "order/cart_detail/"+get_user().customer_id;
+	url = "order/cart_get/"+get_user().customer_id;
 	cloud_get_url(url,{},function(data){
 		w('cart_top_detail',data.cart);
 		set_order_cart_top(data.cart);
@@ -583,10 +583,10 @@ function get_biz_page_url(biz_page_title){
 			/*PRODUCT_END */
 			/*ORDER_START */
 		case 'order_checkout_summary':
-			url='order/cart_detail/'+get_user().customer_id;
+			url='order/cart_summary/'+get_user().customer_id;
 			break;
 		case 'order_checkout_submit':
-			url='order/cart_detail/'+get_user().customer_id;
+			url='order/cart_summary/'+get_user().customer_id;
 			break;
 		case 'order_checkout_success':
 			url='order/checkout/success/'+get_url_param('order_id');
