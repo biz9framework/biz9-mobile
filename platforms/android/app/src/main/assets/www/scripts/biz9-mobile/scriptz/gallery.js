@@ -9,15 +9,14 @@ function set_page_gallery_category_list(data){
         for(var a=0;a<data.category_list.length;a++){
             item = data.category_list[a];
             str=str+"<div class='card card-style'>"+
-                "<div class='card card-style rounded-0 mx-0'  style='background-image: url("+item.photo_obj.mid_url+")'  data-card-height='500'>"+
+                "<div class='card card-style rounded-0 mx-0'  style=' background-color:transparent; height:320px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.photo_obj.mid_url+")' >"+
                 "<div class='card-bottom text-center'>"+
-                "<h1 class='color-white mb-n1'>"+item.title+"</h1>"+
                 "<p class='color-white opacity-60 pb-2'></p>"+
                 "</div>"+
                 "<div class='card-overlay bg-gradient rounded-0'></div>"+
                 "</div>"+
                 //"<a href='gallery_list.html?category="+item.title+"&page_current=1' class='btn " +data.mobile.primary.button_color + " btn-center-m biz_btn font-700 text-uppercase btn-m under-slider-btn mb-4 rounded-xl'>View (" +item.item_count +  " items)</a>"+
-                "<a href='gallery_list.html?category="+item.title+"&page_current=1' class='btn  btn-center-m biz_btn font-700 text-uppercase btn-m under-slider-btn mb-4 rounded-xl biz_btn'>View (" +item.item_count +  " items)</a>"+
+                "<a href='gallery_list.html?category="+item.title+"&page_current=1' class='btn  btn-center-m biz_btn font-700 text-uppercase btn-m under-slider-btn mb-4 rounded-xl biz_btn' style='width:200px'>"+item.title +" (" +item.item_count +  " items)</a>"+
                 "<div class='content mt-n2 text-center'>"+
                 "<p class='boxed-text-xl mb-3'>"+
                 item.sub_note

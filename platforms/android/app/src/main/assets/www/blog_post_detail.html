@@ -55,7 +55,7 @@
                                     <!-- BIZ CONTENT START -->
                                     <div class="page-content header-clear-medium">
                                         <div class="card card-style biz_lbl_card">
-                                            <div id='biz_img_primary' href="#" class="card  mb-0" data-card-height="500"></div>
+                                            <div id='biz_img_primary' href="#" class="card  mb-0" data-card-height="350"></div>
                                             <div class="content m-3">
                                                 <div style='text-align:right;width:100%; display:none' id='biz_lbl_count_info' >
                                                     <label class="color-yellow-dark font-12 pt-1 mt-n1" id='biz_lbl_review_star_count'>
@@ -79,22 +79,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card card-style m-3 biz_lbl_card"  id='biz_lbl_card_mp3' style='display:none'>
+                                       <div class="card card-style m-3 biz_lbl_card"  id='biz_lbl_card_mp3' style='display:none'>
                                             <div class="content m-3">
                                                 <h3 id='biz_lbl_page_sub_title'>Track</h3>
-                                                <p id='biz_lbl_mp3_duration'> duration</p>
-                                                <div class="main">
-                                                    <div class="control biz_btn"></div>
+                                                <div class="container">
+                                                    <audio id="player" controls>
+                                                        <source src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3" type="audio/mp3" />
+                                                    </audio>
                                                 </div>
-                                                <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
-                                                    <defs>
-                                                    <filter id="goo">
-                                                    <fegaussianblur in="SourceGraphic" stddeviation="10" result="blur"></fegaussianblur>
-                                                    <fecolormatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -5" result="goo"></fecolormatrix>
-                                                    <feblend in="SourceGraphic" in2="goo"></feblend>
-                                                    </filter>
-                                                    </defs>
-                                                </svg>
                                             </div>
                                         </div>
                                         <!--REVIEW_CARD_START--!>
@@ -175,11 +167,14 @@
                                                             <!-- TOP MENU CART CHECKOUT END--!>
                                                                 </div>
                                                                 <!-- BIZ PAGE END -->
+                                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/mp3_script.js"></script>
+                                                                <script>
+                                                                    const player = new Plyr('#player');
+                                                                </script>
                                                                 <!--SCRIPT-START --!>
                                                                     <!--BIZ9-MOBILE-CORE-START --!>
                                                                         <script type="text/javascript" src="cordova.js"></script>
                                                                         <script type="text/javascript" src="scripts/biz9-mobile/libz/jquery-3.6.3.min.js.js"></script>
-                                                                        <script type="text/javascript" src="scripts/biz9-mobile/libz/mp3_script.js"></script>
                                                                         <script type="text/javascript" src="scripts/biz9-mobile/libz/pulltorefresh.js"></script>
                                                                         <script type="text/javascript" src="scripts/biz9-mobile/libz/lockr.js"></script>
                                                                         <script type="text/javascript" src="scripts/biz9-mobile/libz/froala/froala_editor.pkgd.min.js"></script>

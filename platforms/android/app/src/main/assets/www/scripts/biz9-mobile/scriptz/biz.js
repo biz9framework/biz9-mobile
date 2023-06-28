@@ -129,7 +129,7 @@ function set_left_navigation(data){
 		"</div>"+
 		"<div class='divider bg-white opacity-10 mt-4'></div>"+
 		"<p class='font-16  color-white opacity-20 text-center'>"+data.mobile.left_nav.left_nav_copyright+"</p>"+
-		"<p class='font-10  color-white opacity-30 text-center'>sys: "+BIZ9_MOBILE_VERSION+" app: "+APP_VERSION +"</p>";
+		"<p class='font-12  color-white opacity-30 text-center'>sys: "+BIZ9_MOBILE_VERSION+" app: "+APP_VERSION +"<br/><a target='_blank' href='https://"+APP_VENDOR+"' style='color:white'>"+APP_VENDOR+"</a></p>";
 	$("#biz_lbl_left_menu").html(str);
 	user=get_user();
 	//check user login
@@ -160,7 +160,7 @@ function init_cart(){
 }
 function show_cart_top(){
 	$("#menu-cart").show();
-	url = "order/cart_detail/"+get_user().customer_id;
+	url = "order/cart_get/"+get_user().customer_id;
 	cloud_get_url(url,{},function(data){
 		w('cart_top_detail',data.cart);
 		set_order_cart_top(data.cart);
@@ -583,10 +583,10 @@ function get_biz_page_url(biz_page_title){
 			/*PRODUCT_END */
 			/*ORDER_START */
 		case 'order_checkout_summary':
-			url='order/cart_detail/'+get_user().customer_id;
+			url='order/cart_summary/'+get_user().customer_id;
 			break;
 		case 'order_checkout_submit':
-			url='order/cart_detail/'+get_user().customer_id;
+			url='order/cart_summary/'+get_user().customer_id;
 			break;
 		case 'order_checkout_success':
 			url='order/checkout/success/'+get_url_param('order_id');

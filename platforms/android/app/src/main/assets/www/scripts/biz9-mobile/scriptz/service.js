@@ -11,17 +11,17 @@ function set_page_service_category_list(data){
         for(var a=0;a<item_list.length;a++){
             item = item_list[a];
             str=str+"<div class='splide__slide'>"+
-                "<div class='card card-style' style='background-image: url("+item.photo_obj.mid_url+")' data-card-height='cover-boxed'>"+
+                "<div class='card card-style'style=' background-color:transparent; height:320px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.photo_obj.mid_url+")' >"+
                 "<div class='card-bottom p-3'>"+
-                "<h1 class='color-white font-700 pt-3'>"+item.title+"</h1>"+
                 "<p class='color-white opacity-60'>"+
                 item.sub_note
-                +"</p>"+
-                "<a href='service_list.html?category="+item.title+"&page_current=1' class='btn btn-s font-700 text-uppercase rounded-s mb-4 biz_btn'>Browse (" + item.item_count + " items)</a>"+ "</div>"+
+              +"</p>"+
+                "<a href='service_list.html?category="+item.title+"&page_current=1' class='btn btn-s font-700 text-uppercase rounded-s mb-4 biz_btn'>"+item.title+" (" + item.item_count + " items)</a>"+
+                "</div>"+
                 "<div class='card-overlay bg-gradient'></div>"+
                 "</div>"+
                 "</div>";
-        }
+       }
         $('#biz_lbl_slideshow_list_top').html('');
         $('#biz_lbl_slideshow_list_top').html(str);
         init_slide_show('#slider_top');
@@ -44,7 +44,7 @@ function set_page_service_category_list(data){
             }
             //color_button_get_end
             str=str+"<div class='col-6'>"+
-                "<a href='service_list.html?category="+item.title+"&page_current=1'><div class='card card-style m-0 mb-2 rounded-m' style='background-image: url("+item.photo_obj.mid_url+")' data-card-height='300'>"+
+                "<a href='service_list.html?category="+item.title+"&page_current=1'><div class='card card-style m-0 mb-2 rounded-m' style=' background-color:transparent; height:150px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.photo_obj.mid_url+")' >"+
                 "<div class='card-bottom'><span class='badge "+color_str+"  p-2 ps-2 rounded-s'>"+item.title+" ("+item.item_count + " items)</span></div>"+
                 "</div></a>";
             if(item.last_item_create.title){
@@ -522,8 +522,8 @@ function set_dashboard_service_list(data){
             if (confirm("Delete?") == true) {
                 cloud_delete(data_type,tbl_id,function(data){
                     $('#biz_row_'+tbl_id).remove();
-             		set_page_note(set_page_note_remove(parseInt($('#biz_page_item_list_count').val())));
-					bind_page_list_count(parseInt($('#biz_page_item_list_count').val()));
+                    set_page_note(set_page_note_remove(parseInt($('#biz_page_item_list_count').val())));
+                    bind_page_list_count(parseInt($('#biz_page_item_list_count').val()));
                 });
             }
         });

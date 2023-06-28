@@ -11,13 +11,12 @@ function set_page_product_category_list(data){
         for(var a=0;a<item_list.length;a++){
             item = item_list[a];
             str=str+"<div class='splide__slide'>"+
-                "<div class='card card-style' style='background-image: url("+item.photo_obj.mid_url+")' data-card-height='cover-boxed'>"+
+                "<div class='card card-style'style='background-color:transparent; height:320px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.photo_obj.mid_url+")' >"+
                 "<div class='card-bottom p-3'>"+
-                "<h1 class='color-white font-700 pt-3'>"+item.title+"</h1>"+
                 "<p class='color-white opacity-60'>"+
                 item.sub_note
                 +"</p>"+
-                "<a href='product_list.html?category="+item.title+"&page_current=1' class='btn btn-s font-700 text-uppercase rounded-s mb-4 biz_btn'>Browse (" + item.item_count + " items)</a>"+
+                "<a href='product_list.html?category="+item.title+"&page_current=1' class='btn btn-s font-700 text-uppercase rounded-s mb-4 biz_btn'>"+item.title+" (" + item.item_count + " items)</a>"+
                 "</div>"+
                 "<div class='card-overlay bg-gradient'></div>"+
                 "</div>"+
@@ -45,7 +44,7 @@ function set_page_product_category_list(data){
             }
             //color_button_get_end
             str=str+"<div class='col-6'>"+
-                "<a href='product_list.html?category="+item.title+"&page_current=1'><div class='card card-style m-0 mb-2 rounded-m' style='background-image: url("+item.photo_obj.mid_url+")' data-card-height='300'>"+
+                "<a href='product_list.html?category="+item.title+"&page_current=1'><div class='card card-style m-0 mb-2 rounded-m' style=' background-color:transparent; height:150px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.photo_obj.mid_url+")' >"+
                 "<div class='card-bottom'><span class='badge "+color_str+"  p-2 ps-2 rounded-s'>"+item.title+" ("+item.item_count + " items)</span></div>"+
                 "</div></a>";
             if(item.last_item_create.title){
@@ -247,7 +246,13 @@ function set_page_product_detail(data){
         $('#biz_lbl_double_slide_show_list').html('');
         for(var a=0;a<data.card_double_list.length;a++){
             var item = data.card_double_list[a];
-            visible_str="<p class='color-red-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.product_status_short+"</p>";
+
+            if(String(item.visible_obj.product_visible_id) =='0'){
+                        visible_str="<p class='color-red-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.product_status+"</p>";
+                    }else{
+                        visible_str = "<p class='color-green-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.product_status+"</p>";
+                    }
+
             url='product_detail.html?title_url='+item.title_url;
             str=str+"<div class='splide__slide'>"+
                 "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='100' class='mx-auto'></a>"+
