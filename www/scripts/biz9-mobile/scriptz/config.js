@@ -1,9 +1,7 @@
-BIZ9_MOBILE_VERSION='5.7.1'
+BIZ9_MOBILE_VERSION='5.7.3'
 APP_VERSION='5.7.6'
-APP_VENDOR=''
-APP_TITLE_ID='mobile-may'
-dPP_TITLE_ID='mobile-203';
-dLOUD_URL='https://service.bossappz.net';
+APP_VENDOR='-'
+dPP_TITLE_ID='mobile-july'
+APP_TITLE_ID='mobile-203';
 dLOUD_URL='http://localhost:1901';
-dLOUD_URL='https://169-service.bossappz.net';
-CLOUD_URL='https://168-service.bossappz.net';
+CLOUD_URL='https://213-service.bossappz343.com';
