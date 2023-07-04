@@ -212,7 +212,7 @@ function set_page_event_detail(data){
             $('#biz_lbl_sub_note').html(data.event.sub_note);
         }
          if(data.event.note){
-            if(data.event.note.length>5){
+            if(data.event.note.length>233){
                 $('#biz_lbl_card_note').show();
                 $('#biz_lbl_note').html(data.event.note);
                 if($('#biz_lbl_note').html().length<3){

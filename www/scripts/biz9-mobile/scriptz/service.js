@@ -221,7 +221,7 @@ function set_page_service_detail(data){
             $('#biz_lbl_sub_note').html(data.service.sub_note);
         }
         if(data.service.note){
-            if(data.service.note.length>5){
+            if(data.service.note.length>233){
                 $('#biz_lbl_card_note').show();
                 $('#biz_lbl_note').html(data.service.note);
                 if($('#biz_lbl_note').html().length<3){

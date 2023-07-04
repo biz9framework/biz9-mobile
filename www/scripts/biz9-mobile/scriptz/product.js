@@ -204,7 +204,7 @@ function set_page_product_detail(data){
             $('#biz_lbl_sub_note').html(data.product.sub_note);
         }
         if(data.product.note){
-            if(data.product.note.length>5){
+            if(data.product.note.length>233){
                 $('#biz_lbl_card_note').show();
                 $('#biz_lbl_note').html(data.product.note);
                 if($('#biz_lbl_note').html().length<3){
