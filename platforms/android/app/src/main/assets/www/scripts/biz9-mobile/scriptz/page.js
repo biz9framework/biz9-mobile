@@ -60,6 +60,8 @@ function set_dashboard_page_list(data){
     }
     function bind_page_list(item_list,page_current,page_count){
         var str='';
+        var visble='str';
+        var title_type='';
         for(a=0;a<item_list.length;a++){
             item = item_list[a];
             if(String(item.visible)=='true'){
@@ -67,20 +69,25 @@ function set_dashboard_page_list(data){
             }else{
                 visible_str="<span class='color-red-dark'> <i class='fa-sharp fa-solid fa-circle-xmark'></i> </span>";
             }
-
             var category_url='';
             if(item.type==DT_EVENT){
                 category_url='event_category_list.html?page_current=1';
+                title_type='Events';
             }else if(item.type==DT_GALLERY){
                 category_url='gallery_category_list.html?page_current=1';
+                title_type='Gallery';
             }else if(item.type==DT_BLOG_POST){
                 category_url='blog_post_category_list.html?page_current=1';
+                title_type='Blog Posts';
             }else if(item.type==DT_SERVICE){
                 category_url='service_category_list.html?page_current=1';
+                title_type='Service';
             }else if(item.type==DT_PRODUCT){
                 category_url='product_category_list.html?page_current=1';
+                title_type='Product';
             }else if(item.type==DT_MEMBER){
                 category_url='member_category_list.html?page_current=1';
+                title_type='Team';
             }
             edit_str= "<a class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
                 "<i class='fa fa-gear font-14 accordion-icon'></i>"+
@@ -91,7 +98,7 @@ function set_dashboard_page_list(data){
                 "</div>"+
                 "<div class='biz_diz_list_title'><a href='dashboard_page.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b>"+item.title+"</b></p></a><div>"+
                 "</div>"+
-                "<p class='mb-0 ps-3 font-10  opacity-60'>"+item.title_type+" | " + visible_str + " " + edit_str+ " </p>"+
+                "<p class='mb-0 ps-3 font-10  opacity-60'>"+title_type+" | " + visible_str + " " + edit_str+ " </p>"+
                 "<div class='accordion ' id='accordion-"+a+"'>"+
                 "<div class=''>"+
                 "<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+

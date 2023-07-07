@@ -30,10 +30,10 @@
     "cordova-plugin-filepicker": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
-    "cordova-plugin-splashscreen": {
+    "cordova-plugin-stripe": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
-    "cordova-plugin-stripe": {
+    "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     }
   },

@@ -38,7 +38,7 @@ function set_page_event_category_list(data){
                     color=0;
                 }
                 color_str=color_list[color];
-                color=color+1;
+                color=colok+1;
             }else{
                 color_str=data.mobile.primary.button_color;
             }
@@ -212,7 +212,7 @@ function set_page_event_detail(data){
             $('#biz_lbl_sub_note').html(data.event.sub_note);
         }
          if(data.event.note){
-            if(data.event.note.length>5){
+            if(data.event.note.length>233){
                 $('#biz_lbl_card_note').show();
                 $('#biz_lbl_note').html(data.event.note);
                 if($('#biz_lbl_note').html().length<3){
@@ -255,7 +255,11 @@ function set_page_event_detail(data){
         $('#biz_lbl_double_slide_show_list').html('');
         for(var a=0;a<data.card_double_list.length;a++){
             var item = data.card_double_list[a];
-            visible_str="<p class='color-red-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
+            if(String(item.visible)=='0'){
+                    item.visible="<p class='color-red-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
+                }else{
+                    item.visible="<p class='color-green-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
+            }
             url='event_detail.html?title_url='+item.title_url;
             str=str+"<div class='splide__slide'>"+
                 "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='100' class='mx-auto'></a>"+
@@ -332,15 +336,17 @@ function set_page_event_detail(data){
             });
         });
     }
-
     function bind_double_slide_show(data){
         var str='';
         $('#biz_lbl_double_category').html(data.event.category);
         $('#biz_lbl_double_slide_show_list').html('');
         for(var a=0;a<data.card_double_list.length;a++){
             var item = data.card_double_list[a];
-            visible_str="<p class='color-red-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
-
+            if(String(item.visible_obj.event_visible_id) =='0'){
+                visible_str="<p class='color-red-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
+            }else{
+                visible_str="<p class='color-green-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
+            }
             url='event_detail.html?title_url='+item.title_url;
             str=str+"<div class='splide__slide'>"+
                 "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='100' class='mx-auto'></a>"+
