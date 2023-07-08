@@ -35,6 +35,9 @@
     },
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "io.bossappz.mobile"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "io.bossappz.mobile"
     }
   },
   "dependent_plugins": {}

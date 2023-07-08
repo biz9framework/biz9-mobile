@@ -4,5 +4,6 @@
         <item name="windowSplashScreenBackground">@color/cdv_splashscreen_background</item>
         <item name="windowSplashScreenAnimationDuration">200</item>
         <item name="postSplashScreenTheme">@style/Theme.AppCompat.NoActionBar</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/cdv_splashscreen_icon_background</item>
     </style>
 </resources>

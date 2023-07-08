@@ -51,6 +51,10 @@
             {
               "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
             }
           ],
           "/widget": [
@@ -137,6 +141,9 @@
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
     "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "io.bossappz.mobile"
+    },
+    "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     }
   },
@@ -418,6 +425,14 @@
       "clobbers": [
         "cordova.InAppBrowser.open"
       ]
+    },
+    {
+      "id": "cordova-plugin-splashscreen.SplashScreen",
+      "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+      "pluginId": "cordova-plugin-splashscreen",
+      "clobbers": [
+        "navigator.splashscreen"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -429,6 +444,7 @@
     "cordova-plugin-filechooser": "1.2.0",
     "cordova-plugin-filepicker": "1.1.6",
     "cordova-plugin-stripe": "1.5.3",
-    "cordova-plugin-inappbrowser": "5.0.0"
+    "cordova-plugin-inappbrowser": "5.0.0",
+    "cordova-plugin-splashscreen": "6.0.1"
   }
 }
