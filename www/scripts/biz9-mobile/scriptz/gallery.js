@@ -16,7 +16,7 @@ function set_page_gallery_category_list(data){
                 "<div class='card-overlay bg-gradient rounded-0'></div>"+
                 "</div>"+
                 //"<a href='gallery_list.html?category="+item.title+"&page_current=1' class='btn " +data.mobile.primary.button_color + " btn-center-m biz_btn font-700 text-uppercase btn-m under-slider-btn mb-4 rounded-xl'>View (" +item.item_count +  " items)</a>"+
-                "<a href='gallery_list.html?category="+item.title+"&page_current=1' class='btn  btn-center-m biz_btn font-700 text-uppercase btn-m under-slider-btn mb-4 rounded-xl biz_btn' style='width:200px'>"+item.title +" (" +item.item_count +  " items)</a>"+
+                "<a href='gallery_list.html?category="+item.title+"&page_current=1' class='btn btn-center-m font-700 text-uppercase btn-m under-slider-btn mb-4 rounded-xl biz_btn' style='width:200px'>"+item.title +" (" +item.item_count +  " items)</a>"+
                 "<div class='content mt-n2 text-center'>"+
                 "<p class='boxed-text-xl mb-3'>"+
                 item.sub_note
