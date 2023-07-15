@@ -45,15 +45,15 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"CordovaStripe\"><param name=\"android-package\" value=\"com.zyramedia.cordova.stripe.CordovaStripe\" /></feature>",
-              "count": 1
-            },
-            {
               "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
               "count": 1
             },
             {
               "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"CordovaStripe\"><param name=\"android-package\" value=\"com.zyramedia.cordova.stripe.CordovaStripe\" /></feature>",
               "count": 1
             }
           ],
@@ -137,13 +137,13 @@
     "cordova-plugin-filepicker": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
-    "cordova-plugin-stripe": {
-      "PACKAGE_NAME": "io.bossappz.mobile"
-    },
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
     "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "io.bossappz.mobile"
+    },
+    "cordova-plugin-stripe": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     }
   },
@@ -411,14 +411,6 @@
       ]
     },
     {
-      "id": "cordova-plugin-stripe.stripe",
-      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
-      "pluginId": "cordova-plugin-stripe",
-      "clobbers": [
-        "cordova.plugins.stripe"
-      ]
-    },
-    {
       "id": "cordova-plugin-inappbrowser.inappbrowser",
       "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
       "pluginId": "cordova-plugin-inappbrowser",
@@ -433,6 +425,14 @@
       "clobbers": [
         "navigator.splashscreen"
       ]
+    },
+    {
+      "id": "cordova-plugin-stripe.stripe",
+      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
+      "pluginId": "cordova-plugin-stripe",
+      "clobbers": [
+        "cordova.plugins.stripe"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -443,8 +443,8 @@
     "cordova-plugin-file-transfer": "2.0.0-dev",
     "cordova-plugin-filechooser": "1.2.0",
     "cordova-plugin-filepicker": "1.1.6",
-    "cordova-plugin-stripe": "1.5.3",
     "cordova-plugin-inappbrowser": "5.0.0",
-    "cordova-plugin-splashscreen": "6.0.1"
+    "cordova-plugin-splashscreen": "6.0.1",
+    "cordova-plugin-stripe": "1.5.3"
   }
 }

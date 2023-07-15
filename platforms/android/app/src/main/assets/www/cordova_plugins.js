@@ -262,14 +262,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-stripe.stripe",
-      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
-      "pluginId": "cordova-plugin-stripe",
-      "clobbers": [
-        "cordova.plugins.stripe"
-      ]
-    },
-    {
       "id": "cordova-plugin-inappbrowser.inappbrowser",
       "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
       "pluginId": "cordova-plugin-inappbrowser",
@@ -284,6 +276,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "navigator.splashscreen"
       ]
+    },
+    {
+      "id": "cordova-plugin-stripe.stripe",
+      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
+      "pluginId": "cordova-plugin-stripe",
+      "clobbers": [
+        "cordova.plugins.stripe"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -294,8 +294,8 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-file-transfer": "2.0.0-dev",
     "cordova-plugin-filechooser": "1.2.0",
     "cordova-plugin-filepicker": "1.1.6",
-    "cordova-plugin-stripe": "1.5.3",
     "cordova-plugin-inappbrowser": "5.0.0",
-    "cordova-plugin-splashscreen": "6.0.1"
+    "cordova-plugin-splashscreen": "6.0.1",
+    "cordova-plugin-stripe": "1.5.3"
   };
 });
