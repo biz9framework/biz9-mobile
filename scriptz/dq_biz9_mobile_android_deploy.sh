@@ -104,7 +104,7 @@ echo "--------------------------------------------------------------------------
 echo "${BIZ9_MOBILE_DOWNLOAD_URL}/${APP_TITLE_ID}_${APP_VERSION_NEW}.aab"
 echo "------------------------------------------------------------------------------------------"
 echo "${BIZ9_MOBILE_DOWNLOAD_URL}/${APP_TITLE_ID}_${APP_VERSION_NEW}.apk"
-#rm
+##rm
 rm -rf *.apk
 rm -rf *.apks
 rm -rf *.idsig
