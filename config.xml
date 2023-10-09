@@ -28,13 +28,13 @@
         <icon src="other/cordova/android/icons/xhdpi.png" density="xhdpi" />
         <icon src="other/cordova/android/icons/xxhdpi.png" density="xxhdpi" />
         <icon src="other/cordova/android/icons/xxxhdpi.png" density="xxxhdpi" />
-
         <preference name="AndroidWindowSplashScreenBackground" value="#000000" />
         <preference name="AndroidWindowSplashScreenIconBackgroundColor" value="#000000" />
-        <preference name="SplashScreenBackgroundColor" value="#000000" /> <!-- defaults to "#464646" -->
+        <preference name="SplashScreenBackgroundColor" value="#000000" />
+        <preference name="AndroidWindowSplashScreenBackground" value="#000000" />
         <preference name="FadeSplashScreen" value="false"/>
-        <preference name="SplashScreenWidth" value="400" /> <!-- defaults to "170" -->
-        <preference name="SplashScreenHeight" value="400" /> <!-- defaults to "200" -->
+        <preference name="SplashScreenWidth" value="400" />
+        <preference name="SplashScreenHeight" value="400" />
     </platform>
     <platform name="ios">
         <icon src="other/cordova/ios/icons/icon-60@3x.png" width="180" height="180" />
