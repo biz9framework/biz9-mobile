@@ -106,6 +106,7 @@ function upload_photo(imageURI,call) {
     cloud_sql_url=get_cloud_url("cloud/file/update_photo");
     ft.upload(imageURI, encodeURI(cloud_sql_url), uploadSuccess, fail, {});
     function fail(error) {
+        alert(error.code);
         alert("An error has occurred: Code = " + error.code);
         //alert("upload error source " + error.source);
         //alert("upload error target " + error.target);

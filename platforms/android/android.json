@@ -69,8 +69,16 @@
         "parents": {
           "/*": [
             {
-              "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-              "count": 2
+              "xml": "<uses-permission android:maxSdkVersion=\"32\" android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.READ_MEDIA_IMAGES\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.READ_MEDIA_VIDEO\" />",
+              "count": 1
             }
           ],
           "application": [
@@ -102,12 +110,6 @@
               "xml": "<activity android:name=\"com.soundcloud.android.crop.CropImageActivity\" />",
               "count": 1
             }
-          ],
-          "/manifest": [
-            {
-              "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-              "count": 1
-            }
           ]
         }
       }
@@ -129,6 +131,7 @@
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
     "cordova-plugin-file-transfer": {
+      "ANDROIDX_WEBKIT_VERSION": "1.4.0",
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
     "cordova-plugin-filechooser": {
@@ -436,11 +439,11 @@
     }
   ],
   "plugin_metadata": {
-    "cordova-plugin-camera": "6.0.1-dev",
+    "cordova-plugin-camera": "7.0.0",
     "cordova-plugin-crop": "0.3.1",
     "cordova-plugin-device": "2.1.0",
-    "cordova-plugin-file": "7.0.0",
-    "cordova-plugin-file-transfer": "2.0.0-dev",
+    "cordova-plugin-file": "8.0.0",
+    "cordova-plugin-file-transfer": "2.0.0",
     "cordova-plugin-filechooser": "1.2.0",
     "cordova-plugin-filepicker": "1.1.6",
     "cordova-plugin-inappbrowser": "5.0.0",

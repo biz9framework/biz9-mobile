@@ -287,11 +287,11 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     }
   ];
   module.exports.metadata = {
-    "cordova-plugin-camera": "6.0.1-dev",
+    "cordova-plugin-camera": "7.0.0",
     "cordova-plugin-crop": "0.3.1",
     "cordova-plugin-device": "2.1.0",
-    "cordova-plugin-file": "7.0.0",
-    "cordova-plugin-file-transfer": "2.0.0-dev",
+    "cordova-plugin-file": "8.0.0",
+    "cordova-plugin-file-transfer": "2.0.0",
     "cordova-plugin-filechooser": "1.2.0",
     "cordova-plugin-filepicker": "1.1.6",
     "cordova-plugin-inappbrowser": "5.0.0",
