@@ -17,12 +17,11 @@
     "cordova-plugin-device": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
-    "cordova-plugin-file-transfer": {
+    "cordova-plugin-file": {
       "ANDROIDX_WEBKIT_VERSION": "1.4.0",
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
-    "cordova-plugin-file": {
-      "ANDROIDX_WEBKIT_VERSION": "1.4.0",
+    "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
     "cordova-plugin-filechooser": {
