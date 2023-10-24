@@ -14,7 +14,6 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <preference name="scheme" value="app" />
     <preference name="hostname" value="localhost" />
     <preference name="InterceptRemoteRequests" value="all" />
     <edit-config target="NSPhotoLibraryUsageDescription" file="*-Info.plist" mode="merge">
@@ -38,6 +37,7 @@
         <preference name="SplashScreenHeight" value="400" />
     </platform>
     <platform name="ios">
+        <preference name="scheme" value="app" />
         <icon src="other/cordova/ios/icons/icon-60@3x.png" width="180" height="180" />
         <icon src="other/cordova/ios/icons/icon-60.png" width="60" height="60" />
         <icon src="other/cordova/ios/icons/icon-60@2x.png" width="120" height="120" />
