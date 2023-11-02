@@ -147,8 +147,7 @@ function set_page_home(data){
                     "<a href='"+url+"'><p class='ps-3 line-height-s color-theme mb-1 font-12'><b>"+item.title+"</b></p></a>"+
                     "<p class='mb-0 ps-3 font-10 pt-0'>"+truncate_str(item.sub_note,90) +"</p>"+
                     "<p class='mb-0 ps-3 font-10 pt-0 opacity-60'>"+value_field + " <a href='"+url_category+"'>"+item.category+"</a></p>"+
-                    "<span class='mb-0 ps-3 font-10 pt-0'><i class='fa fa-eye color-blue-dark'></i> "+item.view_count +"</span>"+
-                    "<span class='mb-0 ps-3 font-10 pt-0'><i class='fa fa-comment color-brown-dark'></i> "+item.review_count +"</span>"+
+                    "<span class='mb-0 ps-3 font-10 pt-0'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                     "</div>"+
                     "</div>"+
                     "<div class='divider mb-3'></div>";
@@ -229,8 +228,7 @@ function set_page_home(data){
                 str = str+"<div class='splide__slide'>"+
                     "<a href='event_detail.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='mx-auto biz_slide_image'></a>"+
                     "<div class='biz_div_stat_outer'>"+
-                    "<span class='font-10 pt-0 m-5'><i class='fa fa-eye color-blue-dark'></i> "+item.view_count +"</span>"+
-                    "<span class='font-10 pt-0 m-5'><i class='fa fa-comment color-brown-dark'></i> "+item.review_count +"</span>"+
+                    "<span class='font-10 pt-0 m-5'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                     "</div>"+
                     "<h1 class='font-600 font-18 text-center pt-2'>"+item.title+"</h1>"+
                     "<p class='font-11 opacity-50 mt-n3 mb-0 text-center'>"+truncate_str(item.sub_note,90)+"</p>"+
@@ -279,8 +277,7 @@ function set_page_home(data){
                 str = str+"<div class='splide__slide'>"+
                     "<a href='product_detail.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='mx-auto biz_slide_image'></a>"+
                     "<div class='biz_div_stat_outer'>"+
-                    "<span class='font-10 pt-0 m-5'><i class='fa fa-eye color-blue-dark'></i> "+item.view_count +"</span>"+
-                    "<span class='font-10 pt-0 m-5'><i class='fa fa-comment color-brown-dark'></i> "+item.review_count +"</span>"+
+                    "<span class='font-10 pt-0 m-5'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                     "</div>"+
                     "<h1 class='font-600 font-18 text-center pt-2'>"+item.title+"</h1>"+
                     "<p class='font-11 opacity-50 mt-n3 mb-0 text-center'>"+truncate_str(item.sub_note,90)+"</p>"+
@@ -418,8 +415,7 @@ function set_page_home(data){
                 str=str+"<div class='splide__slide'>"+
                     "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='100' class='mx-auto'></a>"+
                     "<div class='biz_div_stat_outer'>"+
-                    "<span class='font-10 pt-0 m-3'><i class='fa fa-eye color-blue-dark'></i> "+item.view_count +"</span>"+
-                    "<span class='font-10 pt-0 m-3'><i class='fa fa-comment color-brown-dark'></i> "+item.review_count +"</span>"+
+                    "<span class='font-10 pt-0 m-3'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                     "</div>"+
                     "<h5 class='text-center pt-2 mb-0'>"+item.money_obj.price+"</h5>"+
                     visible_str +
