@@ -33,7 +33,7 @@ function bind_review(item){
         }
         bind_review_add_event();
         //test start --
-        //bind_test();
+        bind_test();
         function bind_test(){
             //review and review-end
             $("#biz_tb_review_name").val(get_id(999)+'_Full Name');
@@ -143,7 +143,6 @@ function bind_review_add_event(){
         obj.rating=$('#biz_sel_review_rating').val();
         obj.comment=$('#biz_tb_review_comment').val();
         obj.customer_id=get_user().customer_id;
-        console.log(obj);
         if(!obj.name){
             show_toast_error('Please enter a name');
         }else if(!obj.rating){
@@ -151,14 +150,18 @@ function bind_review_add_event(){
         }else{
             url = "item/review_update/"+obj.parent_data_type+"/"+obj.parent_tbl_id;
             cloud_post_url(url,obj,function(data){
-                $('#biz_lbl_card_list_review').show();
-                $('#biz_lbl_list_review').prepend(set_review_list_str(data.review));
-                $('#biz_page_review_count').val(data.item.review_obj.review_list.length);
-                $('#biz_page_rating_avg').val(data.item.review_obj.rating_avg);
-                bind_review_delete_event(data.review.tbl_id);
-                bind_detail_review_count_star_str();
-                $('#biz_tb_review_name').val('');
-                $('#biz_tb_review_comment').val('');
+                    if(data.validation_message){
+                        alert(data.validation_message);
+                    }else{
+                        $('#biz_lbl_card_list_review').show();
+                        $('#biz_lbl_list_review').prepend(set_review_list_str(data.review));
+                        $('#biz_page_review_count').val(data.item.review_obj.review_list.length);
+                        $('#biz_page_rating_avg').val(data.item.review_obj.rating_avg);
+                        bind_review_delete_event(data.review.tbl_id);
+                        bind_detail_review_count_star_str();
+                        $('#biz_tb_review_name').val('');
+                        $('#biz_tb_review_comment').val('');
+                    }
             });
         }
         return false;
