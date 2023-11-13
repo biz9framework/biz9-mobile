@@ -1,8 +1,8 @@
-BIZ9_MOBILE_VERSION='6.2.5'
+BIZ9_MOBILE_VERSION='6.3.2'
 APP_VERSION='6.7.9'
 APP_VENDOR=''
 APP_TITLE_ID='mobile-november'
-dPP_TITLE_ID='mobile-203';
+//APP_TITLE_ID='mobile-234';
 CLOUD_URL='http://localhost:1901';
 dLOUD_URL='https://bossappz343.com';
 dLOUD_URL='https://168-service.bossappz.net';

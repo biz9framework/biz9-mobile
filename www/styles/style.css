@@ -5217,6 +5217,9 @@ input[type=number] {
   background-color: transparent !important;
 }
 /* Generating Color Pack*/
+.a-gear{
+    color:black;
+}
 .bg-highlight {
   background-color: #4A89DC !important;
   color: #FFF !important;
@@ -5617,6 +5620,11 @@ input[type=number] {
 .border-dark-dark {
   border-color: #434A54 !important;
 }
+.border-dark-black {
+  border-color: #000000 !important;
+}
+
+
 .gradient-dark {
   color: #FFF;
   background-image: linear-gradient(to bottom, #656D78, #434A54);
