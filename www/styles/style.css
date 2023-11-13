@@ -5917,6 +5917,54 @@ input[type=number] {
   color: #CCA64F;
 }
 
+/*Gradient 10*/
+[data-gradient=gradient-10] .page-bg,
+[data-gradient=gradient-10] .btn-gradient,
+[data-gradient=gradient-10] .footer-bar-5 strong,
+[data-gradient=gradient-10] .footer-bar-2 strong,
+[data-gradient=gradient-10] .footer-bar-4 .active-nav::after,
+[data-gradient=gradient-10] .menu-gradient, .gradient-9 {
+  background-image: linear-gradient(180deg, #FFC0CB, #FF69B4);
+}
+
+[data-gradient=gradient-10] .footer-bar-1 .active-nav i,
+[data-gradient=gradient-10] .footer-bar-1 .active-nav span,
+[data-gradient=gradient-10] .footer-bar-3 .active-nav i,
+[data-gradient=gradient-10] .footer-bar-3 .active-nav span {
+  color: #CCA64F;
+}
+
+/*Gradient 11*/
+[data-gradient=gradient-11] .page-bg,
+[data-gradient=gradient-11] .btn-gradient,
+[data-gradient=gradient-11] .footer-bar-5 strong,
+[data-gradient=gradient-11] .footer-bar-2 strong,
+[data-gradient=gradient-11] .footer-bar-4 .active-nav::after,
+[data-gradient=gradient-11] .menu-gradient, .gradient-9 {
+  background-image: linear-gradient(180deg, #808080, #000000);
+}
+[data-gradient=gradient-11] .footer-bar-1 .active-nav i,
+[data-gradient=gradient-11] .footer-bar-1 .active-nav span,
+[data-gradient=gradient-11] .footer-bar-3 .active-nav i,
+[data-gradient=gradient-11] .footer-bar-3 .active-nav span {
+  color: #CCA64F;
+}
+/*Gradient 12*/
+[data-gradient=gradient-12] .page-bg,
+[data-gradient=gradient-12] .btn-gradient,
+[data-gradient=gradient-12] .footer-bar-5 strong,
+[data-gradient=gradient-12] .footer-bar-2 strong,
+[data-gradient=gradient-12] .footer-bar-4 .active-nav::after,
+[data-gradient=gradient-12] .menu-gradient, .gradient-9 {
+  background-image: linear-gradient(180deg, #000000, #000000);
+}
+[data-gradient=gradient-12] .footer-bar-1 .active-nav i,
+[data-gradient=gradient-12] .footer-bar-1 .active-nav span,
+[data-gradient=gradient-12] .footer-bar-3 .active-nav i,
+[data-gradient=gradient-12] .footer-bar-3 .active-nav span {
+  color: #CCA64F;
+}
+
 /*Glow text*/
 @keyframes glow-red-light {
   0% {
