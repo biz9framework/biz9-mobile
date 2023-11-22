@@ -153,6 +153,12 @@ function set_page_blog_post_detail(data){
         date ="<span style='class='mt-0 font-12 opacity-90'> <i class='fa fa-clock '></i> "+data.blog_post.date_obj.date_create+" " + data.blog_post.date_obj.month_create +", " + data.blog_post.date_obj.year_create +" at "+ data.blog_post.date_obj.time_update +"</span>";
         $("#biz_lbl_author").html(date);
         }
+        if(data.blog_post.pdf_link){
+            $("#biz_div_pdf").show();
+            $("#biz_btn_pdf_link").click(function() {
+                window.location=data.blog_post.pdf_link;
+            });
+        }
         if(data.blog_post.youtube_url){
             $("#biz_lbl_card_youtube").show();
             $("#biz_lbl_youtube_link").attr('src',get_youtube_link(data.blog_post.youtube_url));
@@ -339,6 +345,7 @@ function set_dashboard_blog_post(data){
         $('#biz_tb_title').val(data.blog_post.title);
         $('#biz_tb_author').val(data.blog_post.author);
         $('#biz_tb_youtube_url').val(data.blog_post.youtube_url);
+        $('#biz_tb_pdf_link').val(data.blog_post.pdf_link);
         $('#biz_tb_mp3_filename').val(data.blog_post.mp3filename);
         $('#biz_tb_sub_note').val(data.blog_post.sub_note);
         $('#biz_sel_visible').val(data.blog_post.visible);
@@ -362,6 +369,7 @@ function set_dashboard_blog_post(data){
             obj.category=$('#biz_sel_category_list').val();
             obj.author=$('#biz_tb_author').val();
             obj.youtube_url=$('#biz_tb_youtube_url').val();
+            obj.pdf_link=$('#biz_tb_pdf_link').val();
             obj.mp3filename=$('#biz_tb_mp3_filename').val();
             obj.sub_note=$('#biz_tb_sub_note').val();
             obj.visible=$('#biz_sel_visible').val();

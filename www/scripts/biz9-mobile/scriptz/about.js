@@ -40,7 +40,6 @@ function set_dashboard_about(data){
             obj.tbl_id=$('#biz_page_tbl_id').val();
             obj.photofilename=$('#biz_page_photofilename').val();
             obj.header=$('#biz_tb_header').val();
-            obj.note=$('#biz_tb_sub_note').val();
             obj.sub_note=$('#biz_tb_sub_note').val();
             obj.note=get_item_note();
             obj.biz_list="header,sub_note";

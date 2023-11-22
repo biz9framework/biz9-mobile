@@ -19,7 +19,6 @@ function load_biz_app(){
 	const page_title=$('#biz_page_title').val();
 	var url=get_biz_page_url(page_title);
 	cloud_get_url(url,{customer_id:get_user().customer_id},function(biz_data){
-
 		//$(".page-content").hide();
 		//$("#page").hide();
 		set_app_color(biz_data.mobile.primary.app_color,biz_data.mobile.primary.app_theme);
@@ -32,7 +31,6 @@ function load_biz_app(){
 		set_page_button_color(biz_data.mobile.primary.button_color);
 		set_pull_down();
 		set_init();
-		clean_note();
 		//$("#page").show();
 	});
 }
@@ -761,10 +759,6 @@ function get_biz_page_url(biz_page_title){
 //-- INIT-START
 function set_init(){
 	init_cards();
-	clean_note();
-}
-function clean_note(){
-	 $('p[data-f-id="pbf"]').remove();//froala remove
 }
 function init_slide_show(slide_id){
 	var singleSlider = document.querySelectorAll(slide_id);
