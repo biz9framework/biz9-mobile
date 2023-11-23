@@ -121,11 +121,10 @@ function set_page_gallery_detail(data){
             str=str+"<div class='splide__slide'>"+
                 "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='100' class='mx-auto'></a>"+
                 "<div class='biz_div_stat_outer'>"+
-                "<span class='font-10 pt-0 m-3'><i class='fa fa-eye color-blue-dark'></i> "+item.view_count +"</span>"+
-                "<span class='font-10 pt-0 m-3'><i class='fa fa-comment color-brown-dark'></i> "+item.review_count +"</span>"+
+                "<span class='font-12 pt-0 m-3'><i class='fa fa-eye color-blue-dark'></i> "+item.view_count +"</span>"+
                 "</div>"+
-                "<a href='"+url+"'><h4 class='text-center font-13'>"+item.title+"</h4></a>"+
-                "<p class='text-center font-11 mb-2'>"+
+                "<a href='"+url+"'><h4 class='text-center'>"+item.title+"</h4></a>"+
+                "<p class='text-center font-12 mb-2'>"+
                 item.sub_note+
                 "</p>"+
                 "</div>";
@@ -212,8 +211,8 @@ function set_dashboard_gallery_list(data){
                 "<div>"+
                 "<a href='dashboard_gallery.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
                 "</div>"+
-                "<div class='biz_diz_list_title'><a href='dashboard_gallery.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-11'>"+item.title+"</b></p></a><div>"+
-                "<span class='mb-0 ps-3 font-11 pt-1 '><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
+                "<div class='biz_diz_list_title'><a href='dashboard_gallery.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-12'>"+item.title+"</b></p></a><div>"+
+                "<span class='mb-0 ps-3 font-10 pt-1 '><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                 "</div>"+
                 "<p class='mb-0 ps-3 font-10  opacity-60'>"+item.category+" | " + visible_str + " " + edit_str+ " </p>"+
                 "<div class='accordion ' id='accordion-"+a+"'>"+

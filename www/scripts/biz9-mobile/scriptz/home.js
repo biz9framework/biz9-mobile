@@ -94,7 +94,7 @@ function set_page_home(data){
                 str=str+"<div class='splide__slide'>"+
                     "<div style='background-color:transparent; height:180px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.photo_obj.mid_url+")' class='card card-style'>"+
                     "<div class='card-top'>"+
-                    "<span class='badge "+color_str+" px-2 py-1 ms-2 mt-2 text-uppercase'>"+ item.category+"</span>"+
+                    "<span class='badge "+color_str+" px-2 py-1 ms-2 mt-2 text-uppercase font-12'>"+ item.category+"</span>"+
                     "</div>"+
                     "<div class='card-bottom'>"+
                     "<a href='"+url+"'><h4 class='color-white px-3 mb-3'>"+ item.title+"</h4></a>"+
@@ -144,9 +144,9 @@ function set_page_home(data){
                     "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='70' class='rounded-sm'></a>"+
                     "</div>"+
                     "<div>"+
-                    "<a href='"+url+"'><p class='ps-3 line-height-s color-theme mb-1 font-12'><b>"+item.title+"</b></p></a>"+
-                    "<p class='mb-0 ps-3 font-10 pt-0'>"+truncate_str(item.sub_note,90) +"</p>"+
-                    "<p class='mb-0 ps-3 font-10 pt-0 opacity-60'>"+value_field + " <a href='"+url_category+"'>"+item.category+"</a></p>"+
+                    "<a href='"+url+"'><h4 class='ps-3 line-height-s color-theme mb-1'><b>"+item.title+"</b></h4></a>"+
+                    "<p class='mb-0 ps-3 font-12 pt-0'>"+truncate_str(item.sub_note,250) +"</p>"+
+                    "<p class='mb-0 ps-3 font-12 pt-0 opacity-60'>"+value_field + " <a href='"+url_category+"'>"+item.category+"</a></p>"+
                     "<span class='mb-0 ps-3 font-10 pt-0'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                     "</div>"+
                     "</div>"+
@@ -188,11 +188,11 @@ function set_page_home(data){
             }
             str=str+"<div class='col-6'>"+
                 "<a href='"+url_category+"'><div class='card card-style m-0 mb-2 rounded-m' style='background-color:transparent;height:150px;background-position:center center !important;background-size:contain; background-repeat:no-repeat;background-image:url("+item.photo_obj.square_mid_url+")' >"+
-                "<div class='card-bottom'><span class='badge "+color_str+"  p-2 ps-2 rounded-s'>"+item.title+"</span></div>"+
+                "<div class='card-bottom'><span class='badge "+color_str+" p-2 ps-2 rounded-s font-12'>"+item.title+"</span></div>"+
                 "</div></a>";
             if(item.last_item_create.title){
-                str=str+"<a href='"+url_category+"'><p class='line-height-s color-theme mb-1'>"+item.last_item_create.title+"</p></a>"+
-                    "<p class='mb-0 font-10 pt-1 opacity-60'><i class='fa fa-clock pe-2'></i>"+item.last_item_create.date_obj.pretty_create+"</p>";
+                str=str+"<a href='"+url_category+"'><p class='line-height-s color-theme mb-1 font-12'>"+item.last_item_create.title+"</p></a>"+
+                    "<p class='mb-0 font-12 pt-1 opacity-60'><i class='fa fa-clock pe-2 font-12'></i>"+item.last_item_create.date_obj.pretty_create+"</p>";
             }
             str=str+"</div>";
             if(a==1||a==3||a==5||a==7||a==9||a==11||a==13||a==15||a==17){
@@ -228,10 +228,10 @@ function set_page_home(data){
                 str = str+"<div class='splide__slide'>"+
                     "<a href='event_detail.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='mx-auto biz_slide_image'></a>"+
                     "<div class='biz_div_stat_outer'>"+
-                    "<span class='font-10 pt-0 m-5'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
+                    "<span class='font-12 pt-0 m-5'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                     "</div>"+
-                    "<h1 class='font-600 font-18 text-center pt-2'>"+item.title+"</h1>"+
-                    "<p class='font-11 opacity-50 mt-n3 mb-0 text-center'>"+truncate_str(item.sub_note,90)+"</p>"+
+                    "<h4 class='font-600 text-center pt-2'>"+item.title+"</h4>"+
+                    "<p class='font-12 opacity-50 mt-1 mb-0 text-center'>"+truncate_str(item.sub_note,250)+"</p>"+
                     "<p class='text-center pt-2 mb-3'>";
                 for(b=0;b<parseInt(item.rating_avg);b++){
                     str = str+"<i class='fa fa-star color-yellow-dark'></i>";
@@ -239,8 +239,8 @@ function set_page_home(data){
                 str = str+"</p>"+
                     "<div class='row mb-0 px-3'>"+
                     "<div class='col-6'>"+
-                    "<h3 class='font-18 mb-n2'>"+item.money_obj.price+"</h3>";
-                str = str+ "<p class='mb-0 mt-n1 opacity-30 font-12'><del>"+item.money_obj.old_price+"</del></p>";
+                    "<h3 class='font-18 mb-2'>"+item.money_obj.price+"</h3>";
+                str = str+ "<p class='mb-0 mt-1 opacity-30 font-12'><del>"+item.money_obj.old_price+"</del></p>";
                 str = str+"</div>"+
                     "<div class='col-6'>"+
                     "<a href='#' class='text-end d-block font-12 color-theme'><i class='fa fa-heart color-red-dark font-11'></i>Buy Now</a>"+
@@ -277,10 +277,10 @@ function set_page_home(data){
                 str = str+"<div class='splide__slide'>"+
                     "<a href='product_detail.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='mx-auto biz_slide_image'></a>"+
                     "<div class='biz_div_stat_outer'>"+
-                    "<span class='font-10 pt-0 m-5'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
+                    "<span class='font-12 pt-0 m-5'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                     "</div>"+
-                    "<h1 class='font-600 font-18 text-center pt-2'>"+item.title+"</h1>"+
-                    "<p class='font-11 opacity-50 mt-n3 mb-0 text-center'>"+truncate_str(item.sub_note,90)+"</p>"+
+                    "<h4 class='text-center pt-2'>"+item.title+"</h4>"+
+                    "<p class='font-12 opacity-50 mt-1 mb-0 text-center'>"+truncate_str(item.sub_note,250)+"</p>"+
                     "<p class='text-center pt-2 mb-3'>";
                 for(b=0;b<parseInt(item.rating_avg);b++){
                     str = str+"<i class='fa fa-star color-yellow-dark'></i>";
@@ -288,8 +288,8 @@ function set_page_home(data){
                 str = str+"</p>"+
                     "<div class='row mb-0 px-3'>"+
                     "<div class='col-6'>"+
-                    "<h3 class='font-18 mb-n2'>"+item.money_obj.price+"</h3>";
-                str = str+ "<p class='mb-0 mt-n1 opacity-30 font-12'><del>"+item.money_obj.old_price+"</del></p>";
+                    "<h3 class='font-18 mb-2'>"+item.money_obj.price+"</h3>";
+                str = str+ "<p class='mb-0 mt-1 opacity-30 font-12'><del>"+item.money_obj.old_price+"</del></p>";
                 str = str+"</div>"+
                     "<div class='col-6'>"+
                     "<a href='#' class='text-end d-block font-12 color-theme'><i class='fa fa-heart color-red-dark font-11'></i> Buy Now</a>"+
@@ -326,8 +326,11 @@ function set_page_home(data){
                 }
                 str = str+"<div class='splide__slide'>"+
                     "<a href='service_detail.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='mx-auto biz_slide_image'></a>"+
-                    "<h1 class='font-600 font-18 text-center pt-2'>"+item.title+"</h1>"+
-                    "<p class='font-11 opacity-50 mt-n3 mb-0 text-center'>"+truncate_str(item.sub_note,90)+"</p>"+
+                    "<div class='biz_div_stat_outer'>"+
+                    "<span class='font-12 pt-0 m-5'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
+                    "</div>"+
+                    "<h4 class='text-center pt-2'>"+item.title+"</h4>"+
+                    "<p class='font-12 opacity-50 mt-1 mb-0 text-center'>"+truncate_str(item.sub_note,250)+"</p>"+
                     "<p class='text-center pt-2 mb-3'>";
                 for(b=0;b<parseInt(item.rating_avg);b++){
                     str = str+"<i class='fa fa-star color-yellow-dark'></i>";
@@ -415,12 +418,12 @@ function set_page_home(data){
                 str=str+"<div class='splide__slide'>"+
                     "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='100' class='mx-auto'></a>"+
                     "<div class='biz_div_stat_outer'>"+
-                    "<span class='font-10 pt-0 m-3'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
+                    "<span class='font-12 pt-0 m-3'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                     "</div>"+
                     "<h5 class='text-center pt-2 mb-0'>"+item.money_obj.price+"</h5>"+
                     visible_str +
-                    "<a href='"+url+"'><h4 class='text-center font-13'>"+item.title+"</h4></a>"+
-                    "<p class='text-center font-11 mb-2'>"+
+                    "<a href='"+url+"'><h4 class='text-center'>"+item.title+"</h4></a>"+
+                    "<p class='text-center font-12 mb-2'>"+
                     truncate_str(item.sub_note,88)+
                     "</p>"+
                     "<p class='mb-4 mt-3 text-center'>"+
