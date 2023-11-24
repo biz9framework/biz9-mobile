@@ -108,7 +108,7 @@ function set_page_home(data){
         }
     }
     function bind_popular_card(data){
-        if(data.card_popular_list.length>0){
+       if(data.card_popular_list.length>0){
             bind_popular_list(data.card_popular_list);
             $("#biz_lbl_popular_category_full_card").show();
             $("#biz_lbl_popular_card").show();
@@ -121,24 +121,28 @@ function set_page_home(data){
                     url='blog_post_detail.html?title_url='+item.title_url;
                     url_category='blog_post_list.html?category='+item.category+"&page_current=1";
                     value_field=' ' ;
+                    date_str="<span class=' mb-0 ps-3 font-10 pt-0'>"+item.date_obj.pretty_create+"</span>";
                 }else if(item.data_type==DT_PRODUCT){
                     url='product_detail.html?title_url='+item.title_url;
                     url_category='product_list.html?category='+item.category+"&page_current=1";
                     value_field=item.money_obj.price + " | ";
+                    date_str="<span class=' mb-0 ps-3 font-10 pt-0'>"+item.date_obj.pretty_create+"</span>";
                 }else if(item.data_type==DT_EVENT){
                     url='event_detail.html?title_url='+item.title_url;
                     url_category='event_list.html?category='+item.category+"&page_current=1";
                     value_field=item.event_obj.start_date_time + " | ";
+                    date_str='';
                 }else if(item.data_type==DT_SERVICE){
                     url='service_detail.html?title_url='+item.title_url;
                     url_category='service_list.html?category='+item.category+"&page_current=1";
                     value_field=item.money_obj.price + " | ";
+                    date_str='';
                 }else if(item.data_type==DT_GALLERY){
                     url='gallery_detail.html?title_url='+item.title_url;
                     url_category='gallery_list.html?category='+item.category+"&page_current=1";
                     value_field=item.date_obj.date_create+" " + item.date_obj.month_create +", " + item.date_obj.year_create + " " + item.date_obj.time_create + " | ";
+                    date_str="<span class=' mb-0 ps-3 font-10 pt-0'>"+item.date_obj.pretty_create+"</span>";
                 }
-
                 str=str+"<div class='d-flex mb-3'>"+
                     "<div>"+
                     "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='70' class='rounded-sm'></a>"+
@@ -147,10 +151,15 @@ function set_page_home(data){
                     "<a href='"+url+"'><h4 class='ps-3 line-height-s color-theme mb-1'><b>"+item.title+"</b></h4></a>"+
                     "<p class='mb-0 ps-3 font-12 pt-0'>"+truncate_str(item.sub_note,250) +"</p>"+
                     "<p class='mb-0 ps-3 font-12 pt-0 opacity-60'>"+value_field + " <a href='"+url_category+"'>"+item.category+"</a></p>"+
-                    "<span class='mb-0 ps-3 font-10 pt-0'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
+                    date_str+"<span class='mb-0 ps-3 font-10 pt-0'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                     "</div>"+
                     "</div>"+
                     "<div class='divider mb-3'></div>";
+            }
+            if(data.home.card_popular_order=='recent'){
+                $("#biz_lbl_title_popular").html('Recent');
+            }else{
+                $("#biz_lbl_title_popular").html('Popular');
             }
             $('#biz_lbl_title_popular').show();
             $('#biz_lbl_popular_list').html('');

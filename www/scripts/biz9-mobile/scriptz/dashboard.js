@@ -34,8 +34,8 @@ function set_dashboard_home(data){
 			obj.card_banner_category=$('#biz_sel_banner_category').val();
 			obj.card_popular_visible=$('#biz_sel_popular_visible').val();
 			obj.card_popular_data_type=$('#biz_sel_popular_data_type').val();
+			obj.card_popular_order=$('#biz_sel_popular_order').val();
 			obj.card_category_visible=$('#biz_sel_category_visible').val();
-			obj.card_category_data_type=$('#biz_sel_category_data_type').val();
 			obj.card_buy_visible=$('#biz_sel_buy_visible').val();
 			obj.card_buy_data_type=$('#biz_sel_buy_data_type').val();
 			obj.card_buy_category=$('#biz_sel_buy_category').val();
@@ -47,7 +47,7 @@ function set_dashboard_home(data){
 			obj.card_image_header=$('#biz_tb_image_header').val();
 			obj.card_image_sub_note=$('#biz_tb_image_sub_note').val();
 
-			obj.biz_list="card_banner_visible,card_banner_data_type,card_banner_order,card_banner_category,card_popular_visible,card_popular_data_type,card_category_visible,card_category_data_type,card_buy_visible,card_buy_data_type,card_double_visible,card_double_data_type,card_double_category,card_image_visible,card_image_header,card_image_sub_note";
+			obj.biz_list="card_banner_visible,card_banner_data_type,card_banner_order,card_banner_category,card_popular_visible,card_popular_data_type,card_category_visible,card_category_data_type,card_buy_visible,card_buy_data_type,card_double_visible,card_double_data_type,card_double_category,card_image_visible,card_image_header,card_image_sub_note,card_popular_order";
 					cloud_update_biz(data_type,tbl_id,obj,function(data){
 					show_toast_update();
 				});
@@ -324,6 +324,9 @@ function set_dashboard_home(data){
 					hide_popular_fields();
 				}
 			});
+
+
+
 		}
 	}
 	function bind_banner(data){
