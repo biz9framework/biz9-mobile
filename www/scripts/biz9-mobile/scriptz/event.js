@@ -193,7 +193,12 @@ function set_page_event_detail(data){
         $('#biz_lbl_visible').html(data.event.visible_obj.event_status);
         $('#biz_lbl_card_visible').show();
         $('#biz_lbl_price').html(data.event.money_obj.price);
-        $('#biz_lbl_old_price').html(data.event.money_obj.old_price);
+        if(data.event.money_obj.old_price){
+            $('#biz_lbl_old_price').show();
+            $('#biz_lbl_old_price').html(data.event.money_obj.old_price);
+        }else{
+            $('#biz_lbl_old_price').hide();
+        }
         $('#biz_lbl_date').html(data.event.event_obj.start_date);
         $('#biz_lbl_time').html(data.event.event_obj.start_time);
         $('#biz_lbl_location').html(data.event.event_obj.location);

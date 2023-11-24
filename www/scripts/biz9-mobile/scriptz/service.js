@@ -206,7 +206,12 @@ function set_page_service_detail(data){
         set_page_view_count(data.service.view_count);
         $('#biz_lbl_visible').html(data.service.visible_obj.service_status);
         $('#biz_lbl_price').html(data.service.money_obj.price);
-        $('#biz_lbl_old_price').html(data.service.money_obj.old_price);
+        if(data.service.money_obj.old_price){
+            $('#biz_lbl_old_price').show();
+            $('#biz_lbl_old_price').html(data.service.money_obj.old_price);
+        }else{
+            $('#biz_lbl_old_price').hide();
+        }
         $('#biz_div_left_info').show();
         $('#biz_btn_cart_add').show();
         $('#biz_lbl_cart_datetime').show();

@@ -190,7 +190,12 @@ function set_page_product_detail(data){
         $('#biz_lbl_visible').html(data.product.visible_obj.product_status);
         $('#biz_lbl_card_visible').show();
         $('#biz_lbl_price').html(data.product.money_obj.price);
-        $('#biz_lbl_old_price').html(data.product.money_obj.old_price);
+        if(data.product.money_obj.old_price){
+            $('#biz_lbl_old_price').show();
+            $('#biz_lbl_old_price').html(data.product.money_obj.old_price);
+        }else{
+            $('#biz_lbl_old_price').hide();
+        }
         $('#biz_div_left_info').show();
         $('#biz_btn_cart_add').show();
         if(data.product.money_obj.discount && String(data.product.money_obj.discount)!='0%'){
