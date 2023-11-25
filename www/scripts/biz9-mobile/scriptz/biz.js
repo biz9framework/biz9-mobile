@@ -89,7 +89,7 @@ function set_left_navigation(data){
 	str=str+"<div class='text-center'>"+
 		"<a href='#'><img id='biz_img_navlogo' src='"+data.mobile.left_nav.photo_obj.square_mid_url+"' class='sidebar-logo' width='85'></a>"+
 		"<h1 id='biz_lbl_nav_top_header' class='text-uppercase color-white mt-3'>"+data.mobile.left_nav.left_nav_header+"</h1>"+
-		"<p id='biz_lbl_nav_top_sub_note' class='font-11 color-white opacity-50 mt-n1'>"+data.mobile.left_nav.left_nav_sub_note+"</p>"+
+		"<p id='biz_lbl_nav_top_sub_note' class='font-12 color-white opacity-50 m-3'>"+data.mobile.left_nav.left_nav_sub_note+"</p>"+
 		"</div>"+
 		"<span class='menu-divider' id='biz_lbl_nav_header'>"+data.mobile.left_nav.left_nav_bar_title+"</span>"+
 		"<div class='menu-items'>"+

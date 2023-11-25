@@ -23,9 +23,9 @@ function set_dashboard_category_list(data){
                 "<div>"+
                 "<a href='dashboard_category.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
                 "</div>"+
-                "<div class='biz_diz_list_title'><a href='dashboard_category.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-12'>"+item.title+"</b></p></a><div>"+
+                "<div class='biz_diz_list_title'><a href='dashboard_category.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-14'>"+item.title+"</b></p></a><div>"+
                 "</div>"+
-                "<p class='mb-0 ps-3 font-10  opacity-60'><b>"+item.type_title+"</b>  " + edit_str+ " </p>"+
+                "<p class='mb-0 ps-3 font-12 pt-0'>"+item.type_title+" " + edit_str+ " </p>"+
                 "<div class='accordion ' id='accordion-"+a+"'>"+
                 "<div class=''>"+
                 "<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+

@@ -11,12 +11,12 @@ function set_page_event_category_list(data){
         for(var a=0;a<data.category_list.length;a++){
             item = data.category_list[a];
             str=str+"<div class='splide__slide'>"+
-                "<div class='card card-style'style='background-color:transparent; height:320px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.photo_obj.mid_url+")' >"+
+                "<div class='card card-style'style='background-color:transparent; height:320px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.last_item_create.photo_obj.mid_url+")' >"+
                 "<div class='card-bottom p-1'>"+
                 "<p class='color-white opacity-60 font-12'>"+
                 item.sub_note
                 +"</p>"+
-                "<a href='event_list.html?category="+item.title+"&page_current=1' class='btn btn-s font-700 text-uppercase rounded-s mb-4 biz_btn'>"+item.title+" (" + item.item_count + " items)</a>"+
+                "<a href='event_list.html?category="+item.title+"&page_current=1' class='btn btn-s font-12 text-uppercase rounded-s mb-4 biz_btn'>"+item.title+" (" + item.item_count + " items)</a>"+
                 "</div>"+
                 "<div class='card-overlay bg-gradient'></div>"+
                 "</div>"+
@@ -45,12 +45,8 @@ function set_page_event_category_list(data){
             //color_button_get_end
             str=str+"<div class='col-6'>"+
                 "<a href='event_list.html?category="+item.title+"&page_current=1'><div class='card card-style m-0 mb-2 rounded-m' style='background-color:transparent;height:150px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.photo_obj.mid_url+")' >"+
-                "<div class='card-bottom'><span class='badge "+color_str+" p-2 ps-2 rounded-s'>"+item.title+" ("+item.item_count + " items)</span></div>"+
+                "<div class='card-bottom'><span class='badge "+color_str+" p-2 ps-2 font-12 rounded-s'>"+item.title+" ("+item.item_count + " items)</span></div>"+
                 "</div></a>";
-            if(item.last_item_create.title){
-                str=str+"<a href='event_list.html?category="+item.title+"&page_current=1'><p class='line-height-s font-12 color-theme mb-1'>"+item.last_item_create.title+"</p></a>"+
-                    "<p class='mb-0 font-12 pt-1 opacity-60'><i class='fa fa-clock pe-2'></i>"+item.last_item_create.date_obj.pretty_create+"</p>";
-            }
             str=str+"</div>";
             if(a==1||a==3||a==5||a==7||a==9||a==11||a==13||a==15||a==17){
                 str = str+"<div class='w-100 mb-3'></div>";
@@ -70,9 +66,10 @@ function set_page_event_category_list(data){
                 "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='70' class='rounded-sm'></a>"+
                 "</div>"+
                 "<div>"+
-                "<a href='"+url+"'><h4 class='ps-3 line-height-s color-theme mb-1'><b>"+item.title+"</b></h4></a>"+
+                "<a href='"+url+"'><h4 class='ps-3 line-height-s color-theme mb-1'>"+item.title+"</h4></a>"+
+                "<h7 class='ps-3 line-height-s color-theme mb-1 mt-2'>"+item.event_obj.start_date+"</h7>"+
                 "<p class='mb-0 ps-3 font-12 pt-0'>"+item.sub_note +"</p>"+
-                "<p class='mb-0 ps-3 font-12 pt-0 opacity-60'>"+item.event_obj.start_date+ " at " + item.event_obj.start_time+  " | <a href='#'>"+item.category+"</a></p>"+
+                "<p class='mb-0 ps-3 font-12 pt-0 opacity-60'>"+" @ " + item.event_obj.start_time+  " | <a href='event_list.html?category="+item.category+"&page_current=1'>"+item.category+"</a></p>"+
                 "<span class='mb-0 ps-3 font-12 pt-0'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                 "</div>"+
                 "</div>"+
@@ -98,22 +95,22 @@ function set_page_event_list(data){
         for(a=0;a<item_list.length;a++){
             item = item_list[a];
             if(String(item.visible_obj.event_visible_id) =='0'){
-                visible_str="<p class='font-12 text-center mb-0 font-10 mt-n2 color-red'>"+item.visible_obj.event_status+"</p>";
+                visible_str="<p class='font-12 text-center mb-0 font-12 mt-n2 color-red'>"+item.visible_obj.event_status+"</p>";
             }else{
-                visible_str="<p class='font-12 text-center mb-0 font-10 mt-n2 color-green-dark'>"+item.visible_obj.event_status+"</p>";
+                visible_str="<p class='font-12 text-center mb-0 font-12 mt-n2 color-green-dark'>"+item.visible_obj.event_status+"</p>";
             }
             str=str+"<div class='col-6'>"+
                 "<a href='event_detail.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' width='150' class='mx-auto '/></a>"+
                 "<div style='text-align:center'>"+
-                "<span class='font-10 pt-0 m-2'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
+                "<span class='font-12 pt-0 m-2'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                 "</div>"+
                 "<h2 class='text-center pt-2 mb-0'>"+item.money_obj.price+"</h2>"+
                 visible_str+
                 "<h4 class='text-center pt-2'>"+item.title+"</h4>"+
+                "<h6 class='text-center pt-1'>"+item.event_obj.start_date+"</h6>"+
                 "<p class='text-center font-12 mb-2'>"+
                 item.sub_note+
                 "</p>"+
-                "<p class='text-center'>"+item.event_obj.start_date+"<br/>"+item.event_obj.start_time+"</p>"+
                 "<p class='mb-4 mt-3 text-center'>"+
                 "<a  id='biz_btn_cart_add_"+item.tbl_id+"' tbl_id='"+item.tbl_id+"'  data_type='"+item.data_type+"' href='#' class='icon me-2 icon-s bg-white border border-gray-light rounded-s biz_btn_cart_add'><i class='fa fa-shopping-cart color-black font-12'></i></a>"+
                 "<a href='#' class='icon icon-s bg-white border border-gray-light rounded-s'><i class='fa fa-heart color-red-dark font-12'></i></a>"+
@@ -259,15 +256,15 @@ function set_page_event_detail(data){
         for(var a=0;a<data.card_double_list.length;a++){
             var item = data.card_double_list[a];
             if(String(item.visible)=='0'){
-                    item.visible="<p class='color-red-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
+                    item.visible="<p class='color-red-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
                 }else{
-                    item.visible="<p class='color-green-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
+                    item.visible="<p class='color-green-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
             }
             url='event_detail.html?title_url='+item.title_url;
             str=str+"<div class='splide__slide'>"+
                 "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='100' class='mx-auto'></a>"+
                 "<div class='biz_div_stat_outer'>"+
-                "<span class='font-10 pt-0 m-3'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
+                "<span class='font-12 pt-0 m-3'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                 "</div>"+
                 "<h5 class='text-center pt-2 mb-0'>"+item.money_obj.price+"</h5>"+
                 visible_str +
@@ -345,20 +342,20 @@ function set_page_event_detail(data){
         for(var a=0;a<data.card_double_list.length;a++){
             var item = data.card_double_list[a];
             if(String(item.visible_obj.event_visible_id) =='0'){
-                visible_str="<p class='color-red-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
+                visible_str="<p class='color-red-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
             }else{
-                visible_str="<p class='color-green-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
+                visible_str="<p class='color-green-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
             }
             url='event_detail.html?title_url='+item.title_url;
             str=str+"<div class='splide__slide'>"+
                 "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='100' class='mx-auto'></a>"+
                 "<div class='biz_div_stat_outer'>"+
-                "<span class='font-10 pt-0 m-3'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
+                "<span class='font-12 pt-0 m-3'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                 "</div>"+
                 "<h5 class='text-center pt-2 mb-0'>"+item.money_obj.price+"</h5>"+
                 visible_str +
                 "<a href='"+url+"'><h4 class='text-center'>"+item.title+"</h4></a>"+
-                "<p class='text-center font-12 mb-2'>"+
+                "<p class='text-center font-12 m-3'>"+
                 item.sub_note+
                 "</p>"+
                 "<p class='mb-4 mt-3 text-center'>"+
@@ -414,10 +411,10 @@ function set_dashboard_event_list(data){
                 "<div>"+
                 "<a href='dashboard_event.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
                 "</div>"+
-                "<div class='biz_diz_list_title'><a href='dashboard_event.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-11'>"+item.title+"</b></p></a><div>"+
-                "<span class='mb-0 ps-3 font-11 pt-1 '><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
+                "<div class='biz_diz_list_title'><a href='dashboard_event.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-14'>"+item.title+"</b></p></a><div>"+
+                "<span class='mb-0 ps-3 font-12 pt-1'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                 "</div>"+
-                "<p class='mb-0 ps-3 font-10  opacity-60'><b>"+item.money_obj.price+"</b> | "  +item.category+" | " + visible_str + " " + edit_str+ " </p>"+
+                "<p class='mb-0 ps-3 font-12  opacity-60'><b>"+item.money_obj.price+"</b> | "  +item.category+" | " + visible_str + " " + edit_str+ " </p>"+
                 "<div class='accordion ' id='accordion-"+a+"'>"+
                 "<div class=''>"+
                 "<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+

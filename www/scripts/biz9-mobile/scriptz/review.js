@@ -90,11 +90,11 @@ function set_review_list_str(review){
         "</div>"+
         "<div>"+
         "<h6 class='mb-0 mt-1 text-end'>"+review.customer_name+"</h6>"+
-        "<p class='font-10 mb-0 mt-n2 opacity-40 text-end'>"+review_date + "</p>"+
-        "<p class='font-8 mb-0 mt-n3 opacity-40 text-end'>"+review_time + "</p>"+
+        "<p class='font-12 mb-0 mt-n2 opacity-40 text-end'>"+review_date + "</p>"+
+        "<p class='font-10 mb-0 mt-n3 opacity-40 text-end'>"+review_time + "</p>"+
         "</div>"+
         "</div>"+
-        "<p class='mt-3'>"
+        "<p class='mt-3 font-12'>"
         +review.customer_comment+
         "</p>";
     if(get_user().customer_id==review.customer_id){

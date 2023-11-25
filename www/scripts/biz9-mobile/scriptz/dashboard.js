@@ -36,6 +36,7 @@ function set_dashboard_home(data){
 			obj.card_popular_data_type=$('#biz_sel_popular_data_type').val();
 			obj.card_popular_order=$('#biz_sel_popular_order').val();
 			obj.card_category_visible=$('#biz_sel_category_visible').val();
+			obj.card_category_data_type=$('#biz_sel_category_data_type').val();
 			obj.card_buy_visible=$('#biz_sel_buy_visible').val();
 			obj.card_buy_data_type=$('#biz_sel_buy_data_type').val();
 			obj.card_buy_category=$('#biz_sel_buy_category').val();
@@ -632,12 +633,12 @@ function set_dashboard_sub_item_list(data){
 			item_edit_url ='dashboard_sub_item.html?tbl_id='+item.tbl_id+'&data_type='+item.data_type+'&parent_data_type='+item.parent_data_type+'&parent_tbl_id='+item.parent_tbl_id;
 			item_sub_list_edit_url ='dashboard_sub_item_list.html?tbl_id='+item.tbl_id+'&data_type='+item.data_type+'&parent_data_type='+item.data_type+'&parent_tbl_id='+item.tbl_id;
             edit_str= "<a class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
-                "<i class='fa fa-gear font-10 accordion-icon a-gear'></i>"+
+                "<i class='fa fa-gear font-12 accordion-icon a-gear'></i>"+
                 "</a>";
             str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item.tbl_id+"'>"+
                 "<div class='biz_diz_list_title'><a href='"+item_edit_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b>"+item.title+"</b></p></a><div>"+
                 "</div>"+
-              "<p class='mb-0 ps-3 font-10  opacity-60'>"+get_money(item.price)+ edit_str+ " </p>"+
+              "<p class='mb-0 ps-3 font-12  opacity-60'>"+get_money(item.price)+ edit_str+ " </p>"+
                   "<div class='accordion ' id='accordion-"+a+"'>"+
                 "<div class=''>"+
                 "<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+
@@ -821,7 +822,7 @@ function set_dashboard_photo_list(data){
                 "</div>"+
                 "<div class='biz_diz_list_title'><a href='"+edit_url+"'><p class='ps-3 line-height-s color-theme mb-1 font-11'>"+item.text+"</p></a><div>"+
                 "</div>"+
-                "<p class='mb-0 ps-3 font-10  opacity-60'>"+item.date_obj.full_date_create + " " + item.date_obj.time_create + edit_str+ " </p>"+
+                "<p class='mb-0 ps-3 font-12  opacity-60'>"+item.date_obj.full_date_create + " " + item.date_obj.time_create + edit_str+ " </p>"+
                 "<div class='accordion ' id='accordion-"+a+"'>"+
                 "<div class=''>"+
                 "<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+

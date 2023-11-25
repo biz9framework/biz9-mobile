@@ -121,12 +121,12 @@ function set_page_home(data){
                     url='blog_post_detail.html?title_url='+item.title_url;
                     url_category='blog_post_list.html?category='+item.category+"&page_current=1";
                     value_field=' ' ;
-                    date_str="<span class=' mb-0 ps-3 font-10 pt-0'>"+item.date_obj.pretty_create+"</span>";
+                    date_str="<span class=' mb-0 ps-3 font-12 pt-0'>"+item.date_obj.pretty_create+"</span>";
                 }else if(item.data_type==DT_PRODUCT){
                     url='product_detail.html?title_url='+item.title_url;
                     url_category='product_list.html?category='+item.category+"&page_current=1";
                     value_field=item.money_obj.price + " | ";
-                    date_str="<span class=' mb-0 ps-3 font-10 pt-0'>"+item.date_obj.pretty_create+"</span>";
+                    date_str="<span class=' mb-0 ps-3 font-12 pt-0'>"+item.date_obj.pretty_create+"</span>";
                 }else if(item.data_type==DT_EVENT){
                     url='event_detail.html?title_url='+item.title_url;
                     url_category='event_list.html?category='+item.category+"&page_current=1";
@@ -141,17 +141,17 @@ function set_page_home(data){
                     url='gallery_detail.html?title_url='+item.title_url;
                     url_category='gallery_list.html?category='+item.category+"&page_current=1";
                     value_field=item.date_obj.date_create+" " + item.date_obj.month_create +", " + item.date_obj.year_create + " " + item.date_obj.time_create + " | ";
-                    date_str="<span class=' mb-0 ps-3 font-10 pt-0'>"+item.date_obj.pretty_create+"</span>";
+                    date_str="<span class=' mb-0 ps-3 font-12 pt-0'>"+item.date_obj.pretty_create+"</span>";
                 }
                 str=str+"<div class='d-flex mb-3'>"+
                     "<div>"+
                     "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='70' class='rounded-sm'></a>"+
                     "</div>"+
                     "<div>"+
-                    "<a href='"+url+"'><h4 class='ps-3 line-height-s color-theme mb-1'><b>"+item.title+"</b></h4></a>"+
+                    "<a href='"+url+"'><h4 class='ps-3 line-height-s color-theme mb-1'>"+item.title+"</h4></a>"+
                     "<p class='mb-0 ps-3 font-12 pt-0'>"+truncate_str(item.sub_note,250) +"</p>"+
                     "<p class='mb-0 ps-3 font-12 pt-0 opacity-60'>"+value_field + " <a href='"+url_category+"'>"+item.category+"</a></p>"+
-                    date_str+"<span class='mb-0 ps-3 font-10 pt-0'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
+                    date_str+"<span class='mb-0 ps-3 font-12 pt-0'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                     "</div>"+
                     "</div>"+
                     "<div class='divider mb-3'></div>";
@@ -198,12 +198,7 @@ function set_page_home(data){
             str=str+"<div class='col-6'>"+
                 "<a href='"+url_category+"'><div class='card card-style m-0 mb-2 rounded-m' style='background-color:transparent;height:150px;background-position:center center !important;background-size:contain; background-repeat:no-repeat;background-image:url("+item.photo_obj.square_mid_url+")' >"+
                 "<div class='card-bottom'><span class='badge "+color_str+" p-2 ps-2 rounded-s font-12'>"+item.title+"</span></div>"+
-                "</div></a>";
-            if(item.last_item_create.title){
-                str=str+"<a href='"+url_category+"'><p class='line-height-s color-theme mb-1 font-12'>"+item.last_item_create.title+"</p></a>"+
-                    "<p class='mb-0 font-12 pt-1 opacity-60'><i class='fa fa-clock pe-2 font-12'></i>"+item.last_item_create.date_obj.pretty_create+"</p>";
-            }
-            str=str+"</div>";
+                "</div></a></div>";
             if(a==1||a==3||a==5||a==7||a==9||a==11||a==13||a==15||a==17){
                 str = str+"<div class='w-100 mb-3'></div>";
             }
@@ -230,9 +225,9 @@ function set_page_home(data){
             for(var a=0;a<data.card_buy_list.length;a++){
                 var item = data.card_buy_list[a];
                 if(String(item.visible)=='0'){
-                    item.visible="<span class='color-red-dark font-10 mt-n2 text-end d-block'>"+item.visible_obj.event_status+"</span>";
+                    item.visible="<span class='color-red-dark font-12 mt-n2 text-end d-block'>"+item.visible_obj.event_status+"</span>";
                 }else{
-                    item.visible="<span class='color-green-dark font-10 mt-n2 text-end d-block'>"+item.visible_obj.event_status+"</span>";
+                    item.visible="<span class='color-green-dark font-12 mt-n2 text-end d-block'>"+item.visible_obj.event_status+"</span>";
                 }
                 str = str+"<div class='splide__slide'>"+
                     "<a href='event_detail.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='mx-auto biz_slide_image'></a>"+
@@ -240,6 +235,7 @@ function set_page_home(data){
                     "<span class='font-12 pt-0 m-5'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                     "</div>"+
                     "<h4 class='font-600 text-center pt-2'>"+item.title+"</h4>"+
+                    "<h6 class='font-600 text-center pt-1'>"+item.event_obj.start_date+"</h6>"+
                     "<p class='font-12 opacity-50 mt-1 mb-0 text-center'>"+truncate_str(item.sub_note,250)+"</p>"+
                     "<p class='text-center pt-2 mb-3'>";
                 for(b=0;b<parseInt(item.rating_avg);b++){
@@ -252,7 +248,7 @@ function set_page_home(data){
                 str = str+ "<p class='mb-0 mt-1 opacity-30 font-12'><del>"+item.money_obj.old_price+"</del></p>";
                 str = str+"</div>"+
                     "<div class='col-6'>"+
-                    "<a href='#' class='text-end d-block font-12 color-theme'><i class='fa fa-heart color-red-dark font-11'></i>Buy Now</a>"+
+                    "<a href='#' class='text-end d-block font-12 color-theme'><i class='fa fa-heart color-red-dark font-12'></i>Buy Now</a>"+
                     item.visible+
                     "</div>"+
                     "</div>"+
@@ -279,9 +275,9 @@ function set_page_home(data){
             for(var a=0;a<data.card_buy_list.length;a++){
                 var item = data.card_buy_list[a];
                 if(String(item.visible)=='0'){
-                    item.visible="<span class='color-red-dark font-10 mt-n2 text-end d-block'>"+item.visible_obj.product_status+"</span>";
+                    item.visible="<span class='color-red-dark font-12 mt-n2 text-end d-block'>"+item.visible_obj.product_status+"</span>";
                 }else{
-                    item.visible="<span class='color-green-dark font-10 mt-n2 text-end d-block'>"+item.visible_obj.product_status+"</span>";
+                    item.visible="<span class='color-green-dark font-12 mt-n2 text-end d-block'>"+item.visible_obj.product_status+"</span>";
                 }
                 str = str+"<div class='splide__slide'>"+
                     "<a href='product_detail.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='mx-auto biz_slide_image'></a>"+
@@ -289,7 +285,7 @@ function set_page_home(data){
                     "<span class='font-12 pt-0 m-5'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                     "</div>"+
                     "<h4 class='text-center pt-2'>"+item.title+"</h4>"+
-                    "<p class='font-12 opacity-50 mt-1 mb-0 text-center'>"+truncate_str(item.sub_note,250)+"</p>"+
+                    "<p class='mb-0 ps-3 font-12 pt-0 text-center'>"+truncate_str(item.sub_note,250)+"</p>"+
                     "<p class='text-center pt-2 mb-3'>";
                 for(b=0;b<parseInt(item.rating_avg);b++){
                     str = str+"<i class='fa fa-star color-yellow-dark'></i>";
@@ -301,7 +297,7 @@ function set_page_home(data){
                 str = str+ "<p class='mb-0 mt-1 opacity-30 font-12'><del>"+item.money_obj.old_price+"</del></p>";
                 str = str+"</div>"+
                     "<div class='col-6'>"+
-                    "<a href='#' class='text-end d-block font-12 color-theme'><i class='fa fa-heart color-red-dark font-11'></i> Buy Now</a>"+
+                    "<a href='#' class='text-end d-block font-12 color-theme'><i class='fa fa-heart color-red-dark font-12'></i> Buy Now</a>"+
                     item.visible+
                     "</div>"+
                     "</div>"+
@@ -329,9 +325,9 @@ function set_page_home(data){
             for(var a=0;a<data.card_buy_list.length;a++){
                 var item = data.card_buy_list[a];
                 if(item.visible=='0'){
-                    item.visible="<span class='color-red-dark font-10 mt-n2 text-end d-block'>"+item.visible_obj.service_status+"</span>";
+                    item.visible="<span class='color-red-dark font-12 mt-n2 text-end d-block'>"+item.visible_obj.service_status+"</span>";
                 }else{
-                    item.visible="<span class='color-green-dark font-10 mt-n2 text-end d-block'>"+item.visible_obj.service_status+"</span>";
+                    item.visible="<span class='color-green-dark font-12 mt-n2 text-end d-block'>"+item.visible_obj.service_status+"</span>";
                 }
                 str = str+"<div class='splide__slide'>"+
                     "<a href='service_detail.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='mx-auto biz_slide_image'></a>"+
@@ -351,7 +347,7 @@ function set_page_home(data){
                 str = str+ "<p class='mb-0 mt-n1 opacity-30 font-12'><del>"+item.money_obj.old_price+"</del></p>";
                 str = str+"</div>"+
                     "<div class='col-6'>"+
-                    "<a href='#' class='text-end d-block font-12 color-theme'><i class='fa fa-heart color-red-dark font-11'></i> Book Now</a>"+
+                    "<a href='#' class='text-end d-block font-12 color-theme'><i class='fa fa-heart color-red-dark font-12'></i> Book Now</a>"+
                     item.visible+
                     "</div>"+
                     "</div>"+
@@ -398,21 +394,21 @@ function set_page_home(data){
                 if(data.home.card_double_data_type==DT_PRODUCT){
                     console.log(item.visible_obj);
                     if(String(item.visible_obj.product_visible_id) =='0'){
-                        visible_str="<p class='color-red-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.product_status+"</p>";
+                        visible_str="<p class='color-red-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.product_status+"</p>";
                     }else{
-                        visible_str = "<p class='color-green-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.product_status+"</p>";
+                        visible_str = "<p class='color-green-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.product_status+"</p>";
                     }
                 }else if(data.home.card_double_data_type==DT_SERVICE){
                     if(String(item.visible_obj.service_visible_id) =='0'){
-                        visible_str="<p class='color-red-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.service_status_short+"</p>";
+                        visible_str="<p class='color-red-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.service_status_short+"</p>";
                     }else{
-                        visible_str = "<p class='color-green-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.service_status_short+"</p>";
+                        visible_str = "<p class='color-green-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.service_status_short+"</p>";
                     }
                 }else if(data.home.card_double_data_type==DT_EVENT){
                     if(String(item.visible_obj.event_visible_id) =='0'){
-                        visible_str="<p class='color-red-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
+                        visible_str="<p class='color-red-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
                     }else{
-                        visible_str = "<p class='color-green-dark font-12 text-center mb-0 font-10 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
+                        visible_str = "<p class='color-green-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
                     }
                 }
                 if(item.data_type==DT_BLOG_POST){
@@ -432,7 +428,7 @@ function set_page_home(data){
                     "<h5 class='text-center pt-2 mb-0'>"+item.money_obj.price+"</h5>"+
                     visible_str +
                     "<a href='"+url+"'><h4 class='text-center'>"+item.title+"</h4></a>"+
-                    "<p class='text-center font-12 mb-2'>"+
+                    "<p class='text-center ps-3 font-12 pt-0 m-2'>"+
                     truncate_str(item.sub_note,88)+
                     "</p>"+
                     "<p class='mb-4 mt-3 text-center'>"+
