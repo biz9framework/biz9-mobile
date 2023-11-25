@@ -143,6 +143,9 @@ function set_page_home(data){
                     value_field=item.date_obj.date_create+" " + item.date_obj.month_create +", " + item.date_obj.year_create + " " + item.date_obj.time_create + " | ";
                     date_str="<span class=' mb-0 ps-3 font-12 pt-0'>"+item.date_obj.pretty_create+"</span>";
                 }
+                if(!item.sub_note){
+                    item.sub_note='';
+                }
                 str=str+"<div class='d-flex mb-3'>"+
                     "<div>"+
                     "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='70' class='rounded-sm'></a>"+
@@ -228,6 +231,9 @@ function set_page_home(data){
                     item.visible="<span class='color-red-dark font-12 mt-n2 text-end d-block'>"+item.visible_obj.event_status+"</span>";
                 }else{
                     item.visible="<span class='color-green-dark font-12 mt-n2 text-end d-block'>"+item.visible_obj.event_status+"</span>";
+                }
+                if(!item.sub_note){
+                    item.sub_note='';
                 }
                 str = str+"<div class='splide__slide'>"+
                     "<a href='event_detail.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='mx-auto biz_slide_image'></a>"+
@@ -329,6 +335,9 @@ function set_page_home(data){
                 }else{
                     item.visible="<span class='color-green-dark font-12 mt-n2 text-end d-block'>"+item.visible_obj.service_status+"</span>";
                 }
+                if(!item.sub_note){
+                    item.sub_note='';
+                }
                 str = str+"<div class='splide__slide'>"+
                     "<a href='service_detail.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='mx-auto biz_slide_image'></a>"+
                     "<div class='biz_div_stat_outer'>"+
@@ -419,6 +428,9 @@ function set_page_home(data){
                     url='event_detail.html?title_url='+item.title_url;
                 }else if(item.data_type==DT_SERVICE){
                     url='service_detail.html?title_url='+item.title_url;
+                }
+                if(!item.sub_note){
+                    item.sub_note='';
                 }
                 str=str+"<div class='splide__slide'>"+
                     "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='100' class='mx-auto'></a>"+

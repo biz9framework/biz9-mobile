@@ -92,6 +92,9 @@ function set_page_blog_post_list(data){
         for(var a=0;a<item_list.length;a++){
             item=item_list[a];
             date_str="<span class=' mb-0 ps-3 font-12 pt-0'>"+item.date_obj.pretty_create+"</span>";
+            if(item.sub_note){
+                item.sub_note='';
+            }
             str =str+"<div class='d-flex mb-3'>"+
                 "<div>"+
                 "<a href='blog_post_detail.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' width='70' class='rounded-sm'></a>"+
