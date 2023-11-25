@@ -13,10 +13,7 @@ function set_page_service_category_list(data){
             str=str+"<div class='splide__slide'>"+
                 "<div class='card card-style'style=' background-color:transparent; height:320px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.last_item_create.photo_obj.mid_url+")' >"+
                 "<div class='card-bottom p-3'>"+
-                "<p class='color-white opacity-60 font-12'>"+
-                item.sub_note
-                +"</p>"+
-                "<a href='service_list.html?category="+item.title+"&page_current=1' class='btn btn-s font-12 text-uppercase rounded-s mb-4 biz_btn'>"+item.title+" (" + item.item_count + " items)</a>"+
+                "<a href='service_list.html?category="+item.title+"&page_current=1' class='btn btn-s rounded-s mb-4 biz_btn'><h4>"+item.title+" (" + item.item_count + ")</h4></a>"+
                 "</div>"+
                 "<div class='card-overlay bg-gradient'></div>"+
                 "</div>"+
@@ -45,7 +42,7 @@ function set_page_service_category_list(data){
             //color_button_get_end
             str=str+"<div class='col-6'>"+
                 "<a href='service_list.html?category="+item.title+"&page_current=1'><div class='card card-style m-0 mb-2 rounded-m' style=' background-color:transparent; height:150px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.photo_obj.mid_url+")' >"+
-                "<div class='card-bottom'><span class='badge "+color_str+" p-2 ps-2 font-12 rounded-s'>"+item.title+" ("+item.item_count + " items)</span></div>"+
+                "<div class='card-bottom'><span class='badge "+color_str+" p-2 ps-2 font-12 rounded-s'>"+item.title+" ("+item.item_count + ")</span></div>"+
                 "</div></a>";
             str=str+"</div>";
             if(a==1||a==3||a==5||a==7||a==9||a==11||a==13||a==15||a==17){
@@ -61,15 +58,19 @@ function set_page_service_category_list(data){
             item=item_list[a];
             url='service_detail.html?title_url='+item.title_url;
             url_category='service_list.html?category='+item.category+"&page_current=1";
+            value_field=item.money_obj.price + " | ";
+            date_str="<span class=' mb-0 ps-3 font-12 pt-0'></span>";
+             if(!item.sub_note){
+                    item.sub_note='';
+                }
             str=str+"<div class='d-flex mb-3'>"+
                 "<div>"+
                 "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='70' class='rounded-sm'></a>"+
                 "</div>"+
                 "<div>"+
                 "<a href='"+url+"'><h4 class='ps-3 line-height-s color-theme mb-1'><b>"+item.title+"</b></h4></a>"+
-                "<p class='mb-0 ps-3 font-12 pt-0'>"+item.sub_note +"</p>"+
-                "<p class='mb-0 ps-3 font-12 pt-0 opacity-60'>"+" <a href='service_list.html?category="+item.category+"&page_current=1'>"+item.category+"</a></p>"+
-                "<span class='mb-0 ps-3 font-12 pt-0'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
+                "<p class='mb-0 ps-3 font-12 pt-0'>"+truncate_str(item.sub_note,250) +"</p>"+
+                "<p class='font-12 pt-0 opacity-60'>"+date_str+" " +value_field + " " + "<i class='fa fa-eye color-gray-dark'></i> "+item.view_count +" <a href='"+url_category+"'><b>"+item.category+"</b></a></p>"+
                 "</div>"+
                 "</div>"+
                 "<div class='divider mb-3'></div>";
@@ -84,7 +85,7 @@ function set_page_service_list(data){
     set_page_title(data.mobile.primary.app_title);
     $('#biz_page_category').val(data.category);
     set_page_sub_title(data.category);
-    set_page_sub_note("(" + data.item_count + " items)");
+    set_page_sub_note(data.sub_note);
     bind_list(data.service_list,data.page_current,data.page_count);
     init_cart();
     hide_spinner();
@@ -457,7 +458,7 @@ function set_dashboard_service_list(data){
     function bind_service_list_detail(data){
         set_page_title('Dashboard');
         set_page_sub_title('Services');
-        set_page_note("(" + data.item_count + " items)");
+        set_page_note("(" + data.item_count + ")");
     }
     function bind_list(item_list,page_current,page_count){
         var str='';

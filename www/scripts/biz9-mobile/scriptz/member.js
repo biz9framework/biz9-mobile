@@ -46,7 +46,6 @@ function set_page_member_list(data){
     hide_cart();
     set_page_title(data.mobile.primary.app_title);
     set_page_sub_title(data.category);
-    set_page_note("(" + data.item_count + " items)");
     $('#biz_page_category').val(data.category);
     bind_list(data.member_list,data.page_current,data.page_count);
     hide_spinner();

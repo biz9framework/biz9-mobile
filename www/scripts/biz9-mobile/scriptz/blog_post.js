@@ -13,10 +13,7 @@ function set_page_blog_post_category_list(data){
             str=str+"<div class='splide__slide'>"+
                 "<div class='card card-style'style='background-color:transparent; height:320px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.last_item_create.photo_obj.mid_url+")' >"+
               "<div class='card-bottom p-3'>"+
-                "<p class='color-white opacity-60 font-12'>"+
-                item.sub_note
-                +"</p>"+
-                "<a href='blog_post_list.html?category="+item.title+"&page_current=1' class='btn btn-s font-12 text-uppercase rounded-s mb-4 biz_btn'>"+item.title+" (" + item.item_count + " items)</a>"+
+                "<a href='blog_post_list.html?category="+item.title+"&page_current=1' class='btn btn-s rounded-s mb-4 biz_btn'><h4>"+item.title+" (" + item.item_count + ")</h4></a>"+
                 "</div>"+
                 "<div class='card-overlay bg-gradient'></div>"+
                 "</div>"+
@@ -45,7 +42,7 @@ function set_page_blog_post_category_list(data){
             //color_button_get_end
             str=str+"<div class='col-6'>"+
                 "<a href='blog_post_list.html?category="+item.title+"&page_current=1'><div class='card card-style m-0 mb-2 rounded-m' style=' background-color:transparent; height:150px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.photo_obj.mid_url+")' >"+
-                "<div class='card-bottom'><span class='badge "+color_str+" font-12 p-2 ps-2 rounded-s'>"+item.title+" ("+item.item_count + " items)</span></div>"+
+                "<div class='card-bottom'><span class='badge "+color_str+" font-12 p-2 ps-2 rounded-s'>"+item.title+" ("+item.item_count+")</span></div>"+
                 "</div></a>";
             str=str+"</div>";
             if(a==1||a==3||a==5||a==7||a==9||a==11||a==13||a==15||a==17){
@@ -83,7 +80,6 @@ function set_page_blog_post_list(data){
     hide_cart();
     set_page_title(data.mobile.primary.app_title);
     set_page_sub_title(data.category);
-    set_page_sub_note("(" + data.item_count + " items)");
     $('#biz_page_category').val(data.category);
     bind_list(data.blog_post_list,data.page_current,data.page_count);
     hide_spinner();
@@ -235,7 +231,6 @@ function set_dashboard_blog_post_list(data){
     function bind_detail(data){
         set_page_title('Dashboard');
         set_page_sub_title('Blog Posts');
-        set_page_note("(" + data.item_count + " items)");
     }
     function bind_list(item_list,page_current,page_count){
         var str='';

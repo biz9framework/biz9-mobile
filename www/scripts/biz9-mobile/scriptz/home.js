@@ -94,7 +94,7 @@ function set_page_home(data){
                 str=str+"<div class='splide__slide'>"+
                     "<div style='background-color:transparent; height:180px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.photo_obj.mid_url+")' class='card card-style'>"+
                     "<div class='card-top'>"+
-                    "<span class='badge "+color_str+" px-2 py-1 ms-2 mt-2 text-uppercase font-12'>"+ item.category+"</span>"+
+                    "<span class='badge "+color_str+" px-2 py-1 ms-2 mt-2  font-12'>"+ item.category+"</span>"+
                     "</div>"+
                     "<div class='card-bottom'>"+
                     "<a href='"+url+"'><h4 class='color-white px-3 mb-3'>"+ item.title+"</h4></a>"+
@@ -153,8 +153,7 @@ function set_page_home(data){
                     "<div>"+
                     "<a href='"+url+"'><h4 class='ps-3 line-height-s color-theme mb-1'>"+item.title+"</h4></a>"+
                     "<p class='mb-0 ps-3 font-12 pt-0'>"+truncate_str(item.sub_note,250) +"</p>"+
-                    "<p class='mb-0 ps-3 font-12 pt-0 opacity-60'>"+value_field + " <a href='"+url_category+"'>"+item.category+"</a></p>"+
-                    date_str+"<span class='mb-0 ps-3 font-12 pt-0'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
+                    "<p class='font-12 pt-0 opacity-60'>"+date_str+" " +value_field + " " + "<i class='fa fa-eye color-gray-dark'></i> "+item.view_count +" <a href='"+url_category+"'><b>"+item.category+"</b></a></p>"+
                     "</div>"+
                     "</div>"+
                     "<div class='divider mb-3'></div>";
@@ -258,7 +257,7 @@ function set_page_home(data){
                     item.visible+
                     "</div>"+
                     "</div>"+
-                    "<a id='biz_btn_cart_add_"+item.tbl_id+"' tbl_id='"+item.tbl_id+"'  data_type='"+item.data_type+"' href='#' class='btn btn-sm btn-full " +data.mobile.primary.button_color + " font-700 text-uppercase btn-margins rounded-sm mt-3 shadow-xl biz_btn_buy_now_button biz_btn'>Buy Ticket</a>"+
+                    "<a id='biz_btn_cart_add_"+item.tbl_id+"' tbl_id='"+item.tbl_id+"'  data_type='"+item.data_type+"' href='#' class='btn btn-sm btn-full " +data.mobile.primary.button_color + " font-700 btn-margins rounded-sm mt-3 shadow-xl biz_btn_buy_now_button biz_btn'>Buy Ticket</a>"+
                     "</div>";
                 $('#biz_lbl_buy_slide_show_list').html(str);
                 $("#biz_lbl_buy_card").show();
@@ -307,7 +306,7 @@ function set_page_home(data){
                     item.visible+
                     "</div>"+
                     "</div>"+
-                    "<a id='biz_btn_cart_add_"+item.tbl_id+"' tbl_id='"+item.tbl_id+"'  data_type='"+item.data_type+"' href='#' class='btn btn-sm btn-full " +data.mobile.primary.button_color + " font-700 text-uppercase btn-margins rounded-sm mt-3 shadow-xl biz_btn_buy_now_button biz_btn'>Buy Now</a>"+
+                    "<a id='biz_btn_cart_add_"+item.tbl_id+"' tbl_id='"+item.tbl_id+"'  data_type='"+item.data_type+"' href='#' class='btn btn-sm btn-full " +data.mobile.primary.button_color + " font-700  btn-margins rounded-sm mt-3 shadow-xl biz_btn_buy_now_button biz_btn'>Buy Now</a>"+
                     "</div>";
                 $('#biz_lbl_buy_slide_show_list').html(str);
                 $("#biz_lbl_buy_card").show();
@@ -360,7 +359,7 @@ function set_page_home(data){
                     item.visible+
                     "</div>"+
                     "</div>"+
-                    "<a id='biz_btn_cart_add_"+item.tbl_id+"' tbl_id='"+item.tbl_id+"'  data_type='"+item.data_type+"' href='#' class='btn btn-sm btn-full bg-highlight font-700 text-uppercase btn-margins rounded-sm mt-3 shadow-xl biz_btn_buy_now_button biz_btn'>Book Now</a>"+
+                    "<a id='biz_btn_cart_add_"+item.tbl_id+"' tbl_id='"+item.tbl_id+"'  data_type='"+item.data_type+"' href='#' class='btn btn-sm btn-full bg-highlight font-700 btn-margins rounded-sm mt-3 shadow-xl biz_btn_buy_now_button biz_btn'>Book Now</a>"+
                     "</div>";
                 $('#biz_lbl_buy_slide_show_list').html(str);
                 $("#biz_lbl_buy_card").show();
@@ -486,7 +485,7 @@ function set_page_home(data){
             }
             str=str+"<div class='col-6'>"+
                 "<a href='"+url+"_list.html?category="+item.title+"&page_current=1'><div class='card card-style m-0 mb-2 rounded-m' style='background-image: url("+item.photo_obj.mid_square_url+")' data-card-height='150'>"+
-                "<div class='card-bottom'><span class='badge "+color_str+"  p-2 ps-2 rounded-s'>"+item.title+" ("+item.item_count+" items)</span></div>"+
+                "<div class='card-bottom'><span class='badge "+color_str+"  p-2 ps-2 rounded-s'>"+item.title+" ("+item.item_count+")</span></div>"+
                 "</div></a>";
             if(item.last_item_create.title){
                 str=str+"<a href='"+url+"_list.html?category="+item.title+"&page_current=1'></a><p class='line-height-s color-theme mb-1'>"+item.last_item_create.title+"</p>"+

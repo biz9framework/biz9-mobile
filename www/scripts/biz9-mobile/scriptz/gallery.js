@@ -15,8 +15,7 @@ function set_page_gallery_category_list(data){
                 "</div>"+
                 "<div class='card-overlay bg-gradient rounded-0'></div>"+
                 "</div>"+
-                //"<a href='gallery_list.html?category="+item.title+"&page_current=1' class='btn " +data.mobile.primary.button_color + " btn-center-m biz_btn font-12 text-uppercase btn-m under-slider-btn mb-4 rounded-xl'>View (" +item.item_count +  " items)</a>"+
-                "<a href='gallery_list.html?category="+item.title+"&page_current=1' class='btn btn-center-m  btn-m under-slider-btn mb-4 rounded-xl biz_btn' style='width:200px'><h4>"+item.title +"</h4></a>"+
+                "<a href='gallery_list.html?category="+item.title+"&page_current=1' class='btn btn-center-m  btn-m under-slider-btn mb-4 rounded-xl biz_btn' style='width:200px'><h4>"+item.title+" (" + item.item_count +")</h4></a>"+
                 "<div class='content mt-n2 text-center'>"+
                 "<p class='boxed-text-xl mb-3 font-12'>"+
                 item.sub_note
@@ -46,7 +45,7 @@ function set_page_gallery_list(data){
     hide_cart();
     set_page_title(data.mobile.primary.app_title);
     set_page_sub_title(data.category);
-    set_page_note("(" + data.item_count + " items)");
+    set_page_note(data.sub_note);
     $('#biz_page_category').val(data.category);
     bind_list(data,data.page_current,data.page_count);
     hide_spinner();
@@ -194,7 +193,6 @@ function set_dashboard_gallery_list(data){
     function bind_gallery_list_detail(data){
         set_page_title('Dashboard');
         set_page_sub_title('Galleries');
-        set_page_note("(" + data.item_count + " items)");
     }
     function bind_list(item_list,page_current,page_count){
         var str='';

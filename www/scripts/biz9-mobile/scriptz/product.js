@@ -13,10 +13,7 @@ function set_page_product_category_list(data){
             str=str+"<div class='splide__slide'>"+
                 "<div class='card card-style'style='background-color:transparent; height:320px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.last_item_create.photo_obj.mid_url+")' >"+
                 "<div class='card-bottom p-3'>"+
-                "<p class='color-white opacity-60'>"+
-                item.sub_note
-                +"</p>"+
-                "<a href='product_list.html?category="+item.title+"&page_current=1' class='btn btn-s font-12 text-uppercase rounded-s mb-4 biz_btn'>"+item.title+" (" + item.item_count + " items)</a>"+
+                "<a href='product_list.html?category="+item.title+"&page_current=1' class='btn btn-s font-12 rounded-s mb-4 biz_btn'><h4>"+item.title+" (" + item.item_count + ")</h4></a>"+
                 "</div>"+
                 "<div class='card-overlay bg-gradient'></div>"+
                 "</div>"+
@@ -45,7 +42,7 @@ function set_page_product_category_list(data){
             //color_button_get_end
             str=str+"<div class='col-6'>"+
                 "<a href='product_list.html?category="+item.title+"&page_current=1'><div class='card font-12 card-style m-0 mb-2 rounded-m' style='background-color:transparent; height:150px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.photo_obj.mid_url+")' >"+
-                "<div class='card-bottom'><span class='badge "+color_str+" p-2 ps-2 font-12 rounded-s'>"+item.title+" ("+item.item_count + " items)</span></div>"+
+                "<div class='card-bottom'><span class='badge "+color_str+" p-2 ps-2 font-12 rounded-s'>"+item.title+" ("+item.item_count + ")</span></div>"+
                 "</div></a>";
             str=str+"</div>";
             if(a==1||a==3||a==5||a==7||a==9||a==11||a==13||a==15||a==17){
@@ -60,16 +57,20 @@ function set_page_product_category_list(data){
         for(var a=0;a<item_list.length;a++){
             item=item_list[a];
             url='product_detail.html?title_url='+item.title_url;
-            url_category='product_list.html?category='+item.category+"&page_current=1";
+            url_category='service_list.html?category='+item.category+"&page_current=1";
+            value_field=item.money_obj.price + " | ";
+            date_str="<span class=' mb-0 ps-3 font-12 pt-0'></span>";
+            if(!item.sub_note){
+                item.sub_note='';
+            }
             str=str+"<div class='d-flex mb-3'>"+
                 "<div>"+
                 "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='70' class='rounded-sm'></a>"+
                 "</div>"+
                 "<div>"+
-                 "<a href='"+url+"'><h4 class='ps-3 line-height-s color-theme mb-1'>"+item.title+"</h4></a>"+
-               "<p class='mb-0 ps-3 font-12 pt-0'>"+item.sub_note +"</p>"+
-                "<p class='mb-0 ps-3 font-12 pt-0 opacity-60'>"+item.date_obj.pretty_create + " | <a href='product_list.html?category="+item.category+"&page_current=1'>"+item.category+"</a></p>"+
-                "<span class='mb-0 ps-3 font-12 pt-0'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
+                "<a href='"+url+"'><h4 class='ps-3 line-height-s color-theme mb-1'><b>"+item.title+"</b></h4></a>"+
+                "<p class='mb-0 ps-3 font-12 pt-0'>"+truncate_str(item.sub_note,250) +"</p>"+
+                "<p class='font-12 pt-0 opacity-60'>"+date_str+" " +value_field + " " + "<i class='fa fa-eye color-gray-dark'></i> "+item.view_count +" <a href='"+url_category+"'><b>"+item.category+"</b></a></p>"+
                 "</div>"+
                 "</div>"+
                 "<div class='divider mb-3'></div>";
@@ -84,7 +85,6 @@ function set_page_product_list(data){
     set_page_title(data.mobile.primary.app_title);
     $('#biz_page_category').val(data.category);
     set_page_sub_title(data.category);
-    set_page_sub_note("(" + data.item_count + " items)");
     bind_list(data.product_list,data.page_current,data.page_count);
     init_cart();
     hide_spinner();
@@ -213,16 +213,16 @@ function set_page_product_detail(data){
         }
         if(data.product.items.length>0){
             $('#biz_lbl_option_list').show();
-        for(a=0;a<data.product.items.length;a++){
-            str='';
-            $('#biz_lbl_optiondiv'+a).show();
-            $('#biz_lbl_optiontitle'+a).html(data.product.items[a].title);
-            str=str+ "<option value='"+data.product.items[a].tbl_id+"' disabled>"+data.product.items[a].title+"</option>";
-            for(b=0;b<data.product.items[a].items.length;b++){
-                str=str+ "<option value='"+data.product.items[a].items[b].tbl_id+"'>"+data.product.items[a].items[b].title + " " + get_money(data.product.items[a].items[b].price) +"</option>";
+            for(a=0;a<data.product.items.length;a++){
+                str='';
+                $('#biz_lbl_optiondiv'+a).show();
+                $('#biz_lbl_optiontitle'+a).html(data.product.items[a].title);
+                str=str+ "<option value='"+data.product.items[a].tbl_id+"' disabled>"+data.product.items[a].title+"</option>";
+                for(b=0;b<data.product.items[a].items.length;b++){
+                    str=str+ "<option value='"+data.product.items[a].items[b].tbl_id+"'>"+data.product.items[a].items[b].title + " " + get_money(data.product.items[a].items[b].price) +"</option>";
+                }
+                $('#biz_sel_option'+a).html(str);
             }
-            $('#biz_sel_option'+a).html(str);
-        }
         }
         if(data.product.youtube_url){
             $("#biz_lbl_card_youtube").show();
@@ -247,10 +247,10 @@ function set_page_product_detail(data){
             var item = data.card_double_list[a];
 
             if(String(item.visible_obj.product_visible_id) =='0'){
-                        visible_str="<p class='color-red-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.product_status+"</p>";
-                    }else{
-                        visible_str = "<p class='color-green-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.product_status+"</p>";
-                    }
+                visible_str="<p class='color-red-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.product_status+"</p>";
+            }else{
+                visible_str = "<p class='color-green-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.product_status+"</p>";
+            }
 
             url='product_detail.html?title_url='+item.title_url;
             str=str+"<div class='splide__slide'>"+
@@ -408,7 +408,7 @@ function set_dashboard_product(data){
             obj.visible=$('#biz_sel_visible').val();
             obj.title_url=get_title_url(obj.title);
             obj.note=get_item_note();
-           if(!obj.title){
+            if(!obj.title){
                 show_toast_error('Please enter a valid title');
             }else if(!obj.category){
                 show_toast_error('Please select a valid category');
@@ -438,7 +438,7 @@ function set_dashboard_product(data){
             });
         });
         //mp3
-         $("#biz_tb_mp3_filename").click(function() {
+        $("#biz_tb_mp3_filename").click(function() {
             tbl_id= $('#biz_page_tbl_id').val();
             data_type= $('#biz_page_data_type').val();
             file_mp3_select(function(data){
@@ -461,7 +461,6 @@ function set_dashboard_product_list(data){
     function bind_detail(data){
         set_page_title('Dashboard');
         set_page_sub_title('Products');
-        set_page_note("(" + data.item_count + " items)");
     }
     function bind_list(item_list,page_current,page_count){
         var str='';
@@ -537,8 +536,8 @@ function set_dashboard_product_list(data){
             if (confirm("Delete?") == true) {
                 cloud_delete(data_type,tbl_id,function(data){
                     $('#biz_row_'+tbl_id).remove();
-                	set_page_note(set_page_note_remove(parseInt($('#biz_page_item_list_count').val())));
-					bind_page_list_count(parseInt($('#biz_page_item_list_count').val()));
+                    set_page_note(set_page_note_remove(parseInt($('#biz_page_item_list_count').val())));
+                    bind_page_list_count(parseInt($('#biz_page_item_list_count').val()));
                 });
             }
         });
