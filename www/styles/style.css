@@ -4998,11 +4998,11 @@ input[type=number] {
 
 /*Dark Theme Settings*/
 .theme-dark p {
-  color: #898989;
+  color: #F3F3F3;
 }
 
 .theme-dark code {
-  color: #898989;
+  color: #F3F3F3;
   opacity: 0.7;
 }
 
