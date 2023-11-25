@@ -88,7 +88,7 @@ function set_page_blog_post_list(data){
         for(var a=0;a<item_list.length;a++){
             item=item_list[a];
             date_str="<span class=' mb-0 ps-3 font-12 pt-0'>"+item.date_obj.pretty_create+"</span>";
-            if(item.sub_note){
+            if(!item.sub_note){
                 item.sub_note='';
             }
             str =str+"<div class='d-flex mb-3'>"+
