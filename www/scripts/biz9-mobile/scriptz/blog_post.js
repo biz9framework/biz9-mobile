@@ -56,7 +56,7 @@ function set_page_blog_post_category_list(data){
         var str='';
         for(var a=0;a<item_list.length;a++){
           item=item_list[a];
-            url='blog_detail.html?title_url='+item.title_url;
+            url='blog_post_detail.html?title_url='+item.title_url;
             url_category='event_list.html?category='+item.category+"&page_current=1";
             value_field=" ";
             date_str="<span class=' mb-0 ps-3 font-12 pt-0'></span>";

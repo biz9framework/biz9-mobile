@@ -55,7 +55,7 @@ function set_page_gallery_list(data){
             item=data.gallery_list[a];
             str=str+"<a class='col' href='gallery_detail.html?title_url="+item.title_url+"' title="+item.title+">"+
                 "<img src='"+item.photo_obj.square_mid_url+"'  class='preload-img img-fluid rounded-s' alt='img'>"+
-                "<p class='font-12'>"+item.title+"</p>"+
+                "<h4 class='ps-3 line-height-s color-theme mb-1 mt-2'>"+item.title+"</h4>"+
                 "</a>";
         }
         $('#biz_lbl_list').html('');
