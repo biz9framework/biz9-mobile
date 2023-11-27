@@ -94,7 +94,7 @@ function set_page_home(data){
                 str=str+"<div class='splide__slide'>"+
                     "<div style='background-color:transparent; height:180px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.photo_obj.mid_url+")' class='card card-style'>"+
                     "<div class='card-top'>"+
-                    "<span class='badge "+color_str+" px-2 py-1 ms-2 mt-2  font-12'>"+ item.category+"</span>"+
+                    "<span class='badge "+color_str+" px-2 py-1 ms-2 mt-2 font-12'>"+ item.category+"</span>"+
                     "</div>"+
                     "<div class='card-bottom'>"+
                     "<a href='"+url+"'><h4 class='color-white px-3 mb-3'>"+ item.title+"</h4></a>"+
@@ -241,8 +241,8 @@ function set_page_home(data){
                     "</div>"+
                     "<h4 class='font-600 text-center pt-2'>"+item.title+"</h4>"+
                     "<h6 class='font-600 text-center pt-1'>"+item.event_obj.start_date+"</h6>"+
-                    "<p class='font-12 opacity-50 mt-1 mb-0 text-center'>"+truncate_str(item.sub_note,250)+"</p>"+
-                    "<p class='text-center pt-2 mb-3'>";
+                      "<p class='mb-0 ps-3 font-12 pt-0 text-center'>"+truncate_str(item.sub_note,250)+"</p>"+
+                  "<p class='text-center pt-2 mb-3'>";
                 for(b=0;b<parseInt(item.rating_avg);b++){
                     str = str+"<i class='fa fa-star color-yellow-dark'></i>";
                 }
@@ -343,7 +343,7 @@ function set_page_home(data){
                     "<span class='font-12 pt-0 m-5'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                     "</div>"+
                     "<h4 class='text-center pt-2'>"+item.title+"</h4>"+
-                    "<p class='font-12 opacity-50 mt-1 mb-0 text-center'>"+truncate_str(item.sub_note,250)+"</p>"+
+                    "<p class='mb-0 ps-3 font-12 pt-0 text-center'>"+truncate_str(item.sub_note,250)+"</p>"+
                     "<p class='text-center pt-2 mb-3'>";
                 for(b=0;b<parseInt(item.rating_avg);b++){
                     str = str+"<i class='fa fa-star color-yellow-dark'></i>";
@@ -351,8 +351,8 @@ function set_page_home(data){
                 str = str+"</p>"+
                     "<div class='row mb-0 px-3'>"+
                     "<div class='col-6'>"+
-                    "<h3 class='font-18 mb-n2'>"+item.money_obj.price+"</h3>";
-                str = str+ "<p class='mb-0 mt-n1 opacity-30 font-12'><del>"+item.money_obj.old_price+"</del></p>";
+                    "<h3 class='font-18 mb-2'>"+item.money_obj.price+"</h3>";
+                str = str+ "<p class='mb-0 mt-1 opacity-30 font-12'><del>"+item.money_obj.old_price+"</del></p>";
                 str = str+"</div>"+
                     "<div class='col-6'>"+
                     "<a href='#' class='text-end d-block font-12 color-theme'><i class='fa fa-heart color-red-dark font-12'></i> Book Now</a>"+
