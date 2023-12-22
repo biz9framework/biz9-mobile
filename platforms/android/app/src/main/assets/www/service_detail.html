@@ -16,9 +16,6 @@
             <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
             <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
             <!--CSS-TEMPLATE-END --!>
-                        <!--EDITOR-START --!>
-                            <link href="styles/froala/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-                            <!--EDITOR-END--!>
             <!--CSS-END--!>
                                 </head>
                                 <body>
@@ -65,21 +62,21 @@
                                             <div class="content">
                                                 <div class="d-flex">
                                                     <div id='biz_div_left_info' style='display:none'>
-                                                        <h1 class="font-16 mb-0 line-height-m font-500" id='biz_lbl_title'></h1>
-                                                        <div>
+                                                        <h3 id='biz_lbl_title'></h3>
+                                                <div>
                                                             <label class="color-yellow-dark font-12 pt-1 mt-n1" id='biz_lbl_review_star_count'>
                                                                 <i class="fa fa-star pe-1"></i>
                                                             </label>
                                                             <span class="color-theme opacity-50 ps-3" id='biz_lbl_rating_count'> </span>
                                                             <span class="color-theme opacity-50 ps-3" id='biz_lbl_rating'></span>
                                                         </div>
-                                                        <div class='mb-0 font-10'>
-                                                            <i class='fa fa-eye color-blue-dark'></i>
+                                                        <div class='mb-0 font-12'>
+                                                            <i class='fa fa-eye color-gray-dark'></i>
                                                             <span id='biz_lbl_view_count'></span>
                                                         </div>
                                                     </div>
                                                     <div class="ms-auto ps-3 text-end" id='div_biz_right_info'>
-                                                        <p class="mb-n1 font-10 opacity-30"><del id='biz_lbl_old_price'></del></p>
+                                                        <p class="mb-n1 font-12 opacity-30"><del id='biz_lbl_old_price'></del></p>
                                                         <h1 id='biz_lbl_price'></h1>
                                                         <div id='biz_div_discount' style='display:none'>
                                                         <span class="badge bg-highlight float-end mt-1 font-9 font-500 text-uppercase p-1 mt-n1 d-block" id='biz_lbl_discount'></span>
@@ -176,8 +173,10 @@
                                          <div class="card card-style m-3"  id='biz_lbl_card_note' style='display:none'>
                                            <div class="content m-3">
                                                 <h3 id='biz_lbl_page_addt_page'>Additional Information</h3>
+                                                <div style='margin-right:20px'>
                                                 <p id='biz_lbl_note'>
                                                 </p>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="card card-style m-3" id='biz_lbl_card_youtube' style='display:none'>
@@ -207,7 +206,7 @@
                                             <div class="pb-3"></div>
                                             <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
                                             <input type="name" class="form-control validate-name" id="biz_tb_review_name" placeholder="">
-                                            <label for="form1ab" class="color-theme opacity-50 text-uppercase font-700 font-10">Your Name</label>
+                                            <label for="form1ab" class="color-theme opacity-50 text-uppercase font-700 font-12">Your Name</label>
                                             <i class="fa fa-times disabled invalid color-red-dark"></i>
                                             <i class="fa fa-check disabled valid color-green-dark"></i>
                                             <em>(required)</em>
@@ -222,18 +221,17 @@
                                             <option value="4">4</option>
                                             <option value="5">5</option>
                                             </select>
-                                            <label for="form1ab" class="color-theme opacity-50 text-uppercase font-700 font-10">Rating</label>
                                             <span><i class="fa fa-chevron-down"></i></span>
                                             <i class="fa fa-check disabled valid color-green-dark"></i>
                                             <i class="fa fa-check disabled invalid color-red-dark"></i>
                                             <em></em>
                                             </div>
                                             <div class="pb-3"></div>
-                                            <div class="input-style has-borders no-icon mb-4">
+                                            <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
                                             <textarea id="biz_tb_review_comment" placeholder="Enter your comment"></textarea>
-                                            <label for="form7" class="color-highlight">Add a Review</label>
+                                            <label for="form1ab" class="color-theme opacity-50 text-uppercase font-700 font-12">Comment</label>
                                             <em class="mt-n3">(required)</em>
-                                            </div>
+                                           </div>
                                             <div class="pb-3"></div>
                                             </div>
                                             <a href="#" class="btn btn-l btn-full under-slider-btn mx-5 font-800 text-uppercase rounded-sm mb-4 biz_btn" id='biz_btn_review_add'>Add Review</a>
@@ -282,7 +280,6 @@
                                                 <script type="text/javascript" src="scripts/biz9-mobile/libz/jquery-3.6.3.min.js.js"></script>
                                                 <script type="text/javascript" src="scripts/biz9-mobile/libz/pulltorefresh.js"></script>
                                                 <script type="text/javascript" src="scripts/biz9-mobile/libz/lockr.js"></script>
-                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/froala/froala_editor.pkgd.min.js"></script>
                                                 <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
                                                 <script type="text/javascript" src="scripts/jurlp.min.js"></script>
                                                 <script type="text/javascript" src="scripts/custom.js"></script>

@@ -421,7 +421,6 @@ function set_dashboard_order_list(data){
         bind_page_list_count(data.item_count);
         set_page_title('Dashboard');
         set_page_sub_title('Orders');
-        set_page_note("(" + data.item_count + " items)");
     }
     function bind_list(item_list,page_current,page_count){
         var str='';

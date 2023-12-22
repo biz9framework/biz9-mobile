@@ -15,7 +15,7 @@ function set_dashboard_category_list(data){
         for(a=0;a<item_list.length;a++){
             item = item_list[a];
             edit_str= "<a href='#' class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
-                "<i class='fa fa-gear font-14 accordion-icon'></i>"+
+                "<i class='fa fa-gear font-14 accordion-icon a-gear'></i>"+
                 "</a>";
             sub_item_edit_url="dashboard_sub_item_list.html?data_type="+item.data_type+"&tbl_id="+item.tbl_id+"&parent_data_type="+item.data_type+"&parent_tbl_id="+item.tbl_id;
             photo_edit_url="dashboard_photo_list.html?parent_data_type="+item.data_type+"&parent_tbl_id="+item.tbl_id;
@@ -23,15 +23,15 @@ function set_dashboard_category_list(data){
                 "<div>"+
                 "<a href='dashboard_category.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
                 "</div>"+
-                "<div class='biz_diz_list_title'><a href='dashboard_category.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-11'>"+item.title+"</b></p></a><div>"+
+                "<div class='biz_diz_list_title'><a href='dashboard_category.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-14'>"+item.title+"</b></p></a><div>"+
                 "</div>"+
-                "<p class='mb-0 ps-3 font-10  opacity-60'><b>"+item.type_title+"</b>  " + edit_str+ " </p>"+
+                "<p class='mb-0 ps-3 font-12 pt-0'>"+item.type_title+" " + edit_str+ " </p>"+
                 "<div class='accordion ' id='accordion-"+a+"'>"+
                 "<div class=''>"+
                 "<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+
                 "<div class='mb-0 ps-3  ' style='float:left;'>"+
                 "<div class='biz_diz_list_edit'>"+
-                "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='biz_btn_delete' href='#'><i class='admin_edit_img fa fa-trash pe-2'></i></a>"+
+                "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='biz_btn_delete' href='#'><i class='admin_edit_img fa fa-trash pe-2 a-gear'></i></a>"+
                 "</div>"+
                 "</div>"+
                 "</div>"+

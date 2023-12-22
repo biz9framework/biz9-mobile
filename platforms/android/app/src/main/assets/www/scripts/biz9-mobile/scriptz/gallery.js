@@ -15,10 +15,9 @@ function set_page_gallery_category_list(data){
                 "</div>"+
                 "<div class='card-overlay bg-gradient rounded-0'></div>"+
                 "</div>"+
-                //"<a href='gallery_list.html?category="+item.title+"&page_current=1' class='btn " +data.mobile.primary.button_color + " btn-center-m biz_btn font-700 text-uppercase btn-m under-slider-btn mb-4 rounded-xl'>View (" +item.item_count +  " items)</a>"+
-                "<a href='gallery_list.html?category="+item.title+"&page_current=1' class='btn btn-center-m font-700 text-uppercase btn-m under-slider-btn mb-4 rounded-xl biz_btn' style='width:200px'>"+item.title +" (" +item.item_count +  " items)</a>"+
+                "<a href='gallery_list.html?category="+item.title+"&page_current=1' class='btn btn-center-m  btn-m under-slider-btn mb-4 rounded-xl biz_btn' style='width:200px'><h4>"+item.title+" (" + item.item_count +")</h4></a>"+
                 "<div class='content mt-n2 text-center'>"+
-                "<p class='boxed-text-xl mb-3'>"+
+                "<p class='boxed-text-xl mb-3 font-12'>"+
                 item.sub_note
                 +"</p>"+
                 "</div>"+
@@ -46,7 +45,7 @@ function set_page_gallery_list(data){
     hide_cart();
     set_page_title(data.mobile.primary.app_title);
     set_page_sub_title(data.category);
-    set_page_note("(" + data.item_count + " items)");
+    set_page_note(data.sub_note);
     $('#biz_page_category').val(data.category);
     bind_list(data,data.page_current,data.page_count);
     hide_spinner();
@@ -56,7 +55,7 @@ function set_page_gallery_list(data){
             item=data.gallery_list[a];
             str=str+"<a class='col' href='gallery_detail.html?title_url="+item.title_url+"' title="+item.title+">"+
                 "<img src='"+item.photo_obj.square_mid_url+"'  class='preload-img img-fluid rounded-s' alt='img'>"+
-                "<p class='font-600'>"+item.title+"</p>"+
+                "<h4 class='ps-3 line-height-s color-theme mb-1 mt-2'>"+item.title+"</h4>"+
                 "</a>";
         }
         $('#biz_lbl_list').html('');
@@ -92,10 +91,12 @@ function set_page_gallery_detail(data){
         set_page_sub_title(data.gallery.title);
         set_page_sub_note(data.gallery.sub_note);
         set_page_note(data.gallery.note);
+        $("#biz_link_category").attr('href',"gallery_list.html?category="+data.gallery.category+"&page_current=1");
+        $("#biz_link_category").html(data.gallery.category);
         $("#biz_lbl_gallery_control").show();
         $("#biz_lbl_stat_count").show();
-        date ="<span style='class='mt-0 font-12 opacity-90'> <i class='fa fa-clock '></i> "+data.gallery.date_obj.date_create+" " + data.gallery.date_obj.month_create +", " + data.gallery.date_obj.year_create +" at "+ data.gallery.date_obj.time_update +"</span>";
-        $("#biz_lbl_author").html(date);
+        date ="<span style='margin-right:5px;class=''><i class='fa fa-clock pe-2 ml-5'></i>"+data.gallery.date_obj.date_create+" " + data.gallery.date_obj.month_create +", " + data.gallery.date_obj.year_create +" at "+ data.gallery.date_obj.time_update +"</span>";
+        $("#biz_lbl_info").html(date);
         if(data.gallery.youtube_url){
             $("#biz_lbl_card_youtube").show();
             $("#biz_lbl_youtube_link").attr('src',get_youtube_link(data.gallery.youtube_url));
@@ -121,11 +122,10 @@ function set_page_gallery_detail(data){
             str=str+"<div class='splide__slide'>"+
                 "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='100' class='mx-auto'></a>"+
                 "<div class='biz_div_stat_outer'>"+
-                "<span class='font-10 pt-0 m-3'><i class='fa fa-eye color-blue-dark'></i> "+item.view_count +"</span>"+
-                "<span class='font-10 pt-0 m-3'><i class='fa fa-comment color-brown-dark'></i> "+item.review_count +"</span>"+
+                "<span class='font-12 pt-0 m-3'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                 "</div>"+
-                "<a href='"+url+"'><h4 class='text-center font-13'>"+item.title+"</h4></a>"+
-                "<p class='text-center font-11 mb-2'>"+
+                "<a href='"+url+"'><h4 class='text-center'>"+item.title+"</h4></a>"+
+                "<p class='text-center font-12 m-3'>"+
                 item.sub_note+
                 "</p>"+
                 "</div>";
@@ -193,7 +193,6 @@ function set_dashboard_gallery_list(data){
     function bind_gallery_list_detail(data){
         set_page_title('Dashboard');
         set_page_sub_title('Galleries');
-        set_page_note("(" + data.item_count + " items)");
     }
     function bind_list(item_list,page_current,page_count){
         var str='';
@@ -205,25 +204,24 @@ function set_dashboard_gallery_list(data){
                 visible_str="<span class='color-red-dark'> <i class='fa-sharp fa-solid fa-circle-xmark'></i> </span>";
             }
             edit_str= "<a class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
-                "<i class='fa fa-gear font-14 accordion-icon'></i>"+
+                "<i class='fa fa-gear font-14 accordion-icon a-gear'></i>"+
                 "</a>";
             photo_edit_url="dashboard_photo_list.html?parent_data_type="+item.data_type+"&parent_tbl_id="+item.tbl_id;
             str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item.tbl_id+"'>"+
                 "<div>"+
                 "<a href='dashboard_gallery.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
                 "</div>"+
-                "<div class='biz_diz_list_title'><a href='dashboard_gallery.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-11'>"+item.title+"</b></p></a><div>"+
-                "<span class='mb-0 ps-3 font-11 pt-1 '><i class='fa fa-eye color-blue-dark'></i> "+item.view_count +"</span>"+
-                "<span class='mb-0 ps-3 font-11 pt-1 '><i class='fa fa-comment color-brown-dark'></i> "+item.review_count +"</span>"+
+                "<div class='biz_diz_list_title'><a href='dashboard_gallery.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-14'>"+item.title+"</b></p></a><div>"+
+                "<span class='mb-0 ps-3 font-12 pt-1 '><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                 "</div>"+
-                "<p class='mb-0 ps-3 font-10  opacity-60'>"+item.category+" | " + visible_str + " " + edit_str+ " </p>"+
+                "<p class='mb-0 ps-3 font-12  opacity-60'>"+item.category+" | " + visible_str + " " + edit_str+ " </p>"+
                 "<div class='accordion ' id='accordion-"+a+"'>"+
                 "<div class=''>"+
                 "<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+
                 "<div class='mb-0 ps-3  ' style='float:left;'>"+
-                "<div class='biz_diz_list_edit'><a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='gallery_detail.html?title_url="+item.title_url+"'><i class='admin_edit_img fa fa-eye pe-2'></i></a>"+
-                "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='"+photo_edit_url+"'><i class='admin_edit_img fa fa-camera pe-2'></i></a>"+
-                "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='biz_btn_delete' href='#'><i class='admin_edit_img fa fa-trash pe-2'></i></a>"+
+                "<div class='biz_diz_list_edit'><a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='gallery_detail.html?title_url="+item.title_url+"'><i class='admin_edit_img fa fa-eye pe-2 a-gear'></i></a>"+
+                "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='"+photo_edit_url+"'><i class='admin_edit_img fa fa-camera pe-2 a-gear'></i></a>"+
+                "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='biz_btn_delete' href='#'><i class='admin_edit_img fa fa-trash pe-2 a-gear'></i></a>"+
                 "</div>"+
                 "</div>"+
                 "</div>"+

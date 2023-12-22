@@ -458,7 +458,6 @@ function set_dashboard_service_list(data){
     function bind_service_list_detail(data){
         set_page_title('Dashboard');
         set_page_sub_title('Services');
-        set_page_note("(" + data.item_count + ")");
     }
     function bind_list(item_list,page_current,page_count){
         var str='';

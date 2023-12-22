@@ -7,11 +7,11 @@ echo "BiZ9 Framework Branch Update"
 echo "#################"
 G_PROJECT_FOLDER="$HOME/www/projectz/"
 #prod-start
-echo "Enter Framework Tool: [cms, core, docz, mobile, scriptz, service, server, test, vendor, vendor-payment, website]"
+echo "Enter BiZ9 Framework product: [cms, core, docz, mobile, scriptz, service, server, test, vendor, vendor-payment, website]"
 read app_type
-echo "Enter Source Branch: [unstable, testing, stable]"
+echo "Enter source branch: [unstable, testing, stable]"
 read source_dir
-echo "Enter Destination Branch: [unstable, testing, stable]"
+echo "Enter destination branch: [unstable, testing, stable]"
 read destination_dir
 #prod-end
 ##test-start##
@@ -201,5 +201,7 @@ if [ "${app_type}" = "vendor-payment" ]; then
     sed -i "s/BIZ9_VENDOR_PAYMENT_VERSION=.*/BIZ9_VENDOR_PAYMENT_VERSION='${BIZ9_VENDOR_PAYMENT_VERSION}';/" ${destination_dir}/app.js
     echo Source ${source_dir}: Version: ${BIZ9_VENDOR_PAYMENT_VERSION};
 fi
-
+echo "----------------------------------"
+echo "Done!"
+echo "----------------------------------"
 exit 1

@@ -90,20 +90,20 @@ function set_dashboard_page_list(data){
                 title_type='Team';
             }
             edit_str= "<a class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
-                "<i class='fa fa-gear font-14 accordion-icon'></i>"+
+                "<i class='fa fa-gear font-14 accordion-icon a-gear'></i>"+
                 "</a>";
             str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item.tbl_id+"'>"+
                 "<div>"+
                 "<a href='dashboard_page.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
                 "</div>"+
-                "<div class='biz_diz_list_title'><a href='dashboard_page.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b>"+item.title+"</b></p></a><div>"+
+                "<div class='biz_diz_list_title'><a href='dashboard_page.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-12'>"+item.title+"</b></p></a><div>"+
                 "</div>"+
                 "<p class='mb-0 ps-3 font-10  opacity-60'>"+title_type+" | " + visible_str + " " + edit_str+ " </p>"+
                 "<div class='accordion ' id='accordion-"+a+"'>"+
                 "<div class=''>"+
                 "<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+
                 "<div class='mb-0 ps-3  ' style='float:left;'>"+
-                "<div class='biz_diz_list_edit'><a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='"+category_url+"'><i class='admin_edit_img fa fa-eye pe-2'></i></a>"+
+                "<div class='biz_diz_list_edit'><a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='"+category_url+"'><i class='admin_edit_img fa fa-eye pe-2 a-gear'></i></a>"+
                 "</div>"+
                 "</div>"+
                 "</div>"+

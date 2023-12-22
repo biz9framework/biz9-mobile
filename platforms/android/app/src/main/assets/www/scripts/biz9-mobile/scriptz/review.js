@@ -19,7 +19,7 @@ function bind_review(item){
     //review and review-start
     if(item.review_obj){
         $('#biz_page_review_count').val(item.review_obj.review_list.length);
-        $('#biz_page_rating_avg').val(item.review_obj.rating_avg);
+        $('#biz_page_rating_avg').val(item.review_obj.customer_rating_avg);
         bind_detail_review_count_star_str();
         if(item.review_obj.review_list.length>0){
             $('#biz_lbl_card_list_review').show();
@@ -33,7 +33,7 @@ function bind_review(item){
         }
         bind_review_add_event();
         //test start --
-        //bind_test();
+        bind_test();
         function bind_test(){
             //review and review-end
             $("#biz_tb_review_name").val(get_id(999)+'_Full Name');
@@ -76,34 +76,33 @@ function set_review_list_str(review){
     str='';
     review_date = review.date_obj.month_create + " " + review.date_obj.date_create + ", " + review.date_obj.year_create;
     review_time = review.date_obj.time_create;
-    review.comment=review.comment?review.comment:'';
+    review.customer_comment=review.customer_comment?review.customer_comment:'';
     str = str+"<div class='mb-4' id='biz_row_"+review.tbl_id+"'>"+
         "<div class='d-flex'>"+
         "<div class='flex-grow-1'>"+
-        "<h1 class='float-start font-40 font-800 mt-1 me-3'>"+review.rating+"</h1>"+
+        "<h1 class='float-start font-40 font-800 mt-1 me-3'>"+review.customer_rating+"</h1>"+
         "<h5 class='font-11 font-500 mb-n1'>out of 5 rating</h5>"+
         "<span>";
-    for(b=0;b<parseInt(review.rating);b++){
+    for(b=0;b<parseInt(review.customer_rating);b++){
         str=str+"<i class='fa fa-star color-yellow-dark'></i>";
     }
     str = str+" </span>"+
         "</div>"+
         "<div>"+
-        "<h6 class='mb-0 mt-1 text-end'>"+review.name+"</h6>"+
-        "<p class='font-10 mb-0 mt-n2 opacity-40 text-end'>"+review_date + "</p>"+
-        "<p class='font-8 mb-0 mt-n3 opacity-40 text-end'>"+review_time + "</p>"+
+        "<h6 class='mb-0 mt-1 text-end'>"+review.customer_name+"</h6>"+
+        "<p class='font-12 mb-0 mt-n2 opacity-40 text-end'>"+review_date + "</p>"+
+        "<p class='font-10 mb-0 mt-n3 opacity-40 text-end'>"+review_time + "</p>"+
         "</div>"+
         "</div>"+
-        "<p class='mt-3'>"
-        +review.comment+
+        "<p class='mt-3 font-12'>"
+        +review.customer_comment+
         "</p>";
     if(get_user().customer_id==review.customer_id){
         str = str + "<p class='mt-3'>"+
-            "<a id='biz_btn_delete_"+review.tbl_id+"' tbl_id='"+review.tbl_id +"' data_type='"+review.data_type +"'  href='#'><i class='admin_edit_img fa fa-trash pe-2'></i></a>"+
+            "<a id='biz_btn_delete_"+review.tbl_id+"' tbl_id='"+review.tbl_id +"' data_type='"+review.data_type +"'  href='#'><i class='admin_edit_img fa fa-trash pe-2 a-gear'></i></a>"+
             "</p>";
     }
     str=str+ "</div>";
-
     return str;
 }
 function get_star_str(count){
@@ -125,7 +124,7 @@ function bind_review_delete_event(tbl_id){
             cloud_post_url(url,{},function(data){
                 $('#biz_row_'+tbl_id).remove();
                 $('#biz_page_review_count').val(data.item.review_obj.review_list.length);
-                $('#biz_page_rating_avg').val(data.item.review_obj.rating_avg);
+                $('#biz_page_rating_avg').val(data.item.review_obj.customer_rating_avg);
                 bind_detail_review_count_star_str();
             });
         }
@@ -139,26 +138,29 @@ function bind_review_add_event(){
         obj={};
         obj.parent_data_type=$('#biz_page_data_type').val();
         obj.parent_tbl_id=$('#biz_page_tbl_id').val();
-        obj.name=$('#biz_tb_review_name').val();
-        obj.rating=$('#biz_sel_review_rating').val();
-        obj.comment=$('#biz_tb_review_comment').val();
+        obj.customer_rating=$('#biz_sel_review_rating').val();
         obj.customer_id=get_user().customer_id;
-        console.log(obj);
-        if(!obj.name){
+        obj.customer_name=$('#biz_tb_review_name').val();
+        obj.customer_comment=$('#biz_tb_review_comment').val();
+        if(!obj.customer_name){
             show_toast_error('Please enter a name');
-        }else if(!obj.rating){
+        }else if(!obj.customer_rating){
             show_toast_error('Please select a rating');
         }else{
             url = "item/review_update/"+obj.parent_data_type+"/"+obj.parent_tbl_id;
             cloud_post_url(url,obj,function(data){
-                $('#biz_lbl_card_list_review').show();
-                $('#biz_lbl_list_review').prepend(set_review_list_str(data.review));
-                $('#biz_page_review_count').val(data.item.review_obj.review_list.length);
-                $('#biz_page_rating_avg').val(data.item.review_obj.rating_avg);
-                bind_review_delete_event(data.review.tbl_id);
-                bind_detail_review_count_star_str();
-                $('#biz_tb_review_name').val('');
-                $('#biz_tb_review_comment').val('');
+                    if(data.validation_message){
+                        alert(data.validation_message);
+                    }else{
+                        $('#biz_lbl_card_list_review').show();
+                        $('#biz_lbl_list_review').prepend(set_review_list_str(data.review));
+                        $('#biz_page_review_count').val(data.update_item.review_obj.review_list.length);
+                        $('#biz_page_rating_avg').val(data.update_item.review_obj.customer_rating_avg);
+                        bind_review_delete_event(data.review.tbl_id);
+                        bind_detail_review_count_star_str();
+                        $('#biz_tb_review_name').val('');
+                        $('#biz_tb_review_comment').val('');
+                    }
             });
         }
         return false;
@@ -197,8 +199,8 @@ function set_dashboard_review_list(data){
 "<div class='content mb-0'>"+
 "<div class='d-flex mb-n1'>"+
 "<div class='align-self-center'>"+
-"<h3 class='font-20 font-700'>"+item.name+"</h3>"+
-"<p class='font-10 mt-n2'>"+date_str+" - <span id='biz_lbl_order_status_"+item.tbl_id+"'>" + get_review_star_str(item.rating) +"</span></p>"+
+"<h3 class='font-20 font-700'>"+item.customer_name+"</h3>"+
+"<p class='font-10 mt-n2'>"+date_str+" - <span id='biz_lbl_order_status_"+item.tbl_id+"'>" + get_review_star_str(item.customer_rating) +"</span></p>"+
 "</div>"+
 "<div class='ms-auto text-center mt-2'>"+
 "<i class='fa fa-plus font-18 color-theme'></i>"+
@@ -208,7 +210,7 @@ function set_dashboard_review_list(data){
 "</a>"+
 "<div class='collapse' id='invoice-"+item.tbl_id+"'>"+
 "<div class='row mb-3 m-1'>"+
-"<p> "+item.comment+"</p>"+
+"<p> "+item.customer_comment+"</p>"+
 "</div>"+
 "<div class='divider'></div>"+
                 "<a href='#' tbl_id='"+item.tbl_id+"' data_type='"+item.data_type+"' data-menu='menu-option-1' class='biz_btn_review_delete btn m-2  ml-3 btn-half btn-l rounded-s font-800 text-uppercase bg-red-dark'>Delete</a>"+

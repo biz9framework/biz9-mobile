@@ -5,7 +5,6 @@ function set_dashboard_category_list(data){
     bind_page_list_count(data.item_count);
     set_page_title('Dashboard');
     set_page_sub_title('Categories');
-    set_page_note("(" + data.item_count + " items)");
     bind_list(data.category_list,data.page_current,data.page_count);
     bind_event();
     hide_spinner();
