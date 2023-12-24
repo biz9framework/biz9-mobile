@@ -1,10 +1,6 @@
-BIZ9_MOBILE_VERSION='6.8.6'
+BIZ9_MOBILE_VERSION='6.9.8'
+APP_VERSION='1.1.6'
 PROJECT_ID='19'
 APP_VENDOR=''
-APP_VERSION='7.1.4'
-APP_VENDOR=''
-APP_TITLE_ID='mobile-may'
-//APP_TITLE_ID='mobile-may'
-CLOUD_URL='http://localhost:1901';
-dLOUD_URL='https://bossappz343.com';
-dLOUD_URL='https://168-service.bossappz.net';
+APP_TITLE_ID='mobile-266'
+CLOUD_URL="https://mobile.bossappz343.com";

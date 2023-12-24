@@ -177,7 +177,6 @@ function set_dashboard_review_list(data){
     function bind_detail(data){
         set_page_title('Dashboard');
         set_page_sub_title('Reviews');
-        set_page_note("(" + data.item_count + " items)");
     }
     function get_review_star_str(count){
         var str='';
