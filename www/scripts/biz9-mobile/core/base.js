@@ -139,6 +139,9 @@ function get_item_note(){
     return tinymce.activeEditor.getContent();
 }
 function init_item_note(_str){
+    if(!_str){
+        _str='';
+    }
 tinymce.init({
     selector: '#biz_lbl_note',
     plugins: 'anchor autolink codesample emoticons image link lists media searchreplace table visualblocks wordcount',
