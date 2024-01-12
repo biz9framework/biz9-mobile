@@ -39,7 +39,7 @@ function go_resize(){
                     if (fs.existsSync(G_ORG_SCREEN_DIR+value.file)) {
                         sharp(G_ORG_SCREEN_DIR+value.file)
                             .removeAlpha()
-                            .resize({width:value.width,height:value.height})
+                            .resize({width:value.width,height:value.height,fit:'fill'})
                             .toFile(ios_screen_dir+value.file,(err, info)=>{
                                 if(err){
                                     console.log('iphone file '+ value.file+' file  error occored');
@@ -122,7 +122,7 @@ function go_resize(){
                     if (fs.existsSync(G_ORG_SCREEN_DIR+value.file)) {
                         sharp(G_ORG_SCREEN_DIR+value.file)
                             .removeAlpha()
-                            .resize({width:value.width,height:value.height})
+                            .resize({width:value.width,height:value.height,fit:'fill'})
                             .toFile(ios_screen_dir+value.file,(err, info)=>{
                                 if(err){
                                     console.log('iphone '+ value.file+' file  error occored');
@@ -163,7 +163,7 @@ function go_resize(){
                     if (fs.existsSync(G_ORG_SCREEN_DIR+value.file)) {
                         sharp(G_ORG_SCREEN_DIR+value.file)
                             .removeAlpha()
-                            .resize({width:value.width,height:value.height})
+                            .resize({width:value.width,height:value.height,fit:'fill'})
                             .toFile(ios_screen_dir+value.file,(err, info)=>{
                                 if(err){
                                     console.log('iphone '+ value.file+' file  error occored');
