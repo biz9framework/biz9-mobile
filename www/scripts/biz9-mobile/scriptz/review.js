@@ -33,7 +33,9 @@ function bind_review(item){
         }
         bind_review_add_event();
         //test start --
-        bind_test();
+        if(TEST_MODE==true){
+            bind_test();
+        }
         function bind_test(){
             //review and review-end
             $("#biz_tb_review_name").val(get_id(999)+'_Full Name');
