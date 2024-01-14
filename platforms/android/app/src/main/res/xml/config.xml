@@ -30,7 +30,7 @@
     <feature name="FileChooser">
         <param name="android-package" value="com.megster.cordova.FileChooser" />
     </feature>
-    <name>BiZ9-Mobile</name>
+    <name>BiZ9-Mobile 2</name>
     <description>-</description>
     <author email="support@bossappz.com" href="https://cordova.apache.org">
         My BoSS AppZ Mobile
