@@ -19,11 +19,34 @@
 
 // Wait for the deviceready event before using any of Cordova's device APIs.
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
+
 document.addEventListener('deviceready', onDeviceReady, false);
-
 function onDeviceReady() {
-    // Cordova is now initialized. Have fun!
-
-    console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    document.getElementById('deviceready').classList.add('ready');
+    alert('b1');
+    const {store, ProductType, Platform} = CdvPurchase;
+    alert('b2');
+     refreshUI();
 }
+
+
+function finishPurchase(p) {
+    alert('finishPurchase');
+}
+
+function refreshUI() {
+
+    alert('a3');
+    const {store, ProductType, Platform} = CdvPurchase;
+    alert('a4');
+    myProduct = store.get('my_product', Platform.TEST);
+    alert('a5');
+    //const myTransaction = store.findInLocalReceipts(myProduct);
+    alert('a6');
+    const button = `<button onclick="myProduct.getOffer().order()">Purchase</button>`;
+    alert(button);
+    alert(myProduct.title);
+    alert(myProduct.description);
+    alert(myProduct.pricing.price);
+    alert('a7');
+}
+

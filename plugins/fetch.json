@@ -78,5 +78,21 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-purchase": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-purchase@^13.10.0"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-inapppurchases": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-inapppurchases"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

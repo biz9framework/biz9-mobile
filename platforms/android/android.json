@@ -49,11 +49,19 @@
               "count": 1
             },
             {
+              "xml": "<feature name=\"InAppBillingPlugin\"><param name=\"android-package\" value=\"cc.fovea.PurchasePlugin\" /></feature>",
+              "count": 1
+            },
+            {
               "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             },
             {
               "xml": "<feature name=\"CordovaStripe\"><param name=\"android-package\" value=\"com.zyramedia.cordova.stripe.CordovaStripe\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"InAppBilling\"><param name=\"android-package\" value=\"com.alexdisler_github_cozycode.inapppurchases.InAppBilling\" /></feature>",
               "count": 1
             }
           ],
@@ -78,6 +86,10 @@
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.READ_MEDIA_VIDEO\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"com.android.vending.BILLING\" />",
               "count": 1
             }
           ],
@@ -142,10 +154,16 @@
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
+    "cordova-plugin-purchase": {
+      "PACKAGE_NAME": "io.bossappz.mobile"
+    },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
     "cordova-plugin-stripe": {
+      "PACKAGE_NAME": "io.bossappz.mobile"
+    },
+    "cordova-plugin-inapppurchases": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     }
   },
@@ -421,6 +439,15 @@
       ]
     },
     {
+      "id": "cordova-plugin-purchase.CdvPurchase",
+      "file": "plugins/cordova-plugin-purchase/www/store.js",
+      "pluginId": "cordova-plugin-purchase",
+      "clobbers": [
+        "store",
+        "CdvPurchase"
+      ]
+    },
+    {
       "id": "cordova-plugin-splashscreen.SplashScreen",
       "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
       "pluginId": "cordova-plugin-splashscreen",
@@ -435,6 +462,14 @@
       "clobbers": [
         "cordova.plugins.stripe"
       ]
+    },
+    {
+      "id": "cordova-plugin-inapppurchases.InAppBilling",
+      "file": "plugins/cordova-plugin-inapppurchases/www/billing-android.js",
+      "pluginId": "cordova-plugin-inapppurchases",
+      "merges": [
+        "inAppPurchases"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -446,7 +481,9 @@
     "cordova-plugin-filechooser": "1.2.0",
     "cordova-plugin-filepicker": "1.1.6",
     "cordova-plugin-inappbrowser": "5.0.0",
+    "cordova-plugin-purchase": "13.10.0",
     "cordova-plugin-splashscreen": "6.0.1",
-    "cordova-plugin-stripe": "1.5.3"
+    "cordova-plugin-stripe": "1.5.3",
+    "cordova-plugin-inapppurchases": "3.0.3"
   }
 }

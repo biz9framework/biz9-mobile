@@ -18,8 +18,9 @@
     "cordova-plugin-filechooser": "^1.2.0",
     "cordova-plugin-filepicker": "^1.1.6",
     "cordova-plugin-inappbrowser": "^5.0.0",
-    "cordova-plugin-splashscreen": "^6.0.1",
-    "cordova-plugin-stripe": "^1.5.3"
+    "cordova-plugin-inapppurchases": "^3.0.3",
+    "cordova-plugin-purchase": "^13.10.0",
+    "cordova-plugin-splashscreen": "^6.0.1"
   },
   "cordova": {
     "platforms": [
@@ -35,7 +36,9 @@
       "cordova-plugin-filepicker": {},
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-stripe": {}
+      "cordova-plugin-stripe": {},
+      "cordova-plugin-purchase": {},
+      "cordova-plugin-inapppurchases": {}
     }
   },
   "dependencies": {

@@ -156,6 +156,7 @@ function set_page_product_detail(data){
     init_cart();
     init_plugin();
     hide_spinner();
+    //bind_1_click_checkout('product1');
     function  bind_photo(data){
         //photos-start
         var str='';
@@ -233,12 +234,27 @@ function set_page_product_detail(data){
             $("#biz_lbl_mp3_duration").html(data.product.mp3duration);
             $("#biz_page_mp3_url").val(data.product.mp3_url);
         }
+        //app store product
+        if(data.product.app_store_product=='1'){
+            $("#biz_sp_checkout").show();
+            $("#biz_page_app_store_product_id").val(data.product.app_store_product_id);
+        }
         if(data.card_double_list.length>1){
             bind_double_slide_show(data);
             $("#biz_lbl_double_card").show();
             init_double_slide_show('#slider_double');
         }
     }
+    function bind_1_click_checkout(product_id){
+            $("#biz_btn_cart_checkout").click(function() {
+                inAppPurchases.purchase(product_id).then(function(purchase){
+                    alert("purchase success "+product_id);
+                }).catch(function(err){
+                    alert("Error caught from purchase("+productId+ " " +err);
+                });
+            });
+        }
+
     function bind_double_slide_show(data){
         var str='';
         $('#biz_lbl_double_category').html(data.product.category);
@@ -385,6 +401,25 @@ function set_dashboard_product(data){
             $('#biz_sel_visible').val(0);
         }
         //visible-end
+        //in-app-product-start
+        $('#biz_div_app_store_product_id').hide();
+        $('#biz_tb_app_store_product_id').val(data.product.app_store_product_id);
+        if(data.product.app_store_product=='1'){
+            $('#biz_sel_app_store_product').val(1);
+            $('#biz_div_app_store_product_id').show();
+        }else{
+            $('#biz_sel_app_store_product').val('0');
+            $('#biz_div_app_store_product_id').hide();
+        }
+        $('#biz_sel_app_store_product').on('change', function (e) {
+             var optionSelected = $(this).find("option:selected");
+             var valueSelected  = optionSelected.val();
+            $('#biz_div_app_store_product_id').hide();
+            if(valueSelected=='1'){
+                $('#biz_div_app_store_product_id').show();
+            }
+        });
+        //in-app-product-end
         var str='';
         for(a=0;a<data.category_list.length;a++){
             str=str+ "<option value='"+data.category_list[a].title+"' selected>"+data.category_list[a].title+"</option>";
@@ -406,6 +441,8 @@ function set_dashboard_product(data){
             obj.youtube_url=$('#biz_tb_youtube_url').val();
             obj.mp3filename=$('#biz_tb_mp3_filename').val();
             obj.visible=$('#biz_sel_visible').val();
+            obj.app_store_product=$('#biz_sel_app_store_product').val();
+            obj.app_store_product_id=$('#biz_tb_app_store_product_id').val();
             obj.title_url=get_title_url(obj.title);
             obj.note=get_item_note();
             if(!obj.title){
