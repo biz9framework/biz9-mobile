@@ -5981,6 +5981,24 @@ input[type=number] {
   color: #FF0000;
 }
 
+/*Gradient 14*/
+[data-gradient=gradient-14] .page-bg,
+[data-gradient=gradient-14] .btn-gradient,
+[data-gradient=gradient-14] .footer-bar-5 strong,
+[data-gradient=gradient-14] .footer-bar-2 strong,
+[data-gradient=gradient-14] .footer-bar-4 .active-nav::after,
+[data-gradient=gradient-14] .menu-gradient, .gradient-13 {
+ /* background-image: linear-gradient(180deg,#000000,#FFFFFF);*/
+  background-image: linear-gradient(180deg,#F5F5DC,#FFFFFF);
+}
+[data-gradient=gradient-14] .footer-bar-1 .active-nav i,
+[data-gradient=gradient-14] .footer-bar-1 .active-nav span,
+[data-gradient=gradient-14] .footer-bar-3 .active-nav i,
+[data-gradient=gradient-14] .footer-bar-3 .active-nav span {
+  color: #000000;
+}
+
+
 
 /*Glow text*/
 @keyframes glow-red-light {

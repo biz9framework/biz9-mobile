@@ -71,14 +71,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-stripe": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-stripe"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-purchase": {
     "source": {
       "type": "registry",

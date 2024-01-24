@@ -39,9 +39,6 @@
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
-    "cordova-plugin-stripe": {
-      "PACKAGE_NAME": "io.bossappz.mobile"
-    },
     "cordova-plugin-inapppurchases": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     }

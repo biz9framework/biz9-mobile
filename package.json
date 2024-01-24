@@ -36,7 +36,6 @@
       "cordova-plugin-filepicker": {},
       "cordova-plugin-inappbrowser": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-stripe": {},
       "cordova-plugin-purchase": {},
       "cordova-plugin-inapppurchases": {}
     }

@@ -57,10 +57,6 @@
               "count": 1
             },
             {
-              "xml": "<feature name=\"CordovaStripe\"><param name=\"android-package\" value=\"com.zyramedia.cordova.stripe.CordovaStripe\" /></feature>",
-              "count": 1
-            },
-            {
               "xml": "<feature name=\"InAppBilling\"><param name=\"android-package\" value=\"com.alexdisler_github_cozycode.inapppurchases.InAppBilling\" /></feature>",
               "count": 1
             }
@@ -158,9 +154,6 @@
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "io.bossappz.mobile"
-    },
-    "cordova-plugin-stripe": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
     "cordova-plugin-inapppurchases": {
@@ -456,14 +449,6 @@
       ]
     },
     {
-      "id": "cordova-plugin-stripe.stripe",
-      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
-      "pluginId": "cordova-plugin-stripe",
-      "clobbers": [
-        "cordova.plugins.stripe"
-      ]
-    },
-    {
       "id": "cordova-plugin-inapppurchases.InAppBilling",
       "file": "plugins/cordova-plugin-inapppurchases/www/billing-android.js",
       "pluginId": "cordova-plugin-inapppurchases",
@@ -483,7 +468,6 @@
     "cordova-plugin-inappbrowser": "5.0.0",
     "cordova-plugin-purchase": "13.10.0",
     "cordova-plugin-splashscreen": "6.0.1",
-    "cordova-plugin-stripe": "1.5.3",
     "cordova-plugin-inapppurchases": "3.0.3"
   }
 }

@@ -26,7 +26,7 @@ function set_dashboard_about(data){
     init_form();
     hide_spinner();
     function bind_detail(data){
-        set_page_sub_title('About');
+        set_page_sub_title('Edit About');
         bind_page_id(data);
         init_item_note(data.note);
         $('#biz_tb_header').val(data.header);

@@ -27,12 +27,6 @@
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="CordovaStripe">
-        <param name="android-package" value="com.zyramedia.cordova.stripe.CordovaStripe" />
-    </feature>
-    <feature name="InAppBilling">
-        <param name="android-package" value="com.alexdisler_github_cozycode.inapppurchases.InAppBilling" />
-    </feature>
     <feature name="FileChooser">
         <param name="android-package" value="com.megster.cordova.FileChooser" />
     </feature>
@@ -70,4 +64,7 @@
     <preference name="FadeSplashScreen" value="false" />
     <preference name="SplashScreenWidth" value="400" />
     <preference name="SplashScreenHeight" value="400" />
+    <feature name="InAppBilling">
+        <param name="android-package" value="com.alexdisler_github_cozycode.inapppurchases.InAppBilling" />
+    </feature>
 </widget>
