@@ -10,6 +10,7 @@ function set_app_color(app_color,app_theme){
 	document.body.setAttribute('data-gradient', app_color);
 	if(app_theme=='dark-mode'){
 		activateDarkMode();
+		$('.a-gear').css("color","white");
 	}else{
 		activateLightMode();
 	}
@@ -24,6 +25,7 @@ function set_app_color(app_color,app_theme){
         localStorage.setItem(pwaName+'-Theme', 'light-mode');
 	}
 }
+
 document.addEventListener('DOMContentLoaded', () => {
 	'use strict'
 	//Global Variables

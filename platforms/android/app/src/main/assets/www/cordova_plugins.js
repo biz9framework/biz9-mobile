@@ -287,6 +287,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
+      "id": "cordova-plugin-stripe.stripe",
+      "file": "plugins/cordova-plugin-stripe/www/CordovaStripe.js",
+      "pluginId": "cordova-plugin-stripe",
+      "clobbers": [
+        "cordova.plugins.stripe"
+      ]
+    },
+    {
       "id": "cordova-plugin-inapppurchases.InAppBilling",
       "file": "plugins/cordova-plugin-inapppurchases/www/billing-android.js",
       "pluginId": "cordova-plugin-inapppurchases",
@@ -306,6 +314,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-inappbrowser": "5.0.0",
     "cordova-plugin-purchase": "13.10.0",
     "cordova-plugin-splashscreen": "6.0.1",
+    "cordova-plugin-stripe": "1.5.3",
     "cordova-plugin-inapppurchases": "3.0.3"
   };
 });

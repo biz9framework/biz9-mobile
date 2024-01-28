@@ -123,7 +123,7 @@ function set_dashboard_contact(data){
     hide_spinner();
     function bind_detail(data){
         set_page_title('Dashboard');
-        set_page_sub_title('Contact');
+        set_page_sub_title('Edit Contact');
         bind_page_id(data);
         $('#biz_tb_form_header').val(data.form_header);
         $('#biz_tb_form_sub_note').val(data.form_sub_note);

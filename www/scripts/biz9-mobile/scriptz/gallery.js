@@ -211,7 +211,7 @@ function set_dashboard_gallery_list(data){
                 "<div>"+
                 "<a href='dashboard_gallery.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
                 "</div>"+
-                "<div class='biz_diz_list_title'><a href='dashboard_gallery.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-14'>"+item.title+"</b></p></a><div>"+
+                "<div class='biz_div_list_title'><a href='dashboard_gallery.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-14'>"+item.title+"</b></p></a><div>"+
                 "<span class='mb-0 ps-3 font-12 pt-1 '><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                 "</div>"+
                 "<p class='mb-0 ps-3 font-12  opacity-60'>"+item.category+" | " + visible_str + " " + edit_str+ " </p>"+
@@ -219,7 +219,7 @@ function set_dashboard_gallery_list(data){
                 "<div class=''>"+
                 "<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+
                 "<div class='mb-0 ps-3  ' style='float:left;'>"+
-                "<div class='biz_diz_list_edit'><a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='gallery_detail.html?title_url="+item.title_url+"'><i class='admin_edit_img fa fa-eye pe-2 a-gear'></i></a>"+
+                "<div class='biz_div_list_edit'><a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='gallery_detail.html?title_url="+item.title_url+"'><i class='admin_edit_img fa fa-eye pe-2 a-gear'></i></a>"+
                 "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='"+photo_edit_url+"'><i class='admin_edit_img fa fa-camera pe-2 a-gear'></i></a>"+
                 "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='biz_btn_delete' href='#'><i class='admin_edit_img fa fa-trash pe-2 a-gear'></i></a>"+
                 "</div>"+

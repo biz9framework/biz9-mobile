@@ -21,17 +21,16 @@ function load_biz_app(){
 	cloud_get_url(url,{customer_id:get_user().customer_id},function(biz_data){
 		//$(".page-content").hide();
 		//$("#page").hide();
-		set_app_color(biz_data.mobile.primary.app_color,biz_data.mobile.primary.app_theme);
-		w('biz_mobile_user',get_user());
-		w('biz_cloud_get_url',get_cloud_url(url));
-		w('biz_cloud_get_data',biz_data);
+		//w('biz_mobile_user',get_user());
+		//w('biz_cloud_get_url',get_cloud_url(url));
+		//w('biz_cloud_get_data',biz_data);
 		set_footer_navigation(biz_data);
 		set_biz_page_data(page_title,biz_data);
 		set_left_navigation(biz_data);
 		set_page_button_color(biz_data.mobile.primary.button_color);
 		set_pull_down();
 		set_init();
-		//$("#page").show();
+		set_app_color(biz_data.mobile.primary.app_color,biz_data.mobile.primary.app_theme);
 	});
 }
 function get_new_item(data_type){
@@ -1378,5 +1377,15 @@ function get_pager_ajax(page_current,page_count){
 		str=str+"</li>";
 	}
 	return str;
+}
+
+function bind_in_app_item_detail(){
+	$("#biz_btn_checkout").click(function() {
+		product_id=$('#biz_page_app_store_product_id').val();
+		inAppPurchases.purchase(product_id).then(function(purchase){
+		}).catch(function(err){
+			alert("In App Purchase Error. ProductID: "+product_id +" "+ JSON.stringify(err));
+		});
+	});
 }
 

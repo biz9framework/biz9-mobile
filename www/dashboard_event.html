@@ -54,8 +54,7 @@
                                         <div class="card card-style bg-theme pb-0 biz_lbl_card">
                                             <div class="content mb-0"  id="tab-group-2">
                                                 <h3 id='biz_lbl_page_sub_title'></h3>
-                                                 <p id='biz_lbl_page_note'>
--                                                </p>
+                                                 <p id='biz_lbl_page_note'></p>
                                                  <div class="tab-controls tabs-small tabs-rounded" data-highlight="bg-black-black">
                                                     <a href="#" data-active="" data-bs-toggle="collapse" data-bs-target="#tab-primary" class="bg-black-black no-click" aria-expanded="true">Primary</a>
                                                     <a href="#" data-bs-toggle="collapse" data-bs-target="#tab-note" class="collapsed"  class="bg-highlight no-click" aria-expanded="false">Note</a>
@@ -179,6 +178,24 @@
                                                             <em></em>
                                                         </div>
                                                         <div class="pb-3"></div>
+                                                        <div class="input-style has-borders input-style-always-active no-icon validate-field mb-4">
+                                                    <select id="biz_sel_app_store_product">
+                                                        <option value="false">False</option>
+                                                        <option value="true">True</option>
+                                                    </select>
+                                                    <label for="form1ab" class="color-theme opacity-50 text-uppercase font-700 font-10">App Store Product?</label>
+                                                    <span><i class="fa fa-chevron-down"></i></span>
+                                                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                                                    <i class="fa fa-check disabled invalid color-red-dark"></i>
+                                                    <em></em>
+                                                </div>
+                                                <div class="pb-3"></div>
+                                                <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4" id='biz_div_app_store_product_id'>
+                                                    <input type="text" class="form-control" id="biz_tb_app_store_product_id">
+                                                    <label for="form1ab" class="color-theme opacity-50 text-uppercase font-700 font-10">App Store Product ID</label>
+                                                    <em></em>
+                                                </div>
+
                                                     </div>
                                                 </div>
                                                 <div data-bs-parent="#tab-group-2" class="collapse" id="tab-note" style="">

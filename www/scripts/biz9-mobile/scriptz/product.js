@@ -70,7 +70,7 @@ function set_page_product_category_list(data){
                 "<div>"+
                 "<a href='"+url+"'><h4 class='ps-3 line-height-s color-theme mb-1'><b>"+item.title+"</b></h4></a>"+
                 "<p class='mb-0 ps-3 font-12 pt-0'>"+truncate_str(item.sub_note,250) +"</p>"+
-                "<p class='font-12 pt-0 opacity-60'>"+date_str+" " +value_field + " " + "<i class='fa fa-eye color-gray-dark'></i> "+item.view_count +" <a href='"+url_category+"'><b>"+item.category+"</b></a></p>"+
+                "<p class='font-12 pt-0 opacity-60'>"+date_str+" " +value_field + " " + "<i class='fa fa-eye color-gray-dark'></i> "+item.view_count +" | <a href='"+url_category+"'><b>"+item.category+"</b></a></p>"+
                 "</div>"+
                 "</div>"+
                 "<div class='divider mb-3'></div>";
@@ -235,9 +235,10 @@ function set_page_product_detail(data){
             $("#biz_page_mp3_url").val(data.product.mp3_url);
         }
         //app store product
-        if(data.product.app_store_product=='1'){
+        if(data.product.app_store_product=='true'){
             $("#biz_sp_checkout").show();
-            $("#biz_page_app_store_product_id").val(data.product.app_store_product_id);
+            $(".biz_btn_checkout").attr('biz_product_id',data.product.app_store_product_id);
+            bind_one_click_buy();
         }
         if(data.card_double_list.length>1){
             bind_double_slide_show(data);
@@ -245,16 +246,6 @@ function set_page_product_detail(data){
             init_double_slide_show('#slider_double');
         }
     }
-    function bind_1_click_checkout(product_id){
-            $("#biz_btn_cart_checkout").click(function() {
-                inAppPurchases.purchase(product_id).then(function(purchase){
-                    alert("purchase success "+product_id);
-                }).catch(function(err){
-                    alert("Error caught from purchase("+productId+ " " +err);
-                });
-            });
-        }
-
     function bind_double_slide_show(data){
         var str='';
         $('#biz_lbl_double_category').html(data.product.category);
@@ -401,31 +392,33 @@ function set_dashboard_product(data){
             $('#biz_sel_visible').val(0);
         }
         //visible-end
+        //category-start
+       var str='';
+        for(a=0;a<data.category_list.length;a++){
+            str=str+ "<option value='"+data.category_list[a].title+"' selected>"+data.category_list[a].title+"</option>";
+        }
+        $('#biz_sel_category_list').html(str);
+        $('#biz_sel_category_list').val(data.product.category);
+        //category-end
         //in-app-product-start
         $('#biz_div_app_store_product_id').hide();
         $('#biz_tb_app_store_product_id').val(data.product.app_store_product_id);
-        if(data.product.app_store_product=='1'){
-            $('#biz_sel_app_store_product').val(1);
+        if(data.product.app_store_product=='true'){
+            $('#biz_sel_app_store_product').val('true');
             $('#biz_div_app_store_product_id').show();
         }else{
-            $('#biz_sel_app_store_product').val('0');
+            $('#biz_sel_app_store_product').val('false');
             $('#biz_div_app_store_product_id').hide();
         }
         $('#biz_sel_app_store_product').on('change', function (e) {
              var optionSelected = $(this).find("option:selected");
              var valueSelected  = optionSelected.val();
             $('#biz_div_app_store_product_id').hide();
-            if(valueSelected=='1'){
+            if(valueSelected=='true'){
                 $('#biz_div_app_store_product_id').show();
             }
         });
         //in-app-product-end
-        var str='';
-        for(a=0;a<data.category_list.length;a++){
-            str=str+ "<option value='"+data.category_list[a].title+"' selected>"+data.category_list[a].title+"</option>";
-        }
-        $('#biz_sel_category_list').html(str);
-        $('#biz_sel_category_list').val(data.product.category);
     }
     function bind_event(){
         $("#biz_btn_update").click(function() {
@@ -502,34 +495,38 @@ function set_dashboard_product_list(data){
     function bind_list(item_list,page_current,page_count){
         var str='';
         for(a=0;a<item_list.length;a++){
-            item = item_list[a];
-            if(String(item.visible_obj.product_visible_id)=='0'){
-                visible_str="<span class='color-red-dark'> <i class='fa-sharp fa-solid fa-circle-xmark'></i> </span>";
+            //item = item_list[a];
+            if(String(item_list[a].visible_obj.product_visible_id)=='0'){
+                visible_str="| <span class='color-red-dark'> <i class='fa-sharp fa-solid fa-circle-xmark'></i> </span>";
             }else{
-                visible_str="<span class='color-green-dark'><i class='fa-sharp fa-solid fa-circle-check'></i></span>";
+                visible_str="| <span class='color-green-dark'><i class='fa-sharp fa-solid fa-circle-check'></i></span>";
+            }
+            app_store_str='';
+            if(item_list[a].app_store_product=='true'){
+                app_store_str="| <span> <i class='fa-sharp fa-solid fa-credit-card color-gray-dark'></i> </span>";
             }
             edit_str= "<a class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
                 "<i class='fa fa-gear font-14 accordion-icon a-gear'></i>"+
                 "</a>";
-            sub_item_edit_url="dashboard_sub_item_list.html?data_type="+item.data_type+"&tbl_id="+item.tbl_id+"&parent_data_type="+item.data_type+"&parent_tbl_id="+item.tbl_id;
-            photo_edit_url="dashboard_photo_list.html?parent_data_type="+item.data_type+"&parent_tbl_id="+item.tbl_id;
-            str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item.tbl_id+"'>"+
+            sub_item_edit_url="dashboard_sub_item_list.html?data_type="+item_list[a].data_type+"&tbl_id="+item_list[a].tbl_id+"&parent_data_type="+item_list[a].data_type+"&parent_tbl_id="+item_list[a].tbl_id;
+            photo_edit_url="dashboard_photo_list.html?parent_data_type="+item_list[a].data_type+"&parent_tbl_id="+item_list[a].tbl_id;
+            str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item_list[a].tbl_id+"'>"+
                 "<div>"+
-                "<a href='dashboard_product.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
+                "<a href='dashboard_product.html?title_url="+item_list[a].title_url+"'><img src='"+item_list[a].photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
                 "</div>"+
-                "<div class='biz_diz_list_title'><a href='dashboard_product.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-12'>"+item.title+"</b></p></a><div>"+
-                "<span class='mb-0 ps-3 font-12 pt-1 '><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
+                "<div class='biz_div_list_title'><a href='dashboard_product.html?title_url="+item_list[a].title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-12'>"+item_list[a].title+"</b></p></a><div>"+
+                "<span class='mb-0 ps-3 font-12 pt-1 '><i class='fa fa-eye color-gray-dark'></i> "+item_list[a].view_count +"</span>"+
                 "</div>"+
-                "<p class='mb-0 ps-3 font-12  opacity-60'><b>"+item.money_obj.price+"</b> | "  +item.category+" | " + visible_str + " " + edit_str+ " </p>"+
-                "<div class='accordion ' id='accordion-"+a+"'>"+
+                   "<p class='mb-0 ps-3 font-12  opacity-60'><b>"+item_list[a].money_obj.price+"</b> | "  +item_list[a].category+ " " + app_store_str + " " + visible_str + " " + edit_str+ " </p>"+
+             "<div class='accordion ' id='accordion-"+a+"'>"+
                 "<div class=''>"+
                 "<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+
                 "<div class='mb-0 ps-3  ' style='float:left;'>"+
-                "<div class='biz_diz_list_edit'><a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='product_detail.html?title_url="+item.title_url+"'><i class='admin_edit_img fa fa-eye pe-2 a-gear'></i></a>"+
-                "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='"+photo_edit_url+"'><i class='admin_edit_img fa fa-camera pe-2 a-gear'></i></a>"+
-                "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='"+sub_item_edit_url+"'><i class='admin_edit_img fa fa-tags pe-2 a-gear'></i></a>"+
-                "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='biz_btn_copy' href='#'><i class='admin_edit_img fa fa-copy pe-2 a-gear'></i></a>"+
-                "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='biz_btn_delete' href='#'><i class='admin_edit_img fa fa-trash pe-2 a-gear'></i></a>"+
+                "<div class='biz_div_list_edit'><a tbl_id='"+item_list[a].tbl_id +"' data_type='"+item_list[a].data_type +"' class='#' href='product_detail.html?title_url="+item_list[a].title_url+"'><i class='admin_edit_img fa fa-eye pe-2 a-gear'></i></a>"+
+                "<a tbl_id='"+item_list[a].tbl_id +"' data_type='"+item_list[a].data_type +"' class='#' href='"+photo_edit_url+"'><i class='admin_edit_img fa fa-camera pe-2 a-gear'></i></a>"+
+                "<a tbl_id='"+item_list[a].tbl_id +"' data_type='"+item_list[a].data_type +"' class='#' href='"+sub_item_edit_url+"'><i class='admin_edit_img fa fa-tags pe-2 a-gear'></i></a>"+
+                "<a tbl_id='"+item_list[a].tbl_id +"' data_type='"+item_list[a].data_type +"' class='biz_btn_copy' href='#'><i class='admin_edit_img fa fa-copy pe-2 a-gear'></i></a>"+
+                "<a tbl_id='"+item_list[a].tbl_id +"' data_type='"+item_list[a].data_type +"' class='biz_btn_delete' href='#'><i class='admin_edit_img fa fa-trash pe-2 a-gear'></i></a>"+
                 "</div>"+
                 "</div>"+
                 "</div>"+

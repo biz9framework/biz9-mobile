@@ -135,7 +135,9 @@ function set_page_order_checkout_success(data){
 }
 //9_order_checkout 9_submit
 function set_page_order_checkout_submit(data){
-    bind_checkout_test();
+    if(TEST_MODE=="true"){
+        bind_checkout_test();
+    }
     hide_checkout();
     hide_cart();
     bind_checkout_detail(data);
@@ -151,18 +153,34 @@ function set_page_order_checkout_submit(data){
     }
     function bind_checkout_detail(data){
         set_page_title(data.mobile.primary.app_title);
-        $('#biz_div_list').html(str);
+        $('#biz_div_list').html('');
         $('#biz_lbl_quantity').html(data.cart.price.quantity);
         $('#biz_lbl_sub_total').html(data.cart.price.sub_total);
         $('#biz_lbl_shipping').html(data.cart.price.shipping_total);
         $('#biz_lbl_discount').html(data.cart.price.discount_total);
         $('#biz_lbl_grand_total').html(data.cart.price.grand_total);
         $("#biz_lbl_cashapp_handler").html(data.info.business_cashapp);
-        var str="<option value='blank'>Make A Selection</option>"+
-            "<option value='"+PAYMENT_TYPE_CASHAPP+"'>Cash App</option>"+
-            "<option value='"+PAYMENT_TYPE_PAY_NOW+"'>Pay Now</option>"+
-            "<option value='"+PAYMENT_TYPE_ON_DELIVERY+"'>Pay on Delivery</option>";
-        $('#biz_sel_order_payment_type').html(str);
+        $("#biz_div_checkout_payment_type").hide();
+        $("#biz_div_checkout_email").hide();
+        var show_payment=false;
+        var str="<option value='blank'>Make A Selection</option>";
+        if(data.info.business_cashapp_visible=='true'){
+         str=str+"<option value='"+PAYMENT_TYPE_CASHAPP+"'>Cash App</option>";
+            show_payment=true;
+        }
+        if(data.info.business_stripe_visible=='true'){
+            str=str+"<option value='"+PAYMENT_TYPE_PAY_NOW+"'>Pay Now</option>";
+            show_payment=true;
+        }
+        if(data.info.business_payondelivery_visible=='true'){
+            str=str+"<option value='"+PAYMENT_TYPE_ON_DELIVERY+"'>Pay on Delivery</option>";
+            show_payment=true;
+        }
+        if(show_payment){
+            $('#biz_sel_order_payment_type').html(str);
+            $("#biz_div_checkout_payment_type").show();
+            $("#biz_div_checkout_email").show();
+        }
         var str='';
         for(a=1;a<13;a++){
             str=str+"<option value='"+a+"'>"+a+"</option>";
@@ -519,13 +537,12 @@ function set_dashboard_order_list(data){
 "<div class='col-6'><h6 class='font-700 font-19'>"+grand_total+"</h6></div>"+
 "</div>"+
 "<div class='divider'></div>"+
-                "<a href='#' parent_tbl_id='"+item_order.parent_tbl_id+"' parent_data_type='"+item_order.parent_data_type+"' data-menu='menu-option-1' class='biz_btn_order_open btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-yellow-dark'>Open</a>"+
+                "<a href='#' tbl_id='"+item.tbl_id+"' data_type='"+item.data_type+"' data-menu='menu-option-1' class='biz_btn_order_open btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-yellow-dark'>Open</a>"+
                 "<a href='#' tbl_id='"+item.tbl_id+"' data_type='"+item.data_type+"' data-menu='menu-option-1' class='biz_btn_order_shipped btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-green-dark'>Shipped</a>"+
                 "<a href='#' tbl_id='"+item.tbl_id+"' data_type='"+item.data_type+"' data-menu='menu-option-1' class='biz_btn_order_delete btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-red-dark'>Delete</a>"+
 "</div>"+
 "</div>"+
 "</div>";
-            console.log(item);
         }
         $('#biz_lbl_list').html('');
         $('#biz_lbl_list').html(str);
@@ -555,9 +572,34 @@ function set_dashboard_order_list(data){
             }
         });
         $(".biz_btn_order_open").click(function() {
-            data_type = $(this).attr('parent_data_type');
-            tbl_id = $(this).attr('parent_tbl_id');
-                cloud_get(data_type,tbl_id,function(data){
+            var obj={};
+            obj.data_type = $(this).attr('data_type');
+            obj.tbl_id = $(this).attr('tbl_id');
+            obj.status_id='0';
+            if(confirm("Open?") == true) {
+                cloud_update(obj.data_type,obj.tbl_id,obj, function(data){
+                    $('#biz_lbl_order_status_'+obj.tbl_id).html(get_status(obj.status_id));
+                    return false;
+                });
+            }
+        });
+        $(".biz_btn_order_shipped").click(function() {
+            var obj={};
+            obj.data_type = $(this).attr('data_type');
+            obj.tbl_id = $(this).attr('tbl_id');
+            if(confirm("Ship?") == true) {
+                obj.status_id='1';
+                cloud_update(obj.data_type,obj.tbl_id,obj, function(data){
+                    $('#biz_lbl_order_status_'+obj.tbl_id).html(get_status(obj.status_id));
+                    return false;
+                });
+            }
+        });
+        $(".biz_btn_order_open_old").click(function() {
+            var obj={};
+            obj.data_type = $(this).attr('parent_data_type');
+            obj.tbl_id = $(this).attr('parent_tbl_id');
+                cloud_get(obj.data_type,obj.tbl_id,function(data){
                     switch(data.data_type) {
                             case DT_PRODUCT:
 			                url='product_detail.html';
@@ -569,11 +611,14 @@ function set_dashboard_order_list(data){
                             url='event_detail.html';
 			                break;
                     }
-                    window.location=url + "?title_url="+data.title_url;
+                    window.location.reload();
+                    //window.location=url + "?title_url="+data.title_url;
                     return false;
                 });
         });
-        $(".biz_btn_order_shipped").click(function() {
+
+
+        $(".biz_btn_order_shipped_old").click(function() {
             data_type = $(this).attr('data_type');
             tbl_id = $(this).attr('tbl_id');
             if(confirm("Ship?") == true) {

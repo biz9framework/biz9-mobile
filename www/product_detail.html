@@ -33,7 +33,6 @@
                             <input id='biz_page_parent_data_type' type='hidden'/>
                             <input id='biz_page_category' type='hidden'/>
                             <input id='biz_page_mp3_url' type='hidden'/>
-                            <input id='biz_page_app_store_product_id' type='hidden'/>
                             <div class="header header-fixed header-logo-app">
                                 <a href="#" data-back-button class="header-title" id='biz_lbl_page_title'></a>
                                 <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
@@ -131,10 +130,12 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#" class="btn btn-l btn-full under-slider-btn mx-5 font-800 text-uppercase rounded-sm mb-4 biz_btn" id='biz_btn_cart_add' style='display:none'>ADD To Cart</a>
+                                <span id='biz_sp_buy'>
+                                    <a href="#" class="btn btn-l btn-full under-slider-btn mx-5 font-800 text-uppercase rounded-sm mb-4 biz_btn" id='biz_btn_cart_add' style='display:none'>ADD To Cart</a>
+                                </span>
                                 <span id='biz_sp_checkout' style='display:none;'>
                                     <br/>
-                                    <a href="#" class="btn btn-l btn-full under-slider-btn mx-5 font-800 text-uppercase rounded-sm mb-4 biz_btn" id='biz_btn_checkout' >1 Click Checkout</a>
+                                    <a href="#" class="btn btn-l btn-full under-slider-btn mx-5 font-800 text-uppercase rounded-sm mb-4 biz_btn biz_btn_checkout" biz_product_id='0'>Buy Now With 1-Click</a>
                                 </span>
                                 <div class="card card-style m-3"id='biz_lbl_card_photo_list'>
                                     <div class="content m-3">
@@ -300,19 +301,7 @@
                                                                                         <script>
                                                                                             document.addEventListener('deviceready', onDeviceReady, false);
                                                                                             function onDeviceReady() {
-                                                                                                $("#biz_btn_checkout").click(function() {
-                                                                                                    product_id=$('#biz_page_app_store_product_id').val();
-                                                                                                    inAppPurchases.purchase(product_id).then(function(purchase){
-                                                                                                        showTestResults("purchase("+product_id+")",purchase);
-                                                                                                    }).catch(function(err){
-                                                                                                        showTestResults("Error caught from purchase("+product_id+")",err);
-                                                                                                    });
-                                                                                                    function showTestResults(title,results){
-                                                                                                        alert('App Store Checkout Error');
-                                                                                                        alert(title);
-                                                                                                        alert(JSON.stringify(results));
-                                                                                                    }
-                                                                                                });
+                                                                                                bind_in_app_item_detail();
                                                                                             }
                                                                                         </script>
                         </body>

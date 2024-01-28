@@ -6469,7 +6469,7 @@ input[type=number] {
     color:white;
 }
 .admin_edit_img{
-    margin-right:40px;
+    margin-right:30px;
     font-size:16px;
 }
 /* -- paging start */
@@ -6512,11 +6512,11 @@ input[type=number] {
 
 
 /* dashboard-start */
-.biz_diz_list_title{
+.biz_div_list_title{
     float:left; width:100%; text-align:left;
 }
 .biz_diz_list_edit{
-float:left; width:100%; text-align:right;
+width:100%; text-align:right;
 }
 /* dashboard-end */
 

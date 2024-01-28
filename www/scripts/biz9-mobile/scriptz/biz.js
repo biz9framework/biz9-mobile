@@ -21,17 +21,16 @@ function load_biz_app(){
 	cloud_get_url(url,{customer_id:get_user().customer_id},function(biz_data){
 		//$(".page-content").hide();
 		//$("#page").hide();
-		set_app_color(biz_data.mobile.primary.app_color,biz_data.mobile.primary.app_theme);
-		w('biz_mobile_user',get_user());
-		w('biz_cloud_get_url',get_cloud_url(url));
-		w('biz_cloud_get_data',biz_data);
+		//w('biz_mobile_user',get_user());
+		//w('biz_cloud_get_url',get_cloud_url(url));
+		//w('biz_cloud_get_data',biz_data);
 		set_footer_navigation(biz_data);
 		set_biz_page_data(page_title,biz_data);
 		set_left_navigation(biz_data);
 		set_page_button_color(biz_data.mobile.primary.button_color);
 		set_pull_down();
 		set_init();
-		//$("#page").show();
+		set_app_color(biz_data.mobile.primary.app_color,biz_data.mobile.primary.app_theme);
 	});
 }
 function get_new_item(data_type){
@@ -1379,4 +1378,48 @@ function get_pager_ajax(page_current,page_count){
 	}
 	return str;
 }
+function bind_one_click_buy(){
+	$(".biz_btn_checkout").click(function() {
+		alert('what');
+		product_id=$(this).attr("biz_product_id");
+		alert(product_id);
+		inAppPurchases.purchase(product_id).then(function(purchase){
+		}).catch(function(err){
+			alert("In App Purchase Error. ProductID: "+product_id +" "+ JSON.stringify(err));
+		});
+	});
+}
+function bind_service_one_click_buy(){
+	$(".biz_btn_checkout").click(function() {
+		alert('what service');
+		product_id=$(this).attr("biz_product_id");
+		var obj={};
+		obj.start_date=$('#biz_tb_date').val();
+		obj.start_time=$('#biz_tb_time').val();
+		if(!obj.start_time){
+			show_toast_error('Please select a time');
+		}else if(!obj.start_date){
+			show_toast_error('Please select a date');
+		}
 
+		inAppPurchases.purchase(product_id).then(function(purchase){
+		}).catch(function(err){
+			alert("In App Purchase Error. ProductID: "+product_id +" "+ JSON.stringify(err));
+		});
+	});
+}
+
+function filter_visible_list(item_list){
+	var r_item_list=[];
+	for(var a=0;a<item_list.length;a++){
+		if(item_list[a].data_type==DT_BLOG_POST || item_list[a].data_type==DT_GALLERY){
+			if(item_list[a].visible=='true'){
+				r_item_list.push(item_list[a]);
+			}
+		}
+		else{
+			r_item_list.push(item_list[a]);
+		}
+	}
+	return r_item_list;
+}

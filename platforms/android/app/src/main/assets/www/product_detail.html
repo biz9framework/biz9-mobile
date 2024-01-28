@@ -300,19 +300,7 @@
                                                                                         <script>
                                                                                             document.addEventListener('deviceready', onDeviceReady, false);
                                                                                             function onDeviceReady() {
-                                                                                                $("#biz_btn_checkout").click(function() {
-                                                                                                    product_id=$('#biz_page_app_store_product_id').val();
-                                                                                                    inAppPurchases.purchase(product_id).then(function(purchase){
-                                                                                                        showTestResults("purchase("+product_id+")",purchase);
-                                                                                                    }).catch(function(err){
-                                                                                                        showTestResults("Error caught from purchase("+product_id+")",err);
-                                                                                                    });
-                                                                                                    function showTestResults(title,results){
-                                                                                                        alert('App Store Checkout Error');
-                                                                                                        alert(title);
-                                                                                                        alert(JSON.stringify(results));
-                                                                                                    }
-                                                                                                });
+                                                                                                bind_in_app_item_detail();
                                                                                             }
                                                                                         </script>
                         </body>

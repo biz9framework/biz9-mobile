@@ -12,7 +12,7 @@ function set_page_blog_post_category_list(data){
             item = item_list[a];
             str=str+"<div class='splide__slide'>"+
                 "<div class='card card-style'style='background-color:transparent; height:320px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item.last_item_create.photo_obj.mid_url+")' >"+
-              "<div class='card-bottom p-3'>"+
+                "<div class='card-bottom p-3'>"+
                 "<a href='blog_post_list.html?category="+item.title+"&page_current=1' class='btn btn-s rounded-s mb-4 biz_btn'><h4>"+item.title+" (" + item.item_count + ")</h4></a>"+
                 "</div>"+
                 "<div class='card-overlay bg-gradient'></div>"+
@@ -26,6 +26,7 @@ function set_page_blog_post_category_list(data){
     function bind_category_list(item_list,page_current,page_count){
         var str='';
         color=0;
+        var item_list = filter_visible_list(item_list);
         for(var a=0;a<item_list.length;a++){
             item = item_list[a];
             //color_button_get_start
@@ -54,14 +55,15 @@ function set_page_blog_post_category_list(data){
     }
     function bind_popular_list(item_list){
         var str='';
+        var item_list = filter_visible_list(item_list);
         for(var a=0;a<item_list.length;a++){
-          item=item_list[a];
+            item=item_list[a];
             url='blog_post_detail.html?title_url='+item.title_url;
             url_category='event_list.html?category='+item.category+"&page_current=1";
             value_field=" ";
             date_str="<span class=' mb-0 ps-3 font-12 pt-0'></span>";
             if(!item.sub_note){
-                item.sub_note='';
+               item.sub_note='';
             }
             str=str+"<div class='d-flex mb-3'>"+
                 "<div>"+
@@ -70,11 +72,11 @@ function set_page_blog_post_category_list(data){
                 "<div>"+
                 "<a href='"+url+"'><h4 class='ps-3 line-height-s color-theme mb-1'>"+item.title+"</h4></a>"+
                 "<p class='mb-0 ps-3 font-12 pt-0'>"+truncate_str(item.sub_note,250) +"</p>"+
-                "<p class='font-12 pt-0 opacity-60'>"+date_str+" " +value_field + " " + "<i class='fa fa-eye color-gray-dark'></i> "+item.view_count +" <a href='"+url_category+"'><b>"+item.category+"</b></a></p>"+
+                "<p class='font-12 pt-0 opacity-60'>"+date_str+" " +value_field + " " + "<i class='fa fa-eye color-gray-dark'></i> "+item.view_count +" | <a href='"+url_category+"'><b>"+item.category+"</b></a></p>"+
                 "</div>"+
                 "</div>"+
                 "<div class='divider mb-3'></div>";
-    }
+        }
         $("#biz_lbl_popular_list").show();
         $('#biz_lbl_popular_list').html('');
         $('#biz_lbl_popular_list').html(str);
@@ -90,6 +92,7 @@ function set_page_blog_post_list(data){
     hide_spinner();
     function bind_list(item_list,page_current,page_count){
         var str='';
+        var item_list = filter_visible_list(item_list);
         for(var a=0;a<item_list.length;a++){
             item=item_list[a];
             date_str="<span class=' mb-0 ps-3 font-12 pt-0'>"+item.date_obj.pretty_create+"</span>";
@@ -150,7 +153,7 @@ function set_page_blog_post_detail(data){
             author ="<span style='margin-right:5px;'><i class='fa fa-pen pe-2 pr-4'></i>"+data.blog_post.author+"</span>";
             $("#biz_lbl_info").html(author+ " " +date);
         }else{
-        $("#biz_lbl_info").html(date);
+            $("#biz_lbl_info").html(date);
         }
         if(data.blog_post.pdf_link){
             $("#biz_div_pdf").show();
@@ -242,9 +245,9 @@ function set_dashboard_blog_post_list(data){
         for(a=0;a<item_list.length;a++){
             item = item_list[a];
             if(String(item.visible)=='true'){
-                visible_str="<span class='color-green-dark'><i class='fa-sharp fa-solid fa-circle-check'></i></span>";
+                visible_str=" | <span><i class='fa-sharp fa-solid fa-circle-check color-green-dark'></i></span>";
             }else{
-                visible_str="<span class='color-red-dark'> <i class='fa-sharp fa-solid fa-circle-xmark'></i> </span>";
+                visible_str=" | <span> <i class='fa-sharp fa-solid fa-circle-xmark color-red-dark'></i> </span>";
             }
             edit_str= "<a class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
                 "<i class='fa fa-gear font-14 accordion-icon a-gear'></i>"+
@@ -254,15 +257,15 @@ function set_dashboard_blog_post_list(data){
                 "<div>"+
                 "<a href='dashboard_blog_post.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
                 "</div>"+
-                "<div class='biz_diz_list_title'><a href='dashboard_blog_post.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-14'>"+item.title+"</b></p></a><div>"+
+                "<div class='biz_div_list_title'><a href='dashboard_blog_post.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-14'>"+item.title+"</b></p></a><div>"+
                 "<span class='mb-0 ps-3 font-12 pt-1 '><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
                 "</div>"+
-                "<p class='mb-0 ps-3 font-12  opacity-60'>"+item.category+" | " + visible_str + " " + edit_str+ " </p>"+
+                "<p class='mb-0 ps-3 font-12  opacity-60'>"+item.category+ visible_str + " " + edit_str+ " </p>"+
                 "<div class='accordion ' id='accordion-"+a+"'>"+
                 "<div class=''>"+
                 "<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+
                 "<div class='mb-0 ps-3 a-gear' style='float:left;'>"+
-                "<div class='biz_diz_list_edit'><a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='blog_post_detail.html?title_url="+item.title_url+"'><i class='admin_edit_img fa fa-eye pe-2 a-gear'></i></a>"+
+                "<div class='biz_div_list_edit'><a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='blog_post_detail.html?title_url="+item.title_url+"'><i class='admin_edit_img fa fa-eye pe-2 a-gear'></i></a>"+
                 "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='"+photo_edit_url+"'><i class='admin_edit_img fa fa-camera pe-2 a-gear'></i></a>"+
                 "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='biz_btn_copy ' href='#'><i class='admin_edit_img fa fa-copy pe-2 a-gear'></i></a>"+
                 "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='biz_btn_delete' href='#'><i class='admin_edit_img fa fa-trash pe-2 a-gear'></i></a>"+
@@ -309,8 +312,8 @@ function set_dashboard_blog_post_list(data){
             if (confirm("Delete?") == true) {
                 cloud_delete(data_type,tbl_id,function(data){
                     $('#biz_row_'+tbl_id).remove();
-             		set_page_note(set_page_note_remove(parseInt($('#biz_page_item_list_count').val())));
-					bind_page_list_count(parseInt($('#biz_page_item_list_count').val()));
+                    set_page_note(set_page_note_remove(parseInt($('#biz_page_item_list_count').val())));
+                    bind_page_list_count(parseInt($('#biz_page_item_list_count').val()));
                 });
             }
         });
@@ -381,7 +384,7 @@ function set_dashboard_blog_post(data){
             }else{
                 cloud_update(data_type,tbl_id,obj, function(data){
                     $('#biz_page_tbl_id').val(data.tbl_id);
-                     $('#biz_img').show();
+                    $('#biz_img').show();
                     $('#biz_div_mp3').show();
                     show_toast_update();
                     return false;
