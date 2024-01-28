@@ -23,7 +23,7 @@ function load_biz_app(){
 		//$("#page").hide();
 		//w('biz_mobile_user',get_user());
 		//w('biz_cloud_get_url',get_cloud_url(url));
-		//w('biz_cloud_get_data',biz_data);
+		w('biz_cloud_get_data',biz_data);
 		set_footer_navigation(biz_data);
 		set_biz_page_data(page_title,biz_data);
 		set_left_navigation(biz_data);
@@ -1380,20 +1380,13 @@ function get_pager_ajax(page_current,page_count){
 }
 function bind_one_click_buy(){
 	$(".biz_btn_checkout").click(function() {
-		alert('what');
 		product_id=$(this).attr("biz_product_id");
 		alert(product_id);
-		inAppPurchases.purchase(product_id).then(function(purchase){
-		}).catch(function(err){
-			if(err){
-				alert("In App Purchase Error. ProductID: "+product_id +" "+ JSON.stringify(err));
-			}
-		});
+		bind_in_app_checkout(product_id);
 	});
 }
 function bind_service_one_click_buy(){
 	$(".biz_btn_checkout").click(function() {
-		alert('what service');
 		product_id=$(this).attr("biz_product_id");
 		var obj={};
 		obj.start_date=$('#biz_tb_date').val();
@@ -1402,17 +1395,19 @@ function bind_service_one_click_buy(){
 			show_toast_error('Please select a time');
 		}else if(!obj.start_date){
 			show_toast_error('Please select a date');
+		}else{
+			bind_in_app_checkout(product_id);
 		}
-
-		inAppPurchases.purchase(product_id).then(function(purchase){
-		}).catch(function(err){
-			if(err){
-			alert("In App Purchase Error. ProductID: "+product_id +" "+ JSON.stringify(err));
-			}
-		});
 	});
 }
-
+function bind_in_app_checkout(product_id){
+	inAppPurchases.purchase(product_id).then(function(purchase){
+		}).catch(function(err){
+			if(err.code != '-1013'){
+				alert("In App Purchase Error. ProductID: "+product_id +" "+ JSON.stringify(err));
+			}
+		});
+}
 function filter_visible_list(item_list){
 	var r_item_list=[];
 	for(var a=0;a<item_list.length;a++){

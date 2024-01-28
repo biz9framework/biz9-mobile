@@ -312,9 +312,8 @@ function set_page_home(data){
                     "</div>"+
                     "<h4 class='text-center pt-2'>"+item.title+"</h4>";
                     if(item.mp3filename){
-                        str = str+"<div  class='text-center pt-2'><audio class='biz_audio_track' controls><source src='"+item.mp3_url+"'  type='audio/mp3' /></audio></div>";
-
-                new Plyr('.biz_audio_track');
+                        //str = str+"<div  class='text-center pt-2'><audio class='biz_audio_track' controls><source src='"+item.mp3_url+"'  type='audio/mp3' /></audio></div>";
+                        new Plyr('.biz_audio_track');
                     }
                     str = str+"<p class='mb-0 ps-3 font-12 pt-0 text-center'>"+truncate_str(item.sub_note,250)+"</p>"+
                     "<p class='text-center pt-2 mb-3'>";
@@ -340,7 +339,6 @@ function set_page_home(data){
                 $('#biz_lbl_buy_slide_show_list').html(str);
                 $("#biz_lbl_buy_card").show();
                 init_slide_show('#slider_buy');
-
                 bind_one_click_buy();
                 $(".biz_btn_buy_now_button").click(function() {
                     var obj={};

@@ -55,6 +55,7 @@ function set_dashboard_home(data){
 		});
 	}
 	function bind_double(data){
+		$("#biz_sel_double_visible").val(data.home.card_double_visible);
 		bind_double_types(data);
 		bind_double_events();
 		function hide_double_fields(){
@@ -165,6 +166,7 @@ function set_dashboard_home(data){
 		}
 	}
 	function bind_image(data){
+		$("#biz_sel_image_visible").val(data.home.card_image_visible);
 		bind_image_types(data);
 		bind_image_events();
 		function hide_image_fields(){
@@ -206,11 +208,10 @@ function set_dashboard_home(data){
 					});
 				});
 			});
-
 		}
 	}
-
 	function bind_buy(data){
+		$("#biz_sel_buy_visible").val(data.home.card_buy_visible);
 		bind_buy_types(data);
 		bind_buy_events();
 		function hide_buy_fields(){
@@ -269,6 +270,7 @@ function set_dashboard_home(data){
 		}
 	}
 	function bind_category(data){
+		$("#biz_sel_category_visible").val(data.home.card_category_visible);
 		bind_category_types(data);
 		bind_category_events();
 		function hide_category_fields(){
@@ -299,15 +301,18 @@ function set_dashboard_home(data){
 		}
 	}
 	function bind_popular(data){
+		$("#biz_sel_popular_visible").val(data.home.card_popular_visible);
 		bind_popular_types(data);
 		bind_popular_events();
 		function hide_popular_fields(){
+			//$("#biz_sel_popular_visible").hide();
 			$("#biz_div_popular_data_type").hide();
+			$("#biz_div_popular_order").hide();
 		}
 		function bind_popular_types(data){
-			$("#biz_sel_popular_visible").val(data.home.card_popular_visible);
 			if(data.home.card_popular_visible=='true'){
 				$("#biz_div_popular_data_type").show();
+				$("#biz_div_popular_order").show();
 			}else{
 				hide_popular_fields();
 			}
@@ -323,6 +328,7 @@ function set_dashboard_home(data){
 				val=$(this).val();
 				if(val=='true'){
 					$("#biz_div_popular_data_type").show();
+					$("#biz_div_popular_order").show();
 				}else{
 					hide_popular_fields();
 				}
@@ -330,6 +336,7 @@ function set_dashboard_home(data){
 		}
 	}
 	function bind_banner(data){
+		$("#biz_sel_banner_visible").val(data.home.card_banner_visible);
 		bind_banner_types(data);
 		bind_banner_events();
 		function bind_banner_types(data){
@@ -338,7 +345,6 @@ function set_dashboard_home(data){
 				str=str+ "<option value='"+data.data_type_list[a].value+"'>"+data.data_type_list[a].title + "</option>";
 			}
 			$("#biz_sel_banner_data_type").html(str);
-			$("#biz_sel_banner_visible").val(data.home.card_banner_visible);
 			$("#biz_sel_banner_data_type").val(data.home.card_banner_data_type);
 			if(data.home.card_banner_visible=='true'){
 				if(data.home.card_banner_data_type){

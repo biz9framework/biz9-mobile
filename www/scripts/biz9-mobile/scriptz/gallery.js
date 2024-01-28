@@ -105,6 +105,8 @@ function set_page_gallery_detail(data){
             $("#biz_lbl_card_mp3").show();
             $("#biz_lbl_mp3_duration").html(data.gallery.mp3duration);
             $("#biz_page_mp3_url").val(data.gallery.mp3_url);
+            $("#biz_audio_track").attr('src',data.gallery.mp3_url);
+            new Plyr('#biz_audio_track');
         }
         if(data.card_double_list.length>1){
             bind_double_slide_show(data);
