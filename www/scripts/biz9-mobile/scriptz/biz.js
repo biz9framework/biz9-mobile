@@ -1385,7 +1385,9 @@ function bind_one_click_buy(){
 		alert(product_id);
 		inAppPurchases.purchase(product_id).then(function(purchase){
 		}).catch(function(err){
-			alert("In App Purchase Error. ProductID: "+product_id +" "+ JSON.stringify(err));
+			if(err){
+				alert("In App Purchase Error. ProductID: "+product_id +" "+ JSON.stringify(err));
+			}
 		});
 	});
 }
@@ -1404,7 +1406,9 @@ function bind_service_one_click_buy(){
 
 		inAppPurchases.purchase(product_id).then(function(purchase){
 		}).catch(function(err){
+			if(err){
 			alert("In App Purchase Error. ProductID: "+product_id +" "+ JSON.stringify(err));
+			}
 		});
 	});
 }
