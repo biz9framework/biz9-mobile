@@ -9,32 +9,31 @@ function set_page_order_checkout_summary(data){
     function set_cart_detail(cart){
         str='';
         for(var a=0;a<cart.item_list.length;a++){
-            item = cart.item_list[a];
             url='';
-            if(item.data_type==DT_PRODUCT){
+            if(cart.item_list[a].data_type==DT_PRODUCT){
                 url='product_detail.html';
-            }else if(item.data_type==DT_SERVICE){
+            }else if(cart.item_list[a].data_type==DT_SERVICE){
                 url='service_detail.html';
-            }else if(item.data_type==DT_EVENT){
+            }else if(cart.item_list[a].data_type==DT_EVENT){
                 url='event_detail.html';
             }
-            str=str+"<div class='d-flex mb-4' id='biz_cart_row_"+item.tbl_id+"'>"+
+            str=str+"<div class='d-flex mb-4' id='biz_cart_row_"+cart.item_list[a].tbl_id+"'>"+
                 "<div>"+
-                "<a href='"+url+"?"+item.title_url+"'><img src='"+item.photo_obj.mid_url+"' width='90'></a> <br>"+
-                "<a href='#' class='color-black text-center pt-2 d-block font-10 biz_btn_cart_remove' tbl_id='"+item.tbl_id+"'   data_type='"+item.data_type+"' ><i class='fa-solid fa-trash'></i></a>"+
+                "<a href='"+url+"?"+cart.item_list[a].title_url+"'><img src='"+cart.item_list[a].photo_obj.mid_url+"' width='90'></a> <br>"+
+                "<a href='#' class='color-black text-center pt-2 d-block font-10 biz_btn_cart_remove' tbl_id='"+cart.item_list[a].tbl_id+"'   data_type='"+cart.item_list[a].data_type+"' ><i class='fa-solid fa-trash'></i></a>"+
                 "</div>"+
                 "<div class='w-100'>"+
-                "<h5 class='font-15 ps-3'>"+item.title+"</h5>"+
-                "<div class='font-12 ps-3'>"+item.option_note+"</div>"+
-                "<div class='font-12 ps-3'>"+item.cart_note+"</div>"+
-                "<span class='color-green-dark font-12 ps-3'><del>"+item.old_price+"</del> - "+item.discount+" Discount</span>"+
+                "<h5 class='font-15 ps-3'>"+cart.item_list[a].title+"</h5>"+
+                "<div class='font-12 ps-3'>"+cart.item_list[a].option_note+"</div>"+
+                "<div class='font-12 ps-3'>"+cart.item_list[a].cart_note+"</div>"+
+                "<span class='color-green-dark font-12 ps-3'><del>"+cart.item_list[a].old_price+"</del> - "+cart.item_list[a].discount+" Discount</span>"+
                 "<br>"+
                 "<div class='stepper rounded-s mt-2 ms-3'>"+
-                "<a href='#' class='stepper-sub biz_btn_quantity_update' update_type='down' data_type='"+item.data_type+"' tbl_id='"+item.tbl_id+"'><i class='fa fa-minus color-theme opacity-40'></i></a>"+
-                "<input type='number' min='1' max='99' id='biz_tb_cart_quantity_"+item.tbl_id+"' value='"+item.quantity+"'>"+
-                "<a href='#' class='stepper-add biz_btn_quantity_update' update_type='up' data_type='"+item.data_type+"' tbl_id='"+item.tbl_id+"' tbl_id='"+item.tbl_id+"'><i class='fa fa-plus color-theme opacity-40'></i></a>"+
+                "<a href='#' class='stepper-sub biz_btn_quantity_update' update_type='down' data_type='"+cart.item_list[a].data_type+"' tbl_id='"+cart.item_list[a].tbl_id+"'><i class='fa fa-minus color-theme opacity-40'></i></a>"+
+                "<input type='number' min='1' max='99' id='biz_tb_cart_quantity_"+cart.item_list[a].tbl_id+"' value='"+cart.item_list[a].quantity+"'>"+
+                "<a href='#' class='stepper-add biz_btn_quantity_update' update_type='up' data_type='"+cart.item_list[a].data_type+"' tbl_id='"+cart.item_list[a].tbl_id+"' tbl_id='"+cart.item_list[a].tbl_id+"'><i class='fa fa-plus color-theme opacity-40'></i></a>"+
                 "</div>"+
-                "<h5 class='font-700 text-end float-end mt-n4 pt-1 no-click'>"+item.sub_total+"</h5>"+
+                "<h5 class='font-700 text-end float-end mt-n4 pt-1 no-click'>"+cart.item_list[a].sub_total+"</h5>"+
                 "</div>"+
                 "</div>"+
                 "<div class='divider'></div>";
@@ -109,23 +108,22 @@ function set_page_order_checkout_success(data){
     function bind_checkout_order_list(item_list){
         str='';
         for(var a=0;a<item_list.length;a++){
-            item = item_list[a];
             option_note='';
-            if(item.option_note){
-             option_note= "<div class='font-12 ps-3'>"+item.option_note+"</div>";
+            if(item_list[a].option_note){
+             option_note= "<div class='font-12 ps-3'>"+item_list[a].option_note+"</div>";
             }
-            str=str+"<div class='d-flex mb-4' id='biz_cart_row_"+item.tbl_id+"'>"+
+            str=str+"<div class='d-flex mb-4' id='biz_cart_row_"+item_list[a].tbl_id+"'>"+
                 "<div>"+
-                "<img src='"+item.photo_obj.mid_url+"' width='90'> <br>"+
+                "<img src='"+item_list[a].photo_obj.mid_url+"' width='90'> <br>"+
                 "</div>"+
                 "<div class='w-100'>"+
-                "<h5 class='font-15 ps-3'>"+item.title+"</h5>"+
-                "<div class='font-12 ps-3'>"+item.quantity+"x Item</div>"+
+                "<h5 class='font-15 ps-3'>"+item_list[a].title+"</h5>"+
+                "<div class='font-12 ps-3'>"+item_list[a].quantity+"x Item</div>"+
                 option_note+
-                "<div class='font-12 ps-3'>"+item.cart_note+"</div>"+
-                "<span class='color-green-dark font-12 ps-3'><del>"+item.old_price+"</del> - "+item.discount+" Discount</span>"+
+                "<div class='font-12 ps-3'>"+item_list[a].cart_note+"</div>"+
+                "<span class='color-green-dark font-12 ps-3'><del>"+item_list[a].old_price+"</del> - "+item_list[a].discount+" Discount</span>"+
                 "<br>"+
-                "<h5 class='font-700 text-end float-end mt-n4 pt-1 no-click'>"+item.sub_total+"</h5>"+
+                "<h5 class='font-700 text-end float-end mt-n4 pt-1 no-click'>"+item_list[a].sub_total+"</h5>"+
                 "</div>"+
                 "</div>"+
                 "<div class='divider'></div>";
@@ -361,26 +359,25 @@ function set_order_cart_top(cart){
     function bind_cart_list(item_list){
         var str="";
         for(a=0;a<item_list.length;a++){
-            item=item_list[a];
-            str=str+"<div id='biz_cart_row_"+item.tbl_id+"' class='d-flex mb-4'>"+
+            str=str+"<div id='biz_cart_row_"+item_list[a].tbl_id+"' class='d-flex mb-4'>"+
                 "<div>"+
-                "<img src='"+item.photo_obj.mid_url+"' width='90'> <br/>"+
+                "<img src='"+item_list[a].photo_obj.mid_url+"' width='90'> <br/>"+
                 "</div>"+
                 "<div class='w-100'>"+
-                "<h5 class='font-14 ps-3'>"+item.title+"</h5>"+
-                "<p class='mb-0 mt-n2 ps-3 font-10 opacity-50'>"+item.option_note+"</p>";
-            if(item.cart_note){
-                str = str+"<p class='mb-0 mt-n2 ps-3 font-10 opacity-50'>"+item.cart_note+"</p>";
+                "<h5 class='font-14 ps-3'>"+item_list[a].title+"</h5>"+
+                "<p class='mb-0 mt-n2 ps-3 font-10 opacity-50'>"+item_list[a].option_note+"</p>";
+            if(item_list[a].cart_note){
+                str = str+"<p class='mb-0 mt-n2 ps-3 font-10 opacity-50'>"+item_list[a].cart_note+"</p>";
             }
-            str = str+"<a href='#'  data_type='"+item.data_type+"' tbl_id='"+item.tbl_id+"' class='biz_btn_cart_remove ps-3 color-black pt-2 d-block font-10'><i class='fa-solid fa-trash'></i></a>"+
+            str = str+"<a href='#'  data_type='"+item_list[a].data_type+"' tbl_id='"+item_list[a].tbl_id+"' class='biz_btn_cart_remove ps-3 color-black pt-2 d-block font-10'><i class='fa-solid fa-trash'></i></a>"+
                 "</div>"+
                 "<div class='ms-auto text-end'>"+
-                "<h5 class='ps-3 font-14'>"+item.sub_total+"</h5>"+
-                "<p class='ps-3 mt-n2 opacity-50 font-11'>Was "+item.old_price+"</p>"+
+                "<h5 class='ps-3 font-14'>"+item_list[a].sub_total+"</h5>"+
+                "<p class='ps-3 mt-n2 opacity-50 font-11'>Was "+item_list[a].old_price+"</p>"+
                 "<div class='stepper rounded-s switch-s me-n2 mt-n2'>"+
-                "<a href='#' class='stepper-sub biz_btn_quantity_update' update_type='down' data_type='"+item.data_type+"' tbl_id='"+item.tbl_id+"'><i class='fa fa-minus color-theme opacity-40'></i></a>"+
-                "<input type='number' min='1' max='99' id='biz_tb_cart_quantity_"+item.tbl_id+"' value='"+item.quantity+"'>"+
-                "<a href='#' class='stepper-add biz_btn_quantity_update' update_type='up' data_type='"+item.data_type+"' tbl_id='"+item.tbl_id+"' tbl_id='"+item.tbl_id+"'><i class='fa fa-plus color-theme opacity-40'></i></a>"+
+                "<a href='#' class='stepper-sub biz_btn_quantity_update' update_type='down' data_type='"+item_list[a].data_type+"' tbl_id='"+item_list[a].tbl_id+"'><i class='fa fa-minus color-theme opacity-40'></i></a>"+
+                "<input type='number' min='1' max='99' id='biz_tb_cart_quantity_"+item_list[a].tbl_id+"' value='"+item_list[a].quantity+"'>"+
+                "<a href='#' class='stepper-add biz_btn_quantity_update' update_type='up' data_type='"+item_list[a].data_type+"' tbl_id='"+item_list[a].tbl_id+"' tbl_id='"+item_list[a].tbl_id+"'><i class='fa fa-plus color-theme opacity-40'></i></a>"+
                 "</div>"+
                 "<div class='clearfix'></div>"+
                 "</div>"+

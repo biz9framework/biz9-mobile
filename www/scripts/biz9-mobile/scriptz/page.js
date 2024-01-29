@@ -7,8 +7,7 @@ function set_page_page_list(data){
         var str='';
         url='';
         for(var a=0;a<item_list.length;a++){
-            item= item_list[a];
-            if(String(item.visible)=='true'){
+            if(String(item_list[a].visible)=='true'){
             switch(item_list[a].type) {
                 case DT_BLOG_POST:
                     url = 'blog_post_category_list.html?page_current=1';
@@ -30,12 +29,12 @@ function set_page_page_list(data){
                     break;
 
             }
-            item.sub_note=item.sub_note?(item.sub_note):'';
-            str=str+"<a href='"+url+"' class='card card-style mb-3' style=' background-color:transparent; height:180px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image:url("+item.photo_obj.square_mid_url+")'>"+
+            item_list[a].sub_note=item_list[a].sub_note?(item_list[a].sub_note):'';
+            str=str+"<a href='"+url+"' class='card card-style mb-3' style=' background-color:transparent; height:180px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image:url("+item_list[a].photo_obj.square_mid_url+")'>"+
                 "<div class='card-center px-3'>"+
-                "<h1 class='color-white font-800 font-24'>"+item.title+"</h1>"+
+                "<h1 class='color-white font-800 font-24'>"+item_list[a].title+"</h1>"+
                 "<p class='color-white mt-n2 mb-0 opacity-70'>"+
-                item.sub_note+
+                item_list[a].sub_note+
                 "</p>"+
                 "</div>"+
                 "<div class='card-center'>";
@@ -63,47 +62,46 @@ function set_dashboard_page_list(data){
         var visble='str';
         var title_type='';
         for(a=0;a<item_list.length;a++){
-            item = item_list[a];
-            if(String(item.visible)=='true'){
+            if(String(item_list[a].visible)=='true'){
                 visible_str="<span class='color-green-dark'><i class='fa-sharp fa-solid fa-circle-check'></i></span>";
             }else{
                 visible_str="<span class='color-red-dark'> <i class='fa-sharp fa-solid fa-circle-xmark'></i> </span>";
             }
             var category_url='';
-            if(item.type==DT_EVENT){
+            if(item_list[a].type==DT_EVENT){
                 category_url='event_category_list.html?page_current=1';
                 title_type='Events';
-            }else if(item.type==DT_GALLERY){
+            }else if(item_list[a].type==DT_GALLERY){
                 category_url='gallery_category_list.html?page_current=1';
                 title_type='Gallery';
-            }else if(item.type==DT_BLOG_POST){
+            }else if(item_list[a].type==DT_BLOG_POST){
                 category_url='blog_post_category_list.html?page_current=1';
                 title_type='Blog Posts';
-            }else if(item.type==DT_SERVICE){
+            }else if(item_list[a].type==DT_SERVICE){
                 category_url='service_category_list.html?page_current=1';
                 title_type='Service';
-            }else if(item.type==DT_PRODUCT){
+            }else if(item_list[a].type==DT_PRODUCT){
                 category_url='product_category_list.html?page_current=1';
                 title_type='Product';
-            }else if(item.type==DT_MEMBER){
+            }else if(item_list[a].type==DT_MEMBER){
                 category_url='member_category_list.html?page_current=1';
                 title_type='Team';
             }
             edit_str= "<a class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
                 "<i class='fa fa-gear font-14 accordion-icon a-gear'></i>"+
                 "</a>";
-            str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item.tbl_id+"'>"+
+            str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item_list[a].tbl_id+"'>"+
                 "<div>"+
-                "<a href='dashboard_page.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
+                "<a href='dashboard_page.html?title_url="+item_list[a].title_url+"'><img src='"+item_list[a].photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
                 "</div>"+
-                "<div class='biz_div_list_title'><a href='dashboard_page.html?title_url="+item.title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-12'>"+item.title+"</b></p></a><div>"+
+                "<div class='biz_div_list_title'><a href='dashboard_page.html?title_url="+item_list[a].title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-12'>"+item_list[a].title+"</b></p></a><div>"+
                 "</div>"+
                 "<p class='mb-0 ps-3 font-10  opacity-60'>"+title_type+" | " + visible_str + " " + edit_str+ " </p>"+
                 "<div class='accordion ' id='accordion-"+a+"'>"+
                 "<div class=''>"+
                 "<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+
                 "<div class='mb-0 ps-3  ' style='float:left;'>"+
-                "<div class='biz_div_list_edit'><a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='"+category_url+"'><i class='admin_edit_img fa fa-eye pe-2 a-gear'></i></a>"+
+                "<div class='biz_div_list_edit'><a tbl_id='"+item_list[a].tbl_id +"' data_type='"+item_list[a].data_type +"' class='#' href='"+category_url+"'><i class='admin_edit_img fa fa-eye pe-2 a-gear'></i></a>"+
                 "</div>"+
                 "</div>"+
                 "</div>"+

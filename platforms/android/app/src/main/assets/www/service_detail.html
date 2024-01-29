@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>
+   <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -8,246 +8,253 @@
         <title id='biz_head_title'></title>
         <!--CSS-START --!>
             <!--CSS-TEMPLATE-START --!>
-            <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+                  <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
             <link rel="stylesheet" type="text/css" href="styles/style.css">
-            <link rel="stylesheet" type="text/css" href="styles/mp3_style.css">
             <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
             <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+            <link rel="stylesheet" type="text/css" href="styles/suneditor.min.css">
             <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
             <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
-            <!--CSS-TEMPLATE-END --!>
-            <!--CSS-END--!>
+          <!--CSS-TEMPLATE-END --!>
+                            <!--CSS-END--!>
                                 </head>
-                                <body>
-                                <div id="preloader"><div class="spinner-border color-red-dark" role="status"></div></div>
-                                <!-- BIZ PAGE START -->
-                                <div id="page">
-                                    <!-- BIZ HEAD TOP START -->
-                                    <input id='biz_page_title' type='hidden'value='service_detail'/>
-                                    <input id='biz_page_footer' type='hidden'value='service'/>
-                                    <input id='biz_page_tbl_id' type='hidden'/>
-                                    <input id='biz_page_data_type' type='hidden'/>
-                                    <input id='biz_page_parent_tbl_id' type='hidden'/>
-                                    <input id='biz_page_review_count' type='hidden'/>
-                                    <input id='biz_page_rating_avg' type='hidden'/>
-                                    <input id='biz_page_parent_data_type' type='hidden'/>
-                                    <input id='biz_page_category' type='hidden'/>
-                                    <input id='biz_page_mp3_url' type='hidden'/>
-                                    <div class="header header-fixed header-logo-app">
-                                        <a href="#" data-back-button class="header-title" id='biz_lbl_page_title'></a>
-                                        <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
-                                        <a style='display:none' href="#" id='biz_btn_order_cart_top' data-menu="menu-cart" class="header-icon header-icon-4"><i class="fas fa-shopping-bag color-brown-dark"></i></a>
-                                    </div>
-                                    <!-- BIZ HEAD TOP END -->
-                                    <!-- BIZ FOOTER MENU START -->
-                                    <div id="footer-bar" class="footer-bar-4">
-                                    </div>
-                                    <!-- BIZ FOOTER MENU END -->
-                                    <!-- BIZ LEFT MENU START -->
-                                    <div id="menu-main"  data-menu-active="nav-welcome" class="menu menu-box-left menu-gradient" data-menu-width="260" data-menu-effect="menu-parallax">
-                                        <div class="menu-wrap" id='biz_lbl_left_menu'>
+                        <body>
+                        <div id="preloader"><div class="spinner-border color-red-dark" role="status"></div></div>
+                        <!-- BIZ PAGE START -->
+                        <div id="page">
+                            <!-- BIZ HEAD TOP START -->
+                            <input id='biz_page_title' type='hidden'value='service_detail'/>
+                            <input id='biz_page_footer' type='hidden'value='service'/>
+                            <input id='biz_page_tbl_id' type='hidden'/>
+                            <input id='biz_page_data_type' type='hidden'/>
+                            <input id='biz_page_parent_tbl_id' type='hidden'/>
+                            <input id='biz_page_review_count' type='hidden'/>
+                            <input id='biz_page_rating_avg' type='hidden'/>
+                            <input id='biz_page_parent_data_type' type='hidden'/>
+                            <input id='biz_page_category' type='hidden'/>
+                            <input id='biz_page_mp3_url' type='hidden'/>
+                            <div class="header header-fixed header-logo-app">
+                                <a href="#" data-back-button class="header-title" id='biz_lbl_page_title'></a>
+                                <a href="#" data-back-button class="header-icon header-icon-1"><i class="fas fa-arrow-left"></i></a>
+                                <a style='display:none' href="#" id='biz_btn_order_cart_top' data-menu="menu-cart" class="header-icon header-icon-4"><i class="fas fa-shopping-bag color-brown-dark"></i></a>
+                            </div>
+                            <!-- BIZ HEAD TOP END -->
+                            <!-- BIZ FOOTER MENU START -->
+                            <div id="footer-bar" class="footer-bar-4">
+                            </div>
+                            <!-- BIZ FOOTER MENU END -->
+                            <!-- BIZ LEFT MENU START -->
+                            <div id="menu-main"  data-menu-active="nav-welcome" class="menu menu-box-left menu-gradient" data-menu-width="260" data-menu-effect="menu-parallax">
+                                <div class="menu-wrap" id='biz_lbl_left_menu'>
+                                </div>
+                            </div>
+                            <!-- BIZ LEFT MENU END -->
+                            <!-- BIZ CONTENT START -->
+                            <div class="page-content header-clear-medium">
+                                <div class="card card-style pt-4">
+                                    <div class="splide single-slider slider-no-arrows slider-no-dots" id="single-slider-1">
+                                        <div class="splide__track">
+                                            <div class="splide__list" id='biz_lbl_slideshow_list'>
+                                            </div>
                                         </div>
                                     </div>
-                                    <!-- BIZ LEFT MENU END -->
-                                    <!-- BIZ CONTENT START -->
-                                    <div class="page-content header-clear-medium">
-                                        <div class="card card-style pt-4">
-                                            <div class="splide single-slider slider-no-arrows slider-no-dots" id="single-slider-1">
-                                                <div class="splide__track">
-                                                    <div class="splide__list" id='biz_lbl_slideshow_list'>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="divider divider-margins mt-4"></div>
-                                            <div class="content">
-                                                <div class="d-flex">
-                                                    <div id='biz_div_left_info' style='display:none'>
-                                                        <h3 id='biz_lbl_title'></h3>
+                                    <div class="divider divider-margins mt-4"></div>
+                                    <div class="content">
+                                        <div class="d-flex">
+                                            <div id='biz_div_left_info' style='display:none'>
+                                                <h3 id='biz_lbl_title'></h3>
                                                 <div>
-                                                            <label class="color-yellow-dark font-12 pt-1 mt-n1" id='biz_lbl_review_star_count'>
-                                                                <i class="fa fa-star pe-1"></i>
-                                                            </label>
-                                                            <span class="color-theme opacity-50 ps-3" id='biz_lbl_rating_count'> </span>
-                                                            <span class="color-theme opacity-50 ps-3" id='biz_lbl_rating'></span>
-                                                        </div>
-                                                        <div class='mb-0 font-12'>
-                                                            <i class='fa fa-eye color-gray-dark'></i>
-                                                            <span id='biz_lbl_view_count'></span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="ms-auto ps-3 text-end" id='div_biz_right_info'>
-                                                        <p class="mb-n1 font-12 opacity-30"><del id='biz_lbl_old_price'></del></p>
-                                                        <h1 id='biz_lbl_price'></h1>
-                                                        <div id='biz_div_discount' style='display:none'>
-                                                        <span class="badge bg-highlight float-end mt-1 font-9 font-500 text-uppercase p-1 mt-n1 d-block" id='biz_lbl_discount'></span>
-                                                        </div>
-                                                    </div>
+                                                    <label class="color-yellow-dark font-12 pt-1 mt-n1" id='biz_lbl_review_star_count'>
+                                                        <i class="fa fa-star pe-1"></i>
+                                                    </label>
+                                                    <span class="color-theme opacity-50 ps-3" id='biz_lbl_rating_count'> </span>
+                                                    <span class="color-theme opacity-50 ps-3" id='biz_lbl_rating'></span>
                                                 </div>
-                                                <div class="row mb-0 mt-4" style='display:none' id='biz_lbl_option_list'>
-                                                    <div class="col-6">
-                                                        <div class="input-style has-borders no-icon mb-4"  style='display:none' id='biz_lbl_optiondiv0'>
-                                                            <label for="form5" class="color-highlight" id='biz_lbl_optiontitle0'></label>
-                                                            <select for="form5" id='biz_sel_option0'>
-                                                            </select>
-                                                            <span><i class="fa fa-chevron-down"></i></span>
-                                                            <i class="fa fa-check disabled valid color-green-dark"></i>
-                                                            <i class="fa fa-check disabled invalid color-red-dark"></i>
-                                                            <em></em>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="input-style has-borders no-icon mb-4"   style='display:none' id='biz_lbl_optiondiv1'>
-                                                            <label for="form5" class="color-highlight" id='biz_lbl_optiontitle1'></label>
-                                                            <select for="form5" id='biz_sel_option1'>
-                                                            </select>
-                                                            <span><i class="fa fa-chevron-down"></i></span>
-                                                            <i class="fa fa-check disabled valid color-green-dark"></i>
-                                                            <i class="fa fa-check disabled invalid color-red-dark"></i>
-                                                            <em></em>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="input-style has-borders no-icon mb-4"   style='display:none' id='biz_lbl_optiondiv2'>
-                                                            <label for="form5" class="color-highlight" id='biz_lbl_optiontitle2'></label>
-                                                            <select for="form5" id='biz_sel_option2'>
-                                                            </select>
-                                                            <span><i class="fa fa-chevron-down"></i></span>
-                                                            <i class="fa fa-check disabled valid color-green-dark"></i>
-                                                            <i class="fa fa-check disabled invalid color-red-dark"></i>
-                                                            <em></em>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <div class="input-style has-borders no-icon mb-4"   style='display:none' id='biz_lbl_optiondiv3'>
-                                                            <label for="form5" class="color-highlight" id='biz_lbl_optiontitle3'></label>
-                                                            <select for="form5" id='biz_sel_option3'>
-                                                            </select>
-                                                            <span><i class="fa fa-chevron-down"></i></span>
-                                                            <i class="fa fa-check disabled valid color-green-dark"></i>
-                                                            <i class="fa fa-check disabled invalid color-red-dark"></i>
-                                                            <em></em>
-                                                        </div>
-                                                    </div>
+                                                <div class='mb-0 font-12'>
+                                                    <i class='fa fa-eye color-gray-dark'></i>
+                                                    <span id='biz_lbl_view_count'></span>
+                                                </div>
+                                            </div>
+                                            <div class="ms-auto ps-3 text-end" id='div_biz_right_info'>
+                                                <p class="mb-n1 font-12 opacity-30"><del id='biz_lbl_old_price'></del></p>
+                                                <h1 id='biz_lbl_price'></h1>
+                                                <div id='biz_div_discount' style='display:none'>
+                                                    <span class="badge bg-highlight float-end mt-1 font-9 font-500 text-uppercase p-1 mt-n1 d-block" id='biz_lbl_discount'></span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="#" class="btn btn-l btn-full under-slider-btn mx-5 font-800 text-uppercase rounded-sm mb-4 biz_btn" id='biz_btn_cart_add'   style='display:none'>Book Now</a>
-                                        <div id="toast-save" class="toast toast-tiny toast-center bg-green-dark" data-delay="3000" data-autohide="true"><i class='fa fa-check me-3'></i></div>
-                                        <div id="toast-error" class="toast toast-tiny toast-center bg-red-dark" data-delay="3000" data-autohide="true"><i class='fa fa-times me-3'></i></div>
-                                        <div class="card card-style m-3 biz_lbl_card"  style='display:none'  id='biz_lbl_cart_datetime'>
-                                            <div class="content m-3">
-                                                <h3 id='biz_lbl_page_sub_title'>Booking Time</h3>
-                                                <div class="row mb-0 mt-4">
-                                                    <div class="col-6">
-                                                        <input type="date" style="width:100%!important; display:block!important;" value="2023-2-10" class="form-control validate-text" id="biz_tb_date" placeholder="Phone">
-                                                    </div>
-                                                    <div class="col-6">
-                                                        <input type="time" style="width:100%!important; display:block!important;"  class="form-control validate-text" id="biz_tb_time" placeholder="Phone">
-                                                    </div>
+                                        <div class="row mb-0 mt-4" style='display:none' id='biz_lbl_option_list'>
+                                            <div class="col-6">
+                                                <div class="input-style has-borders no-icon mb-4"  style='display:none' id='biz_lbl_optiondiv0'>
+                                                    <label for="form5" class="color-highlight" id='biz_lbl_optiontitle0'></label>
+                                                    <select for="form5" id='biz_sel_option0'>
+                                                    </select>
+                                                    <span><i class="fa fa-chevron-down"></i></span>
+                                                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                                                    <i class="fa fa-check disabled invalid color-red-dark"></i>
+                                                    <em></em>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="input-style has-borders no-icon mb-4"   style='display:none' id='biz_lbl_optiondiv1'>
+                                                    <label for="form5" class="color-highlight" id='biz_lbl_optiontitle1'></label>
+                                                    <select for="form5" id='biz_sel_option1'>
+                                                    </select>
+                                                    <span><i class="fa fa-chevron-down"></i></span>
+                                                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                                                    <i class="fa fa-check disabled invalid color-red-dark"></i>
+                                                    <em></em>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="input-style has-borders no-icon mb-4"   style='display:none' id='biz_lbl_optiondiv2'>
+                                                    <label for="form5" class="color-highlight" id='biz_lbl_optiontitle2'></label>
+                                                    <select for="form5" id='biz_sel_option2'>
+                                                    </select>
+                                                    <span><i class="fa fa-chevron-down"></i></span>
+                                                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                                                    <i class="fa fa-check disabled invalid color-red-dark"></i>
+                                                    <em></em>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="input-style has-borders no-icon mb-4"   style='display:none' id='biz_lbl_optiondiv3'>
+                                                    <label for="form5" class="color-highlight" id='biz_lbl_optiontitle3'></label>
+                                                    <select for="form5" id='biz_sel_option3'>
+                                                    </select>
+                                                    <span><i class="fa fa-chevron-down"></i></span>
+                                                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                                                    <i class="fa fa-check disabled invalid color-red-dark"></i>
+                                                    <em></em>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card card-style m-3"id='biz_lbl_card_photo_list'>
-                                            <div class="content m-3">
-                                                <div id='biz_lbl_photo_list' class="gallery-views gallery-view-2">
-                                                </div>
+                                    </div>
+                                </div>
+                                <span id='biz_sp_buy'>
+                                    <a href="#" class="btn btn-l btn-full under-slider-btn mx-5 font-800 text-uppercase rounded-sm mb-4 biz_btn" id='biz_btn_cart_add' style='display:none'>ADD To Cart</a>
+                                </span>
+                                <span id='biz_sp_checkout' style='display:none;'>
+                                    <br/>
+                                    <a href="#" class="btn btn-l btn-full under-slider-btn mx-5 font-800 text-uppercase rounded-sm mb-4 biz_btn biz_btn_checkout">Buy now with 1-Click</a>
+                                </span>
+                                <div id="toast-save" class="toast toast-tiny toast-center bg-green-dark" data-delay="3000" data-autohide="true"><i class='fa fa-check me-3'></i></div>
+                                <div id="toast-error" class="toast toast-tiny toast-center bg-red-dark" data-delay="3000" data-autohide="true"><i class='fa fa-times me-3'></i></div>
+                                <div class="card card-style m-3 biz_lbl_card"  style='display:none'  id='biz_lbl_cart_datetime'>
+                                    <div class="content m-3">
+                                        <h3 id='biz_lbl_page_sub_title'>Booking Time</h3>
+                                        <div class="row mb-0 mt-4">
+                                            <div class="col-6">
+                                                Date:<input type="date" style="width:100%!important; display:block!important;" value="2023-2-10" class="form-control validate-text" id="biz_tb_date" placeholder="Phone">
+                                            </div>
+                                            <div class="col-6">
+                                                Time:<input type="time" style="width:100%!important; display:block!important;"  class="form-control validate-text" id="biz_tb_time" placeholder="Phone">
                                             </div>
                                         </div>
-                                      <div class="card card-style m-3 biz_lbl_card"  id='biz_lbl_card_mp3' style='display:none'>
-                                            <div class="content m-3">
-                                                <h3 id='biz_lbl_page_sub_title'>Track</h3>
-                                                <div class="container">
-                                                    <audio id="player" controls>
-                                                        <source src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3" type="audio/mp3" />
-                                                    </audio>
-                                                </div>
-                                            </div>
+                                    </div>
+                                </div>
+                                <div class="card card-style m-3"id='biz_lbl_card_photo_list'>
+                                    <div class="content m-3">
+                                        <div id='biz_lbl_photo_list' class="gallery-views gallery-view-2">
                                         </div>
-                                          <div class="card card-style m-3"  id='biz_lbl_card_description' style='display:none'>
-                                           <div class="content m-3">
-                                                <h3 id='biz_lbl_page_sub_title'>Description</h3>
-                                                <p id='biz_lbl_sub_note'>
-                                                </p>
-                                            </div>
+                                    </div>
+                                </div>
+                                <div class="card card-style m-3 biz_lbl_card"  id='biz_lbl_card_mp3' style='display:none'>
+                                    <div class="content m-3">
+                                        <h3   class='mb-3' id='biz_lbl_page_sub_title'>Track</h3>
+                                        <div class="container">
+                                                  <audio id="biz_audio_track" controls>
+                                                <source  type="audio/mp3" />
+                                            </audio>
+                                  </div>
+                                    </div>
+                                </div>
+                                <div class="card card-style m-3"  id='biz_lbl_card_description' style='display:none'>
+                                    <div class="content m-3">
+                                        <h3   class='mb-3' id='biz_lbl_page_sub_title'>Description</h3>
+                                        <p id='biz_lbl_sub_note'>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="card card-style m-3"  id='biz_lbl_card_note' style='display:none'>
+                                    <div class="content m-3">
+                                        <h3   class='mb-3' id='biz_lbl_page_addt_page'>Additional Information</h3>
+                                        <div style='margin-right:20px'>
+                                            <p id='biz_lbl_note'>
+                                            </p>
                                         </div>
-                                         <div class="card card-style m-3"  id='biz_lbl_card_note' style='display:none'>
-                                           <div class="content m-3">
-                                                <h3 id='biz_lbl_page_addt_page'>Additional Information</h3>
-                                                <div style='margin-right:20px'>
-                                                <p id='biz_lbl_note'>
-                                                </p>
-                                                </div>
-                                            </div>
+                                    </div>
+                                </div>
+                                <div class="card card-style m-3" id='biz_lbl_card_youtube' style='display:none'>
+                                    <div class="content">
+                                        <div class="responsive-iframe">
+                                            <iframe id='biz_lbl_youtube_link'  frameborder='0' allow=jaccelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-sharep allowfullscreen></iframe>
                                         </div>
-                                        <div class="card card-style m-3" id='biz_lbl_card_youtube' style='display:none'>
-                                            <div class="content">
-                                                <div class="responsive-iframe">
-                                                    <iframe id='biz_lbl_youtube_link' title='YouTube video player' frameborder='0' allow=jaccelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-sharep allowfullscreen></iframe>
-                                                </div>
+                                    </div>
+                                </div>
+                                <div class="card card-style m-3 biz_lbl_card"   style='display:none' id='biz_lbl_card_visible'>
+                                    <div class="content m-3">
+                                        <h3   class='mb-3' id='biz_lbl_page_sub_title'>Availbility</h3>
+                                        <p id='biz_lbl_visible'>
+                                        </p>
+                                    </div>
+                                </div>
+                                <!--REVIEW_CARD_START--!>
+                                    <div class="card card-style m-3  biz_lbl_card" id='biz_lbl_card_list_review' style='display:none'>
+                                    <div class="content m-3">
+                                    <h3   class='mb-3' id='biz_lbl_review_title'>Reviews</h3>
+                                    <div class="mb-4" id='biz_lbl_list_review'></div>
+                                    </div>
+                                    </div>
+                                    <div class="card card-style mt-4 biz_lbl_card" id='biz_lbl_card_add_review'  style='display:none'>
+                                    <div class="content m-3">
+                                    <h3>Write a Review</h3>
+                                    <div class="pb-3"></div>
+                                    <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
+                                    <input type="name" class="form-control validate-name" id="biz_tb_review_name" placeholder="">
+                                    <label for="form1ab" class="color-theme opacity-50 text-uppercase font-700 font-12">Your Name</label>
+                                    <i class="fa fa-times disabled invalid color-red-dark"></i>
+                                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                                    <em>(required)</em>
+                                    </div>
+                                    <div class="pb-3"></div>
+                                    <div class="input-style has-borders no-icon mb-4">
+                                    <select id="biz_sel_review_rating">
+                                    <option value="default" disabled selected>Stars</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    </select>
+                                    <span><i class="fa fa-chevron-down"></i></span>
+                                    <i class="fa fa-check disabled valid color-green-dark"></i>
+                                    <i class="fa fa-check disabled invalid color-red-dark"></i>
+                                    <em></em>
+                                    </div>
+                                    <div class="pb-3"></div>
+                                    <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
+                                    <textarea id="biz_tb_review_comment" placeholder="Enter your comment"></textarea>
+                                    <label for="form1ab" class="color-theme opacity-50 text-uppercase font-700 font-12">Comment</label>
+                                    <em class="mt-n3">(required)</em>
+                                    </div>
+                                    <div class="pb-3"></div>
+                                    </div>
+                                    <a href="#" class="btn btn-l btn-full under-slider-btn mx-5 font-800 text-uppercase rounded-sm mb-4 biz_btn" id='biz_btn_review_add'>Add Review</a>
+
+                                    </div>
+                                    <!--REVIEW_CARD_END--!>
+                                        <!--DOUBLE CARD START --!>
+                                            <div class="card card-style pt-4 biz_lbl_card" id='biz_lbl_double_card' style='display:none'>
+                                            <h1 class="text-center pb-3" id='biz_lbl_double_category'></h1>
+                                            <div class="splide double-slider slider-no-arrows slider-no-dots" id="slider_double">
+                                            <div class="splide__track">
+                                            <div class="splide__list" id='biz_lbl_double_slide_show_list'>
                                             </div>
-                                        </div>
-                                         <div class="card card-style m-3 biz_lbl_card"   style='display:none' id='biz_lbl_card_visible'>
-                                            <div class="content m-3">
-                                                <h3 id='biz_lbl_page_sub_title'>Availbility</h3>
-                                                <p id='biz_lbl_visible'>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <!--REVIEW_CARD_START--!>
-                                             <div class="card card-style m-3  biz_lbl_card" id='biz_lbl_card_list_review' style='display:none'>
-                                        <div class="content m-3">
-                                            <h3 id='biz_lbl_review_title'>Reviews</h3>
-                                            <div class="mb-4" id='biz_lbl_list_review'></div>
                                             </div>
                                             </div>
-                                            <div class="card card-style mt-4 biz_lbl_card" id='biz_lbl_card_add_review'  style='display:none'>
-                                         <div class="content m-3">
-                                            <h3>Write a Review</h3>
-                                            <div class="pb-3"></div>
-                                            <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
-                                            <input type="name" class="form-control validate-name" id="biz_tb_review_name" placeholder="">
-                                            <label for="form1ab" class="color-theme opacity-50 text-uppercase font-700 font-12">Your Name</label>
-                                            <i class="fa fa-times disabled invalid color-red-dark"></i>
-                                            <i class="fa fa-check disabled valid color-green-dark"></i>
-                                            <em>(required)</em>
                                             </div>
-                                            <div class="pb-3"></div>
-                                            <div class="input-style has-borders no-icon mb-4">
-                                            <select id="biz_sel_review_rating">
-                                            <option value="default" disabled selected>Stars</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            </select>
-                                            <span><i class="fa fa-chevron-down"></i></span>
-                                            <i class="fa fa-check disabled valid color-green-dark"></i>
-                                            <i class="fa fa-check disabled invalid color-red-dark"></i>
-                                            <em></em>
-                                            </div>
-                                            <div class="pb-3"></div>
-                                            <div class="input-style input-style-always-active has-borders has-icon validate-field mb-4">
-                                            <textarea id="biz_tb_review_comment" placeholder="Enter your comment"></textarea>
-                                            <label for="form1ab" class="color-theme opacity-50 text-uppercase font-700 font-12">Comment</label>
-                                            <em class="mt-n3">(required)</em>
-                                           </div>
-                                            <div class="pb-3"></div>
-                                            </div>
-                                            <a href="#" class="btn btn-l btn-full under-slider-btn mx-5 font-800 text-uppercase rounded-sm mb-4 biz_btn" id='biz_btn_review_add'>Add Review</a>
-                                            </div>
-                                            <!--REVIEW_CARD_END--!>
-                                                <!--DOUBLE CARD START --!>
-                                                                        <div class="card card-style pt-4 biz_lbl_card" id='biz_lbl_double_card' style='display:none'>
-                                                                        <h1 class="text-center pb-3" id='biz_lbl_double_category'></h1>
-                                                                        <div class="splide double-slider slider-no-arrows slider-no-dots" id="slider_double">
-                                                                        <div class="splide__track">
-                                                                        <div class="splide__list" id='biz_lbl_double_slide_show_list'>
-                                                                        </div>
-                                                                        </div>
-                                                                        </div>
-                                                                        </div>
-                                                                        <!--DOUBLE CARD END --!>
+                                            <!--DOUBLE CARD END --!>
                                                 <div id='biz_lbl_toast'>
                                                 <div id="toast-save" class="toast toast-tiny toast-center bg-green-dark" data-delay="3000" data-autohide="true"><i class='fa fa-check me-3'></i></div>
                                                 <div id="toast-error" class="toast toast-tiny toast-center bg-red-dark" data-delay="3000" data-autohide="true"><i class='fa fa-times me-3'></i></div>
@@ -270,19 +277,16 @@
                                                     <!-- TOP MENU CART CHECKOUT END--!>
                                                         </div>
                                                         <!-- BIZ PAGE END -->
-                                     <!--SCRIPT-START --!>
-                                     <script type="text/javascript" src="scripts/biz9-mobile/libz/mp3_script.js"></script>
-                                                                <script>
-                                                                    const player = new Plyr('#player');
-                                                                </script>
-                                                                       <!--BIZ9-MOBILE-CORE-START --!>
+                                                          <!--SCRIPT-START --!>
+                                                                                                  <!--BIZ9-MOBILE-CORE-START --!>
                                                 <script type="text/javascript" src="cordova.js"></script>
                                                 <script type="text/javascript" src="scripts/biz9-mobile/libz/jquery-3.6.3.min.js.js"></script>
                                                 <script type="text/javascript" src="scripts/biz9-mobile/libz/pulltorefresh.js"></script>
                                                 <script type="text/javascript" src="scripts/biz9-mobile/libz/lockr.js"></script>
-                                                <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-                                                <script type="text/javascript" src="scripts/jurlp.min.js"></script>
+                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/bootstrap.min.js"></script>
+                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/jurlp.min.js"></script>
                                                 <script type="text/javascript" src="scripts/custom.js"></script>
+                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/suneditor.min.js"></script>
                                                 <!--BIZ9-MOBILE-CORE-END --!>
                                                             <!-- BIZ9-MOBILE-BIZ-CORE-START --!>
                                                                 <script type="text/javascript" src="scripts/biz9-mobile/core/utility.js"></script>
@@ -309,5 +313,5 @@
                                                                         <script type="text/javascript" src="scripts/biz9-mobile/scriptz/member.js"></script>
                                                                         <script type="text/javascript" src="scripts/biz9-mobile/scriptz/biz.js"></script>
                                                                         <!-- BIZ9-MOBILE-BIZ-SCRIPTZ-END --!>
-                                                                            <!--SCRIPT-START --!>
-    </body>
+                                                                              <!--SCRIPT-END --!>
+                                                                          </body>

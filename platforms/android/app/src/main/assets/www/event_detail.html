@@ -1,23 +1,23 @@
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>
+   <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
         <title id='biz_head_title'></title>
-       <!--CSS-START --!>
+        <!--CSS-START --!>
             <!--CSS-TEMPLATE-START --!>
-            <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+                  <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
             <link rel="stylesheet" type="text/css" href="styles/style.css">
-            <link rel="stylesheet" type="text/css" href="styles/mp3_style.css">
             <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
             <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+            <link rel="stylesheet" type="text/css" href="styles/suneditor.min.css">
             <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
             <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
-            <!--CSS-TEMPLATE-END --!>
-            <!--CSS-END--!>
-                               </head>
+          <!--CSS-TEMPLATE-END --!>
+                            <!--CSS-END--!>
+                                </head>
                                 <body>
                                 <div id="preloader"><div class="spinner-border color-red-dark" role="status"></div></div>
                                 <!-- BIZ PAGE START -->
@@ -130,8 +130,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <a href="#" class="btn btn-l btn-full under-slider-btn mx-5 font-800 text-uppercase rounded-sm mb-4 biz_btn" id='biz_btn_cart_add'  style='display:none'>Buy Ticket</a>
-                                        <div class="card card-style m-3"id='biz_lbl_card_photo_list'>
+                                         <span id='biz_sp_buy'>
+                                    <a href="#" class="btn btn-l btn-full under-slider-btn mx-5 font-800 text-uppercase rounded-sm mb-4 biz_btn" id='biz_btn_cart_add' style='display:none'>ADD To Cart</a>
+                                </span>
+                                <span id='biz_sp_checkout' style='display:none;'>
+                                    <br/>
+                                    <a href="#" class="btn btn-l btn-full under-slider-btn mx-5 font-800 text-uppercase rounded-sm mb-4 biz_btn biz_btn_checkout" >Buy now with 1-Click</a>
+                                </span>
+                                <div class="card card-style m-3"id='biz_lbl_card_photo_list'>
                                             <div class="content m-3">
                                                 <div id='biz_lbl_photo_list' class="gallery-views gallery-view-2">
                                                 </div>
@@ -139,12 +145,12 @@
                                         </div>
                                        <div class="card card-style m-3 biz_lbl_card"  id='biz_lbl_card_mp3' style='display:none'>
                                             <div class="content m-3">
-                                                <h3 id='biz_lbl_page_sub_title'>Track</h3>
+                                                <h3  class='mb-3' id='biz_lbl_page_sub_title'>Track</h3>
                                                 <div class="container">
-                                                    <audio id="player" controls>
-                                                        <source src="https://cdn.plyr.io/static/demo/Kishi_Bashi_-_It_All_Began_With_a_Burst.mp3" type="audio/mp3" />
-                                                    </audio>
-                                                </div>
+                                                            <audio id="biz_audio_track" controls>
+                                                <source  type="audio/mp3" />
+                                            </audio>
+                                </div>
                                             </div>
                                         </div>
                                           <div id='biz_lbl_card_date'  style='display:none' class="card card-style m-3 biz_lbl_card">
@@ -169,21 +175,21 @@
                                         </div>
                                         <div class="card card-style m-3 biz_lbl_card"  id='biz_lbl_card_visible' style='display:none'>
                                             <div class="content m-3">
-                                                <h3 id='biz_lbl_page_sub_title'>Availbility</h3>
+                                                <h3  class='mb-3' id='biz_lbl_page_sub_title'>Availbility</h3>
                                                 <p id='biz_lbl_visible'>
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="card card-style m-3"  id='biz_lbl_card_description' style='display:none'>
                                             <div class="content m-3">
-                                                <h3 id='biz_lbl_page_sub_title'>Description</h3>
+                                                <h3   class='mb-3' id='biz_lbl_page_sub_title'>Description</h3>
                                                 <p id='biz_lbl_sub_note'>
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="card card-style m-3"  id='biz_lbl_card_note' style='display:none'>
                                             <div class="content m-3">
-                                                <h3 id='biz_lbl_page_addt_page'>Additional Information</h3>
+                                                <h3   class='mb-3' id='biz_lbl_page_addt_page'>Additional Information</h3>
                                                 <div style='margin-right:20px'>
                                                 <p id='biz_lbl_note'>
                                                 </p>
@@ -193,14 +199,14 @@
                                         <div class="card card-style m-3" id='biz_lbl_card_youtube' style='display:none'>
                                             <div class="content">
                                                 <div class="responsive-iframe">
-                                                    <iframe id='biz_lbl_youtube_link' title='YouTube video player' frameborder='0' allow=jaccelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-sharep allowfullscreen></iframe>
+                                                    <iframe id='biz_lbl_youtube_link' frameborder='0' allow=jaccelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-sharep allowfullscreen></iframe>
                                                 </div>
                                             </div>
                                         </div>
                                         <!--REVIEW_CARD_START--!>
                                          <div class="card card-style m-3  biz_lbl_card" id='biz_lbl_card_list_review' style='display:none'>
                                                <div class="content m-3">
-                                            <h3 id='biz_lbl_review_title'>Reviews</h3>
+                                            <h3   class='mb-3' id='biz_lbl_review_title'>Reviews</h3>
                                             <div class="mb-4" id='biz_lbl_list_review'></div>
                                             </div>
                                             </div>
@@ -275,20 +281,17 @@
                                                         </div>
                                                         <!-- BIZ PAGE END -->
                                                         <!-- BIZ PAGE END -->
-                                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/mp3_script.js"></script>
-                                                                <script>
-                                                                    const player = new Plyr('#player');
-                                                                </script>
                                                                 <!--SCRIPT-START --!>
-                                                        <!--SCRIPT-START --!>
-                                            <!--BIZ9-MOBILE-CORE-START --!>
+                                                      <!--SCRIPT-START --!>
+                                                                                                  <!--BIZ9-MOBILE-CORE-START --!>
                                                 <script type="text/javascript" src="cordova.js"></script>
                                                 <script type="text/javascript" src="scripts/biz9-mobile/libz/jquery-3.6.3.min.js.js"></script>
                                                 <script type="text/javascript" src="scripts/biz9-mobile/libz/pulltorefresh.js"></script>
                                                 <script type="text/javascript" src="scripts/biz9-mobile/libz/lockr.js"></script>
-                                                <script type="text/javascript" src="scripts/bootstrap.min.js"></script>
-                                                <script type="text/javascript" src="scripts/jurlp.min.js"></script>
+                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/bootstrap.min.js"></script>
+                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/jurlp.min.js"></script>
                                                 <script type="text/javascript" src="scripts/custom.js"></script>
+                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/suneditor.min.js"></script>
                                                 <!--BIZ9-MOBILE-CORE-END --!>
                                                             <!-- BIZ9-MOBILE-BIZ-CORE-START --!>
                                                                 <script type="text/javascript" src="scripts/biz9-mobile/core/utility.js"></script>
@@ -315,5 +318,5 @@
                                                                         <script type="text/javascript" src="scripts/biz9-mobile/scriptz/member.js"></script>
                                                                         <script type="text/javascript" src="scripts/biz9-mobile/scriptz/biz.js"></script>
                                                                         <!-- BIZ9-MOBILE-BIZ-SCRIPTZ-END --!>
-                                                                            <!--SCRIPT-START --!>
-                                  </body>
+                                                                              <!--SCRIPT-END --!>
+                                                                          </body>

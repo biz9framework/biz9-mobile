@@ -17,10 +17,6 @@
     "cordova-plugin-device": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
-    "cordova-plugin-file": {
-      "ANDROIDX_WEBKIT_VERSION": "1.4.0",
-      "PACKAGE_NAME": "io.bossappz.mobile"
-    },
     "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
@@ -33,15 +29,17 @@
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
-    "cordova-plugin-purchase": {
+    "cordova-plugin-inapppurchases": {
       "PACKAGE_NAME": "io.bossappz.mobile"
     },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "io.bossappz.mobile"
-    },
-    "cordova-plugin-inapppurchases": {
-      "PACKAGE_NAME": "io.bossappz.mobile"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-file": {
+      "ANDROIDX_WEBKIT_VERSION": "1.4.0",
+      "PACKAGE_NAME": "io.bossappz.mobile"
+    }
+  }
 }

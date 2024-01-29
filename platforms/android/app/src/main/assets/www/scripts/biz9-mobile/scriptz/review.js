@@ -193,15 +193,14 @@ function set_dashboard_review_list(data){
     function bind_list(item_list,page_current,page_count){
         var str='';
         for(var a=0;a<item_list.length;a++){
-            item = item_list[a];
-            date_str=item.date_obj.month_create+" "+item.date_obj.date_create+ ", "+item.date_obj.year_create +' ' + item.date_obj.time_create;
-            str =str+"<div class='card card-style pb-2 mb-2' id='biz_row_"+item.tbl_id+"'>"+
-"<a data-bs-toggle='collapse' href='#invoice-"+item.tbl_id+"' aria-expanded='false' aria-controls='invoice-"+item.tbl_id+"' class='mb-2'>"+
+            date_str=item_list[a].date_obj.month_create+" "+item_list[a].date_obj.date_create+ ", "+item_list[a].date_obj.year_create +' ' + item_list[a].date_obj.time_create;
+            str =str+"<div class='card card-style pb-2 mb-2' id='biz_row_"+item_list[a].tbl_id+"'>"+
+"<a data-bs-toggle='collapse' href='#invoice-"+item_list[a].tbl_id+"' aria-expanded='false' aria-controls='invoice-"+item_list[a].tbl_id+"' class='mb-2'>"+
 "<div class='content mb-0'>"+
 "<div class='d-flex mb-n1'>"+
 "<div class='align-self-center'>"+
-"<h3 class='font-20 font-700'>"+item.customer_name+"</h3>"+
-"<p class='font-10 mt-n2'>"+date_str+" - <span id='biz_lbl_order_status_"+item.tbl_id+"'>" + get_review_star_str(item.customer_rating) +"</span></p>"+
+"<h3 class='font-20 font-700'>"+item_list[a].customer_name+"</h3>"+
+"<p class='font-10 mt-n2'>"+date_str+" - <span id='biz_lbl_order_status_"+item_list[a].tbl_id+"'>" + get_review_star_str(item_list[a].customer_rating) +"</span></p>"+
 "</div>"+
 "<div class='ms-auto text-center mt-2'>"+
 "<i class='fa fa-plus font-18 color-theme'></i>"+
@@ -209,13 +208,13 @@ function set_dashboard_review_list(data){
 "</div>"+
 "</div>"+
 "</a>"+
-"<div class='collapse' id='invoice-"+item.tbl_id+"'>"+
+"<div class='collapse' id='invoice-"+item_list[a].tbl_id+"'>"+
 "<div class='row mb-3 m-1'>"+
-"<p> "+item.customer_comment+"</p>"+
+"<p> "+item_list[a].customer_comment+"</p>"+
 "</div>"+
 "<div class='divider'></div>"+
-                "<a href='#' tbl_id='"+item.tbl_id+"' data_type='"+item.data_type+"' data-menu='menu-option-1' class='biz_btn_review_delete btn m-2  ml-3 btn-half btn-l rounded-s font-800 text-uppercase bg-red-dark'>Delete</a>"+
-"<a href='#' tbl_id='"+item.parent_tbl_id+"' data_type='"+item.parent_data_type+"' data-menu='menu-option-1' class='biz_btn_review_view btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-green-dark'>View</a>"+
+                "<a href='#' tbl_id='"+item_list[a].tbl_id+"' data_type='"+item_list[a].data_type+"' data-menu='menu-option-1' class='biz_btn_review_delete btn m-2  ml-3 btn-half btn-l rounded-s font-800 text-uppercase bg-red-dark'>Delete</a>"+
+"<a href='#' tbl_id='"+item_list[a].parent_tbl_id+"' data_type='"+item_list[a].parent_data_type+"' data-menu='menu-option-1' class='biz_btn_review_view btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-green-dark'>View</a>"+
 "</div>"+
 "</div>"+
 "</div>";

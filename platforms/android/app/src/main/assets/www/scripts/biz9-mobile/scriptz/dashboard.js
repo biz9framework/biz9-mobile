@@ -55,6 +55,7 @@ function set_dashboard_home(data){
 		});
 	}
 	function bind_double(data){
+		$("#biz_sel_double_visible").val(data.home.card_double_visible);
 		bind_double_types(data);
 		bind_double_events();
 		function hide_double_fields(){
@@ -99,6 +100,7 @@ function set_dashboard_home(data){
 			url = "category/category_list/"+data_type+"/"+1;
 			cloud_get_url(url,{},function(data){
 				var str='';
+				str=str+ "<option value='all'>All</option>";
 				for(a=0;a<data.category_list.length;a++){
 					str=str+ "<option value='"+data.category_list[a].title+"'>"+data.category_list[a].title + "</option>";
 				}
@@ -164,6 +166,7 @@ function set_dashboard_home(data){
 		}
 	}
 	function bind_image(data){
+		$("#biz_sel_image_visible").val(data.home.card_image_visible);
 		bind_image_types(data);
 		bind_image_events();
 		function hide_image_fields(){
@@ -205,11 +208,10 @@ function set_dashboard_home(data){
 					});
 				});
 			});
-
 		}
 	}
-
 	function bind_buy(data){
+		$("#biz_sel_buy_visible").val(data.home.card_buy_visible);
 		bind_buy_types(data);
 		bind_buy_events();
 		function hide_buy_fields(){
@@ -255,6 +257,7 @@ function set_dashboard_home(data){
 			url = "category/category_list/"+data_type+"/"+1;
 			cloud_get_url(url,{},function(data){
 				var str='';
+				str= "<option value='all'>All</option>";
 				for(a=0;a<data.category_list.length;a++){
 					str=str+ "<option value='"+data.category_list[a].title+"'>"+data.category_list[a].title + "</option>";
 				}
@@ -267,6 +270,7 @@ function set_dashboard_home(data){
 		}
 	}
 	function bind_category(data){
+		$("#biz_sel_category_visible").val(data.home.card_category_visible);
 		bind_category_types(data);
 		bind_category_events();
 		function hide_category_fields(){
@@ -297,15 +301,18 @@ function set_dashboard_home(data){
 		}
 	}
 	function bind_popular(data){
+		$("#biz_sel_popular_visible").val(data.home.card_popular_visible);
 		bind_popular_types(data);
 		bind_popular_events();
 		function hide_popular_fields(){
+			//$("#biz_sel_popular_visible").hide();
 			$("#biz_div_popular_data_type").hide();
+			$("#biz_div_popular_order").hide();
 		}
 		function bind_popular_types(data){
-			$("#biz_sel_popular_visible").val(data.home.card_popular_visible);
 			if(data.home.card_popular_visible=='true'){
 				$("#biz_div_popular_data_type").show();
+				$("#biz_div_popular_order").show();
 			}else{
 				hide_popular_fields();
 			}
@@ -321,16 +328,15 @@ function set_dashboard_home(data){
 				val=$(this).val();
 				if(val=='true'){
 					$("#biz_div_popular_data_type").show();
+					$("#biz_div_popular_order").show();
 				}else{
 					hide_popular_fields();
 				}
 			});
-
-
-
 		}
 	}
 	function bind_banner(data){
+		$("#biz_sel_banner_visible").val(data.home.card_banner_visible);
 		bind_banner_types(data);
 		bind_banner_events();
 		function bind_banner_types(data){
@@ -339,7 +345,6 @@ function set_dashboard_home(data){
 				str=str+ "<option value='"+data.data_type_list[a].value+"'>"+data.data_type_list[a].title + "</option>";
 			}
 			$("#biz_sel_banner_data_type").html(str);
-			$("#biz_sel_banner_visible").val(data.home.card_banner_visible);
 			$("#biz_sel_banner_data_type").val(data.home.card_banner_data_type);
 			if(data.home.card_banner_visible=='true'){
 				if(data.home.card_banner_data_type){
@@ -349,7 +354,7 @@ function set_dashboard_home(data){
 					if(data.home.card_banner_order=='category'){
 						bind_banner_category(data.home.card_banner_category);
 						$("#biz_div_banner_category").show();
-					}else if(data.home.card_banner_order=='recent'){
+					}else if(data.home.card_banner_order=='all'){
 						$("#biz_div_banner_category").hide();
 					}
 				}
@@ -655,7 +660,7 @@ function set_dashboard_setting(data){
 		});
 	}
 }
-// 9_edit_list 9_list//9_dash
+// 9_edit_list 9_list//9_dash //9_dashboard_sub_item_list
 function set_dashboard_sub_item_list(data){
 	hide_footer();
 	hide_cart();
@@ -663,7 +668,6 @@ function set_dashboard_sub_item_list(data){
 	bind_page_list_count(data.item_list.length);
 	set_page_title('Dashboard');
 	set_page_sub_title(data.page_title);
-	set_page_note("(" + data.item_list.length + " items)");
 	bind_list(data.item_list);
 	bind_event();
 	hide_spinner();
@@ -845,7 +849,6 @@ function set_dashboard_photo_list(data){
 	bind_page_list_count(data.photo_list.length);
 	set_page_title('Dashboard');
 	set_page_sub_title(data.parent_item.title + ' Photos');
-	set_page_note("(" + data.photo_list.length + " items)");
 	bind_list(data.photo_list);
 	bind_event();
 	hide_spinner();
@@ -863,7 +866,7 @@ function set_dashboard_photo_list(data){
 				"</div>"+
 				"<div class='biz_div_list_title'><a href='"+edit_url+"'><p class='ps-3 line-height-s color-theme mb-1 font-11'>"+item.text+"</p></a><div>"+
 				"</div>"+
-				"<p class='mb-0 ps-3 font-12  opacity-60'>"+item.date_obj.full_date_create + " " + item.date_obj.time_create + edit_str+ " </p>"+
+				"<p class='mb-0 ps-3 font-12  opacity-60'>" + edit_str+ " </p>"+
 				"<div class='accordion ' id='accordion-"+a+"'>"+
 				"<div class=''>"+
 				"<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+

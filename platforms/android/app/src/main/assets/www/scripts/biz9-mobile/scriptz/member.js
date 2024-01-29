@@ -7,19 +7,18 @@ function set_page_member_category_list(data){
     function bind_list(item_list,page_current,page_count){
         var str='';
         for(var a=0;a<item_list.length;a++){
-            item = item_list[a];
             str=str+"<div class='card card-style'>"+
-                "<div class='card card-style rounded-0 mx-0'  style='background-image: url("+item.photo_obj.mid_url+")'  data-card-height='500'>"+
+                "<div class='card card-style rounded-0 mx-0'  style='background-image: url("+item_list[a].photo_obj.mid_url+")'  data-card-height='500'>"+
                 "<div class='card-bottom text-center'>"+
-                "<h1 class='color-white mb-n1'>"+item.title+"</h1>"+
+                "<h1 class='color-white mb-n1'>"+item_list[a].title+"</h1>"+
                 "<p class='color-white opacity-60 pb-2'></p>"+
                 "</div>"+
                 "<div class='card-overlay bg-gradient rounded-0'></div>"+
                 "</div>"+
-                "<a href='member_list.html?category="+item.title+"&page_current=1' class='btn btn-center-m font-700 text-uppercase btn-m under-slider-btn mb-4 rounded-xl biz_btn'>View (" +item.item_count +  " items)</a>"+
+                "<a href='member_list.html?category="+item_list[a].title+"&page_current=1' class='btn btn-center-m font-700 text-uppercase btn-m under-slider-btn mb-4 rounded-xl biz_btn'>View (" +item_list[a].item_count +  " items)</a>"+
                 "<div class='content mt-n2 text-center'>"+
                 "<p class='boxed-text-xl mb-3'>"+
-                item.sub_note
+                item_list[a].sub_note
                 +"</p>"+
                 "</div>"+
                 "</div>";
@@ -52,13 +51,12 @@ function set_page_member_list(data){
     function bind_list(item_list,page_current,page_count){
         str='';
         for(a=0;a<item_list.length;a++){
-            item = item_list[a];
             str=str+"<div class='col-6'>";
             str=str+"<div class='bg-theme rounded-m py-3 text-center'>"+
-                "<img src='"+item.photo_obj.thumb_url+"' class='gradient-green mx-auto rounded-xl' width='100'>"+
-                "<h2 class='pt-3'>"+item.first_name+" " + item.last_name+ "</h2>"+
-                "<p class='mt-n2 color-blue-dark'>"+item.position+"</p>"+
-                "<p class='mt-n2 '>"+item.bio+"</p>"+
+                "<img src='"+item_list[a].photo_obj.thumb_url+"' class='gradient-green mx-auto rounded-xl' width='100'>"+
+                "<h2 class='pt-3'>"+item_list[a].first_name+" " + item_list[a].last_name+ "</h2>"+
+                "<p class='mt-n2 color-blue-dark'>"+item_list[a].position+"</p>"+
+                "<p class='mt-n2 '>"+item_list[a].bio+"</p>"+
                 "</div>";
             str=str+"</div>";
         }
@@ -92,8 +90,7 @@ function set_dashboard_member_list(data){
     function bind_list(item_list,page_current,page_count){
         str='';
         for(a=0;a<item_list.length;a++){
-            item = item_list[a];
-            if(String(item.visible)=='true'){
+            if(String(item_list[a].visible)=='true'){
                 visible_str="<span class='color-green-dark'><i class='fa-sharp fa-solid fa-circle-check'></i></span>";
             }else{
                 visible_str="<span class='color-red-dark'> <i class='fa-sharp fa-solid fa-circle-xmark'></i> </span>";
@@ -102,20 +99,20 @@ function set_dashboard_member_list(data){
                 "<i class='fa fa-gear font-14 accordion-icon a-gear'></i>"+
                 "</a>";
 
-            str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item.tbl_id+"'>"+
+            str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item_list[a].tbl_id+"'>"+
                 "<div>"+
-                "<a href='dashboard_member.html?tbl_id="+item.tbl_id+"'><img src='"+item.photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
+                "<a href='dashboard_member.html?tbl_id="+item_list[a].tbl_id+"'><img src='"+item_list[a].photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
                 "</div>"+
-                "<div class='biv_diz_list_title'><a href='dashboard_member.html?tbl_id="+item.tbl_id+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-14'>"+item.first_name+ ' '  +item.last_name+"</b></p></a><div>"+
+                "<div class='biv_diz_list_title'><a href='dashboard_member.html?tbl_id="+item_list[a].tbl_id+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-14'>"+item_list[a].first_name+ ' '  +item_list[a].last_name+"</b></p></a><div>"+
                 "</div>"+
-                "<p class='mb-0 ps-3 font-12  opacity-60'>"+item.category+" | " + visible_str + " " + edit_str+ " </p>"+
+                "<p class='mb-0 ps-3 font-12  opacity-60'>"+item_list[a].category+" | " + visible_str + " " + edit_str+ " </p>"+
                 "<div class='accordion ' id='accordion-"+a+"'>"+
                 "<div class=''>"+
                 "<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+
                 "<div class='mb-0 ps-3  ' style='float:left;'>"+
                 "<div class='biv_diz_list_edit'>"+
-                "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='biz_btn_copy' href='#'><i class='admin_edit_img fa fa-copy pe-2 a-gear'></i></a>"+
-                "<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='biz_btn_delete' href='#'><i class='admin_edit_img fa fa-trash pe-2 a-gear'></i></a>"+
+                "<a tbl_id='"+item_list[a].tbl_id +"' data_type='"+item_list[a].data_type +"' class='biz_btn_copy' href='#'><i class='admin_edit_img fa fa-copy pe-2 a-gear'></i></a>"+
+                "<a tbl_id='"+item_list[a].tbl_id +"' data_type='"+item_list[a].data_type +"' class='biz_btn_delete' href='#'><i class='admin_edit_img fa fa-trash pe-2 a-gear'></i></a>"+
                 "</div>"+
                 "</div>"+
                 "</div>"+

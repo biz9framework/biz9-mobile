@@ -1,14 +1,14 @@
-DT_PHOTO='photo_biz';
-DT_CATEGORY='category_biz';
-DT_REVIEW='review_biz';
-DT_GALLERY='gallery_biz';
-DT_BLOG_POST='blog_post_biz';
-DT_EVENT='event_biz';
-DT_MEMBER='member_biz';
-DT_PRODUCT='product_biz';
-DT_SERVICE='service_biz';
-DT_ITEM='item_biz';
 DT_BLANK='blank_biz';
+DT_BLOG_POST='blog_post_biz';
+DT_CATEGORY='category_biz';
+DT_EVENT='event_biz';
+DT_GALLERY='gallery_biz';
+DT_ITEM='item_biz';
+DT_MEMBER='member_biz';
+DT_PHOTO='photo_biz';
+DT_PRODUCT='product_biz';
+DT_REVIEW='review_biz';
+DT_SERVICE='service_biz';
 color_list=['bg-black-black','bg-mint-dark','bg-red-dark','bg-green-dark','bg-blue-dark','bg-yellow-dark','bg-orange-dark','bg-teal-dark','bg-dark-dark','bg-magenta-dark','bg-brown-dark'];
 PAYMENT_TYPE_PAY_NOW='pay_now';
 PAYMENT_TYPE_CASHAPP='cashapp';
@@ -23,7 +23,7 @@ function load_biz_app(){
 		//$("#page").hide();
 		//w('biz_mobile_user',get_user());
 		//w('biz_cloud_get_url',get_cloud_url(url));
-		//w('biz_cloud_get_data',biz_data);
+		w('biz_cloud_get_data',biz_data);
 		set_footer_navigation(biz_data);
 		set_biz_page_data(page_title,biz_data);
 		set_left_navigation(biz_data);
@@ -1378,14 +1378,46 @@ function get_pager_ajax(page_current,page_count){
 	}
 	return str;
 }
-
-function bind_in_app_item_detail(){
-	$("#biz_btn_checkout").click(function() {
-		product_id=$('#biz_page_app_store_product_id').val();
-		inAppPurchases.purchase(product_id).then(function(purchase){
-		}).catch(function(err){
-			alert("In App Purchase Error. ProductID: "+product_id +" "+ JSON.stringify(err));
-		});
+function bind_one_click_buy(){
+	$(".biz_btn_checkout").click(function() {
+		product_id=$(this).attr("biz_product_id");
+		bind_in_app_checkout(product_id);
 	});
 }
-
+function bind_service_one_click_buy(){
+	$(".biz_btn_checkout").click(function() {
+		product_id=$(this).attr("biz_product_id");
+		var obj={};
+		obj.start_date=$('#biz_tb_date').val();
+		obj.start_time=$('#biz_tb_time').val();
+		if(!obj.start_time){
+			show_toast_error('Please select a time');
+		}else if(!obj.start_date){
+			show_toast_error('Please select a date');
+		}else{
+			bind_in_app_checkout(product_id);
+		}
+	});
+}
+function bind_in_app_checkout(product_id){
+	inAppPurchases.purchase(product_id).then(function(purchase){
+		}).catch(function(err){
+			if(err.code != '-1013'){
+				alert("In App Purchase Error. ProductID: "+product_id +" "+ JSON.stringify(err));
+			}
+		});
+}
+function filter_visible_list(item_list){
+	var r_item_list=[];
+	for(var a=0;a<item_list.length;a++){
+		if(item_list[a].data_type==DT_BLOG_POST || item_list[a].data_type==DT_GALLERY){
+			if(item_list[a].visible=='true'){
+				r_item_list.push(item_list[a]);
+			}
+		}
+		else{
+			r_item_list.push(item_list[a]);
+		}
+	}
+	return r_item_list;
+}
