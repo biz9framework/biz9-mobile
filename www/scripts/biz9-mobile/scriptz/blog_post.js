@@ -306,7 +306,6 @@ function set_dashboard_blog_post_list(data){
             if (confirm("Delete?") == true) {
                 cloud_delete(data_type,tbl_id,function(data){
                     $('#biz_row_'+tbl_id).remove();
-                    set_page_note(set_page_note_remove(parseInt($('#biz_page_item_list_count').val())));
                     bind_page_list_count(parseInt($('#biz_page_item_list_count').val()));
                 });
             }

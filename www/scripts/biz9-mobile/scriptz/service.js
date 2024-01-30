@@ -60,6 +60,13 @@ function set_page_service_category_list(data){
              if(!item_list[a].sub_note){
                     item_list[a].sub_note='';
                 }
+
+            if(String(item_list[a].visible_obj.service_visible_id)=='0'){
+                visible_str="| <span class='color-red-dark'> <i class='fa-sharp fa-solid fa-circle-xmark'></i> </span>";
+            }else{
+                visible_str="| <span class='color-green-dark'><i class='fa-sharp fa-solid fa-circle-check'></i></span>";
+            }
+
             str=str+"<div class='d-flex mb-3'>"+
                 "<div>"+
                 "<a href='"+url+"'><img src='"+item_list[a].photo_obj.square_mid_url+"' width='70' class='rounded-sm'></a>"+
@@ -67,7 +74,7 @@ function set_page_service_category_list(data){
                 "<div>"+
                 "<a href='"+url+"'><h4 class='ps-3 line-height-s color-theme mb-1'><b>"+item_list[a].title+"</b></h4></a>"+
                 "<p class='mb-0 ps-3 font-12 pt-0'>"+truncate_str(item_list[a].sub_note,250) +"</p>"+
-                "<p class='font-12 pt-0 opacity-60'>"+date_str+" " +value_field + " " + "<i class='fa fa-eye color-gray-dark'></i> "+item_list[a].view_count +" | <a href='"+url_category+"'><b>"+item_list[a].category+"</b></a></p>"+
+                "<p class='font-12 pt-0 opacity-60'>"+date_str+" " +value_field + " " + "<i class='fa fa-eye color-gray-dark'></i> "+item_list[a].view_count  +" "+visible_str+" | <a href='"+url_category+"'><b>"+item_list[a].category+"</b></a></p>"+
                 "</div>"+
                 "</div>"+
                 "<div class='divider mb-3'></div>";
@@ -196,7 +203,12 @@ function set_page_service_detail(data){
         set_page_title(data.mobile.primary.app_title);
         $('#biz_lbl_title').html(data.service.title);
         set_page_view_count(data.service.view_count);
-        $('#biz_lbl_visible').html(data.service.visible_obj.service_status);
+        if(data.service.visible!='0'){
+            $('#biz_lbl_card_visible').hide();
+        }else{
+            $('#biz_lbl_visible').html(data.service.visible_obj.service_status);
+            $('#biz_lbl_card_visible').show();
+        }
         $('#biz_lbl_price').html(data.service.money_obj.price);
         if(data.service.money_obj.old_price && data.service.money_obj.old_price!='$0.00'){
             $('#biz_lbl_old_price').show();
@@ -550,7 +562,6 @@ function set_dashboard_service_list(data){
             if (confirm("Delete?") == true) {
                 cloud_delete(data_type,tbl_id,function(data){
                     $('#biz_row_'+tbl_id).remove();
-                    set_page_note(set_page_note_remove(parseInt($('#biz_page_item_list_count').val())));
                     bind_page_list_count(parseInt($('#biz_page_item_list_count').val()));
                 });
             }

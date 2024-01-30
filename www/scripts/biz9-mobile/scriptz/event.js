@@ -184,8 +184,12 @@ function set_page_event_detail(data){
         set_page_view_count(data.event.view_count);
         $('#biz_lbl_title').html(data.event.title);
         set_page_view_count(data.event.view_count);
-        $('#biz_lbl_visible').html(data.event.visible_obj.event_status);
-        $('#biz_lbl_card_visible').show();
+        if(data.event.visible!='0'){
+            $('#biz_lbl_card_visible').hide();
+        }else{
+            $('#biz_lbl_visible').html(data.event.visible_obj.event_status);
+            $('#biz_lbl_card_visible').show();
+        }
         $('#biz_lbl_price').html(data.event.money_obj.price);
         if(data.event.money_obj.old_price && data.event.money_obj.old_price!='$0.00'){
             $('#biz_lbl_old_price').show();
@@ -467,7 +471,6 @@ function set_dashboard_event_list(data){
             if (confirm("Are you sure?") == true) {
                 cloud_delete(data_type,tbl_id,function(data){
                     $('#biz_row_'+tbl_id).remove();
-            		set_page_note(set_page_note_remove(parseInt($('#biz_page_item_list_count').val())));
 					bind_page_list_count(parseInt($('#biz_page_item_list_count').val()));
                });
             }
