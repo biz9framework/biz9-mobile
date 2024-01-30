@@ -55,7 +55,7 @@ function set_page_product_category_list(data){
         for(var a=0;a<item_list.length;a++){
             url='product_detail.html?title_url='+item_list[a].title_url;
             url_category='service_list.html?category='+item_list[a].category+"&page_current=1";
-            value_field=item.money_obj.price + " | ";
+            value_field=item_list[a].money_obj.price + " | ";
             date_str="<span class=' mb-0 ps-3 font-12 pt-0'></span>";
             if(!item_list[a].sub_note){
                 item_list[a].sub_note='';

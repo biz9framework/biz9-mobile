@@ -34,7 +34,6 @@ function set_dashboard_category_list(data){
 			}else if(item_list[a].type==DT_MEMBER){
 				view_str="member_list.html?category="+item_list[a].title+"&page_current=1";
 			}
-
             str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item_list[a].tbl_id+"'>"+
                 "<div>"+
                 "<a href='dashboard_category.html?title_url="+item_list[a].title_url+"'><img src='"+item_list[a].photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
@@ -47,8 +46,6 @@ function set_dashboard_category_list(data){
                 "<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+
                 "<div class='mb-0 ps-3 a-gear' style='float:left;'>"+
                 "<div class='biz_div_list_edit'><a tbl_id='"+item_list[a].tbl_id +"' class='#' href='"+view_str+"'><i class='admin_edit_img fa fa-eye pe-2 a-gear'></i></a>"+
-
-
                 "<a tbl_id='"+item_list[a].tbl_id +"' data_type='"+item_list[a].data_type +"' class='biz_btn_delete' href='#'><i class='admin_edit_img fa fa-trash pe-2 a-gear'></i></a>"+
                 "</div>"+
                 "</div>"+

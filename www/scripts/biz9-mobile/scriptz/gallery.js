@@ -143,24 +143,14 @@ function set_page_gallery_detail(data){
         }
     }
     function bind_photo_list(data){
-        function get_photo_str(item){
-            if(!item.text){
-                item.text=' ';
-            }
-            return "<a data-gallery='gallery-1' href='"+item.photo_obj.album_url+"' title='"+item.text+"'>"+
-                "<img src='"+item.photo_obj.album_url+"' data-src='"+item.photo_obj.album_url+"' class='rounded-m preload-img shadow-l img-fluid' alt=''>"+
-                "<p class=' pt-2' style='text-align:center'>"+ truncate_str(item.text, 50) +"</p>"+
-                "</a>";
-        }
-        var str='';
+       var str='';
         if(data.gallery.photofilename){
             str=get_photo_str(data.gallery);
         }
         if(data.gallery.photos.length>0){
             for(var a=0;a<data.gallery.photos.length;a++){
-                item = data.gallery.photos[a];
-                item.text = item.text ? item.text:'';
-                str=str+get_photo_str(item);
+                data.gallery.photos[a].text = data.gallery.photos[a].text ? data.gallery.photos[a].text:'';
+                str=str+get_photo_str(data.gallery.photos[a]);
             }
         }
         if(str){
@@ -169,6 +159,15 @@ function set_page_gallery_detail(data){
             init_plugin();
         }else{
             $('#biz_lbl_gallery_control').html('');
+        }
+        function get_photo_str(item){
+            if(!item.text){
+                item.text=' ';
+            }
+            return "<a data-gallery='gallery-1' href='"+item.photo_obj.album_url+"' title='"+item.text+"'>"+
+                "<img src='"+item.photo_obj.album_url+"' data-src='"+item.photo_obj.album_url+"' class='rounded-m preload-img shadow-l img-fluid' alt=''>"+
+                "<p class=' pt-2' style='text-align:center'>"+ truncate_str(item.text, 50) +"</p>"+
+                "</a>";
         }
     }
     function bind_event(){
@@ -209,7 +208,7 @@ function set_dashboard_gallery_list(data){
                 "<div>"+
                 "<a href='dashboard_gallery.html?title_url="+item_list[a].title_url+"'><img src='"+item_list[a].photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
                 "</div>"+
-                "<div class='biz_div_list_title'><a href='dashboard_gallery.html?title_url="+item_list[a].title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-14'>"+item.title+"</b></p></a><div>"+
+                "<div class='biz_div_list_title'><a href='dashboard_gallery.html?title_url="+item_list[a].title_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b class='font-14'>"+item_list[a].title+"</b></p></a><div>"+
                 "<span class='mb-0 ps-3 font-12 pt-1 '><i class='fa fa-eye color-gray-dark'></i> "+item_list[a].view_count +"</span>"+
                 "</div>"+
                 "<p class='mb-0 ps-3 font-12  opacity-60'>"+item_list[a].category+" | " + visible_str + " " + edit_str+ " </p>"+

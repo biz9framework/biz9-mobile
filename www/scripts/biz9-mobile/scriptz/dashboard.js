@@ -674,23 +674,22 @@ function set_dashboard_sub_item_list(data){
 	function bind_list(item_list){
 		str='';
 		for(a=0;a<item_list.length;a++){
-			item = item_list[a];
-			item_edit_url ='dashboard_sub_item.html?tbl_id='+item.tbl_id+'&data_type='+item.data_type+'&parent_data_type='+item.parent_data_type+'&parent_tbl_id='+item.parent_tbl_id;
-			item_sub_list_edit_url ='dashboard_sub_item_list.html?tbl_id='+item.tbl_id+'&data_type='+item.data_type+'&parent_data_type='+item.data_type+'&parent_tbl_id='+item.tbl_id;
+			item_edit_url ='dashboard_sub_item.html?tbl_id='+item_list[a].tbl_id+'&data_type='+item_list[a].data_type+'&parent_data_type='+item_list[a].parent_data_type+'&parent_tbl_id='+item_list[a].parent_tbl_id;
+			item_sub_list_edit_url ='dashboard_sub_item_list.html?tbl_id='+item_list[a].tbl_id+'&data_type='+item_list[a].data_type+'&parent_data_type='+item_list[a].data_type+'&parent_tbl_id='+item_list[a].tbl_id;
 			edit_str= "<a class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
 				"<i class='fa fa-gear font-12 accordion-icon a-gear'></i>"+
 				"</a>";
-			str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item.tbl_id+"'>"+
-				"<div class='biz_div_list_title'><a href='"+item_edit_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b>"+item.title+"</b></p></a><div>"+
+			str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item_list[a].tbl_id+"'>"+
+				"<div class='biz_div_list_title'><a href='"+item_edit_url+"'><p class='ps-3 line-height-s color-theme mb-1'><b>"+item_list[a].title+"</b></p></a><div>"+
 				"</div>"+
-				"<p class='mb-0 ps-3 font-12  opacity-60'>"+get_money(item.price)+ edit_str+ " </p>"+
+				"<p class='mb-0 ps-3 font-12  opacity-60'>"+get_money(item_list[a].price)+ edit_str+ " </p>"+
 				"<div class='accordion ' id='accordion-"+a+"'>"+
 				"<div class=''>"+
 				"<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+
 				"<div class='mb-0 ps-3' style='float:left;'>"+
 				"<div class='biz_div_list_edit'>"+
-				"<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='#' href='"+item_sub_list_edit_url+"'><i class='admin_edit_img fa fa-tags pe-2 a-gear'></i></a>"+
-				"<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='biz_btn_delete' href='#'><i class='admin_edit_img fa fa-trash pe-2 a-gear'></i></a>"+
+				"<a tbl_id='"+item_list[a].tbl_id +"' data_type='"+item_list[a].data_type +"' class='#' href='"+item_sub_list_edit_url+"'><i class='admin_edit_img fa fa-tags pe-2 a-gear'></i></a>"+
+				"<a tbl_id='"+item_list[a].tbl_id +"' data_type='"+item_list[a].data_type +"' class='biz_btn_delete' href='#'><i class='admin_edit_img fa fa-trash pe-2 a-gear'></i></a>"+
 				"</div>"+
 				"</div>"+
 				"</div>"+
@@ -855,16 +854,15 @@ function set_dashboard_photo_list(data){
 	function bind_list(item_list){
 		str='';
 		for(a=0;a<item_list.length;a++){
-			item = item_list[a];
 			edit_str= "<a class='accordion-btn no-effect collapsed' data-bs-toggle='collapse' data-bs-target='#collapse"+a+"' aria-expanded='false'>"+
 				"<i class='fa fa-gear font-14 accordion-icon a-gear'></i>"+
 				"</a>";
-			edit_url="dashboard_photo.html?tbl_id="+item.tbl_id+"&parent_tbl_id="+item.parent_tbl_id +"&parent_data_type="+item.parent_data_type;
-			str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item.tbl_id+"'>"+
+			edit_url="dashboard_photo.html?tbl_id="+item_list[a].tbl_id+"&parent_tbl_id="+item_list[a].parent_tbl_id +"&parent_data_type="+item_list[a].parent_data_type;
+			str = str+ "<div class='d-flex mb-3' id='biz_row_"+ item_list[a].tbl_id+"'>"+
 				"<div>"+
-				"<a href='"+edit_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
+				"<a href='"+edit_url+"'><img src='"+item_list[a].photo_obj.square_mid_url+"' class='rounded-sm' width='70'></a>"+
 				"</div>"+
-				"<div class='biz_div_list_title'><a href='"+edit_url+"'><p class='ps-3 line-height-s color-theme mb-1 font-11'>"+item.text+"</p></a><div>"+
+				"<div class='biz_div_list_title'><a href='"+edit_url+"'><p class='ps-3 line-height-s color-theme mb-1 font-11'>"+item_list[a].text+"</p></a><div>"+
 				"</div>"+
 				"<p class='mb-0 ps-3 font-12  opacity-60'>" + edit_str+ " </p>"+
 				"<div class='accordion ' id='accordion-"+a+"'>"+
@@ -872,7 +870,7 @@ function set_dashboard_photo_list(data){
 				"<div id='collapse"+a+"' class='collapse bg-theme' data-bs-parent='#accordion-"+a+"'>"+
 				"<div class='mb-0 ps-3  ' style='float:left;'>"+
 				"<div class='biz_div_list_edit'>"+
-				"<a tbl_id='"+item.tbl_id +"' data_type='"+item.data_type +"' class='biz_btn_delete' href='#'><i class='admin_edit_img fa fa-trash pe-2 a-gear'></i></a>"+
+				"<a tbl_id='"+item_list[a].tbl_id +"' data_type='"+item_list[a].data_type +"' class='biz_btn_delete' href='#'><i class='admin_edit_img fa fa-trash pe-2 a-gear'></i></a>"+
 				"</div>"+
 				"</div>"+
 				"</div>"+

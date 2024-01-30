@@ -440,34 +440,32 @@ function set_dashboard_order_list(data){
     function bind_list(item_list,page_current,page_count){
         var str='';
         for(var a=0;a<item_list.length;a++){
-            item = item_list[a];
-            date_str=item.date_obj.month_create+" "+item.date_obj.date_create+ ", "+item.date_obj.year_create +' ' + item.date_obj.time_create;
-            ship_full_name = item.shipping_first_name + " " + item.shipping_last_name;
-            ship_company = item.shipping_company;
-            ship_company = item.shipping_company;
-            ship_address=  item.shipping_address  + " "
-                +  item.shipping_city  + " "
-                +  item.shipping_state  + "<br/> "
-                +  item.shipping_country;
-            customer_email = item.customer_email ? (item.customer_email) : "N/A";
-            customer_phone = item.shipping_phone ? (item.shipping_phone) : "N/A";
-            bill_payment_type = item.billing_note;
-            quantity = item.quantity;
-            sub_total = item.sub_total;
-            shipping = item.shipping_total;
-            discount = item.discount_total;
-            grand_total = item.grand_total;
-            if(String(item.status_id)=='0' || !item.status_id){
-                item.status = "<span class='color-red-dark'>Open</span>";
-            }else if(String(item.status_id)=='1'){
-                item.status = "<span class='color-green-dark'>Shipped</span>";
+            date_str=item_list[a].date_obj.month_create+" "+item_list[a].date_obj.date_create+ ", "+item_list[a].date_obj.year_create +' ' + item_list[a].date_obj.time_create;
+            ship_full_name = item_list[a].shipping_first_name + " " + item_list[a].shipping_last_name;
+            ship_company = item_list[a].shipping_company;
+            ship_company = item_list[a].shipping_company;
+            ship_address=  item_list[a].shipping_address  + " "
+                +  item_list[a].shipping_city  + " "
+                +  item_list[a].shipping_state  + "<br/> "
+                +  item_list[a].shipping_country;
+            customer_email = item_list[a].customer_email ? (item_list[a].customer_email) : "N/A";
+            customer_phone = item_list[a].shipping_phone ? (item_list[a].shipping_phone) : "N/A";
+            bill_payment_type = item_list[a].billing_note;
+            quantity = item_list[a].quantity;
+            sub_total = item_list[a].sub_total;
+            shipping = item_list[a].shipping_total;
+            discount = item_list[a].discount_total;
+            grand_total = item_list[a].grand_total;
+            if(String(item_list[a].status_id)=='0' || !item_list[a].status_id){
+                item_list[a].status = "<span class='color-red-dark'>Open</span>";
+            }else if(String(item_list[a].status_id)=='1'){
+                item_list[a].status = "<span class='color-green-dark'>Shipped</span>";
             }
             var str_product='';
-            for(var b=0;b<item.order_item_list.length;b++){
-                item_order= item.order_item_list[b];
+            for(var b=0;b<item_list[a].order_item_list.length;b++){
+                item_order= item_list[a].order_item_list[b];
                 item_order.option_note = item_order.option_note ? item_order.option_note : ' ' ;
                 item_order.cart_note = item_order.cart_note ? item_order.cart_note : ' '
-
                 str_product = str_product+"<div class='d-flex mb-3'>"+
                     "<div>"+
                     "<img src='"+item_order.photo_obj.square_mid_url+"' width='90' class='rounded-s shadow-xl'>"+
@@ -479,13 +477,12 @@ function set_dashboard_order_list(data){
                     "</div>"+
                     "</div>";
             }
-            str =str+"<div class='card card-style pb-2 mb-2' id='biz_row_"+item.tbl_id+"'>"+
-"<a data-bs-toggle='collapse' href='#invoice-"+item.tbl_id+"' aria-expanded='false' aria-controls='invoice-"+item.tbl_id+"' class='mb-2'>"+
-"<div class='content mb-0'>"+
+            str =str+"<div class='card card-style pb-2 mb-2' id='biz_row_"+item_list[a].tbl_id+"'>"+
+"<a data-bs-toggle='collapse' href='#invoice-"+item_list[a].tbl_id+"' aria-expanded='false' aria-controls='invoice-"+item_list[a].tbl_id+"' class='mb-2'>"+ "<div class='content mb-0'>"+
 "<div class='d-flex mb-n1'>"+
 "<div class='align-self-center'>"+
-"<h3 class='font-20 font-700'>Order #"+item.order_id+"</h3>"+
-"<p class='font-10 mt-n2'>"+date_str+" - <span id='biz_lbl_order_status_"+item.tbl_id+"'>"+get_status(item.status_id)+"</span></p>"+
+"<h3 class='font-20 font-700'>Order #"+item_list[a].order_id+"</h3>"+
+"<p class='font-10 mt-n2'>"+date_str+" - <span id='biz_lbl_order_status_"+item_list[a].tbl_id+"'>"+get_status(item_list[a].status_id)+"</span></p>"+
 "</div>"+
 "<div class='ms-auto text-center mt-2'>"+
 "<i class='fa fa-plus font-18 color-theme'></i>"+
@@ -493,7 +490,7 @@ function set_dashboard_order_list(data){
 "</div>"+
 "</div>"+
 "</a>"+
-"<div class='collapse' id='invoice-"+item.tbl_id+"'>"+
+"<div class='collapse' id='invoice-"+item_list[a].tbl_id+"'>"+
 "<div class='content'>"+
 "<div class='row mb-3 mt-4'>"+
 "<h5 class=''>Shipping Info</h5>"+
@@ -534,9 +531,9 @@ function set_dashboard_order_list(data){
 "<div class='col-6'><h6 class='font-700 font-19'>"+grand_total+"</h6></div>"+
 "</div>"+
 "<div class='divider'></div>"+
-                "<a href='#' tbl_id='"+item.tbl_id+"' data_type='"+item.data_type+"' data-menu='menu-option-1' class='biz_btn_order_open btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-yellow-dark'>Open</a>"+
-                "<a href='#' tbl_id='"+item.tbl_id+"' data_type='"+item.data_type+"' data-menu='menu-option-1' class='biz_btn_order_shipped btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-green-dark'>Shipped</a>"+
-                "<a href='#' tbl_id='"+item.tbl_id+"' data_type='"+item.data_type+"' data-menu='menu-option-1' class='biz_btn_order_delete btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-red-dark'>Delete</a>"+
+                "<a href='#' tbl_id='"+item_list[a].tbl_id+"' data_type='"+item_list[a].data_type+"' data-menu='menu-option-1' class='biz_btn_order_open btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-yellow-dark'>Open</a>"+
+                "<a href='#' tbl_id='"+item_list[a].tbl_id+"' data_type='"+item_list[a].data_type+"' data-menu='menu-option-1' class='biz_btn_order_shipped btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-green-dark'>Shipped</a>"+
+                "<a href='#' tbl_id='"+item_list[a].tbl_id+"' data_type='"+item_list[a].data_type+"' data-menu='menu-option-1' class='biz_btn_order_delete btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-red-dark'>Delete</a>"+
 "</div>"+
 "</div>"+
 "</div>";

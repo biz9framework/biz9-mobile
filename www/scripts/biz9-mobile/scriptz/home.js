@@ -61,51 +61,50 @@ function set_page_home(data){
             var visible_str='';
             $('#biz_lbl_double_slide_show_list').html('');
             for(var a=0;a<data.card_double_list.length;a++){
-                var item = data.card_double_list[a];
                 if(data.home.card_double_data_type==DT_PRODUCT){
-                    if(String(item.visible_obj.product_visible_id) =='0'){
-                        visible_str="<p class='color-red-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.product_status+"</p>";
+                    if(String(data.card_double_list[a].visible_obj.product_visible_id) =='0'){
+                        visible_str="<p class='color-red-dark font-12 text-center mb-0 font-12 mt-n2'>"+data.card_double_list[a].visible_obj.product_status+"</p>";
                     }else{
-                        visible_str = "<p class='color-green-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.product_status+"</p>";
+                        visible_str = "<p class='color-green-dark font-12 text-center mb-0 font-12 mt-n2'>"+data.card_double_list[a].visible_obj.product_status+"</p>";
                     }
                 }else if(data.home.card_double_data_type==DT_SERVICE){
-                    if(String(item.visible_obj.service_visible_id) =='0'){
-                        visible_str="<p class='color-red-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.service_status_short+"</p>";
+                    if(String(data.card_double_list[a].visible_obj.service_visible_id) =='0'){
+                        visible_str="<p class='color-red-dark font-12 text-center mb-0 font-12 mt-n2'>"+data.card_double_list[a].visible_obj.service_status_short+"</p>";
                     }else{
-                        visible_str = "<p class='color-green-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.service_status_short+"</p>";
+                        visible_str = "<p class='color-green-dark font-12 text-center mb-0 font-12 mt-n2'>"+data.card_double_list[a].visible_obj.service_status_short+"</p>";
                     }
                 }else if(data.home.card_double_data_type==DT_EVENT){
-                    if(String(item.visible_obj.event_visible_id) =='0'){
-                        visible_str="<p class='color-red-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
+                    if(String(data.card_double_list[a].visible_obj.event_visible_id) =='0'){
+                        visible_str="<p class='color-red-dark font-12 text-center mb-0 font-12 mt-n2'>"+data.card_double_list[a].visible_obj.event_status_short+"</p>";
                     }else{
-                        visible_str = "<p class='color-green-dark font-12 text-center mb-0 font-12 mt-n2'>"+item.visible_obj.event_status_short+"</p>";
+                        visible_str = "<p class='color-green-dark font-12 text-center mb-0 font-12 mt-n2'>"+data.card_double_list[a].visible_obj.event_status_short+"</p>";
                     }
                 }
-                if(item.data_type==DT_BLOG_POST){
-                    url='blog_post_detail.html?title_url='+item.title_url;
-                }else if(item.data_type==DT_PRODUCT){
-                    url='product_detail.html?title_url='+item.title_url;
-                }else if(item.data_type==DT_EVENT){
-                    url='event_detail.html?title_url='+item.title_url;
-                }else if(item.data_type==DT_SERVICE){
-                    url='service_detail.html?title_url='+item.title_url;
+                if(data.card_double_list[a].data_type==DT_BLOG_POST){
+                    url='blog_post_detail.html?title_url='+data.card_double_list[a].title_url;
+                }else if(data.card_double_list[a].data_type==DT_PRODUCT){
+                    url='product_detail.html?title_url='+data.card_double_list[a].title_url;
+                }else if(data.card_double_list[a].data_type==DT_EVENT){
+                    url='event_detail.html?title_url='+data.card_double_list[a].title_url;
+                }else if(data.card_double_list[a].data_type==DT_SERVICE){
+                    url='service_detail.html?title_url='+data.card_double_list[a].title_url;
                 }
-                if(!item.sub_note){
-                    item.sub_note='';
+                if(!data.card_double_list[a].sub_note){
+                    data.card_double_list[a].sub_note='';
                 }
                 str=str+"<div class='splide__slide'>"+
-                    "<a href='"+url+"'><img src='"+item.photo_obj.square_mid_url+"' width='100' class='mx-auto'></a>"+
+                    "<a href='"+url+"'><img src='"+data.card_double_list[a].photo_obj.square_mid_url+"' width='100' class='mx-auto'></a>"+
                     "<div class='biz_div_stat_outer'>"+
-                    "<span class='font-12 pt-0 m-3'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
+                    "<span class='font-12 pt-0 m-3'><i class='fa fa-eye color-gray-dark'></i> "+data.card_double_list[a].view_count +"</span>"+
                     "</div>"+
-                    "<h5 class='text-center pt-2 mb-0'>"+item.money_obj.price+"</h5>"+
+                    "<h5 class='text-center pt-2 mb-0'>"+data.card_double_list[a].money_obj.price+"</h5>"+
                     visible_str +
-                    "<a href='"+url+"'><h4 class='text-center'>"+item.title+"</h4></a>"+
+                    "<a href='"+url+"'><h4 class='text-center'>"+data.card_double_list[a].title+"</h4></a>"+
                     "<p class='text-center ps-3 font-12 pt-0 m-2'>"+
-                    truncate_str(item.sub_note,88)+
+                    truncate_str(data.card_double_list[a].sub_note,88)+
                     "</p>"+
                     "<p class='mb-4 mt-3 text-center'>"+
-                    "<a id='biz_btn_cart3_add_"+item.tbl_id+"' tbl_id='"+item.tbl_id+"'  data_type='"+item.data_type+"' href='#' class='icon me-2 icon-s bg-white border border-gray-light rounded-s biz_btn_double_cart_slide_add'><i class='fa fa-shopping-cart color-black font-12'></i></a>"+
+                    "<a id='biz_btn_cart3_add_"+data.card_double_list[a].tbl_id+"' tbl_id='"+data.card_double_list[a].tbl_id+"'  data_type='"+data.card_double_list[a].data_type+"' href='#' class='icon me-2 icon-s bg-white border border-gray-light rounded-s biz_btn_double_cart_slide_add'><i class='fa fa-shopping-cart color-black font-12'></i></a>"+
                     "<a href='#' class='icon icon-s bg-white border border-gray-light rounded-s'><i class='fa fa-heart color-red-dark font-12'></i></a>"+
                     "</p>"+
                     "</div>";
@@ -203,41 +202,40 @@ function set_page_home(data){
             $('#biz_lbl_buy_slide_show_list').html('');
             var str='';
             for(var a=0;a<data.card_buy_list.length;a++){
-                var item = data.card_buy_list[a];
-                if(item.visible=='0'){
-                    item.visible="<span class='color-red-dark font-12 mt-n2 text-end d-block'>"+item.visible_obj.service_status+"</span>";
+                if(data.card_buy_list[a].visible=='0'){
+                    data.card_buy_list[a].visible="<span class='color-red-dark font-12 mt-n2 text-end d-block'>"+data.card_buy_list[a].visible_obj.service_status+"</span>";
                 }else{
-                    item.visible="<span class='color-green-dark font-12 mt-n2 text-end d-block'>"+item.visible_obj.service_status+"</span>";
+                    data.card_buy_list[a].visible="<span class='color-green-dark font-12 mt-n2 text-end d-block'>"+data.card_buy_list[a].visible_obj.service_status+"</span>";
                 }
-                if(!item.sub_note){
-                    item.sub_note='';
+                if(!data.card_buy_list[a].sub_note){
+                    data.card_buy_list[a].sub_note='';
                 }
                 str = str+"<div class='splide__slide'>"+
-                    "<a href='service_detail.html?title_url="+item.title_url+"'><img src='"+item.photo_obj.square_mid_url+"' class='mx-auto biz_slide_image'></a>"+
+                    "<a href='service_detail.html?title_url="+data.card_buy_list[a].title_url+"'><img src='"+data.card_buy_list[a].photo_obj.square_mid_url+"' class='mx-auto biz_slide_image'></a>"+
                     "<div class='biz_div_stat_outer'>"+
-                    "<span class='font-12 pt-0 m-5'><i class='fa fa-eye color-gray-dark'></i> "+item.view_count +"</span>"+
+                    "<span class='font-12 pt-0 m-5'><i class='fa fa-eye color-gray-dark'></i> "+data.card_buy_list[a].view_count +"</span>"+
                     "</div>"+
-                    "<h4 class='text-center pt-2'>"+item.title+"</h4>"+
-                    "<p class='mb-0 ps-3 font-12 pt-0 text-center'>"+truncate_str(item.sub_note,250)+"</p>"+
+                    "<h4 class='text-center pt-2'>"+data.card_buy_list[a].title+"</h4>"+
+                    "<p class='mb-0 ps-3 font-12 pt-0 text-center'>"+truncate_str(data.card_buy_list[a].sub_note,250)+"</p>"+
                     "<p class='text-center pt-2 mb-3'>";
-                for(b=0;b<parseInt(item.rating_avg);b++){
+                for(b=0;b<parseInt(data.card_buy_list[a].rating_avg);b++){
                     str = str+"<i class='fa fa-star color-yellow-dark'></i>";
                 }
                 str = str+"</p>"+
                     "<div class='row mb-0 px-3'>"+
                     "<div class='col-6'>"+
-                    "<h3 class='font-18 mb-2'>"+item.money_obj.price+"</h3>";
-                str = str+ "<p class='mb-0 mt-1 opacity-30 font-12'><del>"+item.money_obj.old_price+"</del></p>";
+                    "<h3 class='font-18 mb-2'>"+data.card_buy_list[a].money_obj.price+"</h3>";
+                str = str+ "<p class='mb-0 mt-1 opacity-30 font-12'><del>"+data.card_buy_list[a].money_obj.old_price+"</del></p>";
                 str = str+"</div>"+
                     "<div class='col-6'>"+
                     "<a href='#' class='text-end d-block font-12 color-theme'><i class='fa fa-heart color-red-dark font-12'></i> Book Now</a>"+
-                    item.visible+
+                    data.card_buy_list[a].visible+
                     "</div>"+
                     "</div>"+
-                    "<a id='biz_btn_cart_add_"+item.tbl_id+"' tbl_id='"+item.tbl_id+"'  data_type='"+item.data_type+"' href='#' class='btn btn-sm btn-full bg-highlight font-700 btn-margins rounded-sm mt-3 shadow-xl biz_btn_buy_now_button biz_btn'>Book Now</a>";
+                    "<a id='biz_btn_cart_add_"+data.card_buy_list[a].tbl_id+"' tbl_id='"+data.card_buy_list[a].tbl_id+"'  data_type='"+data.card_buy_list[a].data_type+"' href='#' class='btn btn-sm btn-full bg-highlight font-700 btn-margins rounded-sm mt-3 shadow-xl biz_btn_buy_now_button biz_btn'>Book Now</a>";
 
-                if(item.app_store_product=='true'){
-                    str = str+"<span class='biz_sp_checkout'><a href='#' biz_product_id='"+item.app_store_product_id+"' class='biz_btn_checkout btn btn-sm btn-full " +data.mobile.primary.button_color + " font-700 btn-margins rounded-sm mt-3 shadow-xl biz_btn'>Book Now With 1-Click</a></span>";
+                if(data.card_buy_list[a].app_store_product=='true'){
+                    str = str+"<span class='biz_sp_checkout'><a href='#' biz_product_id='"+data.card_buy_list[a].app_store_product_id+"' class='biz_btn_checkout btn btn-sm btn-full " +data.mobile.primary.button_color + " font-700 btn-margins rounded-sm mt-3 shadow-xl biz_btn'>Book Now With 1-Click</a></span>";
                 }
                 str = str+"</div>";
                 $('#biz_lbl_buy_slide_show_list').html(str);
@@ -300,7 +298,7 @@ function set_page_home(data){
                     "<a href='#' class='text-end d-block font-12 color-theme'><i class='fa fa-heart color-red-dark font-12'></i>Add To Cart</a>"+
                     "</div>"+
                     "</div>"+
-                    "<span class='biz_sp_buy'><a id='biz_btn_cart_add_"+item.tbl_id+"' tbl_id='"+data.card_buy_list[a].tbl_id+"'  data_type='"+data.card_buy_list[a].data_type+"' href='#' class='btn btn-sm btn-full " +data.mobile.primary.button_color + " font-700  btn-margins rounded-sm mt-3 shadow-xl biz_btn_buy_now_button biz_btn'>Add To Cart</a></span>";
+                    "<span class='biz_sp_buy'><a id='biz_btn_cart_add_"+data.card_buy_list[a].tbl_id+"' tbl_id='"+data.card_buy_list[a].tbl_id+"'  data_type='"+data.card_buy_list[a].data_type+"' href='#' class='btn btn-sm btn-full " +data.mobile.primary.button_color + " font-700  btn-margins rounded-sm mt-3 shadow-xl biz_btn_buy_now_button biz_btn'>Add To Cart</a></span>";
                 if(data.card_buy_list[a].app_store_product=='true'){
                     str = str+"<span class='biz_sp_checkout'><a href='#' biz_product_id='"+data.card_buy_list[a].app_store_product_id+"' class='biz_btn_checkout btn btn-sm btn-full " +data.mobile.primary.button_color + " font-700 btn-margins rounded-sm mt-3 shadow-xl biz_btn'>Buy Now With 1-Click</a></span>";
                 }
@@ -321,17 +319,11 @@ function set_page_home(data){
                 });
             }
         }
-
-
-
-
     }
-
     function bind_category_card(data){
         var str='';
         color=0;
         for(var a=0;a<data.card_category_list.length;a++){
-            item = data.card_category_list[a];
             //color_button_get_start
             color_str='';
             if(data.mobile.primary.button_color=='random'){
@@ -378,7 +370,6 @@ function set_page_home(data){
             $('#biz_lbl_category_list').html(str);
         }
     }
-
     function bind_popular_card(data){
         if(data.card_popular_list.length>0){
             bind_popular_list(data.card_popular_list);
@@ -442,15 +433,12 @@ function set_page_home(data){
             $('#biz_lbl_popular_list').html(str);
         }
     }
-
     function bind_image_card(data){
         $("#biz_lbl_image_card").show();
         $("#biz_lbl_image_card").css("background-image", "url(" + data.home.photo_obj.mid_url + ")");
         $("#biz_lbl_image_header").html(data.home.card_image_header);
         $("#biz_lbl_image_sub_note").html(data.home.card_image_sub_note);
     }
-
-
     function bind_banner_card(data){
         if(data.card_banner_list.length>0){
             bind_banner_list(data);
@@ -501,8 +489,5 @@ function set_page_home(data){
             $('#biz_lbl_banner_slide_show_list').html('');
             $('#biz_lbl_banner_slide_show_list').html(str);
         }
-
     }
-
-
 }

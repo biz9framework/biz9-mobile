@@ -185,28 +185,27 @@ function set_footer_navigation(data){
 	set_home=false;
 	home_str = "<a id='biz_lbl_ft_link_home' href='index.html'><i class='fa fa-home'></i><span>Home</span></a>";
 	for(a=0;a<data.mobile.page_list.items.length;a++){
-		item = data.mobile.page_list.items[a];
 		if(a==2){
 			str = str + home_str;
 			//home
 			set_home=true;
 		}
-		if(item.visible=='true'){
-			switch(item.type) {
+		if(data.mobile.page_list.items[a].visible=='true'){
+			switch(data.mobile.page_list.items[a].type) {
 				case DT_PRODUCT:
-					str = str + "<a id='biz_lbl_ft_link_product' href='product_category_list.html?page_current=1'><i class='fa fa-cart-shopping'></i><span>"+item.title+"</span></a>";
+					str = str + "<a id='biz_lbl_ft_link_product' href='product_category_list.html?page_current=1'><i class='fa fa-cart-shopping'></i><span>"+data.mobile.page_list.items[a].title+"</span></a>";
 					break;
 				case DT_SERVICE:
-					str = str + "<a id='biz_lbl_ft_link_service' href='service_category_list.html?page_current=1'><i class='fa fa-rocket'></i><span>"+item.title+"</span></a>";
+					str = str + "<a id='biz_lbl_ft_link_service' href='service_category_list.html?page_current=1'><i class='fa fa-rocket'></i><span>"+data.mobile.page_list.items[a].title+"</span></a>";
 					break;
 				case DT_EVENT:
-					str = str + "<a id='biz_lbl_ft_link_event' href='event_category_list.html?page_current=1'><i class='fa fa-ticket'></i><span>"+item.title+"</span></a>";
+					str = str + "<a id='biz_lbl_ft_link_event' href='event_category_list.html?page_current=1'><i class='fa fa-ticket'></i><span>"+data.mobile.page_list.items[a].title+"</span></a>";
 					break;
 				case DT_BLOG_POST:
-					str = str + "<a id='biz_lbl_ft_link_blog_post' href='blog_post_category_list.html?page_current=1'><i class='fa fa-bullhorn'></i><span>"+item.title+"</span></a>";
+					str = str + "<a id='biz_lbl_ft_link_blog_post' href='blog_post_category_list.html?page_current=1'><i class='fa fa-bullhorn'></i><span>"+data.mobile.page_list.items[a].title+"</span></a>";
 					break;
 				case DT_GALLERY:
-					str = str + "<a id='biz_lbl_ft_link_gallery' href='gallery_category_list.html?category=all&page_current=1'><i class='fa fa-image'></i><span>"+item.title+"</span></a>";
+					str = str + "<a id='biz_lbl_ft_link_gallery' href='gallery_category_list.html?category=all&page_current=1'><i class='fa fa-image'></i><span>"+data.mobile.page_list.items[a].title+"</span></a>";
 					break;
 			}
 		}
