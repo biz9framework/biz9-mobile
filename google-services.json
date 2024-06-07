@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1065062167163",
+    "project_id": "mobile-266-may21",
+    "storage_bucket": "mobile-266-may21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065062167163:android:ef11bb32c0398a892128de",
+        "android_client_info": {
+          "package_name": "io.bossappz.mobilemay21"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAoPty968KrD6C39m7FXjQ6U3lLOVKpxo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

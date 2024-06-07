@@ -12,8 +12,8 @@
                 <link rel="stylesheet" type="text/css" href="styles/style.css">
                 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
                 <link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
-                <link rel="stylesheet" type="text/css" href="styles/suneditor.min.css">
-                <link rel="stylesheet" type="text/css" href="styles/mp3_style.css">
+                <link rel="stylesheet" type="text/css" href="scripts/biz9-mobile/libz/suneditor/suneditor.min.css">
+                <link rel="stylesheet" type="text/css" href="scripts/biz9-mobile/libz/mp3/mp3_style.css">
                 <link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
                 <link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
                 <!--CSS-TEMPLATE-END --!>
@@ -24,8 +24,19 @@
                         <!-- BIZ PAGE START -->
                         <div id="page">
                             <!-- BIZ HEAD TOP START -->
-                            <input id='biz_page_title' type='hidden'value='home'/>
+                            <input id='biz_page_title' type='hidden'value='home_detail'/>
                             <input id='biz_page_footer' type='hidden'value='home'/>
+                            <input id='biz_page_tbl_id' type='hidden'/>
+                            <input id='biz_page_data_type' type='hidden' value='home'/>
+                            <input id='biz_page_photofilename' type='hidden'/>
+                            <input id='biz_page_parent_data_type' type='hidden'/>
+                            <input id='biz_page_parent_tbl_id' type='hidden'/>
+                            <input id='biz_page_top_data_type' type='hidden'/>
+                            <input id='biz_page_top_tbl_id' type='hidden'/>
+                            <input id='biz_page_review_count' type='hidden'/>
+                            <input id='biz_page_rating_avg' type='hidden'/>
+                            <input id='biz_page_category' type='hidden'/>
+                            <input id='biz_page_mp3_url' type='hidden'/>
                             <div class="header header-fixed header-logo-app">
                                 <a href="/" data-back-button class="header-title"  id='biz_lbl_page_title'></a>
                                 <a href="#" data-menu="menu-main"  class="header-icon header-icon-1"><i class="fas fa-bars"></i></a>
@@ -50,15 +61,14 @@
                                     <div class="card card-style pt-4 biz_lbl_card"  id='biz_lbl_image_card' style='background-color: transparent; height:380px; background-position:center center !important; background-size:contain; background-repeat:no-repeat;'>-
                                     <div class="card-bottom boxed-text-xl">
                                     <h1 class="color-white font-800 font-30" id='biz_lbl_image_header'></h1>
-                                    <p class="color-white mt-n2 pb-3 opacity-70" id='biz_lbl_image_sub_note'>
-                                    </p>
+                                    <p class="color-white mt-n2 pb-3 opacity-70" id='biz_lbl_image_sub_note'></p>
                                     </div>
                                     <div class="card-overlay bg-gradient"></div>
                                     </div>
                                     <!--IMAGE CARD END --!>
                                         <!--BUY CARD START --!>
                                             <div class="card card-style pt-4 biz_lbl_card" id='biz_lbl_buy_card'>
-                                            <h1 class="text-center mb-3" id='biz_lbl_title_buy'></h1>
+                                            <h1 class="text-center mb-1 biz_lbl_title" id='biz_lbl_buy_title'></h1>
                                             <div class="splide slider-no-arrows slider-no-dots" id="slider_buy">
                                             <div class="splide__track">
                                             <div class="splide__list" id='biz_lbl_buy_slide_show_list'></div>
@@ -71,13 +81,13 @@
                                                 <!--BUY DATE_TIME CARD START --!>
                                                     <div class="card card-style biz_lbl_card"  id='biz_lbl_card_datetime' style='display:none'>
                                                     <div class="content m-3">
-                                                    <h1 class="text-center mb-n1" id='biz_lbl_title_booking'>Booking Time</h1>
+                                                    <h1 class="text-center mb-n1" id='biz_lbl_title_booking'>Request Time</h1>
                                                     <div class="row mb-0 mt-4" >
                                                     <div class="col-6">
-                                                    Date: <input type="date" style="width:100%!important; display:block!important;" value="2023-2-10" class="form-control validate-text" id="biz_tb_date" placeholder="Phone">
+                                                    <b>Date:</b> <input type="date" style="width:100%!important; display:block!important;" value="2023-2-10" class="form-control validate-text" id="biz_tb_date" placeholder="Phone">
                                                     </div>
                                                     <div class="col-6">
-                                                    Time: <input type="time" style="width:100%!important; display:block!important;"  class="form-control validate-text" id="biz_tb_time" placeholder="Phone">
+                                                    <b>Time:</b> <input type="time" style="width:100%!important; display:block!important;"  class="form-control validate-text" id="biz_tb_time" placeholder="Phone">
                                                     </div>
                                                     </div>
                                                     </div>
@@ -93,12 +103,12 @@
                                                                 <!--POPULAR_CATEGORY CARD START --!>
                                                                     <div class="card card-style biz_lbl_card" id='biz_lbl_popular_category_full_card'>
                                                                     <div id='biz_lbl_popular_card'>
-                                                                    <h1 class="text-center mb-n1 mt-2" id='biz_lbl_title_popular' style='display:none'></h1>
+                                                                    <h1 class="text-center mb-n1 mt-2 biz_lbl_title" id='biz_lbl_popular_title'></h1>
                                                                     <div class="content m-3" id='biz_lbl_popular_list'>
                                                                     </div>
                                                                     </div>
                                                                     <div class="content" id='biz_lbl_category_card'>
-                                                                    <h1 class="text-center mb-3" id='biz_lbl_title_category' style='display:none'></h1>
+                                                                    <h1 class="text-center mb-3 biz_lbl_title" id='biz_lbl_title_category'></h1>
                                                                     <div class="row mb-0" id='biz_lbl_category_list'>
                                                                     </div>
                                                                     </div>
@@ -106,7 +116,7 @@
                                                                     <!--POPULAR_CATEGORY CARD END --!>
                                                                         <!--DOUBLE CARD START --!>
                                                                             <div class="card card-style pt-4 biz_lbl_card" id='biz_lbl_double_card'>
-                                                                            <h1 class="text-center pb-3" id='biz_lbl_double_category'></h1>
+                                                                            <h1 class="text-center pb-3" id='biz_lbl_double_title'></h1>
                                                                             <div class="splide double-slider slider-no-arrows slider-no-dots" id="slider_double">
                                                                             <div class="splide__track">
                                                                             <div class="splide__list" id='biz_lbl_double_slide_show_list'>
@@ -142,8 +152,8 @@
                                                                                                 <script type="text/javascript" src="scripts/biz9-mobile/libz/bootstrap.min.js"></script>
                                                                                                 <script type="text/javascript" src="scripts/biz9-mobile/libz/jurlp.min.js"></script>
                                                                                                 <script type="text/javascript" src="scripts/custom.js"></script>
-                                                                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/suneditor.min.js"></script>
-                                                                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/mp3_script.js"></script>
+                                                                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/suneditor/suneditor.min.js"></script>
+                                                                                                <script type="text/javascript" src="scripts/biz9-mobile/libz/mp3/mp3_script.js"></script>
                                                                                                 <!--BIZ9-MOBILE-CORE-END --!>
                                                                                                     <!-- BIZ9-MOBILE-BIZ-CORE-START --!>
                                                                                                         <script type="text/javascript" src="scripts/biz9-mobile/core/utility.js"></script>
@@ -153,11 +163,11 @@
                                                                                                             <!-- BIZ9-MOBILE-BIZ-SCRIPTZ-START --!>
                                                                                                                 <script type="text/javascript" src="scripts/biz9-mobile/scriptz/config.js"></script>
                                                                                                                 <script type="text/javascript" src="scripts/biz9-mobile/scriptz/about.js"></script>
-                                                                                                                <script type="text/javascript" src="scripts/biz9-mobile/scriptz/contact.js"></script>
                                                                                                                 <script type="text/javascript" src="scripts/biz9-mobile/scriptz/user.js"></script>
                                                                                                                 <script type="text/javascript" src="scripts/biz9-mobile/scriptz/category.js"></script>
                                                                                                                 <script type="text/javascript" src="scripts/biz9-mobile/scriptz/dashboard.js"></script>
                                                                                                                 <script type="text/javascript" src="scripts/biz9-mobile/scriptz/blog_post.js"></script>
+                                                                                                                <script type="text/javascript" src="scripts/biz9-mobile/scriptz/product.js"></script>
                                                                                                                 <script type="text/javascript" src="scripts/biz9-mobile/scriptz/event.js"></script>
                                                                                                                 <script type="text/javascript" src="scripts/biz9-mobile/scriptz/review.js"></script>
                                                                                                                 <script type="text/javascript" src="scripts/biz9-mobile/scriptz/contact.js"></script>
@@ -165,7 +175,6 @@
                                                                                                                 <script type="text/javascript" src="scripts/biz9-mobile/scriptz/home.js"></script>
                                                                                                                 <script type="text/javascript" src="scripts/biz9-mobile/scriptz/page.js"></script>
                                                                                                                 <script type="text/javascript" src="scripts/biz9-mobile/scriptz/order.js"></script>
-                                                                                                                <script type="text/javascript" src="scripts/biz9-mobile/scriptz/product.js"></script>
                                                                                                                 <script type="text/javascript" src="scripts/biz9-mobile/scriptz/service.js"></script>
                                                                                                                 <script type="text/javascript" src="scripts/biz9-mobile/scriptz/member.js"></script>
                                                                                                                 <script type="text/javascript" src="scripts/biz9-mobile/scriptz/biz.js"></script>

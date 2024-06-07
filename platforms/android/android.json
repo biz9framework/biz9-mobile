@@ -45,6 +45,10 @@
               "count": 1
             },
             {
+              "xml": "<feature name=\"FirebaseMessaging\"><param name=\"android-package\" value=\"by.chemerisuk.cordova.firebase.FirebaseMessagingPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "count": 1
+            },
+            {
               "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
               "count": 1
             },
@@ -109,6 +113,32 @@
             {
               "xml": "<activity android:name=\"com.soundcloud.android.crop.CropImageActivity\" />",
               "count": 1
+            },
+            {
+              "xml": "<service android:exported=\"false\" android:name=\"by.chemerisuk.cordova.firebase.FirebaseMessagingPluginService\"><intent-filter><action android:name=\"com.google.firebase.MESSAGING_EVENT\" /></intent-filter></service>",
+              "count": 1
+            },
+            {
+              "xml": "<meta-data android:name=\"com.google.firebase.messaging.default_notification_channel_id\" android:value=\"default\" />",
+              "count": 1
+            }
+          ]
+        }
+      },
+      "config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<preference name=\"AndroidXEnabled\" value=\"true\" />",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"GradlePluginGoogleServicesEnabled\" value=\"true\" />",
+              "count": 1
+            },
+            {
+              "xml": "<preference name=\"GradlePluginGoogleServicesVersion\" value=\"4.4.0\" />",
+              "count": 1
             }
           ]
         }
@@ -118,35 +148,42 @@
   "installed_plugins": {
     "cordova-plugin-camera": {
       "ANDROIDX_CORE_VERSION": "1.6.+",
-      "PACKAGE_NAME": "io.bossappz.mobile"
+      "PACKAGE_NAME": "io.bossappz.mobilemay21"
     },
     "cordova-plugin-crop": {
-      "PACKAGE_NAME": "io.bossappz.mobile"
+      "PACKAGE_NAME": "io.bossappz.mobilemay21"
     },
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "io.bossappz.mobile"
+      "PACKAGE_NAME": "io.bossappz.mobilemay21"
     },
     "cordova-plugin-file": {
       "ANDROIDX_WEBKIT_VERSION": "1.4.0",
-      "PACKAGE_NAME": "io.bossappz.mobile"
+      "PACKAGE_NAME": "io.bossappz.mobilemay21"
     },
     "cordova-plugin-file-transfer": {
-      "PACKAGE_NAME": "io.bossappz.mobile"
+      "PACKAGE_NAME": "io.bossappz.mobilemay21"
     },
     "cordova-plugin-filechooser": {
-      "PACKAGE_NAME": "io.bossappz.mobile"
+      "PACKAGE_NAME": "io.bossappz.mobilemay21"
     },
     "cordova-plugin-filepicker": {
-      "PACKAGE_NAME": "io.bossappz.mobile"
+      "PACKAGE_NAME": "io.bossappz.mobilemay21"
+    },
+    "cordova-support-android-plugin": {
+      "PACKAGE_NAME": "io.bossappz.mobilemay21"
+    },
+    "cordova-plugin-firebase-messaging": {
+      "ANDROID_FIREBASE_BOM_VERSION": "32.5.0",
+      "PACKAGE_NAME": "io.bossappz.mobilemay21"
     },
     "cordova-plugin-inappbrowser": {
-      "PACKAGE_NAME": "io.bossappz.mobile"
+      "PACKAGE_NAME": "io.bossappz.mobilemay21"
     },
     "cordova-plugin-inapppurchases": {
-      "PACKAGE_NAME": "io.bossappz.mobile"
+      "PACKAGE_NAME": "io.bossappz.mobilemay21"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "io.bossappz.mobile"
+      "PACKAGE_NAME": "io.bossappz.mobilemay21"
     }
   },
   "dependent_plugins": {},
@@ -413,6 +450,14 @@
       ]
     },
     {
+      "id": "cordova-plugin-firebase-messaging.FirebaseMessaging",
+      "file": "plugins/cordova-plugin-firebase-messaging/www/FirebaseMessaging.js",
+      "pluginId": "cordova-plugin-firebase-messaging",
+      "merges": [
+        "cordova.plugins.firebase.messaging"
+      ]
+    },
+    {
       "id": "cordova-plugin-inappbrowser.inappbrowser",
       "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
       "pluginId": "cordova-plugin-inappbrowser",
@@ -445,6 +490,8 @@
     "cordova-plugin-file-transfer": "2.0.0",
     "cordova-plugin-filechooser": "1.2.0",
     "cordova-plugin-filepicker": "1.1.6",
+    "cordova-support-android-plugin": "2.0.4",
+    "cordova-plugin-firebase-messaging": "8.0.1",
     "cordova-plugin-inappbrowser": "6.0.0",
     "cordova-plugin-inapppurchases": "3.0.3",
     "cordova-plugin-splashscreen": "6.0.1"

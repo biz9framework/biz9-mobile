@@ -12,14 +12,12 @@
 //biz_tb_review_name
 //biz_tb_review_comment
 //biz_btn_review_add
-
-function bind_review(item){
+function bind_detail_review(item){
     $('#biz_lbl_card_list_review').show();
     $('#biz_lbl_card_add_review').show();
     //review and review-start
     if(item.review_obj){
-        $('#biz_page_review_count').val(item.review_obj.review_list.length);
-        $('#biz_page_rating_avg').val(item.review_obj.customer_rating_avg);
+        bind_page_other_id({review_count:item.review_obj.review_list.length,rating_avg:item.review_obj.rating_avg});
         bind_detail_review_count_star_str();
         if(item.review_obj.review_list.length>0){
             $('#biz_lbl_card_list_review').show();
@@ -46,12 +44,12 @@ function bind_review(item){
 }
 function bind_detail_review_count_star_str(){
     review_count=parseInt($('#biz_page_review_count').val());
-    review_avg=parseInt($('#biz_page_rating_avg').val());
+    rating_avg=parseInt($('#biz_page_rating_avg').val());
     if(isNaN(review_count)){
         review_count=0;
     }
-    if(isNaN(review_avg)){
-        review_avg=0;
+    if(isNaN(rating_avg)){
+        rating_avg=0;
     }
     //detail_count
     $('#biz_lbl_review_title').html('Reviews ('+ review_count + ')');
@@ -66,8 +64,14 @@ function bind_detail_review_count_star_str(){
     }
     //detail_star
     var str='';
-    for(a=0;a<parseInt(review_avg);a++){
-        str=str+"<i class='fa fa-star pe-1'></i>";
+    if(parseInt(rating_avg)>0){
+    for(a=0;a<5;a++){
+        if(a<parseInt(rating_avg)){
+        str=str+"<i class='fa fa-star color-yellow-dark'></i>";
+        }else{
+         str=str+"<i class='fa fa-star color-gray-dark'></i>";
+        }
+    }
     }
     if(str){
         str = str + ' ';
@@ -85,14 +89,20 @@ function set_review_list_str(review){
         "<h1 class='float-start font-40 font-800 mt-1 me-3'>"+review.customer_rating+"</h1>"+
         "<h5 class='font-11 font-500 mb-n1'>out of 5 rating</h5>"+
         "<span>";
-    for(b=0;b<parseInt(review.customer_rating);b++){
-        str=str+"<i class='fa fa-star color-yellow-dark'></i>";
+
+    for(b=0;b<5;b++){
+        if(b<parseInt(review.customer_rating)){
+            str=str+"<i class='fa fa-star color-yellow-dark'></i>";
+        }else{
+            str=str+"<i class='fa fa-star color-gray-dark'></i>";
+        }
     }
+
     str = str+" </span>"+
         "</div>"+
         "<div>"+
-        "<h6 class='mb-0 mt-1 text-end'>"+review.customer_name+"</h6>"+
-        "<p class='font-12 mb-0 mt-n2 opacity-40 text-end'>"+review_date + "</p>"+
+        "<h6 class='mb-2 mt-1 text-end'>"+review.customer_name+"</h6>"+
+        "<p class='font-12 mb-2 mt-n2 opacity-40 text-end'>"+review_date + "</p>"+
         "<p class='font-10 mb-0 mt-n3 opacity-40 text-end'>"+review_time + "</p>"+
         "</div>"+
         "</div>"+
@@ -117,29 +127,29 @@ function get_star_str(count){
 function bind_review_delete_event(tbl_id){
     $("#biz_btn_delete_"+tbl_id).click(function(e) {
         e.stopPropagation();
-        parent_data_type=$('#biz_page_data_type').val();
-        parent_tbl_id=$('#biz_page_tbl_id').val();
+        item_data_type=$('#biz_page_data_type').val();
+        item_tbl_id=$('#biz_page_tbl_id').val();
         data_type = $(this).attr('data_type');
         tbl_id = $(this).attr('tbl_id');
         if (confirm("Delete?") == true) {
-            url = "item/review_delete/"+tbl_id+"/"+parent_data_type+"/"+parent_tbl_id;
-            cloud_post_url(url,{},function(data){
+            url = "item/review_delete/"+tbl_id+"/"+item_data_type+"/"+item_tbl_id;
+            cloud_post_url(get_cloud_url(url,[]),{},function(data){
                 $('#biz_row_'+tbl_id).remove();
-                $('#biz_page_review_count').val(data.item.review_obj.review_list.length);
-                $('#biz_page_rating_avg').val(data.item.review_obj.customer_rating_avg);
+                bind_page_other_id({review_count:data.item.review_obj.review_list.length,rating_avg:data.item.review_obj.rating_avg});
                 bind_detail_review_count_star_str();
             });
         }
         return false;
     });
 }
+//9_event
 function bind_review_add_event(){
     $("#biz_btn_review_add").click(function(e) {
         hide_toast();
         e.stopPropagation();
         obj={};
-        obj.parent_data_type=$('#biz_page_data_type').val();
-        obj.parent_tbl_id=$('#biz_page_tbl_id').val();
+        obj.item_data_type=$('#biz_page_data_type').val();
+        obj.item_tbl_id=$('#biz_page_tbl_id').val();
         obj.customer_rating=$('#biz_sel_review_rating').val();
         obj.customer_id=get_user().customer_id;
         obj.customer_name=$('#biz_tb_review_name').val();
@@ -149,15 +159,15 @@ function bind_review_add_event(){
         }else if(!obj.customer_rating){
             show_toast_error('Please select a rating');
         }else{
-            url = "item/review_update/"+obj.parent_data_type+"/"+obj.parent_tbl_id;
-            cloud_post_url(url,obj,function(data){
+            url = "item/review_update/"+obj.item_data_type+"/"+obj.item_tbl_id;
+            cloud_post_url(get_cloud_url(url,[]),obj,function(data){
                     if(data.validation_message){
                         alert(data.validation_message);
                     }else{
                         $('#biz_lbl_card_list_review').show();
                         $('#biz_lbl_list_review').prepend(set_review_list_str(data.review));
                         $('#biz_page_review_count').val(data.update_item.review_obj.review_list.length);
-                        $('#biz_page_rating_avg').val(data.update_item.review_obj.customer_rating_avg);
+                        $('#biz_page_rating_avg').val(data.update_item.review_obj.rating_avg);
                         bind_review_delete_event(data.review.tbl_id);
                         bind_detail_review_count_star_str();
                         $('#biz_tb_review_name').val('');
@@ -168,17 +178,17 @@ function bind_review_add_event(){
         return false;
     });
 }
-//9_review_list 9_dashboard_review_list
+//9_review_list 9_dashboard_review_list 9_list
 function set_dashboard_review_list(data){
-    hide_footer();
-    hide_cart();
-    bind_page_list_count(data.item_count);
+    hide_page_footer();
+	hide_page_cart_top();
     bind_detail(data);
     bind_list(data.review_list,data.page_current,data.page_count);
-    hide_spinner();
+    hide_page_spinner();
     function bind_detail(data){
         set_page_title('Dashboard');
         set_page_sub_title('Reviews');
+        set_page_back_link(get_item_link(DT_BLANK).page_dashboard_home_url);
     }
     function get_review_star_str(count){
         var str='';
@@ -214,7 +224,7 @@ function set_dashboard_review_list(data){
 "</div>"+
 "<div class='divider'></div>"+
                 "<a href='#' tbl_id='"+item_list[a].tbl_id+"' data_type='"+item_list[a].data_type+"' data-menu='menu-option-1' class='biz_btn_review_delete btn m-2  ml-3 btn-half btn-l rounded-s font-800 text-uppercase bg-red-dark'>Delete</a>"+
-"<a href='#' tbl_id='"+item_list[a].parent_tbl_id+"' data_type='"+item_list[a].parent_data_type+"' data-menu='menu-option-1' class='biz_btn_review_view btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-green-dark'>View</a>"+
+"<a href='#' tbl_id='"+item_list[a].item_tbl_id+"' data_type='"+item_list[a].item_data_type+"' data-menu='menu-option-1' class='biz_btn_review_view btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-green-dark'>View</a>"+
 "</div>"+
 "</div>"+
 "</div>";
@@ -230,7 +240,7 @@ function set_dashboard_review_list(data){
             $('#biz_lbl_list').html('');
             page_current = $(this).attr('page_current');
             url='order/order_list/'+page_current;
-            cloud_get_url(url,{},function(data){
+            cloud_get_url(get_cloud_url(url,[]),{},function(data){
                 bind_list(data.order_list,page_current,data.page_count);
             });
         });
@@ -246,10 +256,10 @@ function set_dashboard_review_list(data){
             }
         });
         $(".biz_btn_review_view").click(function() {
-            parent_data_type = $(this).attr('data_type');
-            parent_tbl_id = $(this).attr('tbl_id');
+            item_data_type = $(this).attr('data_type');
+            item_tbl_id = $(this).attr('tbl_id');
             var r_url='';
-            switch(parent_data_type) {
+            switch(item_data_type) {
                 case DT_PRODUCT:
                     r_url='product_detail.html'
                     break;
@@ -266,8 +276,8 @@ function set_dashboard_review_list(data){
                     r_url='gallery_detail.html'
                     break;
             }
-            cloud_get(parent_data_type,parent_tbl_id,function(data){
-                window.location=r_url+'?title_url='+data.title_url;
+            cloud_get(item_data_type,item_tbl_id,function(data){
+                window.location=r_url+'tbl_id='+data.tbl_id;
             });
         });
     }

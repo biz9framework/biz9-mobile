@@ -120,5 +120,11 @@ function get_title_url(title){
 function truncate_str(str, n){
         return (str.length > n) ? str.slice(0, n-1) + '&hellip;' : str;
 }
-
+function get_textbox_date(date){
+        dt=new Date(date);
+        full_dt = new Date(String(dt.getFullYear()),String(dt.getDate()+1), String(dt.getMonth()+1));
+        day = ("0" + full_dt.getDate()).slice(-2);
+        month = ("0" + (full_dt.getMonth())).slice(-2);
+        return dt.getFullYear() + "-" + day + "-" + month;
+}
 

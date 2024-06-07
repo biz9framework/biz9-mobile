@@ -15,6 +15,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: #1f1f1f;
+  /*color: #FFFFFF;*/
   font-family: "IBM Plex Sans", sans-serif !important;
   margin-bottom: 5px;
   letter-spacing: -0.3px;
@@ -3072,7 +3073,7 @@ button:active {
 .input-style.has-icon.has-borders input,
 .input-style.has-icon.has-borders select,
 .input-style.has-icon.has-borders textarea {
-  padding-left: 35px !important;
+  padding-left: 13px !important;
 }
 
 .input-style.has-icon input,
@@ -6469,7 +6470,7 @@ input[type=number] {
     color:white;
 }
 .admin_edit_img{
-    margin-right:30px;
+    margin-right:25px;
     font-size:16px;
 }
 /* -- paging start */
@@ -6536,6 +6537,10 @@ width:200px!important;
 /* public-end */
 
 .line_title{
+}
+
+#biz_div_send_notification{
+float:right;
 }
 
 
