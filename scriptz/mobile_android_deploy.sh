@@ -61,7 +61,7 @@ apksigner sign --ks-key-alias alias_name --ks ${BIZ9_MOBILE_KEY_STORE} --ks-pass
 echo "--> BiZ9 MOBILE AAB OK..."
 java -jar /home/mama/www/opz/toolz/bundletool/bundletool-all-1.9.1.jar build-apks --bundle=${APP_TITLE_ID}_${APP_VERSION_NEW}'.aab' --output=${APP_TITLE_ID}_${APP_VERSION_NEW}'.apks' --ks=${BIZ9_MOBILE_KEY_STORE} --ks-key-alias=alias_name --ks-pass=pass:${BIZ9_MOBILE_APP_KEY_STORE_PASSWORD}
 echo "--> BiZ9 MOBILE BUNDLETOOL OK..."
-#rsync -rave "ssh -2 -i ${BIZ9_MOBILE_SSH_KEY}" ${APP_TITLE_ID}_${APP_VERSION_NEW}.aab  admin@${BIZ9_MOBILE_DEPLOY_IP}:${BIZ9_MOBILE_DEPLOY_DIR}
+rsync -rave "ssh -2 -i ${BIZ9_MOBILE_SSH_KEY}" ${APP_TITLE_ID}_${APP_VERSION_NEW}.aab  admin@${BIZ9_MOBILE_DEPLOY_IP}:${BIZ9_MOBILE_DEPLOY_DIR}
 rsync -rave "ssh -2 -i ${BIZ9_MOBILE_SSH_KEY}" ${APP_TITLE_ID}_${APP_VERSION_NEW}.apk  admin@${BIZ9_MOBILE_DEPLOY_IP}:${BIZ9_MOBILE_DEPLOY_DIR}
 ##rm
 rm -rf *.apk

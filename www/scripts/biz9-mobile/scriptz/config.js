@@ -5,7 +5,7 @@ APP_VENDOR='BiZ9 Framework Mobile'
 APP_TITLE='May 21'
 APP_TITLE_ID='mobile-may21'
 TEST_MODE='true';
-CLOUD_URL="https://mobile.bossappz343.com";
+CLOUD_URL="https://service-220.bossappz.net";
 //CLOUD_URL="http://localhost:1901";
 
 /*
