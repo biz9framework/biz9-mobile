@@ -775,6 +775,9 @@ function set_biz_page_data(biz_page_title,data){
 		case 'login':
 			set_page_login(data);
 			break;
+		case 'logout':
+			set_page_logout(data);
+			break;
 		case 'order_checkout_summary':
 			set_page_order_checkout_summary(data);
 			break;
@@ -900,6 +903,9 @@ function get_biz_page_url(biz_page_title){
 			url=get_cloud_url(get_item_link(get_url_param('data_type')).cloud_list_url,[]);
 			break;
 		case 'login':
+			url=get_cloud_url('blank',[]);
+			break;
+		case 'logout':
 			url=get_cloud_url('blank',[]);
 			break;
 		case 'member_list':

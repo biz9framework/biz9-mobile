@@ -1073,7 +1073,6 @@ function set_item_mp3_edit(item){
 	$("#biz_btn_remove_mp3").hide();
 	$("#biz_page_mp3_url").val(item.mp3_url?item.mp3_url:"");
 	$("#biz_page_mp3filename").val(item.mp3filename?item.mp3filename:"");
-	alert(item.mp3filename);
 	if(item.mp3filename){
 		//$("#biz_div_mp3_track").show();
 	$("#biz_audio_track").attr('src',item.mp3_url);
