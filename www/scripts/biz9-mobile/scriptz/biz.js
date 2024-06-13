@@ -1330,8 +1330,8 @@ function bind_double_slide_show_list_str(data_type,item_list){
 function bind_detail_photo_list_str(item_list){
 	var str='';
 	for(a=0;a<item_list.length;a++){
-		if(!item_list[a].text){
-			item_list[a].text='';
+		if(!item_list[a].title){
+			item_list[a].title='';
 		}
 		str=str+"<a class='col mb-4' data-gallery='gallery-1' href='"+item_list[a].photo_obj.album_url+"' title='"+item_list[a].title+"'>"+
 			"<img src='"+item_list[a].photo_obj.square_mid_url+"' data-src='"+item_list[a].photo_obj.album_url+"' class='preload-img img-fluid rounded-s' alt='img'>"+
