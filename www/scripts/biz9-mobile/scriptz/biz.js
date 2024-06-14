@@ -1124,7 +1124,7 @@ function get_item_home_slide_show_list_str(item_list){
 		str=str+"<div class='splide__slide'>"+
 			"<div class='card card-style'style='background-color:transparent; height:320px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item_list[a].last_item_create.photo_obj.mid_url+")' >"+
 			"<div class='card-bottom p-3'>"+
-			"<a href='"+get_item_link(item_list[a].type).list_url+"&category="+item_list[a].title+"&page_current=1' class='btn btn-s rounded-s mb-4 biz_btn'><h4 class='biz_lbl_title'>"+item_list[a].title+" (" + item_list[a].item_count + ")</h4></a>"+
+			"<a href='"+get_item_link(item_list[a].type).list_url+"&category="+item_list[a].title+"&page_current=1' class='btn btn-s rounded-s mb-4 biz_btn'><h4 class='biz_btn_lbl_title'>"+item_list[a].title+" (" + item_list[a].item_count + ")</h4></a>"+
 			"</div>"+
 			"<div class='card-overlay bg-gradient'></div>"+
 			"</div>"+
@@ -1427,16 +1427,9 @@ function set_biz_style(button_color, app_theme){
 		$('.biz_lbl_title').css("color","black");
 		$('.a-gear').css("color","black");
 	}
-
-	/*
-	if(app_theme=='dark-mode'){
-		if(button_color =='bg-yellow-dark'){
-			$('.biz_lbl_btn_title').css("color","black");
-		}else{
-			$('.biz_lbl_title').css("color","black");
-		}
+	if(button_color =='bg-black-black'){
+		$('.biz_btn_lbl_title').css("color","white");
 	}
-	*/
 }
 
 // -- VIEW LAYOUT END -- //
