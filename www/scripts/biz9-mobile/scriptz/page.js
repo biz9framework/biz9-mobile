@@ -34,7 +34,6 @@ function set_dashboard_page_list(data){
     function bind_detail(data){
         set_page_title('Dashboard');
         set_page_sub_title('Pages');
-        set_page_back_link(get_item_link().page_dashboard_home_url);
     }
     function bind_list(_item_list){
         var item_list=[];
@@ -84,7 +83,6 @@ function set_dashboard_page_edit(data){
     function bind_detail(data){
         set_page_title('Dashboard');
         set_page_sub_title('Edit Page ' + data.item.title);
-        set_page_back_link('page_dashboard_list.html');
         if(data.item.tbl_id==0){
             set_page_sub_title('Add Page');
         }else{

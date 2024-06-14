@@ -8,9 +8,6 @@ function set_page_event_detail(data){
     init_plugin();
     hide_page_spinner();
     function bind_detail(data){
-        if(document.referrer){
-			set_page_back_link(document.referrer);
-		}
 	    set_page_footer_navigation(data,data.data_type);
         set_page_detail_title(data.item.title);
         set_page_detail_product_photo(data.item);
@@ -79,7 +76,6 @@ function set_dashboard_event_edit(data){
     }
     function bind_detail(data){
         set_page_title('Dashboard');
-       	set_page_back_link(get_item_link(DT_EVENT).edit_list_url);
         set_item_content_edit(data.item,data.data_type_info.title);
         set_item_category_edit(data.category_list,data.item.category);
         set_item_visible_edit(data.event_visible_option_list,data.item.visible);

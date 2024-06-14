@@ -12,9 +12,6 @@ function set_page_service_detail(data){
         $('#biz_lbl_cart_datetime').show();
     }
     function bind_detail(data){
-        if(document.referrer){
-			set_page_back_link(document.referrer);
-		}
         set_page_footer_navigation(data,data.data_type);
         set_page_detail_title(data.item.title);
         set_page_detail_option_list(data.item);
@@ -87,13 +84,10 @@ function set_page_service_detail(data){
 
 //9_service_home //9_home
 function set_page_service_home(data){
-    bind_detail(data);
     bind_slide_show_list(data.category_list);
     bind_mid_list(data.page.title,data.service_list);
     bind_bottom_list('',data.mobile.primary.button_color,data.category_list);
     hide_spinner();
-    function bind_detail(data){
-        set_page_back_link(get_home_link());
     }
     function bind_slide_show_list(item_list){
         $('#biz_slide_show_list').html(get_item_home_slide_show_list_str(item_list));
@@ -127,7 +121,6 @@ function set_dashboard_service_edit(data){
 	}
     function bind_detail(data){
         set_page_title('Dashboard');
-       	set_page_back_link(get_item_link(DT_SERVICE).edit_list_url);
        	set_item_content_edit(data.item,data.data_type_info.title);
 		set_item_category_edit(data.category_list,data.item.category);
         set_item_mp3_edit(data.item);

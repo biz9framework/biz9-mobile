@@ -15,7 +15,6 @@ function set_dashboard_category_edit(data){
 	function bind_detail(data){
 		set_page_title('Dashboard');
 		hide_page_cart_top();
-		set_page_back_link(get_item_link(DT_CATEGORY).edit_list_url);
 		set_item_content_edit(data.category,data.data_type_info.title);
 		set_item_visible_edit(data.category,[]);
 	}

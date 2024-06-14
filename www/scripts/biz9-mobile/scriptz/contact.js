@@ -121,7 +121,6 @@ function set_dashboard_contact_edit(data){
     function bind_detail(data){
         set_page_title('Dashboard');
         set_page_sub_title('Edit Contact');
-        set_page_back_link(get_item_link().page_dashboard_home_url);
         hide_page_cart_top();
         $('#biz_tb_form_header').val(data.form_header);
         $('#biz_tb_form_sub_note').val(data.form_sub_note);

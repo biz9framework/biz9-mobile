@@ -188,7 +188,6 @@ function set_dashboard_review_list(data){
     function bind_detail(data){
         set_page_title('Dashboard');
         set_page_sub_title('Reviews');
-        set_page_back_link(get_item_link(DT_BLANK).page_dashboard_home_url);
     }
     function get_review_star_str(count){
         var str='';

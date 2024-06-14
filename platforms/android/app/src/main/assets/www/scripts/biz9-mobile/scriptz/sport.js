@@ -49,7 +49,6 @@ function set_dashboard_sport_edit(data){
 	init_form();
 	hide_page_spinner();
 	function bind_detail(data){
-		set_page_back_link(get_item_link(DT_SPORT).edit_list_url);
 		set_page_title('Dashboard');
 		set_item_content_edit(data.item);
 		set_item_visible_edit(data.item,[]);
@@ -104,7 +103,6 @@ function set_dashboard_team_edit(data){
 	hide_page_spinner();
 	function bind_detail(data){
 		set_page_title('Dashboard');
-		set_page_back_link(get_item_link(DT_TEAM).edit_list_url+"&parent_tbl_id="+data.parent_item.tbl_id+"&parent_data_type="+data.parent_item.data_type+"&page_current=1&category=all");
 		set_item_content_edit(data.item,data.data_type_info.title);
 		set_item_category_edit(data.category_list,data.item.category);
 		set_item_state_edit(data.item.state);
@@ -196,7 +194,6 @@ function set_dashboard_game_edit(data){
 	}
 	function bind_detail(data){
 		set_page_title('Dashboard');
-		set_page_back_link(get_item_link(DT_GAME).edit_list_url+"&parent_tbl_id="+data.parent_item.tbl_id+"&parent_data_type="+data.parent_item.data_type+"&page_current=1&category=all");
 		set_item_content_edit(data.item,data.data_type_info.title);
 		set_item_state_edit(data.item.state);
 		set_item_country_edit(data.item.country);

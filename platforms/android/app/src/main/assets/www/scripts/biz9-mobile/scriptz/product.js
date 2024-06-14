@@ -7,9 +7,6 @@ function set_page_product_detail(data){
     init_plugin();
     hide_page_spinner();
      function bind_detail(data){
-         if(document.referrer){
-			set_page_back_link(document.referrer);
-		}
         set_page_footer_navigation(data,data.data_type);
         set_page_detail_title(data.item.title);
         set_page_detail_option_list(data.item);
@@ -55,44 +52,6 @@ function set_page_product_detail(data){
         });
     }
 }
-//9_product_home //9_home
-function set_page_product_home(data){
-    bind_detail(data);
-    bind_slide_show_list(data.category_list);
-    bind_mid_list(data.page.title,data.product_list);
-    bind_bottom_list('',data.mobile.primary.button_color,data.category_list);
-    hide_spinner();
-    function bind_detail(data){
-        set_page_back_link(get_home_link());
-    }
-    function bind_slide_show_list(item_list){
-        $('#biz_slide_show_list').html(get_item_home_slide_show_list_str(item_list));
-        init_slide_show('#biz_div_slide_show');
-    }
-    function bind_mid_list(title,item_list){
-        $('#biz_lbl_mid_title').html(title);
-        $('#biz_lbl_mid_list').html(get_detail_list_str(item_list));
-        bind_event_detail_list_like();
-    }
-    function bind_bottom_list(title,button_color,item_list){
-        $('#biz_lbl_bottom_title').html('title');
-        $('#biz_lbl_bottom_list').html(get_category_list_str(button_color,item_list));
-    }
-}
-//9_list
-function set_page_product_list(data){
-    set_page_hide_cart_top();
-    bind_page_id({data_type:DT_PRODUCT,category:data.category.title});
-    set_page_sub_title(data.category.title);
-    set_page_sub_note(data.category.sub_note);
-    hide_spinner();
-    bind_list(data.product_list,data.page_current,data.page_count,data.item_count);
-    function bind_list(item_list,page_current,page_count,item_count){
-        $('#biz_lbl_list').html(get_detail_list_str(item_list));
-        $('#biz_lbl_pager').html(get_pager_ajax(page_current,page_count));
-        bind_event_detail_list_like();
-    }
-}
 // 9_product_edit 9_edit 9_dashboard_product_edit
 function set_dashboard_product_edit(data){
     hide_page_footer();
@@ -111,7 +70,6 @@ function set_dashboard_product_edit(data){
 	}
     function bind_detail(data){
         set_page_title('Dashboard');
-       	set_page_back_link(get_item_link(DT_PRODUCT).edit_list_url);
        	set_item_content_edit(data.item,data.data_type_info.title);
 		set_item_category_edit(data.category_list,data.item.category);
         set_item_mp3_edit(data.item);
@@ -179,7 +137,6 @@ function set_dashboard_product_list(data){
     function bind_detail(data){
         set_page_title('Dashboard');
         set_page_sub_title('Products');
-        set_page_back_link(get_dashboard_home_link());
     }
     function bind_list(item_list,page_current,page_count){
         $('#biz_lbl_list').html(bind_dashboard_list(item_list,page_current,page_count));

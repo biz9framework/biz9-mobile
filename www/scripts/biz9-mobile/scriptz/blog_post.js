@@ -9,9 +9,6 @@ function set_page_blog_post_detail(data){
 	init_plugin();
 	hide_page_spinner();
 	function bind_detail(data){
-		if(document.referrer){
-			set_page_back_link(document.referrer);
-		}
 		set_page_footer_navigation(data,data.data_type);
 		set_page_detail_title(data.item.title);
 		set_page_detail_double_slide_show(data.item,data.item_list);
@@ -61,7 +58,6 @@ function set_dashboard_blog_post_edit(data){
 	}
 	function bind_detail(data){
 		set_page_title('Dashboard');
-		set_page_back_link(get_item_link(DT_BLOG_POST).edit_list_url);
 		set_item_content_edit(data.item,data.data_type_info.title);
 		set_item_category_edit(data.category_list,data.item.category);
 		set_item_mp3_edit(data.item);

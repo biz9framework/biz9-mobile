@@ -188,7 +188,6 @@ function set_dashboard_review_list(data){
     function bind_detail(data){
         set_page_title('Dashboard');
         set_page_sub_title('Reviews');
-        set_page_back_link(get_item_link(DT_BLANK).page_dashboard_home_url);
     }
     function get_review_star_str(count){
         var str='';
@@ -203,6 +202,7 @@ function set_dashboard_review_list(data){
     function bind_list(item_list,page_current,page_count){
         var str='';
         for(var a=0;a<item_list.length;a++){
+            detail_url=get_item_link(item_list[a].item_data_type).detail_url+'&tbl_id='+item_list[a].item_tbl_id;
             date_str=item_list[a].date_obj.month_create+" "+item_list[a].date_obj.date_create+ ", "+item_list[a].date_obj.year_create +' ' + item_list[a].date_obj.time_create;
             str =str+"<div class='card card-style pb-2 mb-2' id='biz_row_"+item_list[a].tbl_id+"'>"+
 "<a data-bs-toggle='collapse' href='#invoice-"+item_list[a].tbl_id+"' aria-expanded='false' aria-controls='invoice-"+item_list[a].tbl_id+"' class='mb-2'>"+
@@ -224,7 +224,7 @@ function set_dashboard_review_list(data){
 "</div>"+
 "<div class='divider'></div>"+
                 "<a href='#' tbl_id='"+item_list[a].tbl_id+"' data_type='"+item_list[a].data_type+"' data-menu='menu-option-1' class='biz_btn_review_delete btn m-2  ml-3 btn-half btn-l rounded-s font-800 text-uppercase bg-red-dark'>Delete</a>"+
-"<a href='#' tbl_id='"+item_list[a].item_tbl_id+"' data_type='"+item_list[a].item_data_type+"' data-menu='menu-option-1' class='biz_btn_review_view btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-green-dark'>View</a>"+
+"<a href='"+detail_url+"' tbl_id='"+item_list[a].item_tbl_id+"' data_type='"+item_list[a].item_data_type+"' data-menu='menu-option-1' class='biz_btn_review_view btn m-2 btn-half btn-l rounded-s font-800 text-uppercase bg-green-dark'>View</a>"+
 "</div>"+
 "</div>"+
 "</div>";

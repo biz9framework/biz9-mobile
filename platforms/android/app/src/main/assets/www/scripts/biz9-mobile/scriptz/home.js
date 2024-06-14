@@ -209,7 +209,6 @@ function set_dashboard_home_edit(data){
 	function bind_detail(data){
 		set_page_title('Dashboard');
 		set_page_sub_title('Edit Home');
-		set_page_back_link(get_item_link().page_dashboard_home_url);
 	}
 	function bind_event(data){
 		$("#biz_btn_update").click(function() {

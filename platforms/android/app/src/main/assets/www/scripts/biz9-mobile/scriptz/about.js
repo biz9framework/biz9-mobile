@@ -24,7 +24,6 @@ function set_dashboard_about_edit(data){
     init_form();
     hide_page_spinner();
     function bind_detail(data){
-       	set_page_back_link(get_item_link().page_dashboard_home_url);
         set_page_title('Dashboard');
         set_page_sub_title('Edit About');
         set_item_note(data.about.note);

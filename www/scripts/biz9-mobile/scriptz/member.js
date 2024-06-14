@@ -98,7 +98,6 @@ function set_page_member_home(data){
     function bind_detail(data){
         set_page_sub_title(data.page.title);
         set_page_sub_note(data.page.sub_note);
-        set_page_back_link(get_home_link());
     }
     function bind_list(item_list,page_current,page_count){
         str='';
@@ -138,7 +137,6 @@ function set_dashboard_member_edit(data){
         $('#biz_lbl_div_player').hide();
     }
    function bind_detail(data){
-        set_page_back_link(get_item_link(DT_MEMBER).edit_list_url);
         set_page_title('Dashboard');
         set_item_content_edit(data.item,data.data_type_info.title);
         set_item_visible_edit([],data.item.visible);

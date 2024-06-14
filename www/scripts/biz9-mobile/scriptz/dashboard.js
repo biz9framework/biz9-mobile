@@ -7,7 +7,6 @@ function set_dashboard_menu(data){
 		hide_page_footer();
 		hide_page_cart_top();
 		set_page_title('Dashboard');
-		set_page_back_link('/');
 	}
 }
 //9_setting
@@ -24,7 +23,6 @@ function set_dashboard_setting_edit(data){
 		set_page_title('Dashboard');
 		set_page_sub_title('Settings');
 		hide_page_cart_top();
-		set_page_back_link(get_item_link().page_dashboard_home_url);
 	}
 	function bind_detail_dashboard_setting(data){
 		bind_profile(data.info);
@@ -331,11 +329,6 @@ function set_dashboard_sub_item_list(data){
 		}else{
 			set_page_sub_title(data.top_item.title + " "+ data.item.title + ' Sub Items');
 		}
-		if(data.item.data_type!=DT_ITEM){
-			set_page_back_link(get_item_link(data.item.data_type).edit_list_url);
-		}else{
-			set_page_back_link("item_dashboard_sub_item_list.html?tbl_id="+data.item.top_tbl_id+"&data_type="+data.item.top_data_type+"&category=all&page_current=1");
-		}
 	}
 	function bind_list(item_list,page_current,page_count){
 		$('#biz_lbl_list').html(get_dashboard_list_str(item_list,page_current,page_count));
@@ -385,11 +378,6 @@ function set_dashboard_sub_item_edit(data){
 	hide_page_spinner();
 	function bind_detail(data){
 		set_page_title('Dashboard');
-		if(data.item.data_type!=DT_ITEM){
-			set_page_back_link(get_item_link(DT_ITEM).edit_list_url+"&tbl_id="+data.item.tbl_id+"&data_type="+data.item.data_type);
-		}else{
-			set_page_back_link("item_dashboard_sub_item_list.html?tbl_id="+data.item.parent_tbl_id+"&data_type="+data.item.parent_data_type+"&parent_tbl_id="+data.item.parent_tbl_id+"&parent_data_type="+data.item.parent_data_type );
-		}
 		if(data.item.tbl_id==0){
 			set_page_sub_title('Add Sub Item');
 		}else{
@@ -440,7 +428,6 @@ function set_dashboard_photo_edit(data){
 	function bind_detail(data){
 		set_page_title('Dashboard');
 
-			set_page_back_link("item_dashboard_photo_list.html?tbl_id="+data.photo.parent_tbl_id+"&data_type="+data.photo.parent_data_type+"&parent_tbl_id="+data.photo.parent_tbl_id+"&parent_data_type="+data.photo.parent_data_type );
 			if(data.photo.tbl_id==0){
 			set_page_sub_title('Add Photo');
 		}else{
@@ -484,7 +471,6 @@ function set_dashboard_photo_list(data){
 	function bind_detail(data){
 		set_page_title('Dashboard');
 		set_page_sub_title(data.parent_item.title + ' Photos');
-		set_page_back_link(get_item_link(data.parent_item.data_type).edit_list_url);
 	}
 	function bind_list(item_list,page_current,page_count){
 		$('#biz_lbl_list').html(get_dashboard_list_str(item_list,page_current,page_count));
@@ -510,7 +496,7 @@ function set_dashboard_photo_list(data){
 				$('#biz_lbl_list').html(get_dashboard_list_str(data.photo_list,data.page_current,data.page_count));
 				$('#biz_lbl_pager').html(get_pager_ajax(data.page_current,data.page_count));
 				bind_page_event();
-				set_biz_style(data.mobile.primary.app_theme);
+				set_biz_style(data.mobile.primary.button_color,data.mobile.primary.app_theme);
 			});
 		});
 		$(".biz_btn_delete").click(function() {
@@ -536,7 +522,7 @@ function bind_event_dashboard_list_page(){
 			$('#biz_lbl_list').html(get_dashboard_list_str(data.item_list,data.page_current,data.page_count));
 			$('#biz_lbl_pager').html(get_pager_ajax(data.page_current,data.page_count));
 			bind_event_dashboard_list_page();
-			set_biz_style(data.mobile.primary.app_theme);
+			set_biz_style(data.mobile.primary.button_color, data.mobile.primary.app_theme);
 		});
 	});
 }
@@ -635,7 +621,6 @@ function set_dashboard_item_list_edit(data){
 				var back_link=get_item_link(DT_TEAM).edit_list_url+"&parent_tbl_id="+data.parent_item.sport_tbl_id+"&parent_data_type="+DT_SPORT;
 				break;
 		}
-		set_page_back_link(back_link);
 	}
 	function bind_detail_list(type,data_list){
 		var str='';
@@ -717,14 +702,6 @@ function set_dashboard_item_list(data){
 	function bind_detail(data){
 		set_page_title('Dashboard');
 		set_page_sub_title(data.data_type_info.titlez);
-		switch(data.data_type){
-			case DT_TEAM:
-				set_page_back_link(get_item_link(DT_SPORT).edit_list_url+"&category=all&page_current=1");
-				break;
-			default:
-				set_page_back_link(get_item_link(DT_BLANK).page_dashboard_home_url);
-				break;
-		}
 	}
 	function bind_list(item_list,page_current,page_count){
 		$('#biz_lbl_list').html(get_dashboard_list_str(item_list,page_current,page_count));
