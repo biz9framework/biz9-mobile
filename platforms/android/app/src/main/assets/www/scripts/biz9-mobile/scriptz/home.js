@@ -8,7 +8,6 @@ function set_page_home(data){
         $(".biz_lbl_banner_card").hide();
         $("#biz_lbl_image_card").hide();
         $("#biz_lbl_popular_category_full_card").hide();
-        $("#biz_lbl_popular_card").hide();
         $("#biz_lbl_double_card").hide();
         $("#biz_lbl_category_card").hide();
         $("#biz_lbl_buy_card").hide();
@@ -151,7 +150,6 @@ function bind_category_card(data){
 function bind_popular_card(data){
     var str='';
     var item_list=filter_visible_list(data.card_popular_list);
-    $("#biz_lbl_popular_card").show();
     $("#biz_lbl_popular_category_full_card").show();
     $("#biz_lbl_popular_title").html(data.home.page_popular.title);
     $('#biz_lbl_popular_list').html('');

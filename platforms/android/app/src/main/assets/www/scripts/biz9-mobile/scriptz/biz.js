@@ -1110,7 +1110,7 @@ function get_category_list_str(button_color,item_list){
 	for(var a=0;a<item_list.length;a++){
 		str=str+"<div class='col-6'>"+
 			"<a href='"+get_item_link(item_list[a].type).list_url+"&category="+item_list[a].title+"&page_current=1'><div class='card card-style m-0 mb-2 rounded-m' style='background-color:transparent;height:150px;background-position:center center !important;background-size:contain; background-repeat:no-repeat;background-image:url("+item_list[a].photo_obj.square_mid_url+")' >"+
-			"<div class='card-bottom'><span class='badge "+get_button_color(button_color)+" p-2 ps-2 rounded-s font-12'>"+item_list[a].title+" ("+item_list[a].item_count+")</span></div>"+
+			"<div class='card-bottom'><span class='biz_lbl_btn_title badge "+get_button_color(button_color)+" p-2 ps-2 rounded-s font-12'>"+item_list[a].title+" ("+item_list[a].item_count+")</span></div>"+
 			"</div></a></div>";
 		if(a==1||a==3||a==5||a==7||a==9||a==11||a==13||a==15||a==17){
 			str = str+"<div class='w-100 mb-3'></div>";
@@ -1124,7 +1124,7 @@ function get_item_home_slide_show_list_str(item_list){
 		str=str+"<div class='splide__slide'>"+
 			"<div class='card card-style'style='background-color:transparent; height:320px; background-position:center center !important; background-size:contain; background-repeat:no-repeat; background-image: url("+item_list[a].last_item_create.photo_obj.mid_url+")' >"+
 			"<div class='card-bottom p-3'>"+
-			"<a href='"+get_item_link(item_list[a].type).list_url+"&category="+item_list[a].title+"&page_current=1' class='btn btn-s rounded-s mb-4 biz_btn'><h4 class='biz_lbl_title'>"+item_list[a].title+" (" + item_list[a].item_count + ")</h4></a>"+
+			"<a href='"+get_item_link(item_list[a].type).list_url+"&category="+item_list[a].title+"&page_current=1' class='btn btn-s rounded-s mb-4 biz_btn'><h4 class='biz_btn_lbl_title'>"+item_list[a].title+" (" + item_list[a].item_count + ")</h4></a>"+
 			"</div>"+
 			"<div class='card-overlay bg-gradient'></div>"+
 			"</div>"+
@@ -1427,12 +1427,9 @@ function set_biz_style(button_color, app_theme){
 		$('.biz_lbl_title').css("color","black");
 		$('.a-gear').css("color","black");
 	}
-
-	if(button_color='bg-black-black'){
-		$('.biz_lbl_title').css("color","white");
-		}else{
-			$('.biz_lbl_title').css("color","black");
-		}
+	if(button_color =='bg-black-black'){
+		$('.biz_btn_lbl_title').css("color","white");
+	}
 }
 
 // -- VIEW LAYOUT END -- //
@@ -1493,7 +1490,7 @@ function hide_page_tab(){
 // -- PAGE END -- //
 //- SET-PAGE-START -- //
 function set_page_detail_title(str){
-	alert(str);
+	$('#biz_card_top').show();
 	if(str){
 		$('#biz_div_left_info').show();
 		$('#biz_lbl_page_item_title').html(str);

@@ -84,10 +84,12 @@ function set_page_service_detail(data){
 
 //9_service_home //9_home
 function set_page_service_home(data){
+    bind_detail(data);
     bind_slide_show_list(data.category_list);
     bind_mid_list(data.page.title,data.service_list);
     bind_bottom_list('',data.mobile.primary.button_color,data.category_list);
     hide_spinner();
+    function bind_detail(data){
     }
     function bind_slide_show_list(item_list){
         $('#biz_slide_show_list').html(get_item_home_slide_show_list_str(item_list));

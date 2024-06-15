@@ -1490,6 +1490,7 @@ function hide_page_tab(){
 // -- PAGE END -- //
 //- SET-PAGE-START -- //
 function set_page_detail_title(str){
+	$('#biz_card_top').show();
 	if(str){
 		$('#biz_div_left_info').show();
 		$('#biz_lbl_page_item_title').html(str);

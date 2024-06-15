@@ -113,7 +113,7 @@ function set_page_activity_list(data){
             for(a=0;a<item_list.length;a++){
                 header_str="<b>"+item_list[a].title+"</b> "+" ";
                 category_url=get_item_link(item_list[a].data_type).list_url+'&category='+item_list[a].category+"&page_current=1";
-                detail_url=get_item_link(item_list[a].data_type).detail_url+'?tbl_id='+item_list[a].tbl_id+'&title_url='+item_list[a].title_url;
+                detail_url=get_item_link(item_list[a].data_type).detail_url+'&tbl_id='+item_list[a].tbl_id+'&title_url='+item_list[a].title_url;
                 str=str+"<div class='d-flex mb-3'>"+
                     "<div>"+
                     "<a href='"+detail_url+"'><img src='"+item_list[a].photo_obj.thumb_url+"' width='70' class='rounded-sm'></a>"+
