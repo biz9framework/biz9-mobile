@@ -1647,7 +1647,7 @@ function set_page_footer_navigation(data,page_footer){
 	str='';
 	set_home=false;
 	set_home_position=parseInt((data.mobile.page_list.items.length/2));
-	home_str = "<a id='biz_lbl_ft_link_home' href='index.html'><i class='fa fa-home'></i><span>Home</span></a>";
+	home_str = "<a id='biz_lbl_ft_link_home' href='/'><i class='fa fa-home'></i><span>Home</span></a>";
 	for(a=0;a<data.mobile.page_list.items.length;a++){
 		if(a==set_home_position){
 			str = str + home_str;

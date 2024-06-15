@@ -3,7 +3,7 @@ function set_page_contact_detail(data){
     bind_detail(data.contact, data.info);
     bind_event();
     init_form();
-    hide_spinner();
+    hide_page_spinner();
     function bind_detail(contact,info){
         $('#biz_lbl_form_header').html(contact.form_header);
         $('#biz_lbl_form_sub_note').html(contact.form_sub_note);
