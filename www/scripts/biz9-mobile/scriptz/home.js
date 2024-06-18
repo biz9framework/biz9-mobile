@@ -35,7 +35,11 @@ function set_page_home(data){
     }
     function bind_double_card(data){
         $("#biz_lbl_double_card").show();
-        $('#biz_lbl_double_title').html(data.home.page_double.title);
+        if(data.home.card_double_category !='all'){
+            $('#biz_lbl_double_title').html(data.home.card_double_category);
+        }else{
+            $('#biz_lbl_double_title').html(data.home.page_popular.title);
+        }
         $('#biz_lbl_double_slide_show_list').html(bind_double_slide_show_list_str(data.home.card_double_data_type,data.card_double_list));
         init_double_slide_show('#slider_double');
     }
@@ -151,7 +155,12 @@ function bind_popular_card(data){
     var str='';
     var item_list=filter_visible_list(data.card_popular_list);
     $("#biz_lbl_popular_category_full_card").show();
-    $("#biz_lbl_popular_title").html(data.home.page_popular.title);
+    if(data.home.card_popular_order =='popular'){
+        $("#biz_lbl_popular_title").html('Popular ' + data.home.page_popular.title);
+    }else{
+      $("#biz_lbl_popular_title").html('Recent ' + data.home.page_popular.title);
+    }
+
     $('#biz_lbl_popular_list').html('');
     $('#biz_lbl_popular_list').html(get_item_detail_list_str(item_list));
     bind_event_detail_list_like();
@@ -219,7 +228,9 @@ function set_dashboard_home_edit(data){
 			obj.card_popular_visible=$('#biz_sel_popular_visible').val();
 			obj.card_popular_data_type=$('#biz_sel_popular_data_type').val();
 			obj.card_popular_order=$('#biz_sel_popular_order').val();
+            obj.card_popular_title=$('#biz_tb_popular_title').val();
 
+			obj.card_buy_data_type=$('#biz_sel_buy_data_type').val();
 			obj.card_category_visible=$('#biz_sel_category_visible').val();
 			obj.card_category_data_type=$('#biz_sel_category_data_type').val();
 

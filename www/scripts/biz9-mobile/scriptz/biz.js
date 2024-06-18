@@ -1025,6 +1025,15 @@ function get_item_link(data_type){
 	item.page_dashboard_home_url='item_dashboard_menu.html';
 	item.edit_list_url="item_dashboard_list.html?data_type="+data_type+"&category=all&page_current=1";
 	switch(data_type){
+		case DT_EVENT:
+			item.titlez='Events';
+			break;
+		case DT_SERVICE:
+			item.titlez='Services';
+			break;
+		case DT_PRODUCT:
+			item.titlez='Products';
+			break;
 		case DT_GAME:
 			item.cloud_edit_url='game/edit/'+data_type+"/"+get_url_param('tbl_id')+"/"+get_url_param('parent_data_type')  +"/"+  get_url_param('parent_tbl_id');
 			item.cloud_detail_url='team/detail/'+get_url_param('tbl_id');
