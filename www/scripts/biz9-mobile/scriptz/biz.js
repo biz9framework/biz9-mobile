@@ -1388,21 +1388,21 @@ function set_page_item_home(data){
 	}
 	function set_page_home_item_slide_show(item_list){
 		if(item_list.length>0){
-			$('#biz_slide_show_list').html(get_item_home_slide_show_list_str(item_list));
+			$('#biz_slide_show_list').html(get_item_home_slide_show_list_str(filter_visible_list(item_list)));
 			init_slide_show('#biz_div_slide_show');
 		}
 	}
 	function set_page_home_item_mid_list(title,item_list){
 		if(item_list.length>0){
 			$('#biz_lbl_mid_title').html(title);
-			$('#biz_lbl_mid_list').html(get_item_detail_list_str(item_list));
+			$('#biz_lbl_mid_list').html(get_item_detail_list_str(filter_visible_list(item_list)));
 			bind_event_detail_list_like();
 		}
 	}
 	function set_page_home_bottom_list(title,button_color,item_list){
 		if(item_list.length>0){
 			$('#biz_lbl_bottom_title').html(title);
-			$('#biz_lbl_bottom_list').html(get_category_list_str(button_color,item_list));
+			$('#biz_lbl_bottom_list').html(get_category_list_str(button_color,filter_visible_list(item_list)));
 		}
 	}
 }
@@ -1420,7 +1420,7 @@ function set_page_item_list(data){
 		set_page_footer_navigation(data,data.data_type);
 	}
 	function bind_list(item_list,page_current,page_count,item_count){
-		$('#biz_lbl_list').html(get_item_detail_list_str(item_list));
+		$('#biz_lbl_list').html(get_item_detail_list_str(filter_visible_list(item_list)));
 		$('#biz_lbl_pager').html(get_pager_ajax(page_current,page_count));
 		bind_event_detail_list_page();
 		bind_event_detail_list_like();
@@ -1586,7 +1586,7 @@ function set_page_detail_double_slide_show(item,item_list){
 	if(item_list.length>1){
 		$('#biz_lbl_double_card').show();
 		$('#biz_lbl_double_category').html(item.category);
-		$('#biz_lbl_double_slide_show_list').html(bind_double_slide_show_list_str(item.data_type,item_list));
+		$('#biz_lbl_double_slide_show_list').html(bind_double_slide_show_list_str(item.data_type,filter_visible_list(item_list)));
 		init_double_slide_show('#slider_double');
 	}
 }
