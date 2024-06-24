@@ -112,6 +112,7 @@ function set_dashboard_page_edit(data){
         $("#biz_btn_update").click(function() {
             var obj=get_new_item($('#biz_page_data_type').val(),$('#biz_page_tbl_id').val());
             obj.title=$('#biz_tb_title').val();
+            obj.title_url= get_title_url(obj.title);
             obj.sub_note=$('#biz_tb_sub_note').val();
             obj.visible=$('#biz_sel_visible').val();
             obj.icon_footer=$('#biz_sel_page_icon_footer').val();
