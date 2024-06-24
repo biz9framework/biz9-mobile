@@ -1100,6 +1100,7 @@ function set_item_in_app_product_edit(app_store_product,app_store_product_id){
 	if(app_store_product=='true'){
 		$('#biz_sel_app_store_product').val('true');
 		$('#biz_div_app_store_product_id').show();
+		$('#biz_tb_app_store_product_id').val(app_store_product_id);
 		$('#biz_page_app_store_product_id').val(app_store_product_id);
 	}else{
 		$('#biz_div_app_store_product_id').hide();
