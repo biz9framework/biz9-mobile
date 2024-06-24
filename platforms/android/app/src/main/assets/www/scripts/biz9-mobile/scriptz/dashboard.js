@@ -715,6 +715,9 @@ function get_dashboard_list_str(item_list,page_current,page_count){
 		var category_str="";
 		var edit_str="";
 		var app_store_str="";
+		if(item_list[a].app_store_product_id){
+			app_store_str="| <i class='fa-sharp fa-solid fa-credit-card'></i> ";
+		}
 		edit_url=get_item_link(item_list[a].data_type).edit_url+"&tbl_id="+item_list[a].tbl_id+"&title_url="+item_list[a].title_url;
 		var photo_edit_url="";
 		var visible_str="";
@@ -1097,7 +1100,7 @@ function set_item_in_app_product_edit(app_store_product,app_store_product_id){
 	if(app_store_product=='true'){
 		$('#biz_sel_app_store_product').val('true');
 		$('#biz_div_app_store_product_id').show();
-		$('#biz_tb_app_store_product_id').val(app_store_product_id);
+		$('#biz_page_app_store_product_id').val(app_store_product_id);
 	}else{
 		$('#biz_div_app_store_product_id').hide();
 		$('#biz_sel_app_store_product').val('false');

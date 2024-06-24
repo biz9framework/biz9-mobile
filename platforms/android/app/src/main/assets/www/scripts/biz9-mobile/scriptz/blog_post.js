@@ -5,6 +5,7 @@ function set_page_blog_post_detail(data){
 	bind_detail(data);
 	bind_detail_blog_post(data.item);
 	bind_detail_blog_post_photo(data.item);
+	bind_event_detail_list_like();
 	bind_detail_review(data.item);
 	init_plugin();
 	hide_page_spinner();

@@ -5,6 +5,7 @@ function set_page_service_detail(data){
     bind_detail_service(data);
     bind_detail_review(data.item);
     bind_event();
+    bind_event_detail_list_like();
     init_cart();
     init_plugin();
     hide_page_spinner();
@@ -25,8 +26,7 @@ function set_page_service_detail(data){
         set_page_detail_media(data.item);
         set_page_detail_visible(data.item.visible,data.item.visible_obj.service_status);
         set_page_detail_price(data.item);
-
-        set_page_product_in_app_purchase(data.item);
+        set_page_detail_in_app_purchase(data.item);
     }
     function  bind_photo_slide_show(item){
         $('#biz_lbl_slideshow_list').html(bind_detail_slide_show_list_str(item));

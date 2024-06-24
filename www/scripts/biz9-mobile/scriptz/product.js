@@ -4,6 +4,8 @@ function set_page_product_detail(data){
     bind_detail(data);
     bind_detail_review(data.item);
     bind_event();
+    bind_event_detail_list_like();
+    bind_event_detail_item_like_event(data.item);
     init_plugin();
     hide_page_spinner();
      function bind_detail(data){
@@ -20,7 +22,7 @@ function set_page_product_detail(data){
         set_page_detail_media(data.item);
         set_page_detail_visible(data.item.visible,data.item.visible_obj.product_status);
         set_page_detail_price(data.item);
-        set_page_product_in_app_purchase(data.item);
+        set_page_detail_in_app_purchase(data.item);
     }
    function bind_event(){
         //9_cart cart-start cart_add add_cart 9_add_cart-- 9_cart_add

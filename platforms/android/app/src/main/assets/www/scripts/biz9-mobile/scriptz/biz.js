@@ -1025,6 +1025,15 @@ function get_item_link(data_type){
 	item.page_dashboard_home_url='item_dashboard_menu.html';
 	item.edit_list_url="item_dashboard_list.html?data_type="+data_type+"&category=all&page_current=1";
 	switch(data_type){
+		case DT_EVENT:
+			item.titlez='Events';
+			break;
+		case DT_SERVICE:
+			item.titlez='Services';
+			break;
+		case DT_PRODUCT:
+			item.titlez='Products';
+			break;
 		case DT_GAME:
 			item.cloud_edit_url='game/edit/'+data_type+"/"+get_url_param('tbl_id')+"/"+get_url_param('parent_data_type')  +"/"+  get_url_param('parent_tbl_id');
 			item.cloud_detail_url='team/detail/'+get_url_param('tbl_id');
@@ -1100,6 +1109,21 @@ function bind_detail_list_like_event(){
 			if(String(data.item.new_like)=='true'){
 				$('span#biz_lbl_like_count_'+obj.item_tbl_id).html(" "+data.item.like_count);
 				set_heart_red(obj.item_tbl_id);
+			}
+			return false;
+		});
+	});
+}
+function bind_event_detail_item_like_event(item){
+	$("#sp_like_count_box").click(function(e) {
+		var obj=get_new_item(DT_BLANK,0);
+		obj.item_tbl_id=$(this).attr(item.tbl_id);
+		obj.item_data_type=$(this).attr(item.data_type);
+		url = "item/like_update/"+obj.item_data_type+"/"+obj.item_tbl_id+"/"+get_user().customer_id;
+		cloud_post_url(get_cloud_url(url,[]),obj,function(data){
+			if(String(data.item.new_like)=='true'){
+				$('#biz_lbl_like_count').html(" "+data.item.like_count);
+				$('#biz_lbl_heart').attr('class','biz_lbl_like_button fa fa-heart color-red-dark');
 			}
 			return false;
 		});
@@ -1379,21 +1403,21 @@ function set_page_item_home(data){
 	}
 	function set_page_home_item_slide_show(item_list){
 		if(item_list.length>0){
-			$('#biz_slide_show_list').html(get_item_home_slide_show_list_str(item_list));
+			$('#biz_slide_show_list').html(get_item_home_slide_show_list_str(filter_visible_list(item_list)));
 			init_slide_show('#biz_div_slide_show');
 		}
 	}
 	function set_page_home_item_mid_list(title,item_list){
 		if(item_list.length>0){
 			$('#biz_lbl_mid_title').html(title);
-			$('#biz_lbl_mid_list').html(get_item_detail_list_str(item_list));
+			$('#biz_lbl_mid_list').html(get_item_detail_list_str(filter_visible_list(item_list)));
 			bind_event_detail_list_like();
 		}
 	}
 	function set_page_home_bottom_list(title,button_color,item_list){
 		if(item_list.length>0){
 			$('#biz_lbl_bottom_title').html(title);
-			$('#biz_lbl_bottom_list').html(get_category_list_str(button_color,item_list));
+			$('#biz_lbl_bottom_list').html(get_category_list_str(button_color,filter_visible_list(item_list)));
 		}
 	}
 }
@@ -1411,7 +1435,7 @@ function set_page_item_list(data){
 		set_page_footer_navigation(data,data.data_type);
 	}
 	function bind_list(item_list,page_current,page_count,item_count){
-		$('#biz_lbl_list').html(get_item_detail_list_str(item_list));
+		$('#biz_lbl_list').html(get_item_detail_list_str(filter_visible_list(item_list)));
 		$('#biz_lbl_pager').html(get_pager_ajax(page_current,page_count));
 		bind_event_detail_list_page();
 		bind_event_detail_list_like();
@@ -1577,23 +1601,19 @@ function set_page_detail_double_slide_show(item,item_list){
 	if(item_list.length>1){
 		$('#biz_lbl_double_card').show();
 		$('#biz_lbl_double_category').html(item.category);
-		$('#biz_lbl_double_slide_show_list').html(bind_double_slide_show_list_str(item.data_type,item_list));
+		$('#biz_lbl_double_slide_show_list').html(bind_double_slide_show_list_str(item.data_type,filter_visible_list(item_list)));
 		init_double_slide_show('#slider_double');
 	}
 }
-function set_page_product_in_app_purchase(item){
+function set_page_detail_in_app_purchase(item){
 	if(item.app_store_product=='true'){
 		$("#biz_lbl_one_click_checkout").show();
-		$(".biz_btn_one_click_checkout").attr('biz_product_id',data.event.app_store_product_id);
-		bind_one_click_buy();
+		$(".biz_btn_one_click_checkout").click(function() {
+			var obj=get_new_item(DT_PRODUCT,0);
+			obj.app_store_product_id=item.app_store_product_id
+			bind_in_app_checkout(obj.app_store_product_id);
+		});
 	}
-}
-function bind_one_click_buy(){
-	$(".biz_btn_checkout").click(function() {
-		var obj=get_new_item(DT_PRODUCT,0);
-		obj.product_id=$(this).attr("biz_product_id");
-		bind_in_app_checkout(obj.product_id);
-	});
 }
 function set_page_detail_category(item){
 	$("#biz_link_category").attr('href',get_item_link(item.data_type).list_url+"&category="+item.category+"&page_current=1");
@@ -1647,7 +1667,7 @@ function set_page_footer_navigation(data,page_footer){
 	str='';
 	set_home=false;
 	set_home_position=parseInt((data.mobile.page_list.items.length/2));
-	home_str = "<a id='biz_lbl_ft_link_home' href='index.html'><i class='fa fa-home'></i><span>Home</span></a>";
+	home_str = "<a id='biz_lbl_ft_link_home' href='/'><i class='fa fa-home'></i><span>Home</span></a>";
 	for(a=0;a<data.mobile.page_list.items.length;a++){
 		if(a==set_home_position){
 			str = str + home_str;
@@ -1698,7 +1718,7 @@ function set_page_footer_navigation(data,page_footer){
 function bind_service_one_click_buy(){
 	$(".biz_btn_checkout").click(function() {
 		var obj=get_new_item(DT_SERVICE,0);
-		obj.product_id=$(this).attr("biz_product_id");
+		obj.app_store_product_id=$("#biz_page_app_store_product_id").val();
 		obj.start_date=$('#biz_tb_date').val();
 		obj.start_time=$('#biz_tb_time').val();
 		if(!obj.start_time){
@@ -1706,15 +1726,15 @@ function bind_service_one_click_buy(){
 		}else if(!obj.start_date){
 			show_toast_error('Please select a date');
 		}else{
-			bind_in_app_checkout(obj.product_id);
+			bind_in_app_checkout(obj.app_store_product_id);
 		}
 	});
 }
-function bind_in_app_checkout(product_id){
-	inAppPurchases.purchase(product_id).then(function(purchase){
+function bind_in_app_checkout(app_store_product_id){
+	inAppPurchases.purchase(app_store_product_id).then(function(purchase){
 	}).catch(function(err){
 		if(err.code != '-1013'){
-			alert("In App Purchase Error. ProductID: "+product_id +" "+ JSON.stringify(err));
+			alert("In App Purchase Error. ProductID: "+app_store_product_id +" "+ JSON.stringify(err));
 		}
 	});
 }
@@ -1732,6 +1752,7 @@ function bind_page_other_id(item){
 	$('#biz_page_top_tbl_id').val(item.top_tbl_id?item.top_tbl_id:"");
 	$('#biz_page_top_data_type').val(item.top_data_type?item.top_data_type:"");
 	$('#biz_page_review_count').val(item.review_count?item.review_count:"");
+	$('#biz_page_rating_avg').val(item.rating_avg?item.rating_avg:"");
 	$('#biz_page_rating_avg').val(item.rating_avg?item.rating_avg:"");
 }
 //- BIND-PAGE-START -- //

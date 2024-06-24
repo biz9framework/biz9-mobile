@@ -227,7 +227,7 @@ function cloud_post_url(url,params,call){
         call(data.helper);
     }).fail(function() {
         alert('Network connection fail. Cannot connect to server!')
-        alert(url);
+        //alert(url);
     });
 }
 function cloud_get_url(url,params,call){
@@ -238,7 +238,7 @@ function cloud_get_url(url,params,call){
         call(data.helper);
     }).fail(function() {
         alert('Network connection fail. Cannot connect to server!')
-        alert(url);
+        //alert(url);
     });
 }
 //-- OTHER START --

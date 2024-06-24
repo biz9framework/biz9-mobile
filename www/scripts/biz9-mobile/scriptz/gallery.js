@@ -3,6 +3,7 @@ function set_page_gallery_detail(data){
 	hide_page_cart_top();
     bind_page_id(data.item);
     bind_detail(data);
+    bind_event_detail_list_like();
     bind_detail_review(data.item);
 	init_plugin();
     hide_page_spinner();

@@ -3,6 +3,7 @@ function set_page_event_detail(data){
     bind_page_id(data.item);
     bind_detail(data);
     bind_detail_event(data);
+    bind_event_detail_list_like();
     bind_detail_review(data.item);
     bind_event();
     init_plugin();
@@ -20,7 +21,7 @@ function set_page_event_detail(data){
         set_page_detail_media(data.item);
         set_page_detail_visible(data.item.visible,data.item.visible_obj.event_status);
         set_page_detail_price(data.item);
-        set_page_product_in_app_purchase(data.item);
+        set_page_detail_in_app_purchase(data.item);
     }
     function bind_detail_event(data){
         $('#biz_lbl_date').html(data.item.event_obj.start_date);
