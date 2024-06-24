@@ -84,6 +84,7 @@ function set_dashboard_gallery_edit(data){
                 send_notification='true';
             }
             obj.title=$('#biz_tb_title').val();
+            obj.title_url=get_title_url(obj.title);
             obj.photofilename=$('#biz_page_photofilename').val();
             obj.category=$('#biz_sel_category').val();
             obj.youtube_url=$('#biz_tb_youtube_url').val();

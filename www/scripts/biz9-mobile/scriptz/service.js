@@ -140,6 +140,7 @@ function set_dashboard_service_edit(data){
             }
             obj.photofilename=$('#biz_page_photofilename').val();
             obj.title=$('#biz_tb_title').val();
+            obj.title_url=get_title_url(obj.title);
             obj.price=$('#biz_tb_price').val();
             obj.old_price=$('#biz_tb_old_price').val();
             obj.youtube_url=$('#biz_tb_youtube_url').val();

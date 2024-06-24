@@ -88,6 +88,7 @@ function set_dashboard_product_edit(data){
                 send_notification=true;
             }
             obj.title=$('#biz_tb_title').val();
+            obj.title_url=get_title_url(obj.title);
             obj.photofilename=$('#biz_page_photofilename').val();
             obj.price=$('#biz_tb_price').val();
             obj.old_price=$('#biz_tb_old_price').val();

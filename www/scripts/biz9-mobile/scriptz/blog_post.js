@@ -76,6 +76,7 @@ function set_dashboard_blog_post_edit(data){
 				send_notification='true';
 			}
 			obj.title=$('#biz_tb_title').val();
+	 		obj.title_url=get_title_url(obj.title);
 			obj.photofilename=$('#biz_page_photofilename').val();
 			obj.category=$('#biz_sel_category').val();
 			obj.author=$('#biz_tb_author').val();
