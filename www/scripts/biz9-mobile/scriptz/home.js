@@ -38,7 +38,7 @@ function set_page_home(data){
         if(data.home.card_double_category !='all'){
             $('#biz_lbl_double_title').html(data.home.card_double_category);
         }else{
-            $('#biz_lbl_double_title').html(data.home.page_popular.title);
+            $('#biz_lbl_double_title').html(get_item_link(data.home.card_double_data_type).titlez);
         }
         $('#biz_lbl_double_slide_show_list').html(bind_double_slide_show_list_str(data.home.card_double_data_type,data.card_double_list));
         init_double_slide_show('#slider_double');

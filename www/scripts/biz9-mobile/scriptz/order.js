@@ -190,12 +190,11 @@ function set_page_order_checkout_submit(data){
     bind_checkout_event();
     init_stepper();
     hide_page_spinner();
-
     function bind_detail(data){
         hide_page_cart_top();
-
     }
     function hide_checkout(){
+        $('#biz_div_non_checkout').hide();
         $('#biz_div_card_creditcard').hide();
         $('#biz_div_card_cashapp').hide();
         $('#biz_div_card_shipping').hide();
@@ -230,6 +229,8 @@ function set_page_order_checkout_submit(data){
             $('#biz_sel_order_payment_type').html(str);
             $("#biz_div_checkout_payment_type").show();
             $("#biz_div_checkout_email").show();
+        }else{
+            $('#biz_div_non_checkout').show();
         }
         var str='';
         for(a=1;a<13;a++){
